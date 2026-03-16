@@ -50,6 +50,14 @@
   text-decoration: none;
 }
 
+.footer__logo-mark {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
 .footer__logo-text {
   font-size: 18px;
   font-weight: var(--font-weight-semibold);

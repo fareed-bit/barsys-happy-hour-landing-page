@@ -30,6 +30,10 @@
   user-select: none;
   position: relative;
   overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 
   /* Default (medium) size — matches template 20.8px 32px */
   padding: 20px 32px;
@@ -78,8 +82,9 @@
     rgba(255, 255, 255, 0.20),
     transparent
   );
-  transform: skewX(-20deg);
+  transform: skewX(-20deg) translateZ(0);
   transition: left 0.6s ease;
+  will-change: left;
 }
 
 .btn-primary:hover::before {

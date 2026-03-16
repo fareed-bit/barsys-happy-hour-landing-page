@@ -167,3 +167,32 @@
   --nav-height:        72px;
   --section-padding:   clamp(80px, 12vw, 178px);
 }
+
+/* --------------------------------------------------------------------------
+   Large / QHD+ screens (1440p and above)
+   -------------------------------------------------------------------------- */
+@media (min-width: 1600px) {
+  :root {
+    --container-max:     1440px;
+    --font-size-body:    18px;
+    --font-size-body-sm: 16px;
+    --font-size-label:   12px;
+    --font-size-h3:      28px;
+    --font-size-btn:     17px;
+    --font-size-btn-sm:  13px;
+    --nav-height:        96px;
+  }
+}
+
+@media (min-width: 2200px) {
+  :root {
+    --container-max:     1600px;
+    --font-size-body:    20px;
+    --font-size-body-sm: 17px;
+    --font-size-label:   13px;
+    --font-size-h3:      32px;
+    --font-size-btn:     18px;
+    --font-size-btn-sm:  14px;
+    --nav-height:        108px;
+  }
+}
