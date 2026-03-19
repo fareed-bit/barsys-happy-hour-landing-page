@@ -924,6 +924,7 @@
               <button class="wizard__guest-btn wizard__guest-btn--plus" id="guest-plus" type="button" aria-label="Increase guest count">+</button>
             </div>
             <p class="wizard__guest-hint">Minimum 20 guests &middot; Use arrows or type a number</p>
+            <span class="wizard__field-error" id="err-guestCount"></span>
             <div class="wizard__nav">
               <button class="wizard__nav-back" data-wizard-prev>← Back</button>
               <button class="btn btn-primary btn--sm" data-wizard-next>Continue</button>
@@ -1031,6 +1032,7 @@
               </div>
 
             </div>
+            <span class="wizard__field-error" id="err-tier"></span>
             <div class="wizard__nav">
               <button class="wizard__nav-back" data-wizard-prev>← Back</button>
               <button class="btn btn-primary btn--sm" data-wizard-next>Continue</button>
@@ -1215,23 +1217,26 @@
             <div class="wizard__step-title">Where will the event take place?</div>
             <p class="wizard__step-subtitle">Barsys brings the full experience directly to your office. We handle delivery, setup, and building coordination.</p>
             <div class="wizard__field">
-              <label for="wiz-company">Company Name</label>
+              <label for="wiz-company">Company Name <span class="wizard__required">*</span></label>
               <input type="text" id="wiz-company" placeholder="Your company name" />
+              <span class="wizard__field-error" id="err-company"></span>
             </div>
             <div class="wizard__field">
-              <label for="wiz-address">Office Address</label>
+              <label for="wiz-address">Office Address <span class="wizard__required">*</span></label>
               <input type="text" id="wiz-address" placeholder="123 Main St, Suite 400" />
+              <span class="wizard__field-error" id="err-address"></span>
             </div>
             <div class="wizard__field-row">
               <div class="wizard__field">
                 <label for="wiz-city">City</label>
-                <input type="text" id="wiz-city" placeholder="New York" />
+                <input type="text" id="wiz-city" value="New York" readonly class="wizard__input--locked" />
               </div>
               <div class="wizard__field">
                 <label for="wiz-state">State</label>
-                <input type="text" id="wiz-state" placeholder="NY" />
+                <input type="text" id="wiz-state" value="NY" readonly class="wizard__input--locked" />
               </div>
             </div>
+            <p class="wizard__field-note">Barsys currently serves the New York City metro area.</p>
             <div class="wizard__nav">
               <button class="wizard__nav-back" data-wizard-prev>← Back</button>
               <button class="btn btn-primary btn--sm" data-wizard-next>Continue</button>
@@ -1275,12 +1280,14 @@
             <div class="wizard__step-title">Check availability for your event.</div>
             <p class="wizard__step-subtitle">Share your contact details and our team will confirm availability, finalize your event plan, and walk you through next steps.</p>
             <div class="wizard__field">
-              <label for="wiz-name">Full Name</label>
+              <label for="wiz-name">Full Name <span class="wizard__required">*</span></label>
               <input type="text" id="wiz-name" placeholder="Your full name" />
+              <span class="wizard__field-error" id="err-name"></span>
             </div>
             <div class="wizard__field">
-              <label for="wiz-email">Work Email</label>
+              <label for="wiz-email">Work Email <span class="wizard__required">*</span></label>
               <input type="email" id="wiz-email" placeholder="you@company.com" />
+              <span class="wizard__field-error" id="err-email"></span>
             </div>
             <div class="wizard__field">
               <label for="wiz-company-confirm">Company</label>

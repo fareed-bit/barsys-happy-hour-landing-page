@@ -1570,6 +1570,56 @@
       resize: vertical;
     }
 
+    /* Required field asterisk */
+    .wizard__required {
+      color: var(--color-gold);
+      margin-left: 2px;
+    }
+
+    /* Inline field error message */
+    .wizard__field-error {
+      display: none;
+      font-size: 13px;
+      color: #e05c5c;
+      margin-top: 6px;
+    }
+
+    .wizard__field-error:not(:empty) {
+      display: block;
+    }
+
+    /* Error state for input borders */
+    .wizard__field input.wizard__input--error,
+    .wizard__field select.wizard__input--error {
+      border-color: #e05c5c;
+    }
+
+    /* Locked/readonly inputs (city, state) */
+    .wizard__field input.wizard__input--locked {
+      background: var(--color-surface-2);
+      color: var(--color-text-secondary);
+      cursor: default;
+      border-color: transparent;
+    }
+
+    /* Error span for non-field steps (guest count, tier) */
+    .wizard__guest-hint + .wizard__field-error,
+    .wizard__packages-grid + .wizard__field-error {
+      display: block;
+      font-size: 13px;
+      color: #e05c5c;
+      margin-top: 8px;
+      min-height: 18px;
+    }
+
+    /* NYC service area note */
+    .wizard__field-note {
+      font-size: 13px;
+      color: var(--color-text-secondary);
+      margin-top: 4px;
+      margin-bottom: 8px;
+    }
+
     .wizard__field-row {
       display: grid;
       grid-template-columns: 1fr 1fr;

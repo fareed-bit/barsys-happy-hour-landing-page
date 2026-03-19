@@ -36,6 +36,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
   height: 100%;
   max-width: var(--container-max);
   margin-inline: auto;
@@ -284,6 +285,34 @@
     padding: 16px 32px;
     font-size: 17px;
   }
+}
+
+/* --------------------------------------------------------------------------
+   Nav Phone
+   -------------------------------------------------------------------------- */
+.nav__phone {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+
+.nav__phone:hover {
+  color: var(--color-gold);
+}
+
+@media (max-width: 768px) {
+  .nav__phone { display: none; }
+}
+
+@media (min-width: 1600px) {
+  .nav__phone { font-size: 15px; }
+}
+
+@media (min-width: 2200px) {
+  .nav__phone { font-size: 17px; }
 }
 
 /* --------------------------------------------------------------------------

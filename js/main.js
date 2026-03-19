@@ -149,10 +149,10 @@
 
       /* ---- Form data store ---- */
       var formData = {
-        eventType: '', guestCount: 0, experienceTier: '',
+        eventType: '', guestCount: 50, experienceTier: '',
         mixlists: [], spiritUpgrades: {}, addOns: [],
         frequency: '', recurringCadence: '',
-        company: '', address: '', city: '', state: '',
+        company: '', address: '', city: 'New York', state: 'NY',
         name: '', email: '', phone: ''
       };
 
@@ -264,12 +264,83 @@
       /* ---- Step sequencing ---- */
       var stepOrder = ['start', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 'success'];
 
+      /* ---- Validation helpers ---- */
+      function clearErrors() {
+        wizard.querySelectorAll('.wizard__field-error').forEach(function(el) {
+          el.textContent = '';
+        });
+        wizard.querySelectorAll('.wizard__input--error').forEach(function(el) {
+          el.classList.remove('wizard__input--error');
+        });
+      }
+
+      function showFieldError(id, msg) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        el.textContent = msg;
+        /* Highlight related input — the previous sibling if it's an input */
+        var prev = el.previousElementSibling;
+        if (prev && (prev.tagName === 'INPUT' || prev.tagName === 'SELECT' || prev.tagName === 'TEXTAREA')) {
+          prev.classList.add('wizard__input--error');
+        }
+      }
+
+      function validateStep(step) {
+        var errors = [];
+
+        if (step === 2) {
+          var count = parseInt(guestInput ? guestInput.value : 0) || 0;
+          if (count < 20) {
+            errors.push({ id: 'err-guestCount', msg: 'Please enter a guest count of at least 20.' });
+          }
+        }
+
+        if (step === 3) {
+          if (!formData.experienceTier) {
+            errors.push({ id: 'err-tier', msg: 'Please select an experience tier to continue.' });
+          }
+        }
+
+        if (step === 8) {
+          var companyEl = document.getElementById('wiz-company');
+          var addressEl = document.getElementById('wiz-address');
+          if (!companyEl || !companyEl.value.trim()) {
+            errors.push({ id: 'err-company', msg: 'Company name is required.' });
+          }
+          if (!addressEl || !addressEl.value.trim()) {
+            errors.push({ id: 'err-address', msg: 'Office address is required.' });
+          }
+        }
+
+        if (step === 10) {
+          var nameEl = document.getElementById('wiz-name');
+          var emailEl = document.getElementById('wiz-email');
+          if (!nameEl || !nameEl.value.trim()) {
+            errors.push({ id: 'err-name', msg: 'Full name is required.' });
+          }
+          if (!emailEl || !emailEl.value.trim()) {
+            errors.push({ id: 'err-email', msg: 'Work email is required.' });
+          } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value.trim())) {
+            errors.push({ id: 'err-email', msg: 'Please enter a valid work email address.' });
+          }
+        }
+
+        return errors;
+      }
+
       function nextStep() {
+        clearErrors();
+        var errors = validateStep(currentStep);
+        if (errors.length > 0) {
+          errors.forEach(function(e) { showFieldError(e.id, e.msg); });
+          return;
+        }
         var idx = stepOrder.indexOf(currentStep);
         if (idx < stepOrder.length - 1) showStep(stepOrder[idx + 1]);
       }
 
       function prevStep() {
+        clearErrors();
         var idx = stepOrder.indexOf(currentStep);
         if (idx > 0) showStep(stepOrder[idx - 1]);
       }
@@ -986,14 +1057,13 @@
       }
 
       /* ---- Collect location fields on input ---- */
-      ['wiz-company', 'wiz-address', 'wiz-city', 'wiz-state'].forEach(function(id) {
+      /* City and state are pre-filled and readonly (NYC only) */
+      ['wiz-company', 'wiz-address'].forEach(function(id) {
         var input = document.getElementById(id);
         if (input) {
           input.addEventListener('input', function() {
             if (id === 'wiz-company') formData.company = input.value;
             if (id === 'wiz-address') formData.address = input.value;
-            if (id === 'wiz-city') formData.city = input.value;
-            if (id === 'wiz-state') formData.state = input.value;
             updateSummary();
           });
         }
@@ -1003,11 +1073,18 @@
       var submitBtn = document.getElementById('wizard-submit');
       if (submitBtn) {
         submitBtn.addEventListener('click', function() {
+          clearErrors();
+          var errors = validateStep(10);
+          if (errors.length > 0) {
+            errors.forEach(function(e) { showFieldError(e.id, e.msg); });
+            return;
+          }
+
           var nameEl = document.getElementById('wiz-name');
           var emailEl = document.getElementById('wiz-email');
           var phoneEl = document.getElementById('wiz-phone');
-          formData.name = nameEl ? nameEl.value : '';
-          formData.email = emailEl ? emailEl.value : '';
+          formData.name = nameEl ? nameEl.value.trim() : '';
+          formData.email = emailEl ? emailEl.value.trim() : '';
           formData.phone = phoneEl ? phoneEl.value : '';
 
           var pricing = calculatePricing();
