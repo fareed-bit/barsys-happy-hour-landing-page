@@ -1844,7 +1844,7 @@
     .wizard__nav-back {
       font-size: 14px;
       font-weight: 500;
-      color: var(--color-text-tertiary);
+      color: var(--color-text-secondary);
       background: none;
       border: none;
       cursor: pointer;
@@ -1853,7 +1853,7 @@
     }
 
     .wizard__nav-back:hover {
-      color: var(--color-text-secondary);
+      color: var(--color-text-primary);
     }
 
     /* ---- Reassurance Microcopy ---- */
@@ -3159,6 +3159,14 @@
         font-size: 15px;
         font-weight: 600;
       }
+      main#main-content {
+        padding-bottom: 80px;
+      }
+    }
+
+    /* --- Footer social icon color --- */
+    .footer__social-link {
+      color: var(--color-text-secondary);
     }
 
     /* --- Footer link hover --- */
