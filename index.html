@@ -423,6 +423,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
   <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet" /></noscript>
 
+  <!-- RB2B: Identify anonymous visitors by LinkedIn profile -->
+  <!-- Replace RB2B_PIXEL_ID with your actual pixel ID from rb2b.com -->
+  <script>
+    !function () {var reb2b = window.reb2b = window.reb2b || [];if (reb2b.invoked) return;reb2b.invoked = true;reb2b.methods = ["identify", "collect"];reb2b.factory = function (method) {return function () {var args = Array.prototype.slice.call(arguments);args.unshift(method);reb2b.push(args);return reb2b;};};for (var i = 0; i < reb2b.methods.length; i++) {var key = reb2b.methods[i];reb2b[key] = reb2b.factory(key);}reb2b.load = function (key) {var script = document.createElement("script");script.type = "text/javascript";script.async = true;script.src = "https://s3-us-west-2.amazonaws.com/b2bjsstore/b/" + key + "/reb2b.js.gz";var first = document.getElementsByTagName("script")[0];first.parentNode.insertBefore(script, first);};reb2b.SNIPPET_VERSION = "1.0.1";reb2b.load(window.RB2B_PIXEL_ID || "RB2B_PIXEL_ID");}();
+  </script>
+
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -2026,5 +2032,49 @@
     <a href="#book" class="btn btn-primary">Plan Your Event</a>
   </div>
 
+<!-- APEX Landing Page Tracker -->
+<script>
+(function(){
+  'use strict';
+  var APEX='https://crm.barsys.com',_t0=Date.now();
+  var sid=sessionStorage.getItem('_lp_sid')||(function(){
+    var id=(Math.random().toString(36)+Date.now().toString(36)).replace(/\./g,'').slice(-12);
+    sessionStorage.setItem('_lp_sid',id);return id;
+  })();
+  var _p=new URLSearchParams(location.search);
+  var _base={session_id:sid,page_path:location.pathname,referrer:document.referrer,
+    utm_source:_p.get('utm_source')||'',utm_medium:_p.get('utm_medium')||'',
+    utm_campaign:_p.get('utm_campaign')||'',utm_content:_p.get('utm_content')||'',
+    screen_width:screen.width,user_agent:navigator.userAgent};
+  function send(extra){
+    var body=JSON.stringify(Object.assign({},_base,extra));
+    try{
+      if(navigator.sendBeacon){navigator.sendBeacon(APEX+'/api/lp/event',body);return;}
+      fetch(APEX+'/api/lp/event',{method:'POST',body:body,keepalive:true,headers:{'Content-Type':'application/json'}});
+    }catch(e){}
+  }
+  send({event_type:'pageview'});
+  document.addEventListener('click',function(e){
+    var el=e.target&&e.target.closest('a,button,[data-track]');
+    if(!el)return;
+    var xp=Math.round(e.clientX/window.innerWidth*1000)/10;
+    var yp=Math.round((e.clientY+window.scrollY)/Math.max(document.body.scrollHeight,1)*1000)/10;
+    send({event_type:'click',element_id:el.id||'',element_text:(el.textContent||'').trim().slice(0,80),x_pct:xp,y_pct:yp});
+  });
+  var _sd=0,_milestones=[25,50,75,90,100];
+  window.addEventListener('scroll',function(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    if(h<=0)return;
+    var pct=Math.min(100,Math.round(window.scrollY/h*100));
+    _milestones.forEach(function(m){
+      if(pct>=m&&_sd<m){_sd=m;send({event_type:'scroll_depth',scroll_depth:m});}
+    });
+  },{passive:true});
+  window.addEventListener('beforeunload',function(){
+    send({event_type:'exit',time_on_page:Math.round((Date.now()-_t0)/1000)});
+  });
+})();
+</script>
+<!-- End APEX Landing Page Tracker -->
 </body>
 </html>
