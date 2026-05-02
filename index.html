@@ -1,0 +1,1794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HappyHour by Barsys — Premium Corporate Cocktail Experiences</title>
+  <meta name="description" content="Barsys brings an immersive AI cocktail experience to your office. Zero work for your team — setup, service, and cleanup included. Starting at $50/person." />
+
+  <!-- Design System -->
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/utilities.css" />
+
+  <!-- Components -->
+  <link rel="stylesheet" href="css/components/nav.css" />
+  <link rel="stylesheet" href="css/components/buttons.css" />
+  <link rel="stylesheet" href="css/components/badge.css" />
+  <link rel="stylesheet" href="css/components/section-header.css" />
+  <link rel="stylesheet" href="css/components/cards.css" />
+  <link rel="stylesheet" href="css/components/accordion.css" />
+  <link rel="stylesheet" href="css/components/carousel.css" />
+  <link rel="stylesheet" href="css/components/timeline.css" />
+  <link rel="stylesheet" href="css/components/stats.css" />
+  <link rel="stylesheet" href="css/components/footer.css" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* =========================================================================
+       LIGHT SECTION OVERRIDES
+       Light sections = warm white bg (#F8F5F0), dark text — matches LaunchPoint beige
+       ========================================================================= */
+    .section-light {
+      background-color: #F8F5F0;
+    }
+
+    .section-light h1,
+    .section-light h2,
+    .section-light h3,
+    .section-light .type-display,
+    .section-light .type-h1,
+    .section-light .type-h2,
+    .section-light .type-h3 {
+      color: #0A0A0A;
+    }
+
+    .section-light p,
+    .section-light .type-body,
+    .section-light .type-body-sm {
+      color: rgba(10, 10, 10, 0.60);
+    }
+
+    .section-light .card-feature {
+      background-color: #FFFFFF;
+      border-color: rgba(10, 10, 10, 0.08);
+    }
+
+    .section-light .card-feature:hover {
+      border-color: var(--color-gold-border);
+    }
+
+    .section-light .card-feature__title {
+      color: #0A0A0A;
+    }
+
+    .section-light .card-feature__body {
+      color: rgba(10, 10, 10, 0.60);
+    }
+
+    .section-light .accordion {
+      border-top-color: rgba(10, 10, 10, 0.10);
+    }
+
+    .section-light .accordion__item {
+      border-bottom-color: rgba(10, 10, 10, 0.10);
+    }
+
+    .section-light .accordion__question {
+      color: #0A0A0A;
+    }
+
+    .section-light .accordion__trigger:hover .accordion__question {
+      color: var(--color-gold-dark);
+    }
+
+    .section-light .accordion__item--open .accordion__question {
+      color: var(--color-gold-dark);
+    }
+
+    .section-light .accordion__answer {
+      color: rgba(10, 10, 10, 0.60);
+    }
+
+    .section-light .badge {
+      border-color: rgba(200, 169, 126, 0.50);
+      background-color: rgba(200, 169, 126, 0.10);
+    }
+
+    /* =========================================================================
+       HERO
+       ========================================================================= */
+    .hero {
+      position: relative;
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    /* Full-bleed video background */
+    .hero__video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    /* Dark overlay for text legibility */
+    .hero__overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.65) 45%, rgba(10,10,10,0.20) 100%);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero__video { animation-play-state: paused; }
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero__text-block {
+      background: rgba(10,10,10,0.55);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      border-radius: 16px;
+      padding: clamp(32px, 5vw, 56px) clamp(32px, 6vw, 72px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 720px;
+      width: 100%;
+      margin-bottom: 48px;
+    }
+
+    /* Decorative gold spark — top right, matches LaunchPoint yellow star */
+    .hero__spark {
+      position: absolute;
+      top: clamp(100px, 15vh, 160px);
+      right: clamp(40px, 8vw, 120px);
+      z-index: 1;
+      opacity: 0.80;
+      animation: sparkPulse 4s ease-in-out infinite;
+    }
+
+    @keyframes sparkPulse {
+      0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.80; }
+      50%       { transform: scale(1.10) rotate(12deg); opacity: 1; }
+    }
+
+    .hero__stars-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 32px;
+      padding: 8px 16px;
+      border: 1px solid var(--color-gold-border);
+      border-radius: var(--radius-pill);
+      background-color: rgba(200,169,126,0.08);
+      font-size: 13px;
+      color: var(--color-text-secondary);
+    }
+
+    .hero__stars-badge .stars {
+      color: var(--color-gold);
+      letter-spacing: 2px;
+    }
+
+    .hero__headline {
+      font-size: clamp(44px, 7vw, 76px);
+      font-weight: var(--font-weight-thin);
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+      color: #FFFFFF;
+      margin-bottom: 24px;
+      max-width: 780px;
+    }
+
+    .hero__subheadline {
+      font-size: clamp(15px, 1.8vw, 18px);
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+      max-width: 480px;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .hero__ctas {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 64px;
+    }
+
+    /* Client logos strip */
+    .hero__logos {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      width: 100%;
+    }
+
+    .hero__logos-label {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.25);
+      white-space: nowrap;
+    }
+
+    .hero__logos-items {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .hero__logo-name {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.20);
+    }
+
+    /* =========================================================================
+       WHY BARSYS — 2-col split: left = label+headline, right = body+CTAs
+       (matches LaunchPoint "Why LaunchPoint" section exactly)
+       ========================================================================= */
+    .why-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .why-split__eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-gold-dark);
+      margin-bottom: 28px;
+    }
+
+    .why-split__eyebrow-star {
+      color: var(--color-gold);
+    }
+
+    .why-split__headline {
+      font-size: clamp(28px, 3.5vw, 40px);
+      font-weight: 200;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: #0A0A0A;
+    }
+
+    .why-split__body {
+      font-size: 15px;
+      color: rgba(10,10,10,0.60);
+      line-height: 1.75;
+      margin-bottom: 32px;
+    }
+
+    .why-split__ctas {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* On light bg: primary btn = dark, outline btn = white bg dark border */
+    .section-light .btn-primary {
+      background-color: var(--color-gold);
+      border-color: var(--color-gold);
+      color: #0A0A0A;
+      box-shadow: 0 2px 12px var(--color-gold-glow);
+    }
+
+    .section-light .btn-primary:hover {
+      background-color: var(--color-gold-light);
+      border-color: var(--color-gold-light);
+      box-shadow: var(--shadow-gold-strong);
+    }
+
+    .section-light .btn-outline {
+      border-color: rgba(10,10,10,0.20);
+      color: #0A0A0A;
+    }
+
+    .section-light .btn-outline:hover {
+      background-color: rgba(10,10,10,0.05);
+      border-color: rgba(10,10,10,0.40);
+      color: #0A0A0A;
+      box-shadow: none;
+    }
+
+    @media (max-width: 900px) {
+      .why-split {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    /* =========================================================================
+       FEATURE CARDS ROW (3 cards)
+       Matches LaunchPoint's 3-card row — 2 image cards + 1 solid color card
+       ========================================================================= */
+    .feature-cards-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    /* Base image card — tall, text at bottom */
+    .feature-cards-row .card-feature--img {
+      position: relative;
+      border-radius: var(--radius-lg);
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 36px;
+      overflow: hidden;
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* Dark gradient overlay so text stays readable */
+    .feature-cards-row .card-feature--img::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,10,10,0.88) 0%, rgba(10,10,10,0.40) 55%, rgba(10,10,10,0.10) 100%);
+      border-radius: inherit;
+    }
+
+    .feature-cards-row .card-feature--img .card-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Card 1 — solid dark, text top + bottom */
+    .feature-cards-row .card-feature--dark {
+      border-radius: var(--radius-lg);
+      min-height: 520px;
+      background: var(--color-surface-1);
+      border: 1px solid var(--color-border);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 36px;
+    }
+
+    /* Card 3 — gold-tinted image */
+    .feature-cards-row .card-feature--gold {
+      position: relative;
+      border-radius: var(--radius-lg);
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 36px;
+      overflow: hidden;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .feature-cards-row .card-feature--gold::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(140,95,40,0.90) 0%, rgba(100,65,20,0.55) 50%, rgba(60,35,8,0.20) 100%);
+      border-radius: inherit;
+    }
+
+    .feature-cards-row .card-feature--gold .card-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Shared title/body inside all cards */
+    .fc-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(200,169,126,0.12);
+      border: 1px solid var(--color-gold-border);
+      color: var(--color-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .fc-title {
+      font-size: clamp(18px, 2vw, 22px);
+      font-weight: 400;
+      color: #FFFFFF;
+      line-height: 1.3;
+      margin-bottom: 10px;
+    }
+
+    .fc-body {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.65;
+    }
+
+    /* Gold card text is brighter */
+    .feature-cards-row .card-feature--gold .fc-title {
+      font-size: clamp(20px, 2.2vw, 26px);
+      font-weight: 300;
+      color: #FFFFFF;
+    }
+
+    @media (max-width: 900px) {
+      .feature-cards-row {
+        grid-template-columns: 1fr;
+      }
+      .feature-cards-row .card-feature--img,
+      .feature-cards-row .card-feature--dark,
+      .feature-cards-row .card-feature--gold {
+        min-height: 380px;
+      }
+    }
+
+    /* =========================================================================
+       DISCOVER SERVICES — numbered list (LaunchPoint "Discover Our Services")
+       ========================================================================= */
+    .services-section {
+      background-color: var(--color-surface-1);
+    }
+
+    .services-layout {
+      display: block;
+      max-width: 720px;
+    }
+
+    .services-list-header {
+      margin-bottom: 56px;
+    }
+
+    .services-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      margin-bottom: 24px;
+    }
+
+    .services-eyebrow-star {
+      color: var(--color-gold);
+    }
+
+    .services-headline {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 200;
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      color: var(--color-text-primary);
+    }
+
+    /* Numbered services list */
+    .services-list {
+      border-top: 1px solid var(--color-border);
+    }
+
+    .service-item {
+      display: block;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--color-border);
+      cursor: pointer;
+      transition: opacity var(--transition-fast);
+    }
+
+    .service-item:not(.service-item--active) {
+      opacity: 0.45;
+    }
+
+    .service-item:hover {
+      opacity: 1;
+    }
+
+    .service-num {
+      font-size: 36px;
+      font-weight: 100;
+      color: var(--color-gold);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      margin-top: 2px;
+    }
+
+    .service-content__title {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--color-text-primary);
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+
+    .service-content__desc {
+      font-size: 13px;
+      color: var(--color-text-secondary);
+      line-height: 1.65;
+      margin-bottom: 16px;
+    }
+
+    .service-content__link {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap var(--transition-fast);
+    }
+
+    .service-content__link:hover {
+      gap: 10px;
+      color: var(--color-gold-light);
+    }
+
+    .services-next-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 40px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--color-text-secondary);
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      transition: color var(--transition-fast);
+    }
+
+    .services-next-btn:hover {
+      color: var(--color-gold);
+    }
+
+    .services-next-btn__arrow {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--color-border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-gold);
+      font-size: 14px;
+      transition: border-color var(--transition-fast),
+                  background-color var(--transition-fast);
+    }
+
+    .services-next-btn:hover .services-next-btn__arrow {
+      border-color: var(--color-gold-border);
+      background-color: var(--color-gold-tint);
+    }
+
+    /* Right side of services: static image or visual */
+    .services-visual {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      background-color: var(--color-surface-2);
+    }
+
+    .services-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.80;
+    }
+
+    .services-visual__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,10,10,0.70) 0%, transparent 50%);
+    }
+
+    @media (max-width: 900px) {
+      .services-layout {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .services-visual {
+        aspect-ratio: 16/9;
+        order: -1;
+      }
+    }
+
+    /* =========================================================================
+       FEATURES GRID — 6 cards, 2 rows × 3 cols (LaunchPoint "Make it Special")
+       ========================================================================= */
+    .features-grid-section .section-header {
+      margin-bottom: 56px;
+    }
+
+    .features-6-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+    @media (max-width: 900px) {
+      .features-6-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 560px) {
+      .features-6-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Feature cards on light bg get white bg */
+    .features-grid-section .card-feature {
+      background-color: #FFFFFF;
+      border-color: rgba(10, 10, 10, 0.08);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    }
+
+    /* =========================================================================
+       VIDEO SECTION
+       ========================================================================= */
+    .video-section {
+      position: relative;
+      height: 560px;
+      overflow: hidden;
+    }
+
+    .video-section__bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1516997121675-4c2d1684aa3e?w=1800&q=85');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .video-section__bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(10,10,10,0.50);
+    }
+
+    .video-section__inner {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      text-align: center;
+    }
+
+    .video-play-btn {
+      width: 88px;
+      height: 88px;
+      background: rgba(200,169,126,0.14);
+      border: 1.5px solid var(--color-gold-border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-gold);
+      font-size: 22px;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      padding-left: 5px;
+      transition: background-color var(--transition-standard),
+                  transform var(--transition-standard),
+                  box-shadow var(--transition-standard);
+    }
+
+    .video-play-btn:hover {
+      background: rgba(200,169,126,0.26);
+      transform: scale(1.10);
+      box-shadow: 0 0 48px var(--color-gold-glow);
+    }
+
+    .video-section__label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+
+    /* =========================================================================
+       PROCESS STEPS (LaunchPoint "Steps from Booking to Epic Event")
+       ========================================================================= */
+    .steps-section {
+      background-color: var(--color-surface-1);
+    }
+
+    /* =========================================================================
+       TESTIMONIALS (LaunchPoint exact layout)
+       - Dark bg
+       - "TESTIMONIAL" eyebrow label
+       - Large italic pull-quote text centered
+       - Carousel with single slide visible
+       - Arrows left side, dots below
+       ========================================================================= */
+    .testimonials-section {
+      background-color: var(--color-bg);
+    }
+
+    .testimonials-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .testimonials-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      margin-bottom: 24px;
+    }
+
+    .testimonials-eyebrow-star {
+      color: var(--color-gold);
+    }
+
+    .testimonials-pull-quote {
+      font-size: clamp(24px, 3.5vw, 40px);
+      font-weight: 200;
+      font-style: italic;
+      color: var(--color-text-secondary);
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+
+    /* Carousel with arrows on sides */
+    .testimonials-carousel-wrap {
+      display: grid;
+      grid-template-columns: 56px 1fr 56px;
+      gap: 24px;
+      align-items: center;
+    }
+
+    @media (max-width: 640px) {
+      .testimonials-carousel-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .testimonials-carousel-wrap .carousel__arrow--left {
+        display: none;
+      }
+
+      .testimonials-carousel-wrap .carousel__arrow--right {
+        display: none;
+      }
+    }
+
+    .testimonials-dots {
+      display: flex;
+      justify-content: center;
+      margin-top: 32px;
+    }
+
+    /* =========================================================================
+       STATS TRIO (LaunchPoint 3 cards — dark / orange / beige)
+       Translates to: dark / gold-tinted dark / light warm white
+       ========================================================================= */
+    .stats-trio {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+
+    .stats-trio__card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 72px 48px;
+      gap: 12px;
+    }
+
+    .stats-trio__card--dark {
+      background-color: var(--color-surface-1);
+    }
+
+    .stats-trio__card--gold {
+      background: linear-gradient(145deg, #1A1305, #0F0D06);
+      border-left: 1px solid var(--color-gold-border);
+      border-right: 1px solid var(--color-gold-border);
+    }
+
+    .stats-trio__card--light {
+      background-color: #F8F5F0;
+    }
+
+    .stats-trio__number {
+      font-size: clamp(44px, 6vw, 64px);
+      font-weight: 100;
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+
+    .stats-trio__card--dark .stats-trio__number,
+    .stats-trio__card--gold .stats-trio__number {
+      color: var(--color-gold);
+    }
+
+    .stats-trio__card--light .stats-trio__number {
+      color: #0A0A0A;
+    }
+
+    .stats-trio__label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+    }
+
+    .stats-trio__card--dark .stats-trio__label,
+    .stats-trio__card--gold .stats-trio__label {
+      color: var(--color-text-secondary);
+    }
+
+    .stats-trio__card--light .stats-trio__label {
+      color: rgba(10,10,10,0.55);
+    }
+
+    @media (max-width: 640px) {
+      .stats-trio {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-trio__card--gold {
+        border-left: none;
+        border-right: none;
+        border-top: 1px solid var(--color-gold-border);
+        border-bottom: 1px solid var(--color-gold-border);
+      }
+    }
+
+    /* =========================================================================
+       SPECIAL OFFER SECTION (LaunchPoint "Special Offer")
+       Light bg, centered content, deadline text + 2 CTAs
+       ========================================================================= */
+    .offer-section {
+      background-color: #F8F5F0;
+      text-align: center;
+    }
+
+    .offer-section .section-header {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .offer-deadline {
+      font-size: clamp(20px, 2.5vw, 32px);
+      font-weight: 200;
+      line-height: 1.3;
+      letter-spacing: -0.015em;
+      color: #0A0A0A;
+      margin-bottom: 8px;
+    }
+
+    .offer-deadline strong {
+      font-weight: 600;
+      color: var(--color-gold-dark);
+    }
+
+    .offer-note {
+      font-size: 14px;
+      color: rgba(10,10,10,0.55);
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+
+    /* =========================================================================
+       SECTION EYEBROW — "★ SECTION NAME" pattern (LaunchPoint style)
+       ========================================================================= */
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      margin-bottom: 20px;
+    }
+
+    .eyebrow--light {
+      color: rgba(10,10,10,0.45);
+    }
+
+    .eyebrow__star {
+      color: var(--color-gold);
+      font-size: 14px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================================
+       NAV
+       ======================================================================== -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner">
+
+      <a href="#" class="nav__logo" aria-label="Barsys Happy Hour home">
+        <div class="nav__logo-lockup">
+          <div class="nav__logo-main">HappyHour</div>
+          <div class="nav__logo-byline">By Barsys</div>
+        </div>
+      </a>
+
+      <ul class="nav__links" role="list">
+        <li><a href="#why" class="nav__link">Why Barsys</a></li>
+        <li><a href="#services" class="nav__link">Services</a></li>
+        <li><a href="#pricing" class="nav__link">Pricing</a></li>
+        <li><a href="#faq" class="nav__link">FAQ</a></li>
+        <li><a href="mailto:fareed@barsys.com" class="nav__link">Contact Us</a></li>
+      </ul>
+
+      <div class="nav__actions">
+        <a href="#pricing" class="btn btn-primary btn--sm">Book an Event</a>
+        <button class="nav__hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span class="nav__hamburger-line"></span>
+          <span class="nav__hamburger-line"></span>
+          <span class="nav__hamburger-line"></span>
+        </button>
+      </div>
+
+    </div>
+  </nav>
+
+
+  <!-- ========================================================================
+       HERO — Full-viewport, dark overlay image, spark top-right, logos bottom
+       ======================================================================== -->
+  <section class="hero" id="home" aria-label="Hero">
+
+    <video class="hero__video" autoplay muted loop playsinline aria-hidden="true">
+      <source src="assets/hero-bg.mov" type="video/mp4">
+    </video>
+    <div class="hero__overlay" aria-hidden="true"></div>
+
+    <!-- Decorative gold spark — top right (LaunchPoint has yellow star here) -->
+    <svg class="hero__spark" width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M36 4L39.5 28.5L64 32L39.5 35.5L36 60L32.5 35.5L8 32L32.5 28.5L36 4Z" fill="#C8A97E" fill-opacity="0.9"/>
+      <path d="M62 8L63.5 17.5L73 19L63.5 20.5L62 30L60.5 20.5L51 19L60.5 17.5L62 8Z" fill="#C8A97E" fill-opacity="0.50"/>
+    </svg>
+
+    <div class="container hero__content">
+
+      <div class="hero__text-block">
+
+        <!-- Stars badge -->
+        <div class="hero__stars-badge" aria-label="4.9 star rating from 500 or more events">
+          <span class="stars" aria-hidden="true">★★★★★</span>
+          <span>4.9 Star Reviews from 500+ events</span>
+        </div>
+
+        <!-- Headline -->
+        <h1 class="hero__headline">
+          Host events<br>that <em style="font-style:normal; color:var(--color-gold);">inspire</em>
+        </h1>
+
+        <p class="hero__subheadline">
+          Barsys brings an immersive AI cocktail experience to your office. We handle setup, staffing, service, and cleanup — your team just shows up.
+        </p>
+
+        <!-- CTAs -->
+        <div class="hero__ctas">
+          <a href="#pricing" class="btn btn-primary btn--lg">Book an Event</a>
+          <a href="#pricing" class="btn btn--lg" style="background:transparent; border:1.5px solid rgba(255,255,255,0.35); color:#FFFFFF;">See Packages</a>
+        </div>
+
+      </div>
+
+      <!-- Client logo strip -->
+      <div class="hero__logos" aria-label="Trusted by leading companies">
+        <span class="hero__logos-label">Trusted by</span>
+        <div class="hero__logos-items" role="list">
+          <span class="hero__logo-name" role="listitem">Meridian</span>
+          <span class="hero__logo-name" role="listitem">Nexgen</span>
+          <span class="hero__logo-name" role="listitem">BuildFast</span>
+          <span class="hero__logo-name" role="listitem">TechCorp</span>
+          <span class="hero__logo-name" role="listitem">Pinnacle</span>
+          <span class="hero__logo-name" role="listitem">Altitude</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================================
+       WHY BARSYS — Light section, 2-col split
+       (Exact: LaunchPoint "Why LaunchPoint" — left headline, right body+CTAs)
+       ======================================================================== -->
+  <section class="section section-light" id="why" style="padding-block: 96px;" aria-labelledby="why-headline">
+    <div class="container">
+      <div class="why-split">
+
+        <!-- Left: eyebrow + headline -->
+        <div>
+          <div class="why-split__eyebrow">
+            <span class="why-split__eyebrow-star" aria-hidden="true">★</span>
+            Why Barsys
+          </div>
+          <h2 class="why-split__headline" id="why-headline">
+            Let your ideas connect<br>with real people
+          </h2>
+        </div>
+
+        <!-- Right: body + CTAs -->
+        <div>
+          <p class="why-split__body">
+            Teams don't bond over calendars — they bond over shared moments. Barsys transforms your office happy hour from a logistical headache into an effortless, premium experience. Zero coordination for HR. Maximum engagement for your team.
+          </p>
+          <div class="why-split__ctas">
+            <a href="#pricing" class="btn btn-primary">Book an Event</a>
+            <a href="#pricing" class="btn btn-outline">See Packages</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================================================
+       FEATURE CARDS — 3 cards row (2 image + 1 accent solid)
+       (Exact: LaunchPoint feature cards — dark bg, seamless row)
+       ======================================================================== -->
+  <section aria-label="Key features" style="padding-top: 48px; padding-bottom: 48px; background: #0A0A0A;">
+    <div class="container" style="padding-inline: 0; max-width: 100%;">
+      <div class="container">
+        <div class="feature-cards-row">
+
+          <!-- Card 1: Image card — AI Cocktail Machines (Barsys 360) -->
+          <div class="card-feature--img" style="background-image: url('assets/barsys-360.jpg'); background-position: center top;">
+            <div class="card-inner">
+              <div class="fc-icon" aria-hidden="true">◈</div>
+              <div class="fc-title">AI Cocktail Machines</div>
+              <p class="fc-body">Consistent, fast, and perfectly crafted drinks — powered by Barsys technology every time.</p>
+            </div>
+          </div>
+
+          <!-- Card 2: Image card — Premium Bar Service -->
+          <div class="card-feature--img" style="background-image: url('https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=800&q=80');">
+            <div class="card-inner">
+              <div class="fc-icon" aria-hidden="true">✦</div>
+              <div class="fc-title">Premium Bar Service</div>
+              <p class="fc-body">Professional bartenders and seasonal menus designed for the modern workplace.</p>
+            </div>
+          </div>
+
+          <!-- Card 3: Gold-tinted image — Transparent Pricing -->
+          <div class="card-feature--gold" style="background-image: url('https://images.unsplash.com/photo-1543269865-cbf427effbad?w=800&q=80');">
+            <div class="card-inner">
+              <div class="fc-title">Transparent pricing.<br>Zero-effort booking.</div>
+              <p class="fc-body">Flat per-person pricing with everything included. No surprises, no hidden fees.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================================================
+       DISCOVER OUR SERVICES — Dark bg, numbered list + visual
+       (Exact: LaunchPoint "Discover Our Services" section)
+       ======================================================================== -->
+  <section class="section services-section" id="services" style="padding-block: 96px;" aria-labelledby="services-headline">
+    <div class="container">
+      <div class="services-layout">
+
+        <!-- Left: numbered list -->
+        <div>
+          <div class="services-list-header">
+            <div class="services-eyebrow">
+              <span class="services-eyebrow-star" aria-hidden="true">★</span>
+              Discover Our Services
+            </div>
+            <h2 class="services-headline" id="services-headline">
+              Built for every<br>occasion
+            </h2>
+          </div>
+
+          <div class="services-list" role="list">
+
+            <div class="service-item service-item--active" role="listitem" data-service="0">
+              <div class="service-content">
+                <div class="service-content__title">Team Happy Hours</div>
+                <p class="service-content__desc">Build culture and connection with regular shared experiences your team actually looks forward to.</p>
+                <a href="#pricing" class="service-content__link">read more →</a>
+              </div>
+            </div>
+
+            <div class="service-item" role="listitem" data-service="1">
+              <div class="service-content">
+                <div class="service-content__title">Brand Activations</div>
+                <p class="service-content__desc">Custom-branded cocktail experiences that turn your brand into an unforgettable, shareable moment.</p>
+                <a href="#pricing" class="service-content__link">read more →</a>
+              </div>
+            </div>
+
+            <div class="service-item" role="listitem" data-service="2">
+              <div class="service-content">
+                <div class="service-content__title">Client & Executive Hosting</div>
+                <p class="service-content__desc">White-glove service for investor dinners, board retreats, and high-stakes client evenings.</p>
+                <a href="#pricing" class="service-content__link">read more →</a>
+              </div>
+            </div>
+
+            <div class="service-item" role="listitem" data-service="3">
+              <div class="service-content">
+                <div class="service-content__title">Recruiting Events</div>
+                <p class="service-content__desc">Make your culture tangible. Impress candidates and improve offer acceptance with a world-class first impression.</p>
+                <a href="#pricing" class="service-content__link">read more →</a>
+              </div>
+            </div>
+
+          </div>
+
+          <button class="services-next-btn" id="services-next" aria-label="Next service">
+            <div class="services-next-btn__arrow" aria-hidden="true">→</div>
+            Next
+          </button>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================================================
+       FEATURES GRID — Light bg, 6 cards 2×3 grid
+       (Exact: LaunchPoint "Make Your Venues Special" section)
+       ======================================================================== -->
+  <section class="section section-light features-grid-section" style="padding-block: 96px;" aria-labelledby="features-headline">
+    <div class="container">
+
+      <!-- Header row with CTAs on right (LaunchPoint split header) -->
+      <div class="section-header section-header--split" style="margin-bottom: 56px;">
+        <div>
+          <div class="eyebrow eyebrow--light">
+            <span class="eyebrow__star" aria-hidden="true">★</span>
+            Features
+          </div>
+          <h2 class="type-h2" id="features-headline" style="color:#0A0A0A;">Make your<br>happy hour special</h2>
+        </div>
+        <div class="section-header__actions">
+          <a href="#pricing" class="btn btn-primary btn--sm">Book a Tour</a>
+          <a href="#pricing" class="btn btn-outline btn--sm">See Packages</a>
+        </div>
+      </div>
+
+      <!-- 6-card grid -->
+      <div class="features-6-grid">
+
+        <div class="card-feature">
+          <div class="card-feature__icon" aria-hidden="true">◈</div>
+          <div class="card-feature__title">AI-Powered Cocktails</div>
+          <p class="card-feature__body">Consistent, fast, and perfectly crafted every time using Barsys AI technology.</p>
+        </div>
+
+        <div class="card-feature">
+          <div class="card-feature__icon" aria-hidden="true">✦</div>
+          <div class="card-feature__title">Zero Work for Your Team</div>
+          <p class="card-feature__body">We handle setup, staffing, service, and full cleanup. You just show up.</p>
+        </div>
+
+        <div class="card-feature">
+          <div class="card-feature__icon" aria-hidden="true">◉</div>
+          <div class="card-feature__title">Curated Seasonal Menus</div>
+          <p class="card-feature__body">Rotating cocktail menus developed by our bar team, tailored to your event.</p>
+        </div>
+
+        <div class="card-feature">
+          <div class="card-feature__icon" aria-hidden="true">★</div>
+          <div class="card-feature__title">Premium Spirits Selection</div>
+          <p class="card-feature__body">From Tito's to Grey Goose and Don Julio — matched to your tier.</p>
+        </div>
+
+        <div class="card-feature">
+          <div class="card-feature__icon" aria-hidden="true">♛</div>
+          <div class="card-feature__title">Membership Plans</div>
+          <p class="card-feature__body">Monthly recurring events with priority scheduling and dedicated account support.</p>
+        </div>
+
+        <div class="card-feature">
+          <div class="card-feature__icon" aria-hidden="true">◎</div>
+          <div class="card-feature__title">NYC-Based & Office-Ready</div>
+          <p class="card-feature__body">Built for corporate settings — fast service flow, minimal footprint, maximum impact.</p>
+        </div>
+
+      </div>
+
+      <!-- Bottom CTA row -->
+      <div class="flex-center gap-lg">
+        <a href="#pricing" class="btn btn-primary">Book a Tour</a>
+        <a href="#pricing" class="btn btn-outline">See Packages</a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================================
+       VIDEO SECTION
+       ======================================================================== -->
+  <div class="video-section" role="region" aria-label="See Barsys in action">
+    <div class="video-section__bg" role="img" aria-label="Barsys cocktail event atmosphere"></div>
+    <div class="video-section__inner">
+      <button class="video-play-btn" aria-label="Watch the Barsys experience video">▶</button>
+      <div class="video-section__label">Watch the experience</div>
+    </div>
+  </div>
+
+
+  <!-- ========================================================================
+       STEPS FROM BOOKING — Dark bg, 4-step horizontal timeline
+       (Exact: LaunchPoint "Steps from Booking to Epic Event")
+       ======================================================================== -->
+  <section class="section steps-section" style="padding-block: 96px;" aria-labelledby="steps-headline">
+    <div class="container">
+
+      <div class="section-header section-header--center" style="margin-bottom: 72px;">
+        <div class="eyebrow" style="justify-content:center;">
+          <span class="eyebrow__star" aria-hidden="true">★</span>
+          How It Works
+        </div>
+        <h2 class="type-h2" id="steps-headline">Steps from booking<br>to epic event</h2>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline__item">
+          <div class="timeline__number" aria-hidden="true">01</div>
+          <div class="timeline__content">
+            <div class="timeline__title">Inquiry & Consultation</div>
+            <p class="timeline__description">Tell us your guest count, date, and preferences. We'll match you with the right tier.</p>
+          </div>
+        </div>
+        <div class="timeline__item">
+          <div class="timeline__number" aria-hidden="true">02</div>
+          <div class="timeline__content">
+            <div class="timeline__title">Plan & Customise</div>
+            <p class="timeline__description">Choose menus, spirits, and any upgrades. We handle all logistics from here.</p>
+          </div>
+        </div>
+        <div class="timeline__item">
+          <div class="timeline__number" aria-hidden="true">03</div>
+          <div class="timeline__content">
+            <div class="timeline__title">Setup & Support</div>
+            <p class="timeline__description">We arrive early, set up everything, and stay to ensure flawless service throughout.</p>
+          </div>
+        </div>
+        <div class="timeline__item timeline__item--active">
+          <div class="timeline__number" aria-hidden="true">04</div>
+          <div class="timeline__content">
+            <div class="timeline__title">Event & Wrap-Up</div>
+            <p class="timeline__description">Last call at 2:30. Full cleanup by 3:00. Zero trace left behind.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================================
+       TESTIMONIALS — Dark bg, pull quote + carousel
+       (Exact: LaunchPoint testimonials section)
+       ======================================================================== -->
+  <section class="section testimonials-section" style="padding-block: 96px;" aria-labelledby="testimonials-headline">
+    <div class="container">
+
+      <div class="testimonials-header">
+        <div class="testimonials-eyebrow">
+          <span class="testimonials-eyebrow-star" aria-hidden="true">★</span>
+          Testimonial
+        </div>
+        <p class="testimonials-pull-quote" id="testimonials-headline">"Satisfaction is the result of caring"</p>
+      </div>
+
+      <!-- Carousel with arrows flanking the slide -->
+      <div class="testimonials-carousel-wrap">
+
+        <!-- Left arrow -->
+        <div style="display:flex; justify-content:center;">
+          <button class="carousel__arrow" data-carousel-prev style="width:48px; height:48px;" aria-label="Previous testimonial">←</button>
+        </div>
+
+        <!-- Carousel -->
+        <div class="carousel" data-carousel="autoplay" style="max-width: 680px; margin: 0 auto;" aria-label="Customer testimonials">
+          <div class="carousel__track">
+
+            <div class="carousel__slide" aria-hidden="false">
+              <div class="card-testimonial">
+                <div class="card-testimonial__stars" aria-label="5 out of 5 stars">★★★★★</div>
+                <div class="card-testimonial__quote-mark" aria-hidden="true">"</div>
+                <p class="card-testimonial__quote">Barsys turned our quarterly all-hands into the event everyone talks about for months. The cocktails were incredible and we didn't lift a finger.</p>
+                <div class="card-testimonial__author">
+                  <div class="card-testimonial__avatar" aria-hidden="true">
+                    <div style="width:100%;height:100%;background:linear-gradient(135deg,#C8A97E,#8A6040);"></div>
+                  </div>
+                  <div>
+                    <div class="card-testimonial__name">Marcus Webb</div>
+                    <div class="card-testimonial__role">VP Operations · Meridian Labs</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel__slide" aria-hidden="true">
+              <div class="card-testimonial">
+                <div class="card-testimonial__stars" aria-label="5 out of 5 stars">★★★★★</div>
+                <div class="card-testimonial__quote-mark" aria-hidden="true">"</div>
+                <p class="card-testimonial__quote">We used Barsys for a client entertainment evening. The Reserve tier was worth every penny — Grey Goose cocktails, beautiful presentation, zero stress on our end.</p>
+                <div class="card-testimonial__author">
+                  <div class="card-testimonial__avatar" aria-hidden="true">
+                    <div style="width:100%;height:100%;background:linear-gradient(135deg,#9A7B7F,#6A4B4F);"></div>
+                  </div>
+                  <div>
+                    <div class="card-testimonial__name">Priya Nair</div>
+                    <div class="card-testimonial__role">Chief of Staff · Nexgen Capital</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel__slide" aria-hidden="true">
+              <div class="card-testimonial">
+                <div class="card-testimonial__stars" aria-label="5 out of 5 stars">★★★★★</div>
+                <div class="card-testimonial__quote-mark" aria-hidden="true">"</div>
+                <p class="card-testimonial__quote">Our recruiting events have completely changed since we started using Barsys. Candidates leave impressed, and our offer acceptance rate has gone up noticeably.</p>
+                <div class="card-testimonial__author">
+                  <div class="card-testimonial__avatar" aria-hidden="true">
+                    <div style="width:100%;height:100%;background:linear-gradient(135deg,#7E8B96,#4E5B66);"></div>
+                  </div>
+                  <div>
+                    <div class="card-testimonial__name">James Okafor</div>
+                    <div class="card-testimonial__role">Head of Talent · BuildFast</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel__slide" aria-hidden="true">
+              <div class="card-testimonial">
+                <div class="card-testimonial__stars" aria-label="5 out of 5 stars">★★★★★</div>
+                <div class="card-testimonial__quote-mark" aria-hidden="true">"</div>
+                <p class="card-testimonial__quote">We've done team happy hours before but Barsys is in a different league. The AI machines alone start conversations. Everyone was genuinely amazed.</p>
+                <div class="card-testimonial__author">
+                  <div class="card-testimonial__avatar" aria-hidden="true">
+                    <div style="width:100%;height:100%;background:linear-gradient(135deg,#8A9490,#5A6460);"></div>
+                  </div>
+                  <div>
+                    <div class="card-testimonial__name">Danielle Park</div>
+                    <div class="card-testimonial__role">Head of People · TechCorp NYC</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel__slide" aria-hidden="true">
+              <div class="card-testimonial">
+                <div class="card-testimonial__stars" aria-label="5 out of 5 stars">★★★★★</div>
+                <div class="card-testimonial__quote-mark" aria-hidden="true">"</div>
+                <p class="card-testimonial__quote">Fareed and the team were professional from start to finish. The Signature tier was perfect for our 80-person office party. Already booked our next one.</p>
+                <div class="card-testimonial__author">
+                  <div class="card-testimonial__avatar" aria-hidden="true">
+                    <div style="width:100%;height:100%;background:linear-gradient(135deg,#B8A67A,#786440);"></div>
+                  </div>
+                  <div>
+                    <div class="card-testimonial__name">Sofia Rivera</div>
+                    <div class="card-testimonial__role">Office Manager · Pinnacle Group</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel__slide" aria-hidden="true">
+              <div class="card-testimonial">
+                <div class="card-testimonial__stars" aria-label="5 out of 5 stars">★★★★★</div>
+                <div class="card-testimonial__quote-mark" aria-hidden="true">"</div>
+                <p class="card-testimonial__quote">Used Barsys for our annual milestone celebration. The Reserve experience was exceptional — top-shelf spirits, premium garnishes, and a vibe that matched our brand perfectly.</p>
+                <div class="card-testimonial__author">
+                  <div class="card-testimonial__avatar" aria-hidden="true">
+                    <div style="width:100%;height:100%;background:linear-gradient(135deg,#9A9490,#6A6460);"></div>
+                  </div>
+                  <div>
+                    <div class="card-testimonial__name">David Chen</div>
+                    <div class="card-testimonial__role">CEO · Altitude Ventures</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Dots below -->
+          <div class="testimonials-dots">
+            <div class="carousel__dots" role="tablist" aria-label="Select testimonial"></div>
+          </div>
+        </div>
+
+        <!-- Right arrow -->
+        <div style="display:flex; justify-content:center;">
+          <button class="carousel__arrow" data-carousel-next style="width:48px; height:48px;" aria-label="Next testimonial">→</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================================================
+       STATS TRIO — 3 cards, each different bg color
+       (Exact: LaunchPoint stats section — dark / orange / beige → dark / gold / light)
+       ======================================================================== -->
+  <div class="stats-trio" role="region" aria-label="Barsys by the numbers">
+
+    <div class="stats-trio__card stats-trio__card--dark">
+      <div class="stats-trio__number">5<sup style="font-size:0.45em; font-weight:600; vertical-align:super;">+</sup></div>
+      <div class="stats-trio__label">Years of Experience</div>
+    </div>
+
+    <div class="stats-trio__card stats-trio__card--gold">
+      <div class="stats-trio__number">99%</div>
+      <div class="stats-trio__label">Customer Satisfaction</div>
+    </div>
+
+    <div class="stats-trio__card stats-trio__card--light">
+      <div class="stats-trio__number" style="color:#0A0A0A;">50K<sup style="font-size:0.45em; font-weight:600; vertical-align:super; color:#0A0A0A;">+</sup></div>
+      <div class="stats-trio__label" style="color:rgba(10,10,10,0.55);">Cocktails Served</div>
+    </div>
+
+  </div>
+
+
+  <!-- ========================================================================
+       FAQ — Light bg, accordion + CTAs at bottom
+       (Exact: LaunchPoint "FAQs" section)
+       ======================================================================== -->
+  <section class="section section-light" id="faq" style="padding-block: 96px;" aria-labelledby="faq-headline">
+    <div class="container">
+
+      <div class="section-header section-header--center" style="margin-bottom: 56px;">
+        <div class="eyebrow eyebrow--light" style="justify-content:center;">
+          <span class="eyebrow__star" aria-hidden="true">★</span>
+          FAQs
+        </div>
+        <h2 class="type-h2" id="faq-headline" style="color:#0A0A0A;">What clients usually<br>want to know</h2>
+        <p class="type-body" style="color:rgba(10,10,10,0.55); max-width: 480px; margin: 0 auto;">We address the most common questions from companies planning their first Barsys event.</p>
+      </div>
+
+      <div style="max-width: 720px; margin: 0 auto 56px;">
+        <div class="accordion" role="list">
+
+          <div class="accordion__item" role="listitem">
+            <button class="accordion__trigger">
+              <span class="accordion__question">Are there any restrictions on what drinks can be made?</span>
+              <span class="accordion__chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="accordion__content">
+              <div class="accordion__content-inner">
+                <p class="accordion__answer">Barsys machines create spirits-based cocktails from our curated menus. Each tier includes different menu options — Classic offers 2 menus with 5–7 cocktails each, while Reserve includes 5 fully curated menus. All non-alcoholic alternatives can be requested.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion__item" role="listitem">
+            <button class="accordion__trigger">
+              <span class="accordion__question">What is your cancellation policy?</span>
+              <span class="accordion__chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="accordion__content">
+              <div class="accordion__content-inner">
+                <p class="accordion__answer">Cancellations 7+ days in advance receive a full refund. Cancellations within 48–72 hours incur a 25% fee. Same-day cancellations are non-refundable but may be rescheduled at no charge within 30 days.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion__item" role="listitem">
+            <button class="accordion__trigger">
+              <span class="accordion__question">Do you offer discounts for recurring bookings?</span>
+              <span class="accordion__chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="accordion__content">
+              <div class="accordion__content-inner">
+                <p class="accordion__answer">Yes — membership pricing saves $5/person per event. Membership includes 2 fully managed events per month, priority scheduling, a dedicated account manager, and seasonal menu refreshes. Monthly, quarterly, and annual plans available.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CTA buttons below FAQ (matches LaunchPoint) -->
+      <div class="flex-center gap-lg">
+        <a href="#pricing" class="btn btn-primary">Book a Tour</a>
+        <a href="mailto:fareed@barsys.com" class="btn btn-outline">Send Us a Message</a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================================
+       PRICING — 3 tiers
+       ======================================================================== -->
+  <section class="section" id="pricing" style="padding-block: 96px;" aria-labelledby="pricing-headline">
+    <div class="container">
+
+      <div class="section-header section-header--center" style="margin-bottom: 64px;">
+        <div class="eyebrow" style="justify-content:center;">
+          <span class="eyebrow__star" aria-hidden="true">★</span>
+          Pricing
+        </div>
+        <h2 class="type-h2" id="pricing-headline">Flexible packages<br>for every team</h2>
+        <p class="type-body" style="max-width: 440px; margin: 0 auto;">Per-person pricing for 50–100 guests. Includes setup, staffing, spirits, service, and cleanup.</p>
+      </div>
+
+      <div class="grid-3" style="gap: 32px;">
+
+        <div class="card-pricing">
+          <div class="card-pricing__tier">Classic</div>
+          <div class="card-pricing__price-block">
+            <div class="card-pricing__price">$50</div>
+            <div class="card-pricing__period">/ person</div>
+          </div>
+          <p class="card-pricing__description">Everything you need for a great team happy hour.</p>
+          <div class="card-pricing__divider"></div>
+          <ul class="card-pricing__features" role="list">
+            <li class="card-pricing__feature"><span class="card-pricing__check" aria-hidden="true">✓</span>AI cocktail machines</li>
+            <li class="card-pricing__feature"><span class="card-pricing__check" aria-hidden="true">✓</span>2 menus · 5–7 drinks each</li>
+            <li class="card-pricing__feature"><span class="card-pricing__check" aria-hidden="true">✓</span>Tito's · Bacardi · Espolòn · Beefeater</li>
+            <li class="card-pricing__feature"><span class="card-pricing__check" aria-hidden="true">✓</span>Setup, service & cleanup</li>
+            <li class="card-pricing__feature card-pricing__feature--excluded"><span class="card-pricing__check" aria-hidden="true">×</span>Fresh garnishes</li>
+            <li class="card-pricing__feature card-pricing__feature--excluded"><span class="card-pricing__check" aria-hidden="true">×</span>Menu customization</li>
+          </ul>
+          <div class="card-pricing__cta">
+            <a href="mailto:fareed@barsys.com?subject=Classic Package Inquiry" class="btn btn-outline w-full">Choose This Option</a>
+          </div>
+        </div>
+
+        <div class="card-pricing card-pricing--featured">
+          <span class="badge badge--popular">Most Popular</span>
+          <div class="card-pricing__tier">Signature</div>
+          <div class="card-pricing__price-block">
+            <div class="card-pricing__price">$70</div>
+            <div class="card-pricing__period">/ person</div>
+          </div>
+          <p class="card-pricing__description">The full Barsys experience — elevated spirits and seasonal menus.</p>
+          <div class="card-pricing__divider"></div>
+          <ul class="card-pricing__features" role="list">
+            <li class="card-pricing__feature"><span class="card-pricing__check" aria-hidden="true">✓</span>Everything in Classic</li>
+            <li class="card-pricing__feature"><span class="card-pricing__check" aria-hidden="true">✓</span>3 seasonal menus</li>
+            <li class="card-pricing__feature"><span class="card-pricing__check" aria-hidden="true">✓</span>Ketel One · Herradura · J.W. Black · Tanqueray</li>
+            <li class="card-pricing__feature"><span class="card-pricing__check" aria-hidden="true">✓</span>Regular garnishes</li>
+            <li class="card-pricing__feature card-pricing__feature--excluded"><span class="card-pricing__check" aria-hidden="true">×</span>Top-shelf spirits</li>
+            <li class="card-pricing__feature card-pricing__feature--excluded"><span class="card-pricing__check" aria-hidden="true">×</span>Full catering</li>
+          </ul>
+          <div class="card-pricing__cta">
+            <a href="mailto:fareed@barsys.com?subject=Signature Package Inquiry" class="btn btn-primary w-full">Choose This Option</a>
+          </div>
+        </div>
+
+        <div class="card-pricing">
+          <div class="card-pricing__tier">Reserve</div>
+          <div class="card-pricing__price-block">
+            <div class="card-pricing__price">$200</div>
+            <div class="card-pricing__period">/ person</div>
+          </div>
+          <p class="card-pricing__description">White-glove VIP experience with top-shelf spirits and catering.</p>
+          <div class="card-pricing__divider"></div>
+          <ul class="card-pricing__features" role="list">
+            <li class="card-pricing__feature"><span class="card-pricing__check" aria-hidden="true">✓</span>Premium bartenders</li>
+            <li class="card-pricing__feature"><span class="card-pricing__check" aria-hidden="true">✓</span>5 curated menus · VIP experience</li>
+            <li class="card-pricing__feature"><span class="card-pricing__check" aria-hidden="true">✓</span>Grey Goose · Don Julio · Hendrick's · Macallan</li>
+            <li class="card-pricing__feature"><span class="card-pricing__check" aria-hidden="true">✓</span>Premium garnishes</li>
+            <li class="card-pricing__feature"><span class="card-pricing__check" aria-hidden="true">✓</span>Full catering services</li>
+            <li class="card-pricing__feature"><span class="card-pricing__check" aria-hidden="true">✓</span>Dedicated account manager</li>
+          </ul>
+          <div class="card-pricing__cta">
+            <a href="mailto:fareed@barsys.com?subject=Reserve Package Inquiry" class="btn btn-outline w-full">Choose This Option</a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================================
+       SPECIAL OFFER — Light bg, centered, deadline + 2 CTAs
+       (Exact: LaunchPoint "Special Offer" section)
+       ======================================================================== -->
+  <section class="section offer-section" style="padding-block: 96px;" aria-labelledby="offer-headline">
+    <div class="container">
+
+      <div class="eyebrow eyebrow--light" style="justify-content:center; margin-bottom: 28px;">
+        <span class="eyebrow__star" aria-hidden="true">★</span>
+        Special Offer
+      </div>
+
+      <p class="offer-deadline" id="offer-headline">
+        Book your first event before<br>
+        <strong>April 30, 2025</strong> and receive<br>
+        <strong>10% off</strong> the event fee
+      </p>
+
+      <p class="offer-note">Available for Classic and Signature tiers on first bookings only.</p>
+
+      <div class="flex-center gap-lg">
+        <a href="#pricing" class="btn btn-primary">Book a Tour</a>
+        <a href="mailto:fareed@barsys.com" class="btn btn-outline">Send Us a Message</a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================================
+       FOOTER
+       ======================================================================== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__main">
+        <div class="footer__grid">
+
+          <div class="footer__brand">
+            <a href="#" class="footer__logo" aria-label="Barsys Happy Hour">
+              <div>
+                <div class="footer__logo-text">Barsys</div>
+                <div class="footer__logo-sub">Happy Hour</div>
+              </div>
+            </a>
+            <p class="footer__tagline">Premium AI-powered cocktail experiences for the modern workplace.</p>
+            <div class="footer__social" role="list" aria-label="Social media">
+              <a href="#" class="footer__social-link" aria-label="Instagram" role="listitem">ig</a>
+              <a href="#" class="footer__social-link" aria-label="LinkedIn" role="listitem">in</a>
+              <a href="#" class="footer__social-link" aria-label="Twitter/X" role="listitem">𝕏</a>
+            </div>
+          </div>
+
+          <div class="footer__column">
+            <div class="footer__column-title">Services</div>
+            <nav class="footer__links" aria-label="Services">
+              <a href="#services" class="footer__link">Team Happy Hours</a>
+              <a href="#services" class="footer__link">Brand Activations</a>
+              <a href="#services" class="footer__link">Client Hosting</a>
+              <a href="#services" class="footer__link">Recruiting Events</a>
+              <a href="#services" class="footer__link">Executive Hospitality</a>
+            </nav>
+          </div>
+
+          <div class="footer__column">
+            <div class="footer__column-title">Packages</div>
+            <nav class="footer__links" aria-label="Packages">
+              <a href="#pricing" class="footer__link">Classic — $50/pp</a>
+              <a href="#pricing" class="footer__link">Signature — $70/pp</a>
+              <a href="#pricing" class="footer__link">Reserve — $200/pp</a>
+              <a href="mailto:fareed@barsys.com?subject=Membership" class="footer__link">Membership Plans</a>
+            </nav>
+          </div>
+
+          <div class="footer__column">
+            <div class="footer__column-title">Contact</div>
+            <div class="footer__links">
+              <div class="footer__contact-item">
+                <span class="footer__contact-icon" aria-hidden="true">✉</span>
+                <a href="mailto:fareed@barsys.com" class="footer__link">fareed@barsys.com</a>
+              </div>
+              <div class="footer__contact-item">
+                <span class="footer__contact-icon" aria-hidden="true">◎</span>
+                <span style="font-size:var(--font-size-body-sm); color:var(--color-text-tertiary);">New York City, NY</span>
+              </div>
+              <a href="mailto:fareed@barsys.com?subject=Event+Booking" class="btn btn-primary btn--sm" style="margin-top: 16px;">Book an Event</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <div class="footer__bottom-inner">
+          <p class="footer__copyright">© 2025 Barsys Technologies, Inc. All rights reserved.</p>
+          <nav class="footer__legal-links" aria-label="Legal">
+            <a href="#" class="footer__legal-link">Privacy Policy</a>
+            <a href="#" class="footer__legal-link">Terms of Service</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Scripts -->
+  <script src="js/nav.js"></script>
+  <script src="js/accordion.js"></script>
+  <script src="js/carousel.js"></script>
+
+  <script>
+    // Services "Next" button — cycles active service item
+    (function () {
+      const items = document.querySelectorAll('.service-item');
+      const nextBtn = document.getElementById('services-next');
+      if (!nextBtn || !items.length) return;
+
+      let current = 0;
+
+      function activate(index) {
+        items.forEach((item, i) => {
+          item.classList.toggle('service-item--active', i === index);
+        });
+        current = index;
+      }
+
+      nextBtn.addEventListener('click', () => {
+        activate((current + 1) % items.length);
+      });
+
+      items.forEach((item, i) => {
+        item.addEventListener('click', () => activate(i));
+      });
+    })();
+  </script>
+
+</body>
+</html>

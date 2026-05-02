@@ -1,0 +1,226 @@
+/* ==========================================================================
+   Component — Navigation Bar
+   ========================================================================== */
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-sticky);
+  height: var(--nav-height);
+  background-color: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--color-border);
+  transition: background-color var(--transition-standard),
+              border-color var(--transition-standard),
+              box-shadow var(--transition-standard);
+}
+
+.nav--scrolled {
+  background-color: rgba(10, 10, 10, 0.95);
+  border-bottom-color: var(--color-gold-border);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.60);
+}
+
+/* --------------------------------------------------------------------------
+   Nav Inner
+   -------------------------------------------------------------------------- */
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+/* --------------------------------------------------------------------------
+   Nav Logo
+   -------------------------------------------------------------------------- */
+.nav__logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.nav__logo-lockup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1;
+}
+
+.nav__logo-main {
+  font-size: 22px;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  font-family: 'Arial Black', 'Arial Bold', Arial, sans-serif;
+}
+
+.nav__logo-byline {
+  font-size: 10px;
+  font-weight: 400;
+  color: #ffffff;
+  letter-spacing: 0.01em;
+  align-self: flex-end;
+  margin-top: 1px;
+}
+
+/* --------------------------------------------------------------------------
+   Nav Links
+   -------------------------------------------------------------------------- */
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3xl);
+  list-style: none;
+}
+
+.nav__link {
+  position: relative;
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  transition: color var(--transition-fast);
+  padding-block: var(--space-xs);
+}
+
+.nav__link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-gold);
+  transition: width var(--transition-standard);
+}
+
+.nav__link:hover {
+  color: var(--color-gold);
+}
+
+.nav__link:hover::after,
+.nav__link--active::after {
+  width: 100%;
+}
+
+.nav__link--active {
+  color: var(--color-gold);
+}
+
+/* --------------------------------------------------------------------------
+   Nav Actions
+   -------------------------------------------------------------------------- */
+.nav__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+/* --------------------------------------------------------------------------
+   Hamburger (Mobile)
+   -------------------------------------------------------------------------- */
+.nav__hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-fast);
+}
+
+.nav__hamburger:hover {
+  background-color: var(--color-glass);
+}
+
+.nav__hamburger-line {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background-color: var(--color-text-primary);
+  border-radius: var(--radius-pill);
+  transition: transform var(--transition-standard),
+              opacity var(--transition-standard),
+              background-color var(--transition-fast);
+  transform-origin: center;
+}
+
+/* Hamburger → X animation */
+.nav--open .nav__hamburger-line:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+
+.nav--open .nav__hamburger-line:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.nav--open .nav__hamburger-line:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+/* --------------------------------------------------------------------------
+   Mobile Menu
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .nav__links {
+    position: fixed;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3xl);
+    background-color: rgba(10, 10, 10, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transform: translateX(100%);
+    transition: transform var(--transition-slow);
+    pointer-events: none;
+  }
+
+  .nav--open .nav__links {
+    transform: translateX(0);
+    pointer-events: auto;
+  }
+
+  .nav__link {
+    font-size: 20px;
+    letter-spacing: var(--letter-spacing-wider);
+  }
+
+  .nav__hamburger {
+    display: flex;
+  }
+
+  .nav__actions .btn-primary {
+    display: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Nav body offset — compensate for fixed nav
+   -------------------------------------------------------------------------- */
+.nav-offset {
+  padding-top: var(--nav-height);
+}

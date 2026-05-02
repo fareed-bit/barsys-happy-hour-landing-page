@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Barsys Happy Hour — Component Library</title>
+
+  <!-- Design System CSS -->
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/utilities.css" />
+
+  <!-- Components -->
+  <link rel="stylesheet" href="css/components/nav.css" />
+  <link rel="stylesheet" href="css/components/buttons.css" />
+  <link rel="stylesheet" href="css/components/badge.css" />
+  <link rel="stylesheet" href="css/components/section-header.css" />
+  <link rel="stylesheet" href="css/components/cards.css" />
+  <link rel="stylesheet" href="css/components/accordion.css" />
+  <link rel="stylesheet" href="css/components/carousel.css" />
+  <link rel="stylesheet" href="css/components/timeline.css" />
+  <link rel="stylesheet" href="css/components/stats.css" />
+  <link rel="stylesheet" href="css/components/footer.css" />
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* Showcase-specific layout styles (not part of the design system) */
+    .showcase-section {
+      padding: 64px 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .showcase-section:last-of-type {
+      border-bottom: none;
+    }
+
+    .showcase-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-text-ghost);
+      margin-bottom: 32px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .showcase-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .showcase-row--baseline {
+      align-items: baseline;
+    }
+
+    .color-chip {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .color-chip__swatch {
+      width: 80px;
+      height: 56px;
+      border-radius: 8px;
+      border: 1px solid var(--color-border);
+    }
+
+    .color-chip__name {
+      font-size: 10px;
+      color: var(--color-text-tertiary);
+      letter-spacing: 0.04em;
+    }
+
+    .color-chip__value {
+      font-size: 9px;
+      color: var(--color-text-ghost);
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======================================================================
+       NAVIGATION
+       ====================================================================== -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner">
+
+      <!-- Logo -->
+      <a href="#" class="nav__logo" aria-label="Barsys Happy Hour home">
+        <svg class="nav__logo-mark" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="16" cy="16" r="15" stroke="#C8A97E" stroke-width="1.5"/>
+          <path d="M10 22 L16 10 L22 22" stroke="#C8A97E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12.5 18H19.5" stroke="#C8A97E" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <div>
+          <div class="nav__logo-text">Barsys</div>
+          <div class="nav__logo-sub">Happy Hour</div>
+        </div>
+      </a>
+
+      <!-- Links -->
+      <ul class="nav__links" role="list">
+        <li><a href="#why" class="nav__link">Why Barsys</a></li>
+        <li><a href="#services" class="nav__link">Services</a></li>
+        <li><a href="#pricing" class="nav__link">Pricing</a></li>
+        <li><a href="#faq" class="nav__link">FAQ</a></li>
+      </ul>
+
+      <!-- Actions -->
+      <div class="nav__actions">
+        <a href="#pricing" class="btn btn-primary btn--sm">Book an Event</a>
+        <button class="nav__hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+          <span class="nav__hamburger-line"></span>
+          <span class="nav__hamburger-line"></span>
+          <span class="nav__hamburger-line"></span>
+        </button>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- ======================================================================
+       COMPONENT SHOWCASE
+       ====================================================================== -->
+  <main style="padding-top: var(--nav-height);">
+    <div class="container">
+
+      <!-- Page Title -->
+      <div style="padding: 64px 0 32px;">
+        <p class="type-label" style="color: var(--color-gold); margin-bottom: 12px;">Design System</p>
+        <h1 class="type-display">Component Library</h1>
+        <p class="type-body mt-xl" style="max-width: 560px;">
+          All reusable UI components for the Barsys Happy Hour landing page.
+          Black · Gold · White — premium luxury aesthetic.
+        </p>
+      </div>
+
+      <!-- ====================================================================
+           SECTION 1 — Colors
+           ==================================================================== -->
+      <div class="showcase-section">
+        <p class="showcase-label">01 — Color Tokens</p>
+
+        <div class="showcase-row" style="margin-bottom: 40px;">
+          <div class="color-chip">
+            <div class="color-chip__swatch" style="background: #0A0A0A;"></div>
+            <div class="color-chip__name">Background</div>
+            <div class="color-chip__value">#0A0A0A</div>
+          </div>
+          <div class="color-chip">
+            <div class="color-chip__swatch" style="background: #141414;"></div>
+            <div class="color-chip__name">Surface 1</div>
+            <div class="color-chip__value">#141414</div>
+          </div>
+          <div class="color-chip">
+            <div class="color-chip__swatch" style="background: #1C1C1C;"></div>
+            <div class="color-chip__name">Surface 2</div>
+            <div class="color-chip__value">#1C1C1C</div>
+          </div>
+          <div class="color-chip">
+            <div class="color-chip__swatch" style="background: #252525;"></div>
+            <div class="color-chip__name">Surface 3</div>
+            <div class="color-chip__value">#252525</div>
+          </div>
+          <div class="color-chip">
+            <div class="color-chip__swatch" style="background: #C8A97E;"></div>
+            <div class="color-chip__name">Gold</div>
+            <div class="color-chip__value">#C8A97E</div>
+          </div>
+          <div class="color-chip">
+            <div class="color-chip__swatch" style="background: #D4BA96;"></div>
+            <div class="color-chip__name">Gold Light</div>
+            <div class="color-chip__value">#D4BA96</div>
+          </div>
+          <div class="color-chip">
+            <div class="color-chip__swatch" style="background: rgba(200,169,126,0.08); border: 1px solid rgba(200,169,126,0.3);"></div>
+            <div class="color-chip__name">Gold Tint</div>
+            <div class="color-chip__value">8% opacity</div>
+          </div>
+          <div class="color-chip">
+            <div class="color-chip__swatch" style="background: #FFFFFF;"></div>
+            <div class="color-chip__name">White</div>
+            <div class="color-chip__value">#FFFFFF</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           SECTION 2 — Typography
+           ==================================================================== -->
+      <div class="showcase-section">
+        <p class="showcase-label">02 — Typography Scale</p>
+
+        <div style="display: flex; flex-direction: column; gap: 24px;">
+          <div>
+            <div class="color-chip__name" style="margin-bottom: 8px;">Display / 56px / Thin 100</div>
+            <div class="type-display">Crafting Moments,<br><span style="color: var(--color-gold);">Perfectly Poured</span></div>
+          </div>
+          <div>
+            <div class="color-chip__name" style="margin-bottom: 8px;">H1 / 42px / Ultralight 200</div>
+            <h1 class="type-h1">Premium Happy Hours for Your Team</h1>
+          </div>
+          <div>
+            <div class="color-chip__name" style="margin-bottom: 8px;">H2 / 28px / Semibold 600</div>
+            <h2 class="type-h2">Everything Handled, Nothing to Worry About</h2>
+          </div>
+          <div>
+            <div class="color-chip__name" style="margin-bottom: 8px;">H3 / 20px / Semibold 600</div>
+            <h3 class="type-h3">AI Cocktail Machines</h3>
+          </div>
+          <div>
+            <div class="color-chip__name" style="margin-bottom: 8px;">Body / 15px / Regular</div>
+            <p class="type-body">Barsys brings an immersive cocktail experience directly to your office. Zero work for your team — we handle setup, staffing, service, and cleanup.</p>
+          </div>
+          <div>
+            <div class="color-chip__name" style="margin-bottom: 8px;">Body Small / 13px / Regular</div>
+            <p class="type-body-sm">Includes 2 signature menus, 5–7 drinks each, premium garnishes and top-shelf spirits.</p>
+          </div>
+          <div>
+            <div class="color-chip__name" style="margin-bottom: 8px;">Label / 10px / Semibold / Uppercase</div>
+            <span class="type-label">Why Barsys · Pricing · Services</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           SECTION 3 — Badges
+           ==================================================================== -->
+      <div class="showcase-section">
+        <p class="showcase-label">03 — Badges</p>
+        <div class="showcase-row">
+          <span class="badge">Why Barsys</span>
+          <span class="badge">Pricing</span>
+          <span class="badge">Features</span>
+          <span class="badge badge--fill">Most Popular</span>
+          <span class="badge badge--subtle">Coming Soon</span>
+          <span class="badge badge--lg">New Service</span>
+          <span class="badge badge--stars">
+            <span class="badge__star">★★★★★</span>
+            4.9 Star Reviews · 500+ Events
+          </span>
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           SECTION 4 — Buttons
+           ==================================================================== -->
+      <div class="showcase-section">
+        <p class="showcase-label">04 — Buttons</p>
+
+        <div class="showcase-row showcase-row--baseline" style="margin-bottom: 32px;">
+          <a href="#" class="btn btn-primary btn--sm">Book an Event</a>
+          <a href="#" class="btn btn-primary">Book an Event</a>
+          <a href="#" class="btn btn-primary btn--lg">Book an Event</a>
+        </div>
+
+        <div class="showcase-row showcase-row--baseline" style="margin-bottom: 32px;">
+          <a href="#" class="btn btn-outline btn--sm">See Packages</a>
+          <a href="#" class="btn btn-outline">See Packages</a>
+          <a href="#" class="btn btn-outline btn--lg">See Packages</a>
+        </div>
+
+        <div class="showcase-row showcase-row--baseline" style="margin-bottom: 32px;">
+          <a href="#" class="btn btn-ghost btn--sm">Learn More →</a>
+          <a href="#" class="btn btn-ghost">Learn More →</a>
+        </div>
+
+        <div class="showcase-row" style="padding: 32px; background: var(--color-gold); border-radius: var(--radius-lg);">
+          <a href="#" class="btn btn-white">Contact Sales</a>
+        </div>
+
+        <div class="showcase-row">
+          <button class="btn-icon btn-icon--circle" aria-label="Previous">←</button>
+          <button class="btn-icon btn-icon--circle" aria-label="Next">→</button>
+          <button class="btn btn-primary" disabled>Disabled State</button>
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           SECTION 5 — Section Header
+           ==================================================================== -->
+      <div class="showcase-section">
+        <p class="showcase-label">05 — Section Headers</p>
+
+        <div style="margin-bottom: 48px;">
+          <div class="color-chip__name" style="margin-bottom: 24px;">Left aligned (default)</div>
+          <div class="section-header">
+            <span class="badge section-header__badge">Why Barsys</span>
+            <h2 class="type-h2 section-header__title">
+              Let your team bond over<br><span class="highlight">shared moments</span>
+            </h2>
+            <p class="type-body section-header__subtitle">
+              Happy hours shouldn't feel like another project. Barsys handles everything — you just show up and enjoy.
+            </p>
+            <div class="section-header__actions">
+              <a href="#" class="btn btn-primary">Book an Event</a>
+              <a href="#" class="btn btn-outline">See Packages</a>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="color-chip__name" style="margin-bottom: 24px;">Center aligned</div>
+          <div class="section-header section-header--center">
+            <span class="badge section-header__badge">Pricing</span>
+            <h2 class="type-h2 section-header__title">Flexible Packages<br>for Every Team</h2>
+            <p class="type-body section-header__subtitle">
+              From intimate gatherings to full-scale celebrations, we have a tier that fits.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           SECTION 6 — Feature Cards
+           ==================================================================== -->
+      <div class="showcase-section">
+        <p class="showcase-label">06 — Feature Cards</p>
+        <div class="grid-3">
+
+          <!-- Standard feature card -->
+          <div class="card-feature">
+            <div class="card-feature__icon" aria-hidden="true">◈</div>
+            <div class="card-feature__title">AI Cocktail Machines</div>
+            <p class="card-feature__body">Consistent, fast, and perfectly crafted drinks every time — powered by Barsys AI technology.</p>
+            <a href="#" class="card-feature__link">Learn more <span class="card-feature__link-arrow">→</span></a>
+          </div>
+
+          <!-- Gold accent variant -->
+          <div class="card-feature card-feature--gold">
+            <div class="card-feature__icon" aria-hidden="true">✦</div>
+            <div class="card-feature__title">Zero Work for Your Team</div>
+            <p class="card-feature__body">We handle setup, staffing, service, and full cleanup. Your team just shows up and enjoys.</p>
+            <a href="#" class="card-feature__link">Learn more <span class="card-feature__link-arrow">→</span></a>
+          </div>
+
+          <!-- Image background variant -->
+          <div class="card-feature card-feature--image" style="background-image: url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600&q=80');" role="img" aria-label="Barsys cocktail service in action">
+            <div class="card-feature__icon" aria-hidden="true">◉</div>
+            <div class="card-feature__title">Premium Bar Service</div>
+            <p class="card-feature__body">Professional bartenders with curated menus tailored to your event.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           SECTION 7 — Pricing Cards
+           ==================================================================== -->
+      <div class="showcase-section">
+        <p class="showcase-label">07 — Pricing Cards</p>
+        <div class="grid-3">
+
+          <!-- Classic -->
+          <div class="card-pricing">
+            <div class="card-pricing__tier">Classic</div>
+            <div class="card-pricing__price-block">
+              <div class="card-pricing__price">$50</div>
+              <div class="card-pricing__period">/ person</div>
+            </div>
+            <p class="card-pricing__description">Perfect for teams new to Barsys, with everything you need for a great happy hour.</p>
+            <div class="card-pricing__divider"></div>
+            <ul class="card-pricing__features" role="list">
+              <li class="card-pricing__feature">
+                <span class="card-pricing__check" aria-hidden="true">✓</span>
+                AI cocktail machines
+              </li>
+              <li class="card-pricing__feature">
+                <span class="card-pricing__check" aria-hidden="true">✓</span>
+                2 menus · 5–7 drinks each
+              </li>
+              <li class="card-pricing__feature">
+                <span class="card-pricing__check" aria-hidden="true">✓</span>
+                Standard spirits (Tito's, Bacardi)
+              </li>
+              <li class="card-pricing__feature card-pricing__feature--excluded">
+                <span class="card-pricing__check" aria-hidden="true">×</span>
+                Fresh garnishes
+              </li>
+              <li class="card-pricing__feature card-pricing__feature--excluded">
+                <span class="card-pricing__check" aria-hidden="true">×</span>
+                Menu customization
+              </li>
+            </ul>
+            <div class="card-pricing__cta">
+              <a href="#" class="btn btn-outline">Choose Classic</a>
+            </div>
+          </div>
+
+          <!-- Signature — FEATURED -->
+          <div class="card-pricing card-pricing--featured">
+            <span class="badge badge--popular">Most Popular</span>
+            <div class="card-pricing__tier">Signature</div>
+            <div class="card-pricing__price-block">
+              <div class="card-pricing__price">$70</div>
+              <div class="card-pricing__period">/ person</div>
+            </div>
+            <p class="card-pricing__description">Our most popular tier — elevated spirits, seasonal menus, and the full Barsys experience.</p>
+            <div class="card-pricing__divider"></div>
+            <ul class="card-pricing__features" role="list">
+              <li class="card-pricing__feature">
+                <span class="card-pricing__check" aria-hidden="true">✓</span>
+                Everything in Classic
+              </li>
+              <li class="card-pricing__feature">
+                <span class="card-pricing__check" aria-hidden="true">✓</span>
+                3 seasonal menus
+              </li>
+              <li class="card-pricing__feature">
+                <span class="card-pricing__check" aria-hidden="true">✓</span>
+                Better spirits (Ketel One, Herradura)
+              </li>
+              <li class="card-pricing__feature">
+                <span class="card-pricing__check" aria-hidden="true">✓</span>
+                Regular garnishes
+              </li>
+              <li class="card-pricing__feature card-pricing__feature--excluded">
+                <span class="card-pricing__check" aria-hidden="true">×</span>
+                Top-shelf spirits
+              </li>
+            </ul>
+            <div class="card-pricing__cta">
+              <a href="#" class="btn btn-primary">Choose Signature</a>
+            </div>
+          </div>
+
+          <!-- Reserve -->
+          <div class="card-pricing">
+            <div class="card-pricing__tier">Reserve</div>
+            <div class="card-pricing__price-block">
+              <div class="card-pricing__price">$200</div>
+              <div class="card-pricing__period">/ person</div>
+            </div>
+            <p class="card-pricing__description">The ultimate VIP happy hour experience — top-shelf spirits, premium bartenders, full catering.</p>
+            <div class="card-pricing__divider"></div>
+            <ul class="card-pricing__features" role="list">
+              <li class="card-pricing__feature">
+                <span class="card-pricing__check" aria-hidden="true">✓</span>
+                Premium bartenders
+              </li>
+              <li class="card-pricing__feature">
+                <span class="card-pricing__check" aria-hidden="true">✓</span>
+                5 curated menus
+              </li>
+              <li class="card-pricing__feature">
+                <span class="card-pricing__check" aria-hidden="true">✓</span>
+                Top-shelf (Grey Goose, Don Julio)
+              </li>
+              <li class="card-pricing__feature">
+                <span class="card-pricing__check" aria-hidden="true">✓</span>
+                Premium garnishes
+              </li>
+              <li class="card-pricing__feature">
+                <span class="card-pricing__check" aria-hidden="true">✓</span>
+                Full catering services
+              </li>
+            </ul>
+            <div class="card-pricing__cta">
+              <a href="#" class="btn btn-outline">Choose Reserve</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           SECTION 8 — Testimonial Card
+           ==================================================================== -->
+      <div class="showcase-section">
+        <p class="showcase-label">08 — Testimonial Card (Carousel Slide)</p>
+        <div style="max-width: 560px;">
+          <div class="card-testimonial">
+            <div class="card-testimonial__stars" aria-label="5 stars">★★★★★</div>
+            <div class="card-testimonial__quote-mark" aria-hidden="true">"</div>
+            <p class="card-testimonial__quote">
+              Our team happy hour went from a logistics nightmare to a highlight of the month. Barsys handled absolutely everything — setup, drinks, cleanup. Everyone was blown away.
+            </p>
+            <div class="card-testimonial__author">
+              <div class="card-testimonial__avatar" aria-hidden="true">
+                <div style="width:100%;height:100%;background:linear-gradient(135deg,#C8A97E,#8A6040);"></div>
+              </div>
+              <div>
+                <div class="card-testimonial__name">Sarah Chen</div>
+                <div class="card-testimonial__role">Head of People · TechCorp NYC</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           SECTION 9 — Stat Cards
+           ==================================================================== -->
+      <div class="showcase-section">
+        <p class="showcase-label">09 — Stats</p>
+
+        <div class="stats-grid" style="margin-bottom: 48px;">
+          <div class="card-stat">
+            <div class="card-stat__number">500<sup>+</sup></div>
+            <div class="card-stat__label">Events Hosted</div>
+          </div>
+          <div class="card-stat card-stat--gold">
+            <div class="card-stat__number">99%</div>
+            <div class="card-stat__label">Client Satisfaction</div>
+          </div>
+          <div class="card-stat">
+            <div class="card-stat__number">50K<sup>+</sup></div>
+            <div class="card-stat__label">Cocktails Served</div>
+          </div>
+        </div>
+
+        <div class="showcase-label" style="margin-bottom: 16px; margin-top: 24px;">Inline stats row</div>
+        <div class="stats-row" style="border: 1px solid var(--color-border); border-radius: var(--radius-lg);">
+          <div class="stats-row__item">
+            <div class="stats-row__number">4.9 ★</div>
+            <div class="stats-row__label">Rating</div>
+          </div>
+          <div class="stats-row__item">
+            <div class="stats-row__number">500+</div>
+            <div class="stats-row__label">Events</div>
+          </div>
+          <div class="stats-row__item">
+            <div class="stats-row__number">NYC</div>
+            <div class="stats-row__label">Based</div>
+          </div>
+          <div class="stats-row__item">
+            <div class="stats-row__number">3hr</div>
+            <div class="stats-row__label">Event Window</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           SECTION 10 — Timeline / Process Steps
+           ==================================================================== -->
+      <div class="showcase-section">
+        <p class="showcase-label">10 — Timeline / Process Steps</p>
+
+        <div class="color-chip__name" style="margin-bottom: 24px;">Horizontal (desktop)</div>
+        <div class="timeline">
+          <div class="timeline__item">
+            <div class="timeline__number" aria-hidden="true">01</div>
+            <div class="timeline__content">
+              <div class="timeline__title">Inquiry & Consultation</div>
+              <p class="timeline__description">Tell us about your team size, date, and preferences.</p>
+            </div>
+          </div>
+          <div class="timeline__item">
+            <div class="timeline__number" aria-hidden="true">02</div>
+            <div class="timeline__content">
+              <div class="timeline__title">Plan & Customize</div>
+              <p class="timeline__description">Choose your tier, menus, and any upgrades.</p>
+            </div>
+          </div>
+          <div class="timeline__item">
+            <div class="timeline__number" aria-hidden="true">03</div>
+            <div class="timeline__content">
+              <div class="timeline__title">Setup & Support</div>
+              <p class="timeline__description">We arrive early and handle everything end-to-end.</p>
+            </div>
+          </div>
+          <div class="timeline__item timeline__item--active">
+            <div class="timeline__number" aria-hidden="true">04</div>
+            <div class="timeline__content">
+              <div class="timeline__title">Event & Wrap-Up</div>
+              <p class="timeline__description">You enjoy the party. We clean up and leave no trace.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           SECTION 11 — Accordion (FAQ)
+           ==================================================================== -->
+      <div class="showcase-section" id="faq">
+        <p class="showcase-label">11 — Accordion (FAQ)</p>
+
+        <div style="max-width: 720px;">
+          <div class="accordion" role="list">
+
+            <div class="accordion__item" role="listitem">
+              <button class="accordion__trigger" aria-expanded="false">
+                <span class="accordion__question">How far in advance do I need to book?</span>
+                <span class="accordion__chevron" aria-hidden="true">▾</span>
+              </button>
+              <div class="accordion__content">
+                <div class="accordion__content-inner">
+                  <p class="accordion__answer">We recommend booking at least 2 weeks in advance to ensure availability and allow time for menu customization. For larger events (100+ guests) or premium tiers, 4 weeks is preferred.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion__item" role="listitem">
+              <button class="accordion__trigger" aria-expanded="false">
+                <span class="accordion__question">What is included in the event price?</span>
+                <span class="accordion__chevron" aria-hidden="true">▾</span>
+              </button>
+              <div class="accordion__content">
+                <div class="accordion__content-inner">
+                  <p class="accordion__answer">All pricing is per-person and includes AI cocktail machine setup, staffing, spirits and mixers, service for up to 3 hours, and full cleanup. Gratuity is at your discretion.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion__item" role="listitem">
+              <button class="accordion__trigger" aria-expanded="false">
+                <span class="accordion__question">Do you offer recurring membership pricing?</span>
+                <span class="accordion__chevron" aria-hidden="true">▾</span>
+              </button>
+              <div class="accordion__content">
+                <div class="accordion__content-inner">
+                  <p class="accordion__answer">Yes! Membership pricing saves $5/person per event and includes 2 fully managed events per month, priority scheduling, dedicated account support, and menu refreshes. Monthly, quarterly, and annual plans available.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion__item" role="listitem">
+              <button class="accordion__trigger" aria-expanded="false">
+                <span class="accordion__question">What is your cancellation policy?</span>
+                <span class="accordion__chevron" aria-hidden="true">▾</span>
+              </button>
+              <div class="accordion__content">
+                <div class="accordion__content-inner">
+                  <p class="accordion__answer">Cancellations made 7+ days in advance receive a full refund. Cancellations within 48–72 hours incur a 25% fee. Same-day cancellations are non-refundable but may be rescheduled at no charge.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           SECTION 12 — Carousel
+           ==================================================================== -->
+      <div class="showcase-section">
+        <p class="showcase-label">12 — Carousel (Testimonials)</p>
+
+        <div class="carousel" data-carousel="autoplay" style="max-width: 640px;">
+          <div class="carousel__track">
+
+            <div class="carousel__slide" aria-hidden="false">
+              <div class="card-testimonial">
+                <div class="card-testimonial__stars" aria-label="5 stars">★★★★★</div>
+                <div class="card-testimonial__quote-mark" aria-hidden="true">"</div>
+                <p class="card-testimonial__quote">Barsys turned our quarterly all-hands into the event everyone talks about for months. The cocktails were incredible and we didn't lift a finger.</p>
+                <div class="card-testimonial__author">
+                  <div class="card-testimonial__avatar" aria-hidden="true">
+                    <div style="width:100%;height:100%;background:linear-gradient(135deg,#C8A97E,#8A6040);"></div>
+                  </div>
+                  <div>
+                    <div class="card-testimonial__name">Marcus Webb</div>
+                    <div class="card-testimonial__role">VP Operations · Meridian Labs</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel__slide" aria-hidden="true">
+              <div class="card-testimonial">
+                <div class="card-testimonial__stars" aria-label="5 stars">★★★★★</div>
+                <div class="card-testimonial__quote-mark" aria-hidden="true">"</div>
+                <p class="card-testimonial__quote">We used Barsys for a client entertainment evening. The Reserve tier was worth every penny — Grey Goose cocktails, beautiful presentation, zero stress.</p>
+                <div class="card-testimonial__author">
+                  <div class="card-testimonial__avatar" aria-hidden="true">
+                    <div style="width:100%;height:100%;background:linear-gradient(135deg,#9A7B7F,#6A4B4F);"></div>
+                  </div>
+                  <div>
+                    <div class="card-testimonial__name">Priya Nair</div>
+                    <div class="card-testimonial__role">Chief of Staff · Nexgen Capital</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel__slide" aria-hidden="true">
+              <div class="card-testimonial">
+                <div class="card-testimonial__stars" aria-label="5 stars">★★★★★</div>
+                <div class="card-testimonial__quote-mark" aria-hidden="true">"</div>
+                <p class="card-testimonial__quote">Our recruiting events have completely changed since we started using Barsys. Candidates leave impressed, and our offer acceptance rate went up noticeably.</p>
+                <div class="card-testimonial__author">
+                  <div class="card-testimonial__avatar" aria-hidden="true">
+                    <div style="width:100%;height:100%;background:linear-gradient(135deg,#7E8B96,#4E5B66);"></div>
+                  </div>
+                  <div>
+                    <div class="card-testimonial__name">James Okafor</div>
+                    <div class="card-testimonial__role">Head of Talent · BuildFast</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Carousel controls -->
+          <div class="carousel__controls">
+            <div class="carousel__arrows">
+              <button class="carousel__arrow btn-icon btn-icon--circle" data-carousel-prev aria-label="Previous testimonial">←</button>
+              <button class="carousel__arrow btn-icon btn-icon--circle" data-carousel-next aria-label="Next testimonial">→</button>
+            </div>
+            <div class="carousel__dots" role="tablist" aria-label="Testimonial slides"></div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.container -->
+  </main>
+
+  <!-- ======================================================================
+       FOOTER
+       ====================================================================== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__main">
+        <div class="footer__grid">
+
+          <!-- Brand -->
+          <div class="footer__brand">
+            <a href="#" class="footer__logo" aria-label="Barsys Happy Hour">
+              <div>
+                <div class="footer__logo-text">Barsys</div>
+                <div class="footer__logo-sub">Happy Hour</div>
+              </div>
+            </a>
+            <p class="footer__tagline">Premium AI-powered cocktail experiences for the modern workplace. Zero work, maximum impact.</p>
+            <div class="footer__social" role="list" aria-label="Social media links">
+              <a href="#" class="footer__social-link" aria-label="Instagram" role="listitem">ig</a>
+              <a href="#" class="footer__social-link" aria-label="LinkedIn" role="listitem">in</a>
+              <a href="#" class="footer__social-link" aria-label="Twitter/X" role="listitem">𝕏</a>
+            </div>
+          </div>
+
+          <!-- Services -->
+          <div class="footer__column">
+            <div class="footer__column-title">Services</div>
+            <nav class="footer__links" aria-label="Services links">
+              <a href="#" class="footer__link">Team Happy Hours</a>
+              <a href="#" class="footer__link">Brand Activations</a>
+              <a href="#" class="footer__link">Client Hosting</a>
+              <a href="#" class="footer__link">Recruiting Events</a>
+              <a href="#" class="footer__link">Executive Hospitality</a>
+            </nav>
+          </div>
+
+          <!-- Packages -->
+          <div class="footer__column">
+            <div class="footer__column-title">Packages</div>
+            <nav class="footer__links" aria-label="Packages links">
+              <a href="#" class="footer__link">Classic — $50/pp</a>
+              <a href="#" class="footer__link">Signature — $70/pp</a>
+              <a href="#" class="footer__link">Reserve — $200/pp</a>
+              <a href="#" class="footer__link">Membership Plans</a>
+            </nav>
+          </div>
+
+          <!-- Contact -->
+          <div class="footer__column">
+            <div class="footer__column-title">Contact</div>
+            <div class="footer__links">
+              <div class="footer__contact-item">
+                <span class="footer__contact-icon" aria-hidden="true">✉</span>
+                <a href="mailto:fareed@barsys.com" class="footer__link">fareed@barsys.com</a>
+              </div>
+              <div class="footer__contact-item">
+                <span class="footer__contact-icon" aria-hidden="true">◎</span>
+                <span class="type-body-sm" style="color: var(--color-text-tertiary);">New York City, NY</span>
+              </div>
+              <a href="#" class="btn btn-primary btn--sm" style="margin-top: 8px;">Book an Event</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="footer__bottom">
+        <div class="footer__bottom-inner">
+          <p class="footer__copyright">© 2025 Barsys Technologies, Inc. All rights reserved.</p>
+          <nav class="footer__legal-links" aria-label="Legal links">
+            <a href="#" class="footer__legal-link">Privacy Policy</a>
+            <a href="#" class="footer__legal-link">Terms of Service</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="js/nav.js"></script>
+  <script src="js/accordion.js"></script>
+  <script src="js/carousel.js"></script>
+
+</body>
+</html>
