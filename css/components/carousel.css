@@ -1,0 +1,145 @@
+/* ==========================================================================
+   Component — Carousel / Testimonial Slider
+   Used in: Testimonials section
+   ========================================================================== */
+
+.carousel {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   Track
+   -------------------------------------------------------------------------- */
+.carousel__track {
+  display: flex;
+  transition: transform var(--transition-slow) ease-in-out;
+  will-change: transform;
+}
+
+.carousel__slide {
+  flex: 0 0 100%;
+  width: 100%;
+  padding: var(--space-sm);
+}
+
+/* Multi-visible variant (show 1.2 slides on mobile for peeking) */
+@media (max-width: 640px) {
+  .carousel--peek .carousel__slide {
+    flex: 0 0 85%;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Arrows
+   -------------------------------------------------------------------------- */
+.carousel__arrows {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.carousel__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: background-color var(--transition-fast),
+              border-color var(--transition-fast),
+              color var(--transition-fast),
+              transform var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.carousel__arrow:hover {
+  background-color: var(--color-gold-tint);
+  border-color: var(--color-gold-border);
+  color: var(--color-gold);
+}
+
+.carousel__arrow:active {
+  transform: scale(0.92);
+}
+
+.carousel__arrow:disabled {
+  opacity: 0.30;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.carousel__arrow svg,
+.carousel__arrow .icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* --------------------------------------------------------------------------
+   Dots
+   -------------------------------------------------------------------------- */
+.carousel__dots {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.carousel__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-border-strong);
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  transition: background-color var(--transition-standard),
+              width var(--transition-standard),
+              border-radius var(--transition-standard);
+}
+
+.carousel__dot:hover {
+  background-color: var(--color-gold-border);
+}
+
+.carousel__dot--active {
+  background-color: var(--color-gold);
+  width: 20px;
+  border-radius: var(--radius-pill);
+}
+
+/* --------------------------------------------------------------------------
+   Controls bar (arrows + dots together)
+   -------------------------------------------------------------------------- */
+.carousel__controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xl);
+  margin-top: var(--space-3xl);
+}
+
+.carousel__controls--center {
+  justify-content: center;
+}
+
+.carousel__controls--split {
+  justify-content: space-between;
+}
+
+/* --------------------------------------------------------------------------
+   Counter (e.g. "2 / 5")
+   -------------------------------------------------------------------------- */
+.carousel__counter {
+  font-size: var(--font-size-body-sm);
+  color: var(--color-text-tertiary);
+  font-weight: var(--font-weight-medium);
+  min-width: 36px;
+}
+
+.carousel__counter-current {
+  color: var(--color-gold);
+}

@@ -1,0 +1,13 @@
+name: Deploy — Happy Hour Staging
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    name: Build & deploy to Cloud Run
+    uses: barsysindia/global-workflows/.github/workflows/cicd-build.yml@main
+    with:
+      GCP_APP_NAME: "barsys-happyhour-staging"
+    secrets: inherit
