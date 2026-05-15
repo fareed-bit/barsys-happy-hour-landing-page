@@ -492,6 +492,12 @@
       font-size: 0.8rem;
       color: var(--color-text-tertiary);
     }
+    .wizard__mixlist-option__price {
+      font-size: 0.75rem;
+      color: var(--color-gold);
+      font-weight: 500;
+      margin-top: 5px;
+    }
     .wizard__mixlist-dropdown {
       max-height: 0;
       overflow: hidden;

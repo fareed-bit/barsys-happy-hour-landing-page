@@ -612,6 +612,29 @@
         ]}
       };
 
+      var mixlistSellPrices = {
+        'The Signature Mixlist':  241.86,
+        'The Vibrant Classics':   235.24,
+        "The Agave Lover's":      263.50,
+        'Après Spritz Club':      220.00,
+        'Neon Shadows':           190.81,
+        'Bold Frequency':         204.71,
+        'Sharp & Steady':         317.11,
+        'Silk & Snap':            253.55,
+        'Clear Coast':            151.93,
+        'Dusk to Agave':          191.11,
+        'Molasses Theory':        175.29,
+        'Fluid Code':             141.31,
+        'The Bold Circuit':       209.48,
+        'Love at First Sip':      266.79,
+        'Confessions in Glass':   220.00,
+        'Sombra & Sol':           220.00,
+        'Flora-Bitter':           220.00,
+        'Punt, Pass, & Pour':     220.00,
+        'Turf & Tonic':           220.00,
+        '13 Botanicals':          220.00
+      };
+
       /* Inject dropdown HTML and update type labels */
       wizard.querySelectorAll('.wizard__mixlist-option:not(.wizard__mixlist-option--skip)').forEach(function(opt) {
         var name = opt.dataset.value;
@@ -621,6 +644,15 @@
         /* Update type label */
         var typeEl = opt.querySelector('.wizard__mixlist-option__type');
         if (typeEl) typeEl.textContent = data.type;
+
+        /* Inject sell price label */
+        var sellPrice = mixlistSellPrices[name];
+        if (sellPrice) {
+          var priceEl = document.createElement('div');
+          priceEl.className = 'wizard__mixlist-option__price';
+          priceEl.textContent = '+$' + sellPrice.toFixed(2);
+          opt.appendChild(priceEl);
+        }
 
         /* Build dropdown */
         var dropdown = document.createElement('div');
@@ -885,7 +917,20 @@
 
         var spiritUpchargePerPerson = getSpiritUpchargePerPerson();
         var spiritTotal = spiritUpchargePerPerson * guests;
-        var subtotal = baseTotal + addOnTotal + spiritTotal;
+
+        var mixlistTotal = 0;
+        var mixlistDetails = [];
+        if (formData.mixlists && formData.mixlists.length > 0 && formData.mixlists[0] !== 'Skip') {
+          formData.mixlists.forEach(function(name) {
+            var price = mixlistSellPrices[name];
+            if (price) {
+              mixlistTotal += price;
+              mixlistDetails.push({ name: name, cost: price });
+            }
+          });
+        }
+
+        var subtotal = baseTotal + addOnTotal + spiritTotal + mixlistTotal;
         var tax = Math.round(subtotal * TAX_RATE * 100) / 100;
         var grandTotal = subtotal + tax;
 
@@ -894,6 +939,7 @@
           discountPerPerson: discountPerPerson, baseTotal: baseTotal,
           addOnDetails: addOnDetails, addOnTotal: addOnTotal,
           spiritUpchargePerPerson: spiritUpchargePerPerson, spiritTotal: spiritTotal,
+          mixlistTotal: mixlistTotal, mixlistDetails: mixlistDetails,
           subtotal: subtotal, tax: tax, grandTotal: grandTotal
         };
       }
@@ -972,6 +1018,19 @@
             line.innerHTML = '<span class="wizard__summary-line-label">' + a.name + '</span><span class="wizard__summary-line-amount">$' + a.cost.toLocaleString() + '</span>';
             addonsContainer.appendChild(line);
           });
+        }
+
+        var mixlistLine = document.getElementById('sum-line-mixlists');
+        if (mixlistLine) {
+          if (pricing.mixlistTotal > 0) {
+            mixlistLine.style.display = 'flex';
+            var mixlistLabel = pricing.mixlistDetails.length === 1
+              ? 'Mixlist Ingredients (1 menu)'
+              : 'Mixlist Ingredients (' + pricing.mixlistDetails.length + ' menus)';
+            setLineAmount('sum-line-mixlists', mixlistLabel, '$' + pricing.mixlistTotal.toFixed(2));
+          } else {
+            mixlistLine.style.display = 'none';
+          }
         }
 
         var spiritLine = document.getElementById('sum-line-spirits');
