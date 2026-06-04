@@ -1,0 +1,161 @@
+/* ==========================================================================
+   Barsys Happy Hour — Responsive Overrides
+   Fixes iPad / tablet viewport range (769px–1024px) and mobile polish.
+   Loaded last so these rules cascade over bundle.min.css and index-page.min.css.
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   NAV — Extend hamburger to cover iPad range (769px – 1024px)
+
+   The desktop nav (logo + 5 links + phone + CTA) can't fit below ~1100px.
+   bundle.min.css only shows the hamburger at ≤768px; this extends it to 1024px.
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+
+  /* Full-screen slide-out drawer — mirrors the existing 768px behaviour */
+  .nav__links {
+    position: fixed;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3xl);
+    list-style: none;
+    background-color: rgba(10, 10, 10, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transform: translateX(100%);
+    transition: transform var(--transition-slow);
+    pointer-events: none;
+    z-index: 199;
+  }
+
+  .nav--open .nav__links {
+    transform: translateX(0);
+    pointer-events: auto;
+  }
+
+  .nav__link {
+    font-size: 20px;
+    letter-spacing: var(--letter-spacing-wider);
+  }
+
+  /* Show hamburger button */
+  .nav__hamburger {
+    display: flex;
+  }
+
+  /* Hide inline CTA button and phone number — they're only needed on desktop */
+  .nav__actions .btn {
+    display: none;
+  }
+
+  .nav__phone {
+    display: none;
+  }
+
+  /* Hide scroll-reveal tagline — no room at tablet */
+  .nav__tagline {
+    display: none;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   TRUST BAR — 2×2 grid on tablet to avoid cramped 4-column row
+   (640px already has a 2×2 rule; this extends it up to 860px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 860px) and (min-width: 641px) {
+  .trust-bar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .trust-bar__item:nth-child(2) {
+    border-right: none;
+  }
+
+  .trust-bar__item:nth-child(1),
+  .trust-bar__item:nth-child(2) {
+    border-bottom: 1px solid var(--color-border);
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   HERO — tighten min-height on iPad portrait so the page doesn't feel
+   top-heavy before users can see the first content section
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .hero {
+    min-height: 70dvh;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   WIZARD PACKAGES GRID — stack to 1 column on 1024px iPad landscape.
+   The existing breakpoint only fires at ≤900px; at 1024px the three-column
+   card layout is too cramped inside the split wizard-layout.
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) and (min-width: 901px) {
+  .wizard__packages-grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin-inline: auto;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   VIDEO GRID — ensure touch-scroll works correctly on Safari/iOS
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .mixlist-scroll {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   GLOBAL — prevent horizontal overflow bleed on all viewports
+   -------------------------------------------------------------------------- */
+html,
+body {
+  overflow-x: hidden;
+}
+
+
+/* --------------------------------------------------------------------------
+   MOBILE (≤640px) — sticky CTA polish and spacing tweaks
+   -------------------------------------------------------------------------- */
+@media (max-width: 640px) {
+  /* Slightly reduce section padding on small screens */
+  :root {
+    --section-padding: clamp(48px, 8vw, 80px);
+  }
+
+  /* Full-width buttons in wizard nav */
+  .wizard__nav .btn,
+  .wizard__nav-back {
+    width: 100%;
+    min-height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Tighten wizard card padding */
+  .wizard {
+    padding: 32px 20px;
+  }
+
+  /* Mixlist grid: single column on very small screens */
+  .wizard__mixlist-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
