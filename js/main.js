@@ -227,7 +227,8 @@
         var target = wizard.querySelector('[data-step="' + n + '"]');
         if (target) target.classList.add('active');
 
-        var numericStep = typeof n === 'number' ? n : 0;
+        var stepIdx = stepOrder.indexOf(n);
+        var numericStep = stepIdx > 0 ? stepIdx : 0;
         bars.forEach(function(bar, i) {
           bar.classList.toggle('active', i < numericStep);
         });
@@ -262,7 +263,7 @@
       }
 
       /* ---- Step sequencing ---- */
-      var stepOrder = ['start', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 'success'];
+      var stepOrder = ['start', 1, 3, 2, 4, 5, 6, 7, 8, 9, 10, 'success'];
 
       /* ---- Validation helpers ---- */
       function clearErrors() {
@@ -1244,6 +1245,15 @@
           try { window.location.href = 'mailto:fareed@barsys.com?subject=' + subject + '&body=' + body; } catch(e) {}
         });
       }
+
+      /* ---- Direct-to-step links (e.g. "View Packages" opens step 3) ---- */
+      document.querySelectorAll('[data-wizard-open]').forEach(function(el) {
+        el.addEventListener('click', function(e) {
+          e.preventDefault();
+          var target = parseInt(el.dataset.wizardOpen);
+          if (!isNaN(target)) showStep(target);
+        });
+      });
 
       /* ---- Package card pre-selection from pricing section ---- */
       document.querySelectorAll('[data-select-package]').forEach(function(link) {
