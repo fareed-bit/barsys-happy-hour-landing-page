@@ -1,6 +1,6 @@
 ## Local hardening batch — September 14, 2026 (evening, NOT deployed)
 
-**Status:** committed locally (`beeef4d`), tests green, awaiting owner build/deploy per `deploy/runbooks/release-hardening-0914.md`.
+**Status:** built and deployed as 0%-traffic candidate `barsys-happyhours-production-hardening-0914` (source `8862917`, image `sha256:dcb63797…`); candidate smoke passed; **traffic flip pending owner action** per `deploy/runbooks/release-hardening-0914.md`. The static DataDome prep page was removed from the tree (restorable from `beeef4d`). Production traffic still serves `admin-supplies-0914-r3`, which exposes that page anonymously until the flip.
 
 - **Security (P0):** `admin/event-prep-datadome.html` (static page with the DataDome contact's name, email and phone) returned HTTP 200 to anonymous requests on production; the admin HTML gate in `backend/server.mjs` only applied under `STAGING_MODE`. Gate now applies in every mode for `/admin/*.html` except login, and forwards a validated `?next=` so sign-in returns to the requested page (`admin/login.js`).
 - **Live copy:** removed "Local preview only. Nothing is sent to Barsys.", "This local build sends nothing.", the "V3.9 / PRIVATE LOCAL PREVIEW · NO BOOKINGS OR PAYMENTS" footer badge, "in this preview" and related wording from `index.html`, `app.js`, `v3.js`, `hero-carousel.js`, `policy-content.js`, `runtime-content.js`. Inquiry button now reads "Send inquiry" to match the runtime notice.

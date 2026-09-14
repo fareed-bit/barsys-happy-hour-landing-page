@@ -1,6 +1,6 @@
 # Release: hardening-0914 (security gate, live copy, delivery, SEO, dashboard usability)
 
-**Status: BUILT LOCALLY, NOT DEPLOYED.** Source commit `beeef4d` on the local repository in this folder. All gcloud steps run in Fareed's terminal.
+**Status (2026-09-14 ~16:45 ET): CANDIDATE DEPLOYED AT 0% TRAFFIC, FLIP PENDING.** Source commit `8862917`. Image `us-east4-docker.pkg.dev/happy-hour-landing-version-2/barsys-staging/app@sha256:dcb637970016008492bbfeaf420207c9213d2aa23d91b5ca05f9e9ea37b78c6a`, revision `barsys-happyhours-production-hardening-0914`, tag URL `https://hardening-0914---barsys-happyhours-production-23nb3wybra-uk.a.run.app`. Candidate smoke below passed on every line. The traffic flip requires the owner to run the Flip step.
 
 ## Why this release is urgent
 `admin/event-prep-datadome.html` embeds the DataDome contact's name, email and phone and was served to anonymous requests on the production URL (verified 2026-09-14 ~16:05 ET with an unauthenticated curl: HTTP 200, PII present). The admin HTML gate only applied under `STAGING_MODE`. This release gates every `/admin/*.html` (except login) in every mode.
