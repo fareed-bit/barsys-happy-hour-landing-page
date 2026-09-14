@@ -1,0 +1,86 @@
+{
+  "reviewed": "2026-09-08",
+  "note": "Official mixlist cover URLs, not generic serving imagery. Six covers were visually inspected through the web tool. Love at First Sip and Summer Mocktail cover URLs were extracted from the official source markup; full image rendering could not be verified. Local runtime outbound network is unavailable.",
+  "entries": [
+    {
+      "key": "signature",
+      "local": "assets/mixlists/signature.jpg",
+      "remote": "https://media.barsys.com/images/blog_images/1746172082_1746079798_Barsys_RB_2025_April_Signature_03_1x1_MA_GA.jpg",
+      "alt": "The Signature Mixlist: four citrus and cranberry cocktails with Reyka, Cointreau and Casamigos bottles on a warm wood backdrop.",
+      "officialMixlist": true,
+      "sourcePage": "https://barsys.com/mixlist/the-signature-mixlist",
+      "initialIllustration": false,
+      "visualReview": true
+    },
+    {
+      "key": "agave",
+      "local": "assets/mixlists/agave.jpg",
+      "remote": "https://media.barsys.com/images/blog_images/1746172257_1746079609_Barsys_RB_2025_April_Agave_Lovers_03_1x1_MA_GA%281%29.jpg",
+      "alt": "The Agave Lover's official cover: agave cocktails, pineapple and citrus beside tequila and mezcal bottles against green curtains.",
+      "officialMixlist": true,
+      "sourcePage": "https://barsys.com/mixlist/the-agave-lover-s-mixlist",
+      "initialIllustration": false,
+      "visualReview": true
+    },
+    {
+      "key": "spritz",
+      "local": "assets/mixlists/spritz.jpg",
+      "remote": "https://media.barsys.com/images/blog_images/1771401074_Barsys_Mixlist_2026_Feb_Apres%20Spritz%20Club_Cover_1x1_AT_GA.jpg",
+      "alt": "Apres Spritz Club: seven sparkling and aperitif cocktails in different glasses against a warm brown backdrop.",
+      "officialMixlist": true,
+      "sourcePage": "https://happyhours.barsys.com/",
+      "initialIllustration": false,
+      "visualReview": true
+    },
+    {
+      "key": "fluid",
+      "local": "assets/mixlists/fluid.png",
+      "remote": "https://media.barsys.com/images/blog_images/1771230625_ChatGPT%20Image%20Feb%2016%2C%202026%2C%2001_53_21%20PM.png",
+      "alt": "Fluid Code official mixlist cover: five colorful drinks with citrus and berries against a vivid blue backdrop.",
+      "officialMixlist": true,
+      "sourcePage": "https://happyhours.barsys.com/",
+      "initialIllustration": false,
+      "visualReview": true
+    },
+    {
+      "key": "vibrant",
+      "local": "assets/mixlists/vibrant.jpg",
+      "remote": "https://media.barsys.com/images/blog_images/1746172348_1746079772_Barsys_RB_2025_April_Vibrant_Classics_03_1x1_MA_GA.jpg",
+      "alt": "The Vibrant Classics official cover: rum and bourbon cocktails with citrus, bottles and a golden-yellow backdrop.",
+      "officialMixlist": true,
+      "sourcePage": "https://barsys.com/mixlist/the-vibrant-classics-mixlist",
+      "initialIllustration": false,
+      "visualReview": true
+    },
+    {
+      "key": "neon",
+      "local": "assets/mixlists/neon.jpg",
+      "remote": "https://media.barsys.com/images/blog_images/1770719915_Barsys_Mixlist_2026_Feb_Neon%20Shadows_1x1_AT_GA.jpg",
+      "alt": "Neon Shadows official cover: five cocktails with mint and citrus under blue and magenta lighting.",
+      "officialMixlist": true,
+      "sourcePage": "https://barsys.com/mixlist/neon-shadows",
+      "initialIllustration": false,
+      "visualReview": true
+    },
+    {
+      "key": "love",
+      "local": "assets/mixlists/love.jpg",
+      "remote": "https://media.barsys.com/images/blog_images/1770628428_Barsys_Mixlist_2026_Feb_Love%20at%20First%20Sip_1x1_AT_GA.jpg",
+      "alt": "Official Barsys collection cover for Love at First Sip.",
+      "officialMixlist": true,
+      "sourcePage": "https://barsys.com/mixlist/love-at-first-sip",
+      "initialIllustration": false,
+      "visualReview": false
+    },
+    {
+      "key": "summer-mocktails",
+      "local": "assets/mixlists/summer-mocktails.jpg",
+      "remote": "https://media.barsys.com/images/blog_images/1749042177_Barsys_Mixlist_2025_June_Happy_Hour_Mocktail_1x1_MA_GA.jpg",
+      "alt": "Official Barsys collection cover for A Summer Mocktail Mixlist.",
+      "officialMixlist": true,
+      "sourcePage": "https://barsys.com/mixlist/a-summer-mocktail-mixlist",
+      "initialIllustration": false,
+      "visualReview": false
+    }
+  ]
+}

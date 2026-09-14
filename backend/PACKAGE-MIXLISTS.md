@@ -1,0 +1,11 @@
+# Package mixlist assignments
+
+Owner dashboard: /admin/menu-policy.html. Choose the lowest included package per collection. Classic includes Classic assignments; Signature includes Classic + Signature; Reserve includes all three. Needs review is unavailable in a published policy. No supplement amounts or package rates change.
+
+Assignments remain an unpublished draft. The September 9 ingredient update covers every listed ingredient in 26 catalogs using retailer prices, product proxies and labeled budget/yield estimates. Garden Spritz Club (formerly Après Spritz) now has seven public recipe drafts; unspecified garnish quantities and CMS/360 verification remain pending. Suggested bands use estimated ingredient consumption for three drinks/guest and equal shares: under $6 Classic, $6–$9 Signature, above $9 Reserve. These exclude staff, buffer, taxes and other event expenses; they are not approved selling prices or margins. Unverified/incompatible 360 menus cannot be published. Estimates and unreviewed recipes require explicit provisional approval.
+
+Saved policy uses a private table, owner-only API and optimistic version checks. Only assignment IDs and publication/version state reach the customer page; no ingredient costs or pricing references are exposed. The backend embeds the policy at page load. Reload planners after a policy change. Static/offline previews retain their bundled catalog.
+
+Online menu carousel, full wizard, browse dialog and taste chooser follow the package. Existing favorites survive switching packages, appear as outside-package preferences with a remove action, and require resolution before a new inquiry can be submitted. The server independently checks new selections; retrying an already-saved inquiry still returns its receipt. Existing event documents, accepted proposals and financial terms are unchanged. Admin event/proposal editing remains available for owner-reviewed exceptions.
+
+Current full Node suite: 148 tests passed. Browser isolated fixture verified publication, Classic/Reserve filtering, taste filtering, retained preference removal, and 390px layout. Staging policy remains unpublished pending cost review or explicit provisional approval. No live mail imports, client messages or customer-price changes.

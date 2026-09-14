@@ -1,0 +1,94 @@
+/* V3.8 / readable service guidance and restrained policy controls. */
+:root{--read-ink:#151515;--read-muted:#555;--read-line:#d5d5d5}
+:focus-visible{outline:3px solid #8361cf;outline-offset:4px}
+input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #7041bb;outline-offset:2px}
+button,a,input,select,textarea{scroll-margin-block:110px 100px}
+.skip-link:focus{z-index:1500;position:fixed;top:12px;left:12px;padding:14px 20px;background:white;color:#111}
+.readiness-section{background:#fff;color:#111;border-top:1px solid #ddd;padding:55px 0}
+.readiness-heading{display:flex;align-items:end;justify-content:space-between;gap:40px;margin-bottom:28px}
+.readiness-heading h2{font-size:36px;line-height:1.1;letter-spacing:-1.2px;margin-top:13px}
+.readiness-heading p:last-child{max-width:390px;font-size:14px;color:#555;line-height:1.75}
+.readiness-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.readiness-cards article{padding:24px;border:1px solid #d5d5d5;border-radius:5px}
+.readiness-cards .readiness-index{font-size:11px;letter-spacing:1.7px;color:#666}
+.readiness-cards h3{font-size:20px;letter-spacing:-.5px;margin:17px 0 12px}
+.readiness-cards p{font-size:14px;line-height:1.75;color:#505050;margin-bottom:14px}
+.readiness-cards a,.readiness-section a{font-size:13px;text-decoration:underline;text-underline-offset:4px;color:#222}
+.readiness-options{border:1px solid #d1d1d1;margin-top:24px;border-radius:4px;padding:0 19px}
+.readiness-options>summary{font-size:14px;line-height:1.6;padding:17px 0;cursor:pointer;font-weight:600}
+.readiness-options>summary>span{font-size:11px;color:#666;font-weight:400;margin-left:8px}
+.readiness-options[open]{padding-bottom:18px}.readiness-field-grid{margin-top:10px}
+.readiness-small{font-size:12px!important;line-height:1.85!important;color:#555!important;margin-top:15px}
+.readiness-small a,.request-clarity a,.service-disclosures a{color:#272727;text-decoration:underline;text-underline-offset:3px}
+.scope-panel{background:#f5f5f6;border:1px solid #d2d2d5;border-radius:5px;padding:23px;margin-bottom:26px;color:#171717}
+.scope-panel h4{font-size:23px;line-height:1.2;letter-spacing:-.6px;margin:12px 0 22px}
+.scope-panel .eyebrow{font-size:9px;letter-spacing:1.2px;color:#555}
+.scope-delivery strong{font-size:14px}.scope-delivery p{font-size:13px;line-height:1.7;color:#555;margin:9px 0}
+.scope-delivery>span{font-size:11px;font-weight:600;color:#555}
+.service-disclosures{margin:26px 0 0;padding:22px;border:1px solid #ccc;background:#f8f8f8;border-radius:4px}
+.service-disclosures>div+div{margin-top:19px}.service-disclosures strong{font-size:14px}
+.service-disclosures p{font-size:13px;line-height:1.8;margin-top:7px;color:#555}
+.request-clarity{margin:28px 0 10px;padding:24px;background:#f3f2f6;border:1px solid #cdc9d6;border-radius:5px}
+.request-clarity .eyebrow{font-size:10px;color:#5c526f;letter-spacing:1.3px}
+.request-clarity h4{font-size:24px;letter-spacing:-.6px;line-height:1.2;margin:12px 0}
+.request-clarity>p{font-size:13px;line-height:1.85;color:#514c5a;margin-top:12px}
+.permission-options{border-top:1px solid #d5d1df;margin-top:21px;padding-top:21px}
+.permission-check{display:flex;align-items:start;gap:12px;font-size:14px!important;line-height:1.7;margin-bottom:23px;cursor:pointer}
+.permission-check input{width:19px;height:19px;min-height:0!important;flex:0 0 19px;margin-top:4px;accent-color:#171717}
+.permission-check span>small{display:block;font-size:12px;color:#595261;line-height:1.8;margin-top:5px}
+.scope-costs{border-top:1px solid #cbcbd0;margin-top:17px;padding-top:16px}
+.scope-costs .pending-title{color:#555;font-size:10px}.scope-costs .price-line>span:last-child{font-size:11px;text-align:right;color:#595959}
+.booking-timeline{list-style:none!important;padding:0!important;margin:25px 0!important;display:grid;gap:0}
+.booking-timeline li{display:flex;gap:15px;padding:16px 0;border-top:1px solid #d6d6d6;color:#151515}
+.booking-timeline li>span{height:29px;width:29px;flex:0 0 29px;border:1px solid #aaa;border-radius:50%;display:grid;place-items:center;font-size:10px}
+.booking-timeline li.current>span{background:#111;color:#fff;border-color:#111}.booking-timeline strong{font-size:14px}
+.booking-timeline p{font-size:12px;line-height:1.8;color:#555;margin:3px 0 0}
+.footer-policies{flex-basis:100%;border-top:1px solid #303030;padding-top:20px;display:flex;gap:12px 24px;flex-wrap:wrap;align-items:center}
+.footer-policies a,.footer-policies button{font-size:12px;line-height:1.7;color:#d0d0d0;background:none;min-height:40px;padding:4px 0;text-decoration:underline;text-underline-offset:4px}
+.business-line{flex-basis:100%;font-size:12px!important;line-height:1.8;color:#bbb!important;display:block!important;letter-spacing:0!important}
+.references-note{width:100%;border-top:1px solid #222;background:#080808;color:#bbb;padding:10px 20px;text-align:center;font-size:11px;line-height:1.6}
+.references-note a{color:#ddd;text-decoration:underline;text-underline-offset:3px;display:inline-block;padding:6px}
+.policy-dialog{width:calc(100% - 36px);max-width:820px;border:1px solid #ccc;background:#fff;color:#151515;border-radius:8px;max-height:88dvh;padding:0}
+.policy-dialog::backdrop,.privacy-dialog::backdrop{background:#000b;backdrop-filter:blur(4px)}
+.policy-header{padding:25px 30px 21px;display:flex;justify-content:space-between;gap:20px;border-bottom:1px solid #ddd;position:sticky;top:0;background:white;z-index:2}
+.policy-header h2{font-size:29px;letter-spacing:-1px;line-height:1.15;outline:none;margin-top:10px}
+.policy-tag{font-size:10px;line-height:1.7;letter-spacing:1px;color:#666}
+.policy-header .icon-button{color:#111;border-color:#bbb;min-width:44px;height:44px;flex:0 0 44px}
+.policy-body{padding:26px 30px 34px;font-size:15px;line-height:1.85}
+.policy-body .policy-lead{font-size:18px;line-height:1.7;color:#222;margin:0 0 25px}
+.policy-body h3{font-size:19px;letter-spacing:-.3px;margin:27px 0 11px}
+.policy-body p{font-size:14px;line-height:1.85;color:#4d4d4d}
+.policy-body a,.policy-inline{background:none;color:#322353;text-decoration:underline;text-underline-offset:4px;font:inherit;padding:0}
+.policy-table-wrap{overflow:auto;margin:24px 0;border:1px solid #ddd}
+.policy-body table{border-collapse:collapse;width:100%;font-size:12px;line-height:1.7}
+.policy-body th,.policy-body td{padding:14px;text-align:left;border-bottom:1px solid #ddd;vertical-align:top}
+.policy-body td:first-child{overflow-wrap:anywhere;min-width:120px;max-width:170px}.policy-body th{background:#f1f1f1;font-size:12px}
+.privacy-notice{position:fixed;left:20px;bottom:20px;z-index:65;background:#fff;color:#111;border:1px solid #ccc;box-shadow:0 9px 40px #0003;max-width:400px;border-radius:7px;padding:22px}
+.privacy-notice>strong{font-size:17px;display:block;margin-bottom:9px;letter-spacing:-.25px}.privacy-notice>p{font-size:12px;line-height:1.8;color:#555}
+.privacy-notice-actions{display:flex;gap:10px;margin-top:16px}.privacy-notice-actions button{background:#f4f4f4;border:1px solid #aaa;color:#111;padding:10px 14px;min-height:44px;font-size:12px;flex:1;border-radius:3px}
+.privacy-dialog{width:calc(100% - 32px);max-width:620px;background:#fff;color:#111;border:1px solid #ccc;padding:0;border-radius:8px;max-height:90dvh}
+.privacy-body{padding:23px 28px}.privacy-body>p{font-size:14px;line-height:1.8;color:#555}
+.pref-row{display:flex;align-items:start;gap:18px;padding:20px 0;border-bottom:1px solid #ddd;cursor:pointer}
+.pref-row>span{flex:1}.pref-row strong{display:block;font-size:15px;font-weight:600;line-height:1.6}.pref-row small{display:block;font-size:12px;line-height:1.85;color:#555;margin-top:4px}
+.pref-row input{width:22px;height:22px;flex:0 0 22px;margin-top:4px;accent-color:#111}.pref-off{padding:16px;background:#f4f4f5;border-radius:4px;font-size:12px;line-height:1.8;color:#555;margin-top:20px}
+.pref-off strong{color:#222}.privacy-actions{padding:20px 28px;background:#fff;border-top:1px solid #ddd;display:flex;gap:12px;position:sticky;bottom:0}
+.privacy-actions button{flex:1;min-height:46px;border:1px solid #333;border-radius:3px;padding:12px 16px;font-size:13px;background:white;color:#111}
+.privacy-actions #privacy-save{background:#171717;color:white}.privacy-clear{font-size:12px;background:none;text-decoration:underline;text-underline-offset:4px;color:#444;margin-top:16px;min-height:40px}
+#privacy-device-status,#privacy-feedback{font-size:12px;line-height:1.8;color:#555;margin-top:13px}
+.dialog-open .privacy-notice{visibility:hidden}.privacy-notice[hidden]{display:none!important}
+.menu-cover-consent{margin-top:16px;padding:12px 15px;background:#f4f4f4;color:#555;font-size:12px;line-height:1.8;border:1px solid #ddd}
+.menu-cover-consent button{font:inherit;color:#222;background:none;text-decoration:underline;text-underline-offset:4px}
+/**** Targeted readability and controls; no claim of a complete contrast audit. ****/
+.field-hint,.quick-privacy,.local-notice,.estimate-note,.quick-estimate-note{color:#575757;font-size:12px;line-height:1.85}
+.field label small,.review-item dt,.qs-row,.summary-row,.price-line{color:#555}
+.review-item dd{color:#171717}.wizard-nav button{min-height:46px}.gallery-controls button,.icon-button,.wm-details,.wm-select{min-width:44px;min-height:44px}
+.wm-art .wm-type{background:#111;color:white}.reel-watch,.scene-open{background:#111c;color:#fff}
+#policy-dialog .icon,#privacy-dialog .icon{stroke:currentColor}
+@media(max-width:799px){.readiness-heading{display:block}.readiness-heading>p{margin-top:18px}.readiness-cards{grid-template-columns:1fr;gap:13px}.readiness-cards article{padding:21px}.readiness-section{padding-block:40px}.scope-panel .field-grid{grid-template-columns:1fr}.readiness-heading h2{font-size:31px}.footer-policies{gap:9px 19px}.privacy-notice{left:12px;right:12px;bottom:86px;max-width:none;padding:17px}.privacy-notice>strong{font-size:15px}.privacy-notice>p{font-size:11px}.privacy-notice-actions{margin-top:12px}.privacy-notice-actions button{font-size:12px}.request-clarity{padding:19px}.policy-header{padding:22px 20px 17px}.policy-header h2{font-size:25px}.policy-body{padding:22px 20px}.privacy-body{padding:19px 20px}.privacy-actions{padding:17px 20px}.readiness-options{padding-inline:16px}.references-note{font-size:10px}.scope-panel{padding:20px}.business-line{font-size:11px!important}}
+@media(max-width:420px){.privacy-actions{flex-direction:column}.policy-header h2{font-size:23px}.scope-panel .eyebrow{font-size:8px}.readiness-field-grid{grid-template-columns:1fr}.footer-policies a,.footer-policies button{font-size:11px}.request-clarity h4{font-size:21px}}
+@media(prefers-reduced-motion:reduce){.privacy-dialog,.policy-dialog{scroll-behavior:auto}}
+@media print{.readiness-section,.privacy-notice,.policy-dialog,.privacy-dialog,.footer-policies,.references-note{display:none!important}.booking-timeline li{break-inside:avoid}}
+/* Keep all motion/menu controls reachable at the narrowest viewport. */
+.site-header .motion-toggle{min-width:44px;min-height:44px}
+@media(max-width:599px){.menu-toolbar{flex-wrap:wrap}.menu-toolbar .menu-filters{flex-wrap:wrap;max-width:100%}.menu-toolbar .gallery-controls{margin-left:auto}}
+@media(max-width:359px){.site-header .nav-cta{display:none}.nav-actions{gap:7px}.nav-wrap{gap:10px}}

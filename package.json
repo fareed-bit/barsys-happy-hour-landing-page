@@ -1,0 +1,34 @@
+{
+  "name": "barsys-after-hours-v3-9",
+  "version": "3.9.0",
+  "private": true,
+  "description": "Barsys local landing-page project and Codex handoff. Normal company artwork, optional draft storage, and preserved event planners.",
+  "type": "module",
+  "scripts": {
+    "start": "node scripts/server.mjs",
+    "preview": "node scripts/build-site.mjs && node scripts/build-preview.mjs",
+    "test": "node --test --test-concurrency=1 tests/*.test.mjs",
+    "test:browser": "node scripts/browser-python.mjs tests/wizard_smoke.py --phase wizard",
+    "sync:hero": "node scripts/sync-live-hero.mjs",
+    "assets": "node scripts/sync-mixlist-assets.mjs",
+    "test:autoplay": "node scripts/browser-python.mjs tests/readiness_media.py",
+    "test:privacy": "node scripts/browser-python.mjs tests/readiness_browser.py",
+    "test:media": "node scripts/browser-python.mjs tests/curated_media.py",
+    "test:readiness": "node scripts/browser-python.mjs tests/readiness_browser.py && node scripts/browser-python.mjs tests/readiness_media.py",
+    "check:launch": "node scripts/check-readiness.mjs",
+    "optimize:assets": "python3 scripts/optimize-covers.py",
+    "test:localhost": "node tests/localhost.mjs",
+    "package:local": "python3 scripts/package-release.py",
+    "backend": "node --env-file-if-exists=.env.local backend/server.mjs",
+    "test:lifecycle": "node --test --test-concurrency=1 tests/lifecycle-api.test.mjs tests/handoff-readiness.test.mjs",
+    "test:lifecycle:browser": "python3 tests/run-lifecycle-browser.py",
+    "build:site": "node scripts/build-site.mjs"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "dependencies": {
+    "google-auth-library": "^11.0.2",
+    "pg": "^8.23.0"
+  }
+}

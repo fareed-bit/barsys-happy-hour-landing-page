@@ -1,0 +1,23 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import http from 'node:http';
+import {mkdtemp,rm} from 'node:fs/promises';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
+import {createStore} from '../backend/store.mjs';
+import {createAPI} from '../backend/api.mjs';
+import {createAuth} from '../backend/auth.mjs';
+import {syntheticInquiry} from './lifecycle-fixture.mjs';
+test('LIVE public inquiry is anonymous, durable, idempotent and keeps admin data private',async t=>{
+ const dir=await mkdtemp(join(tmpdir(),'barsys-live-contract-'));const store=await createStore({filename:join(dir,'isolated.sqlite')});
+ const origin='https://public-rehearsal.example';const auth=createAuth({store,clientId:'synthetic-client'});
+ const handler=createAPI({store,origin,auth,local:false,staging:false});const server=http.createServer(handler);await new Promise(r=>server.listen(0,'127.0.0.1',r));
+ t.after(async()=>{server.closeAllConnections();await new Promise(r=>server.close(r));await store.close();await rm(dir,{recursive:true,force:true});});
+ const base=`http://127.0.0.1:${server.address().port}`;
+ const body=syntheticInquiry();const submit=(payload=body,requestOrigin=origin)=>fetch(base+'/api/inquiries',{method:'POST',headers:{Origin:requestOrigin,'Content-Type':'application/json','Idempotency-Key':'live-public-rehearsal-0001'},body:JSON.stringify(payload)});
+ assert.equal((await (await fetch(base+'/api/status')).json()).mode,'LIVE');
+ const r=await submit();assert.equal(r.status,201);const receipt=await r.json();assert.equal(receipt.mode,'INQUIRY_RECEIVED');assert.equal(receipt.booked,false);assert.equal(receipt.payload,undefined);assert.equal((await store.get(receipt.id)).payload.details.email,body.details.email);
+ const repeat=await submit();assert.equal(repeat.status,200);assert.equal((await repeat.json()).id,receipt.id);
+ assert.equal((await submit({...body,guests:26})).status,409);assert.equal((await submit(body,'https://other.example')).status,403);
+ for(const path of ['/api/admin/inquiries','/api/admin/inquiries/'+receipt.id,'/api/admin/operations'])assert.equal((await fetch(base+path)).status,401);
+});

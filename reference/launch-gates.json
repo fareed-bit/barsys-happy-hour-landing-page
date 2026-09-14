@@ -1,0 +1,84 @@
+{
+  "version": "3.9",
+  "localReviewAllowed": true,
+  "productionApproved": false,
+  "items": [
+    {
+      "id": "asset-authorization",
+      "title": "Use of Barsys company assets for this project",
+      "owner": "Project owner",
+      "status": "approved",
+      "approvalEvidence": "User authorization recorded in reference/publication-approvals.json and reference/asset-authorization.md."
+    },
+    {
+      "id": "identity",
+      "title": "Business identity, notice contact and approved public policy text",
+      "owner": "Business owner + counsel",
+      "status": "approved",
+      "approvalEvidence": "Owner confirmed Barsys Inc., 44 W 37th St, New York, NY 10018; operational/privacy contact fareed@barsys.com. Included in connected privacy notice September 10, 2026."
+    },
+    {
+      "id": "commercial",
+      "title": "Canonical package rates, hours, minimums, add-on and delivery scope",
+      "owner": "Commercial owner",
+      "status": "approved",
+      "approvalEvidence": "Owner approval 2026-09-10; approved values recorded in DECISION-REGISTER.md and config.js."
+    },
+    {
+      "id": "cancellation",
+      "title": "Precise cancellation/reschedule boundaries and deposit rules",
+      "owner": "Business owner + counsel",
+      "status": "approved",
+      "approvalEvidence": "Owner approval 2026-09-10: launch keeps deposit/cancellation/rescheduling/card specifics proposal-specific; inquiry does not hold a date."
+    },
+    {
+      "id": "alcohol",
+      "title": "Event-specific alcohol-service authorization and responsible operator",
+      "owner": "Operations + counsel",
+      "status": "approved",
+      "approvalEvidence": "Owner confirms holding the applicable documentation and maintains it outside this website/dashboard. Recorded as owner operational attestation, not independent verification of coverage or authorization. Event-specific checks remain the owner\u2019s responsibility."
+    },
+    {
+      "id": "insurance",
+      "title": "Current coverage, limits and event-specific COI/additional-insured documentation",
+      "owner": "Operations + insurer",
+      "status": "approved",
+      "approvalEvidence": "Owner confirms holding the applicable documentation and maintains it outside this website/dashboard. Recorded as owner operational attestation, not independent verification of coverage or authorization. Event-specific checks remain the owner\u2019s responsibility."
+    },
+    {
+      "id": "privacy",
+      "title": "Actual hosted data recipients, retention, vendors and privacy rights",
+      "owner": "Privacy owner + counsel",
+      "status": "approved",
+      "approvalEvidence": "September 10 delegated operating review complete: 21 focused privacy/auth/removal/restore tests pass; actual hosting notice and structured application logging reviewed. Private versioned public-access-blocked ledger bucket provisioned separately from SQL backups; synthetic upload/download checksum and isolated restore replay passed. Mandatory copy map and linked-email exception/hold workflow documented in backend/PRIVACY-OPERATIONS.md. This approves the scoped manual operating procedure, not automatic erasure, legal certification or disposition of any real case. Fareed must archive each new ledger and review external copies before case closure."
+    },
+    {
+      "id": "tracking",
+      "title": "Production script inventory and optional-tracking controls",
+      "owner": "Engineering + privacy owner",
+      "status": "approved",
+      "approvalEvidence": "Owner approval 2026-09-10: no analytics/advertising trackers at launch; current code/test inventory confirms no tracking scripts."
+    },
+    {
+      "id": "submission",
+      "title": "Live server validation, durable inquiry receipt, notices and error recovery",
+      "owner": "Engineering + sales operations",
+      "status": "approved",
+      "approvalEvidence": "Production protected rehearsal ce41a338-6d24-4b39-8a69-5b55518b232f saved durably; both test emails reached Fareed Inbox exactly once September 10. Public anonymous production intake remains disabled pending launch gates."
+    },
+    {
+      "id": "accessibility",
+      "title": "Live-site accessibility audit with assistive technologies and representative devices",
+      "owner": "Accessibility reviewer",
+      "status": "pending",
+      "approvalEvidence": "September 10 isolated Chromium/Firefox/WebKit review: 35 baseline passes; real mobile-bar contrast issue fixed; 16 targeted retests pass with zero axe violations in recorded scans. Keyboard/focus/error/reduced-motion/reflow/text-spacing and Chromium forced-colors evidence in qa/privacy-a11y-0910/review.md. Owner reports visual/touch pass on iPhone 15 Pro Max with newest iOS (exact version unverified), explicitly without VoiceOver. Authenticated production Chrome keyboard/DOM review covered both planner previews, validation, summary/privacy focus and collection state; see qa/privacy-a11y-0910/production-keyboard-review.md. Spoken VoiceOver remains unverified; native connection timed out. Incomplete/manual criteria remain; no conformance certification."
+    },
+    {
+      "id": "content",
+      "title": "Accurate banner relationships, substantiated claims and any specific asset restrictions encountered",
+      "owner": "Brand/content owner",
+      "status": "approved",
+      "approvalEvidence": "Source banner inventory captured from the existing Barsys Happy Hours landing page in reference/brand-banner-sources.json; UI disclosure explicitly does not claim all names are clients. Owner previously authorized Barsys-owned project assets."
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {spawn} from 'node:child_process';
+import {mkdtemp,rm} from 'node:fs/promises';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
+import {once} from 'node:events';
+test('backend serves required scripts, allows its API and protects private files',async t=>{
+ const dir=await mkdtemp(join(tmpdir(),'barsys-server-'));const port=3098;
+ const child=spawn(process.execPath,['backend/server.mjs'],{cwd:new URL('../',import.meta.url),env:{...process.env,NODE_ENV:'test',DATABASE_URL:'',PORT:String(port),BARSYS_DB:join(dir,'inquiries.sqlite')}});
+ t.after(async()=>{child.kill('SIGTERM');await once(child,'exit');await rm(dir,{recursive:true,force:true});});
+ await Promise.race([once(child.stdout,'data'),new Promise((_,reject)=>{const timeout=setTimeout(()=>reject(new Error('Server startup timed out')),5000);timeout.unref();})]);
+ const base=`http://localhost:${port}`;
+ const html=await (await fetch(base)).text();assert.ok(html.includes("connect-src 'self'"));
+ const scripts=[...html.matchAll(/<script[^>]*src="([^"]+)"/g)].map(m=>m[1]);for(const file of scripts)assert.equal((await fetch(base+'/'+file)).status,200,file);
+ for(const file of ['backend/server.mjs','package.json','.env','../barsys-data/inquiries.sqlite','tests/backend.test.mjs'])assert.equal((await fetch(base+'/'+file)).status,404,file);
+ const status=await (await fetch(base+'/api/status')).json();assert.equal(status.mode,'LOCAL_TEST');
+ assert.equal((await fetch(base+'/api/admin/inquiries',{headers:{Origin:'https://example.com'}})).status,403);
+ const admin=await (await fetch(base+'/admin')).text();assert.ok(admin.includes('Event desk'));
+ const image=await fetch(base+'/assets/logos/Black_Horizontal.svg',{headers:{Range:'bytes=0-15'}});assert.equal(image.status,206);assert.equal((await image.arrayBuffer()).byteLength,16);
+});

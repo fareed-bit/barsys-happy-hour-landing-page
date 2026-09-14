@@ -1,0 +1,182 @@
+[
+  {
+    "slug": "packages",
+    "title": "A package for your kind of gathering.",
+    "description": "Compare Classic, Signature and Reserve office happy-hour packages."
+  },
+  {
+    "slug": "classic",
+    "title": "Classic happy hours",
+    "description": "A relaxed round for the whole office."
+  },
+  {
+    "slug": "signature",
+    "title": "Signature happy hours",
+    "description": "A more considered cocktail experience."
+  },
+  {
+    "slug": "reserve",
+    "title": "Reserve happy hours",
+    "description": "For clients, milestones and special occasions."
+  },
+  {
+    "slug": "mixlists",
+    "title": "Find your first pour.",
+    "description": "Explore the Barsys collection library. Package eligibility and final event menus are confirmed in the planner."
+  },
+  {
+    "slug": "mixlist-signature",
+    "title": "The Signature Mixlist",
+    "description": "Bright, balanced. Always a good idea."
+  },
+  {
+    "slug": "mixlist-agave",
+    "title": "The Agave Lover's",
+    "description": "Tequila and mezcal, with a little twist."
+  },
+  {
+    "slug": "mixlist-spritz",
+    "title": "Garden Spritz Club",
+    "description": "A golden-hour state of mind."
+  },
+  {
+    "slug": "mixlist-fluid",
+    "title": "Fluid Code",
+    "description": "All the occasion. None of the alcohol."
+  },
+  {
+    "slug": "mixlist-vibrant",
+    "title": "The Vibrant Classics",
+    "description": "Crowd favorites, classic and contemporary."
+  },
+  {
+    "slug": "mixlist-neon",
+    "title": "Neon Shadows",
+    "description": "Cool mint, bright citrus, a bittersweet edge."
+  },
+  {
+    "slug": "mixlist-bold-frequency",
+    "title": "Bold Frequency",
+    "description": "Depth, spice, and structure."
+  },
+  {
+    "slug": "mixlist-sharp",
+    "title": "Sharp & Steady",
+    "description": "Precision meets bold spirit."
+  },
+  {
+    "slug": "mixlist-silk",
+    "title": "Silk & Snap",
+    "description": "Smooth pear, bright citrus edge."
+  },
+  {
+    "slug": "mixlist-coast",
+    "title": "Clear Coast",
+    "description": "Crisp rum, coastal refreshment."
+  },
+  {
+    "slug": "mixlist-dusk",
+    "title": "Dusk to Agave",
+    "description": "Añejo warmth, twilight flavor."
+  },
+  {
+    "slug": "mixlist-molasses",
+    "title": "Molasses Theory",
+    "description": "Vermouth depth, layered complexity."
+  },
+  {
+    "slug": "mixlist-circuit",
+    "title": "The Bold Circuit",
+    "description": "Bourbon backbone, bright sparks."
+  },
+  {
+    "slug": "mixlist-love",
+    "title": "Love at First Sip",
+    "description": "Sparkling beginnings. A softer finish."
+  },
+  {
+    "slug": "mixlist-confessions",
+    "title": "Confessions in Glass",
+    "description": "Gin, strawberry, and secrets."
+  },
+  {
+    "slug": "mixlist-sombra",
+    "title": "Sombra & Sol",
+    "description": "Smoky mezcal, sun-kissed fruit."
+  },
+  {
+    "slug": "mixlist-flora",
+    "title": "Flora-Bitter",
+    "description": "Botanical meets bitter elegance."
+  },
+  {
+    "slug": "mixlist-punt",
+    "title": "Punt, Pass, & Pour",
+    "description": "Game day reposado ritual."
+  },
+  {
+    "slug": "mixlist-turf",
+    "title": "Turf & Tonic",
+    "description": "Bourbon plays, field-ready pours."
+  },
+  {
+    "slug": "mixlist-botanicals",
+    "title": "13 Botanicals",
+    "description": "Cynar-driven herbal depth."
+  },
+  {
+    "slug": "mixlist-summer-mocktails",
+    "title": "A Summer Mocktail Mixlist",
+    "description": "Cucumber, hibiscus and tropical refreshment."
+  },
+  {
+    "slug": "mixlist-bean-barrel",
+    "title": "Bean & Barrel",
+    "description": "Coffee, dark rum and after-dinner flavors."
+  },
+  {
+    "slug": "mixlist-zen-juniper",
+    "title": "Zen & Juniper",
+    "description": "Gin, tea and peach with a bright finish."
+  },
+  {
+    "slug": "mixlist-bean-bolt-bitter",
+    "title": "Bean, Bolt & Bitter",
+    "description": "Roasted coffee, bittersweet citrus and almond."
+  },
+  {
+    "slug": "mixlist-vermouth-valley",
+    "title": "Vermouth Valley",
+    "description": "Vodka, vermouth and botanical aperitif flavors."
+  },
+  {
+    "slug": "mixlist-boisson-non-alcoholic-agave-lover-s-mixlist",
+    "title": "Boisson Non-Alcoholic Agave Lover’s",
+    "description": "Agave-inspired favorites, without the alcohol."
+  },
+  {
+    "slug": "mixlist-the-ultra-records",
+    "title": "The Ultra Records",
+    "description": "Classic cocktails with an after-hours mood."
+  },
+  {
+    "slug": "about",
+    "title": "Good drinks. Better connections.",
+    "description": "Barsys brings an interactive cocktail bar to office gatherings in New York City."
+  },
+  {
+    "slug": "contact",
+    "title": "Tell us what you have in mind.",
+    "description": "Planning an office happy hour, client gathering or milestone in New York City?"
+  },
+  {
+    "slug": "events",
+    "title": "A little atmosphere.",
+    "description": "Real Barsys event imagery, from the existing collection."
+  },
+  {
+    "slug": "faq",
+    "title": "Before the first cheers.",
+    "description": "Answers to the essentials of planning your Barsys event."
+  }
+]

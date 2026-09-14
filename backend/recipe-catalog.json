@@ -1,0 +1,3940 @@
+{
+  "source": "BarsysEliteN / defteros read replica",
+  "checkedAt": "2026-09-09T18:52:24.944Z",
+  "menus": {
+    "signature": {
+      "id": "e0994c31-2ccc-43ab-948e-61446e12d70b",
+      "slug": "the-signature-mixlist",
+      "name": "The Signature Mixlist",
+      "compatible": true,
+      "recipes": [
+        {
+          "id": "dc37e07f-c7e2-4a92-abd4-263b29975608",
+          "name": "Margarita",
+          "ingredients": [
+            {
+              "name": "Casamigos Blanco Tequila",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Cointreau Triple Sec",
+              "amount": 22,
+              "unit": "ml"
+            },
+            {
+              "name": "Fresh Lime Juice",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Lime Wheel",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "2f4a9416-981b-4961-8602-8a1f5d5b5130",
+          "name": "Madras",
+          "ingredients": [
+            {
+              "name": "Reyka Small Batch Vodka",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Cranberry Juice",
+              "amount": 60,
+              "unit": "ml"
+            },
+            {
+              "name": "Orange Juice",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Orange Slice(s)",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Lime Wedge",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "c06a8f24-1fc1-49b9-a5a1-cff25311107e",
+          "name": "Cosmopolitan",
+          "ingredients": [
+            {
+              "name": "Reyka Small Batch Vodka",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Cointreau Triple Sec",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Cranberry Juice",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Fresh Lime Juice",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Orange Twist",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Lime Wheel",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "05017d5c-4ac1-4dee-b829-9a0c139a58b6",
+          "name": "Tequila Twilight",
+          "ingredients": [
+            {
+              "name": "Casamigos Blanco Tequila",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Cointreau Triple Sec",
+              "amount": 22,
+              "unit": "ml"
+            },
+            {
+              "name": "Cranberry Juice",
+              "amount": 60,
+              "unit": "ml"
+            },
+            {
+              "name": "Orange Slice(s)",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Cherry",
+              "amount": 2,
+              "unit": "each"
+            }
+          ]
+        }
+      ]
+    },
+    "agave": {
+      "id": "63b956bc-5325-4017-99b4-55803b564683",
+      "slug": "the-agave-lover-s-mixlist",
+      "name": "The Agave Lover's Mixlist",
+      "compatible": true,
+      "recipes": [
+        {
+          "id": "f3bd7eba-3a8f-40c5-9495-c70bea89f204",
+          "name": "Tommy’s Margarita",
+          "ingredients": [
+            {
+              "name": "Blanco Tequila",
+              "amount": 60,
+              "unit": "ml"
+            },
+            {
+              "name": "Fresh Lime Juice",
+              "amount": 22,
+              "unit": "ml"
+            },
+            {
+              "name": "Agave Syrup",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Lime Wheel",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "269b0dea-98c8-4d63-babc-6fbacb9d646d",
+          "name": "Oaxacan Gold",
+          "ingredients": [
+            {
+              "name": "Del Maguey Vida Mezcal",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Cointreau Triple Sec",
+              "amount": 22,
+              "unit": "ml"
+            },
+            {
+              "name": "Fresh Lime Juice",
+              "amount": 22,
+              "unit": "ml"
+            },
+            {
+              "name": "Agave Syrup",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Lime Twist",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "a4a46029-d341-4c47-8584-3333a5c5ea16",
+          "name": "Smoked Pina Sour",
+          "ingredients": [
+            {
+              "name": "Del Maguey Vida Mezcal",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Pineapple Juice",
+              "amount": 22,
+              "unit": "ml"
+            },
+            {
+              "name": "Fresh Lime Juice",
+              "amount": 22,
+              "unit": "ml"
+            },
+            {
+              "name": "Agave Syrup",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Grilled Pineapple Slice",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "984ef4f5-f1e0-4661-8b57-bd9c50da9427",
+          "name": "Pineapple Highball",
+          "ingredients": [
+            {
+              "name": "Blanco Tequila",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Cointreau Triple Sec",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Pineapple Juice",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Fresh Lime Juice",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Pineapple Wedge",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "b535ac5d-2889-48c4-97f6-d8df8a216bcd",
+          "name": "Mezcal Old Fashioned",
+          "ingredients": [
+            {
+              "name": "Del Maguey Vida Mezcal",
+              "amount": 60,
+              "unit": "ml"
+            },
+            {
+              "name": "Cointreau Triple Sec",
+              "amount": 8,
+              "unit": "ml"
+            },
+            {
+              "name": "Agave Syrup",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Orange Peel",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        }
+      ]
+    },
+    "fluid": {
+      "id": "44e93df8-e326-45c2-929f-761c40860c23",
+      "slug": "fluid-code",
+      "name": "Fluid Code",
+      "compatible": true,
+      "recipes": [
+        {
+          "id": "f5818ca1-c1fd-4239-9b48-a052dced52eb",
+          "name": "Velvet Purple",
+          "ingredients": [
+            {
+              "name": "Blueberry Juice",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Apple Juice",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Honey Syrup",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Lemon Juice",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Blueberries on a skewer",
+              "amount": 3,
+              "unit": "each"
+            },
+            {
+              "name": "Lemon Zest",
+              "amount": 1,
+              "unit": "pinch"
+            }
+          ]
+        },
+        {
+          "id": "813c21f7-8eaa-4a37-8c98-766a2c300b7f",
+          "name": "Solar Flare",
+          "ingredients": [
+            {
+              "name": "Passion Fruit Juice",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Apple Juice",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Apple Slice",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Ginger Beer (Top-Up)",
+              "amount": 45,
+              "unit": "ml"
+            }
+          ]
+        },
+        {
+          "id": "11ef1f58-99e5-4160-b411-f6a1719246f2",
+          "name": "Volt & Velvet",
+          "ingredients": [
+            {
+              "name": "Passion Fruit Juice",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Honey Syrup",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Lemon Juice",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Orange Twist",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Club Soda (Top-Up)",
+              "amount": 45,
+              "unit": "ml"
+            }
+          ]
+        },
+        {
+          "id": "75de5818-fe36-467c-9257-a3cc775baf35",
+          "name": "Neon Flux",
+          "ingredients": [
+            {
+              "name": "Grapefruit Juice",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Apple Juice",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Grapefruit Spiral",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "8fbb6cf8-1871-4879-afe9-802aaafa96ba",
+          "name": "Zesty Vine",
+          "ingredients": [
+            {
+              "name": "Blueberry Juice",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Grapefruit Juice",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Honey Syrup",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Grapefruit Slice",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Blueberry",
+              "amount": 2,
+              "unit": "each"
+            }
+          ]
+        }
+      ]
+    },
+    "vibrant": {
+      "id": "50feca8e-f66e-48d0-9d0b-a99fc1843d05",
+      "slug": "the-vibrant-classics-mixlist",
+      "name": "The Vibrant Classics Mixlist",
+      "compatible": true,
+      "recipes": [
+        {
+          "id": "a3f7fb42-c646-4cd3-a0ab-bade5cee8ca2",
+          "name": "Classic Daiquiri",
+          "ingredients": [
+            {
+              "name": "White Rum",
+              "amount": 60,
+              "unit": "ml"
+            },
+            {
+              "name": "Fresh Lime Juice",
+              "amount": 22,
+              "unit": "ml"
+            },
+            {
+              "name": "Simple Syrup",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Lime Wheel",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "d0e50b78-3d98-44e4-b7a5-85759351a515",
+          "name": "Bourbon Sidecar",
+          "ingredients": [
+            {
+              "name": "Bourbon Whiskey",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Cointreau Triple Sec",
+              "amount": 22,
+              "unit": "ml"
+            },
+            {
+              "name": "Fresh Lime Juice",
+              "amount": 22,
+              "unit": "ml"
+            },
+            {
+              "name": "Orange Twist",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "e2ab1b78-af97-4ece-845b-26f48958aa2a",
+          "name": "Caribbean Cooler",
+          "ingredients": [
+            {
+              "name": "White Rum",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Cointreau Triple Sec",
+              "amount": 22,
+              "unit": "ml"
+            },
+            {
+              "name": "Fresh Lime Juice",
+              "amount": 22,
+              "unit": "ml"
+            },
+            {
+              "name": "Simple Syrup",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Lime Wedge",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "bf8a18b8-d325-4149-8674-1beb8bff7997",
+          "name": "Manhattan Twist",
+          "ingredients": [
+            {
+              "name": "Bourbon Whiskey",
+              "amount": 60,
+              "unit": "ml"
+            },
+            {
+              "name": "Foro Rosso Vermouth di Torino",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Cointreau Triple Sec",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Orange Twist",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        }
+      ]
+    },
+    "neon": {
+      "id": "a8a0c39a-783c-4450-aa49-d45a8072857e",
+      "slug": "neon-shadows",
+      "name": "Neon Shadows",
+      "compatible": true,
+      "recipes": [
+        {
+          "id": "225e7598-b518-448e-90e5-e202d73cd5e3",
+          "name": "Velvet Arctic",
+          "ingredients": [
+            {
+              "name": "Ketel One Vodka",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Creme de Menthe",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Honey Syrup",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Lime Wheel",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Mint Sprig",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "40234034-1a1c-49e9-bd00-1f3b40cbd792",
+          "name": "Sunset over Milan",
+          "ingredients": [
+            {
+              "name": "Ketel One Vodka",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Aperol",
+              "amount": 22,
+              "unit": "ml"
+            },
+            {
+              "name": "Pineapple Juice",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Grapefruit Slice",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Pineapple Leaf",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Grapefruit Soda (Top-Up)",
+              "amount": 60,
+              "unit": "ml"
+            }
+          ]
+        },
+        {
+          "id": "3e231ad0-926a-4cc0-9544-03275e8fc555",
+          "name": "Minted Gold",
+          "ingredients": [
+            {
+              "name": "Ketel One Vodka",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Creme de Menthe",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Honey Syrup",
+              "amount": 22,
+              "unit": "ml"
+            },
+            {
+              "name": "Lime Wheel",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Ginger Beer (Top-Up)",
+              "amount": 45,
+              "unit": "ml"
+            }
+          ]
+        },
+        {
+          "id": "92442f7d-2cff-4864-9c23-1f2df7808d31",
+          "name": "Ginger Tropics",
+          "ingredients": [
+            {
+              "name": "Ketel One Vodka",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Pineapple Juice",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Lime Juice",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Lime Zest",
+              "amount": 1,
+              "unit": "pinch"
+            },
+            {
+              "name": "Ginger Beer (Top-Up)",
+              "amount": 30,
+              "unit": "ml"
+            }
+          ]
+        },
+        {
+          "id": "14396a2e-f0dd-4e35-9572-3339034b4abe",
+          "name": "Honeyed Mint Cooler",
+          "ingredients": [
+            {
+              "name": "Ketel One Vodka",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Creme de Menthe",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Honey Syrup",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Lime Peel",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Mint Sprig",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Grapefruit Soda (Top-Up)",
+              "amount": 45,
+              "unit": "ml"
+            }
+          ]
+        }
+      ]
+    },
+    "bold-frequency": {
+      "id": "a565e59a-10f7-4600-b527-71ccc7c1e9d0",
+      "slug": "bold-frequency",
+      "name": "Bold Frequency",
+      "compatible": true,
+      "recipes": [
+        {
+          "id": "7cf31f3f-0966-48c5-a11d-dccb78b28025",
+          "name": "Iron Harvest",
+          "ingredients": [
+            {
+              "name": "Bulleit Rye",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Cynar",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Apple Cider",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Maple Syrup",
+              "amount": 8,
+              "unit": "ml"
+            },
+            {
+              "name": "Charred Apple Wedge",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Lemon Wedge",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "16012248-ad93-47ff-adff-f38ec90a7cac",
+          "name": "Blood & Brine",
+          "ingredients": [
+            {
+              "name": "Bulleit Rye",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Cynar",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Blood Orange Juice",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Orange Wheel",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "d9047071-37eb-4387-8e2a-6fbac0f4b819",
+          "name": "The Maple Ledger",
+          "ingredients": [
+            {
+              "name": "Bulleit Rye",
+              "amount": 60,
+              "unit": "ml"
+            },
+            {
+              "name": "Maple Syrup",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Lemon Juice",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Lemon Peel",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Cinnamon Powder",
+              "amount": 2,
+              "unit": "dash"
+            }
+          ]
+        },
+        {
+          "id": "1991cb6b-42b4-45f2-9bda-9d130c851ba8",
+          "name": "The Flux Old Fashioned",
+          "ingredients": [
+            {
+              "name": "Bulleit Rye",
+              "amount": 60,
+              "unit": "ml"
+            },
+            {
+              "name": "Cynar",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Maple Syrup",
+              "amount": 8,
+              "unit": "ml"
+            },
+            {
+              "name": "Orange Twist",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        }
+      ]
+    },
+    "sharp": {
+      "id": "396e1d04-e95d-4e02-8592-5549980433a9",
+      "slug": "sharp-steady",
+      "name": "Sharp & Steady",
+      "compatible": true,
+      "recipes": [
+        {
+          "id": "f0ac8a5a-c68a-48a2-a344-5a7bbace9dc7",
+          "name": "Velvet Sting",
+          "ingredients": [
+            {
+              "name": "Tequila",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Lemon Juice",
+              "amount": 22,
+              "unit": "ml"
+            },
+            {
+              "name": "Maple Syrup",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Grapefruit Slice",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "3bc1631d-15b9-4b2b-82a2-3a7734b7289c",
+          "name": "Green Alchemy",
+          "ingredients": [
+            {
+              "name": "Vodka",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Absinthe",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Lemon Juice",
+              "amount": 22,
+              "unit": "ml"
+            },
+            {
+              "name": "Maple Syrup",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Lemon Zest",
+              "amount": 2,
+              "unit": "pinch"
+            }
+          ]
+        },
+        {
+          "id": "ae2443f8-ec54-49cd-9231-95b91941aaf8",
+          "name": "Maple Mule",
+          "ingredients": [
+            {
+              "name": "Bourbon Whiskey",
+              "amount": 60,
+              "unit": "ml"
+            },
+            {
+              "name": "Lemon Juice",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Lemon Wedge",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Ginger Julienne",
+              "amount": 2,
+              "unit": "each"
+            },
+            {
+              "name": "Ginger Beer (Top-Up)",
+              "amount": 45,
+              "unit": "ml"
+            }
+          ]
+        },
+        {
+          "id": "cf3f7e81-2f21-42ef-9bda-e1bac9a63f06",
+          "name": "Bitter Halo",
+          "ingredients": [
+            {
+              "name": "Tequila",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Absinthe",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Lemon Juice",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Lemon Wheel",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        }
+      ]
+    },
+    "silk": {
+      "id": "fd941227-a34e-4877-96fe-585e1e1a5b47",
+      "slug": "silk-snap",
+      "name": "Silk & Snap",
+      "compatible": false,
+      "recipes": [
+        {
+          "id": "4d230326-94a3-4f31-ac12-0c3118cb572d",
+          "name": "Spiced Orchard Mule",
+          "ingredients": [
+            {
+              "name": "Pear Flavored Vodka",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Vanilla Sugar",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Lemon Wheel",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Ginger Beer (Top-Up)",
+              "amount": 45,
+              "unit": "ml"
+            }
+          ]
+        },
+        {
+          "id": "fef0e19c-fdcf-4eec-b873-9c52e3bf5c14",
+          "name": "Pear-Peach Silk",
+          "ingredients": [
+            {
+              "name": "Pear Flavored Vodka",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Peach Schnapps",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Lemon Juice",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Pear Slice(s)",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "3cef461e-471d-4036-9d3b-1d97a7ff2cb9",
+          "name": "Pear & Orange Smash",
+          "ingredients": [
+            {
+              "name": "Pear Flavored Vodka",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Cointreau Triple Sec",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Lemon Juice",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Lemon Wedge",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "738d2042-20e4-439f-874e-95a0dd6f574d",
+          "name": "Velvet Pomelo",
+          "ingredients": [
+            {
+              "name": "Pear Flavored Vodka",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Peach Schnapps",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Apricot Liqueur",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Grapefruit Wedge",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Grapefruit Soda (Top-Up)",
+              "amount": 45,
+              "unit": "ml"
+            }
+          ]
+        },
+        {
+          "id": "58543afa-3574-4509-8c5a-2e483c8c41ca",
+          "name": "Pristine Martini",
+          "ingredients": [
+            {
+              "name": "Pear Flavored Vodka",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Cointreau Triple Sec",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Apricot Liqueur",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Vanilla Syrup",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Lemon Twist",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Pear Chunk(s)",
+              "amount": 2,
+              "unit": "each"
+            }
+          ]
+        }
+      ]
+    },
+    "coast": {
+      "id": "d7ec9cbd-4725-409b-b6d8-4193bf7f9ff2",
+      "slug": "clear-coast",
+      "name": "Clear Coast",
+      "compatible": true,
+      "recipes": [
+        {
+          "id": "4be135cf-2aae-41de-8239-dc225d34969d",
+          "name": "Steeped Island",
+          "ingredients": [
+            {
+              "name": "Bacardí Superior White Rum",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Iced Tea",
+              "amount": 60,
+              "unit": "ml"
+            },
+            {
+              "name": "Simple Syrup",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Lime Peel",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "ea3a1b2c-c638-41f0-a685-899969bdaff9",
+          "name": "Velvet Reef",
+          "ingredients": [
+            {
+              "name": "Bacardí Superior White Rum",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Coconut Water",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Lime Juice",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Lime Zest",
+              "amount": 2,
+              "unit": "pinch"
+            },
+            {
+              "name": "Coconut Cubes",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "72230396-5b5b-4233-897c-db30c258d12b",
+          "name": "Ruby Spice Mule",
+          "ingredients": [
+            {
+              "name": "Bacardí Superior White Rum",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Cranberry Juice",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Lime Wedge",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Ginger Beer (Top-Up)",
+              "amount": 45,
+              "unit": "ml"
+            }
+          ]
+        },
+        {
+          "id": "9e17f187-d04c-414b-afc2-fd41741c66b1",
+          "name": "Carbon Blush",
+          "ingredients": [
+            {
+              "name": "Bacardí Superior White Rum",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Cranberry Juice",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Lemon Peel",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Grapefruit Soda (Top-Up)",
+              "amount": 60,
+              "unit": "ml"
+            }
+          ]
+        }
+      ]
+    },
+    "dusk": {
+      "id": "53ab115f-8087-40f8-a699-3611a0af9196",
+      "slug": "dusk-to-agave",
+      "name": "Dusk to Agave",
+      "compatible": true,
+      "recipes": [
+        {
+          "id": "ccf1868f-6464-4cf7-a8b9-f2008979938a",
+          "name": "Paloma Gold",
+          "ingredients": [
+            {
+              "name": "Teremana Añejo Tequila",
+              "amount": 50,
+              "unit": "ml"
+            },
+            {
+              "name": "Agave Syrup",
+              "amount": 10,
+              "unit": "ml"
+            },
+            {
+              "name": "Grapefruit Slice",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Grapefruit Soda (Top-Up)",
+              "amount": 45,
+              "unit": "ml"
+            }
+          ]
+        },
+        {
+          "id": "cef14259-128a-44a2-8f18-13b5f42a4a6d",
+          "name": "Orchard Spice Highball",
+          "ingredients": [
+            {
+              "name": "Teremana Añejo Tequila",
+              "amount": 50,
+              "unit": "ml"
+            },
+            {
+              "name": "Apple Juice",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Ginger Beer (Top-Up)",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Apple Fan",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "c1f37c79-ba54-4bd8-aaf0-8aba634b95f4",
+          "name": "Obsidian Sipper",
+          "ingredients": [
+            {
+              "name": "Teremana Añejo Tequila",
+              "amount": 60,
+              "unit": "ml"
+            },
+            {
+              "name": "Cherry Juice",
+              "amount": 20,
+              "unit": "ml"
+            },
+            {
+              "name": "Agave Syrup",
+              "amount": 10,
+              "unit": "ml"
+            },
+            {
+              "name": "Lime Wheel",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Cherry Skewer",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "c39de503-6703-40db-bb57-cf378f1e13b6",
+          "name": "Jalisco Manhattan",
+          "ingredients": [
+            {
+              "name": "Teremana Añejo Tequila",
+              "amount": 50,
+              "unit": "ml"
+            },
+            {
+              "name": "Sweet Vermouth",
+              "amount": 25,
+              "unit": "ml"
+            },
+            {
+              "name": "Lime Juice",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Lime Peel Twist",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "1336877d-31ee-41a6-b061-d6e7a97ac9d2",
+          "name": "Cherry-Apple Cobbler",
+          "ingredients": [
+            {
+              "name": "Teremana Añejo Tequila",
+              "amount": 40,
+              "unit": "ml"
+            },
+            {
+              "name": "Cherry Juice",
+              "amount": 20,
+              "unit": "ml"
+            },
+            {
+              "name": "Apple Juice",
+              "amount": 20,
+              "unit": "ml"
+            },
+            {
+              "name": "Apple Slice",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Cherry",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        }
+      ]
+    },
+    "molasses": {
+      "id": "953e677a-a367-4adb-91ed-59a448866efa",
+      "slug": "molasses-theory",
+      "name": "Molasses Theory",
+      "compatible": true,
+      "recipes": [
+        {
+          "id": "9a4d3d69-8b7d-430c-9573-cc17b048be53",
+          "name": "Tropical Resonance",
+          "ingredients": [
+            {
+              "name": "Foro Rosso Vermouth di Torino",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Pineapple Juice",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Lemon Juice",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Maple Syrup",
+              "amount": 8,
+              "unit": "ml"
+            },
+            {
+              "name": "Pineapple Ring",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Cinnamon Dusting",
+              "amount": 2,
+              "unit": "pinch"
+            }
+          ]
+        },
+        {
+          "id": "26ead51f-3d6c-4e2c-871b-644b64253716",
+          "name": "Lunar Gloss",
+          "ingredients": [
+            {
+              "name": "Foro Rosso Vermouth di Torino",
+              "amount": 60,
+              "unit": "ml"
+            },
+            {
+              "name": "Maple Syrup",
+              "amount": 22,
+              "unit": "ml"
+            },
+            {
+              "name": "Cherry Juice",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Lemon Peel",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "a0e7275c-f726-4398-9858-a2f0f7f90283",
+          "name": "The Static Pulse",
+          "ingredients": [
+            {
+              "name": "Foro Rosso Vermouth di Torino",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Dark Rum",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Pineapple Juice",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Lemon Juice",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Lemon Zest",
+              "amount": 2,
+              "unit": "pinch"
+            },
+            {
+              "name": "Cherry",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "aa3f5ebc-086b-4d51-a3c2-ae356752341f",
+          "name": "Pure Signal",
+          "ingredients": [
+            {
+              "name": "Foro Rosso Vermouth di Torino",
+              "amount": 60,
+              "unit": "ml"
+            },
+            {
+              "name": "Lemon Juice",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Cherry Juice",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Long lemon ribbon",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "f8bdab44-4a85-456b-9a06-5f3e289ef812",
+          "name": "Kinetic Amber",
+          "ingredients": [
+            {
+              "name": "Foro Rosso Vermouth di Torino",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Dark Rum",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Pineapple Juice",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Pineapple Wedge",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        }
+      ]
+    },
+    "circuit": {
+      "id": "c63f60ce-9258-4cf1-9570-958661245880",
+      "slug": "the-bold-circuit",
+      "name": "The Bold Circuit",
+      "compatible": true,
+      "recipes": [
+        {
+          "id": "cf142776-674b-4498-b9ed-72cc6fd8e0d3",
+          "name": "Midnight Tea",
+          "ingredients": [
+            {
+              "name": "Bulleit Bourbon",
+              "amount": 60,
+              "unit": "ml"
+            },
+            {
+              "name": "Chilled Green Tea",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Simple Syrup",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Long lemon ribbon",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "7012c88c-097f-4966-99fe-c26b0e224b76",
+          "name": "Amber Flare",
+          "ingredients": [
+            {
+              "name": "Bulleit Bourbon",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Cointreau Triple Sec",
+              "amount": 22,
+              "unit": "ml"
+            },
+            {
+              "name": "Lemon Juice",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Orange Wheel",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "45f45bf1-2b71-4cdd-becd-c4ce29784cf8",
+          "name": "Green Harvest",
+          "ingredients": [
+            {
+              "name": "Bulleit Bourbon",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Chilled Green Tea",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Apple Juice",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Apple Disc",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Lemon Zest",
+              "amount": 1,
+              "unit": "pinch"
+            }
+          ]
+        },
+        {
+          "id": "37ae3f5a-db34-48ee-b560-cf1eb23d457d",
+          "name": "Cointreau Carriage",
+          "ingredients": [
+            {
+              "name": "Bulleit Bourbon",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Cointreau Triple Sec",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Lemon Juice",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Simple Syrup",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Lemon Wheel",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        }
+      ]
+    },
+    "love": {
+      "id": "89fb7b48-c967-4430-bbbe-582f48f1b223",
+      "slug": "love-at-first-sip",
+      "name": "Love at First Sip",
+      "compatible": false,
+      "recipes": [
+        {
+          "id": "565a23e6-ab55-4618-9f5e-274aaafc2bd5",
+          "name": "Cupid’s Spark",
+          "ingredients": [
+            {
+              "name": "Vodka",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Limoncello",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Cranberry Juice",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Lemon Heart Peel",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Prosecco (Top-Up)",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Red Sprinkle Rim",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "598eca7e-7c33-42b9-bac2-c8a18d13d7c2",
+          "name": "Venetian Valentine",
+          "ingredients": [
+            {
+              "name": "Vodka",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Rosé Wine",
+              "amount": 60,
+              "unit": "ml"
+            },
+            {
+              "name": "Limoncello",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Rose Petal",
+              "amount": 5,
+              "unit": "each"
+            },
+            {
+              "name": "Club Soda (Top-Up)",
+              "amount": 45,
+              "unit": "ml"
+            }
+          ]
+        },
+        {
+          "id": "f0c7f737-5e47-485a-86fa-ec7647b9a754",
+          "name": "Love Note",
+          "ingredients": [
+            {
+              "name": "Vodka",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Cranberry Juice",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Honey Syrup",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Dried Cranberries",
+              "amount": 3,
+              "unit": "each"
+            },
+            {
+              "name": "Orange Peel",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Prosecco (Top-Up)",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "White Sugar Rim",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "b6d161fe-764a-4cb3-bbcb-ab87cdc0de63",
+          "name": "Cupid’s Whisper",
+          "ingredients": [
+            {
+              "name": "Vodka",
+              "amount": 60,
+              "unit": "ml"
+            },
+            {
+              "name": "White Chocolate Liqueur",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Heavy Cream",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Rose Syrup",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Edible Rose Petal",
+              "amount": 2,
+              "unit": "each"
+            },
+            {
+              "name": "Dark Chocolate Rim",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "a0783d13-0d1a-4329-9525-a98f8ac8e50c",
+          "name": "Kiss from a Rose",
+          "ingredients": [
+            {
+              "name": "Vodka",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Chocolate Liqueur",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Heavy Cream",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Rose Syrup",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Chocolate Dipped Strawberry",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Toasted Marshmallow",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        }
+      ]
+    },
+    "confessions": {
+      "id": "91ab2a56-eee8-48c7-b908-f998b191b96b",
+      "slug": "confessions-in-glass",
+      "name": "Confessions in Glass",
+      "compatible": true,
+      "recipes": [
+        {
+          "id": "b146aaa1-0ea6-4b2c-a230-ddc8ca9b7661",
+          "name": "Velvet Rose",
+          "ingredients": [
+            {
+              "name": "Sipsmith London Dry Gin",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Strawberry Syrup",
+              "amount": 22,
+              "unit": "ml"
+            },
+            {
+              "name": "Lime Juice",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Rose Petal",
+              "amount": 5,
+              "unit": "each"
+            },
+            {
+              "name": "Sliced Strawberry",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "60729eae-ff95-4942-838d-575e3436944c",
+          "name": "Sparkling Bouquet",
+          "ingredients": [
+            {
+              "name": "Sipsmith London Dry Gin",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Strawberry Syrup",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Simple Syrup",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Prosecco (Top-Up)",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Heart Shaped Orange Peel",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "ccb125fa-4f34-4628-ba16-2cfbba6711b2",
+          "name": "Cocoa-Berry",
+          "ingredients": [
+            {
+              "name": "Sipsmith London Dry Gin",
+              "amount": 38,
+              "unit": "ml"
+            },
+            {
+              "name": "Creme De Noyaux",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Strawberry Syrup",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Strawberry halves",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Club Soda (Top-Up)",
+              "amount": 60,
+              "unit": "ml"
+            }
+          ]
+        },
+        {
+          "id": "66b4e528-c198-4394-9003-7ed37033d201",
+          "name": "Passionate Heart",
+          "ingredients": [
+            {
+              "name": "Sipsmith London Dry Gin",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Cointreau Triple Sec",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Strawberry Syrup",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Lime Juice",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Sliced Strawberry",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Orange Slice(s)",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "99dfb7c6-2e9d-4cc1-8536-eb0f578791e6",
+          "name": "Secret Admirer",
+          "ingredients": [
+            {
+              "name": "Sipsmith London Dry Gin",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Cointreau Triple Sec",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Creme De Noyaux",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Simple Syrup",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Orange Twist",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Prosecco (Top-Up)",
+              "amount": 45,
+              "unit": "ml"
+            }
+          ]
+        }
+      ]
+    },
+    "sombra": {
+      "id": "e10f5403-34f7-414f-920a-8b90e83f6169",
+      "slug": "sombra-sol",
+      "name": "Sombra & Sol",
+      "compatible": true,
+      "recipes": [
+        {
+          "id": "918abe09-b6d1-4107-8233-9ae5d6f752ea",
+          "name": "Desert Smoke",
+          "ingredients": [
+            {
+              "name": "Del Maguey Vida Mezcal",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Watermelon Juice",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Lime Juice",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Salt Chilli Rim",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Watermelon Wedge",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "79291192-3a12-46f7-8de0-0a57c754624b",
+          "name": "Painted Desert",
+          "ingredients": [
+            {
+              "name": "Del Maguey Vida Mezcal",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Teremana Tequila Blanco",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Watermelon Juice",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Agave Syrup",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Lime Twist",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "7e8bc5e8-5482-4c38-aa42-9f16b704b6b2",
+          "name": "Smoldering Citrus",
+          "ingredients": [
+            {
+              "name": "Del Maguey Vida Mezcal",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Blood Orange Juice",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Agave Syrup",
+              "amount": 8,
+              "unit": "ml"
+            },
+            {
+              "name": "Orange Wheel",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Burnt Rosemary Sprig",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "1a6f3f97-f837-4afc-a7b7-3b8569c772bb",
+          "name": "Smoky Lime",
+          "ingredients": [
+            {
+              "name": "Teremana Tequila Blanco",
+              "amount": 60,
+              "unit": "ml"
+            },
+            {
+              "name": "Lime Juice",
+              "amount": 22,
+              "unit": "ml"
+            },
+            {
+              "name": "Agave Syrup",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Lime Wheel",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Black Lava Salt Rim",
+              "amount": 0.5,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "8cba1cad-5662-4f93-9950-df41c476b63f",
+          "name": "Fire & Fruit",
+          "ingredients": [
+            {
+              "name": "Teremana Tequila Blanco",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Blood Orange Juice",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Lime Juice",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Agave Syrup",
+              "amount": 22,
+              "unit": "ml"
+            }
+          ]
+        }
+      ]
+    },
+    "flora": {
+      "id": "8d69d414-8464-4ee1-996e-2c06fe2d7081",
+      "slug": "flora-bitter",
+      "name": "Flora-Bitter",
+      "compatible": true,
+      "recipes": [
+        {
+          "id": "d6ffa01d-9dbe-4d91-881e-81f2c6ba7266",
+          "name": "Flora-Glow",
+          "ingredients": [
+            {
+              "name": "Reyka Small Batch Vodka",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Elderflower Liqueur",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Maple Syrup",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Lemon Juice",
+              "amount": 22,
+              "unit": "ml"
+            },
+            {
+              "name": "Lemon Peel",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Pomegranate Seed",
+              "amount": 3,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "0025561a-f526-4e57-955f-bbb0e3128dd9",
+          "name": "Bitter Side",
+          "ingredients": [
+            {
+              "name": "Campari",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Pomegranate Juice",
+              "amount": 60,
+              "unit": "ml"
+            },
+            {
+              "name": "Lemon Juice",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Lemon Twist",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Mint Sprig",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Soda (Top-Up)",
+              "amount": 45,
+              "unit": "ml"
+            }
+          ]
+        },
+        {
+          "id": "46ae7c9c-6192-47fd-b078-c8863ca7b4ea",
+          "name": "Floral Negroni",
+          "ingredients": [
+            {
+              "name": "Reyka Small Batch Vodka",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Elderflower Liqueur",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Campari",
+              "amount": 21,
+              "unit": "ml"
+            },
+            {
+              "name": "Orange Peel",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Soda (Top-Up)",
+              "amount": 45,
+              "unit": "ml"
+            }
+          ]
+        },
+        {
+          "id": "1829c154-16aa-4ecb-a932-5b4785d347b6",
+          "name": "North Star",
+          "ingredients": [
+            {
+              "name": "Campari",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Elderflower Liqueur",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Maple Syrup",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Orange Peel",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Star Anise Pod",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Soda (Top-Up)",
+              "amount": 45,
+              "unit": "ml"
+            }
+          ]
+        }
+      ]
+    },
+    "punt": {
+      "id": "b704c89a-0932-4f37-9584-4b29c8b04855",
+      "slug": "punt-pass-pour",
+      "name": "Punt, Pass, & Pour",
+      "compatible": true,
+      "recipes": [
+        {
+          "id": "ac152eab-2431-41e7-9998-b82c874218b8",
+          "name": "Coin Toss",
+          "ingredients": [
+            {
+              "name": "Teremana Tequila Reposado",
+              "amount": 60,
+              "unit": "ml"
+            },
+            {
+              "name": "Watermelon Juice",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Agave Syrup",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Lime Wheel",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "e85ee24d-bcf6-46e9-8363-24beb0051010",
+          "name": "Pocket Protector",
+          "ingredients": [
+            {
+              "name": "Teremana Tequila Reposado",
+              "amount": 60,
+              "unit": "ml"
+            },
+            {
+              "name": "Blueberry Syrup",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Lime Juice",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Blueberry",
+              "amount": 3,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "27702ef6-44ad-4db5-be4c-e86044cdaa31",
+          "name": "Wide Receiver",
+          "ingredients": [
+            {
+              "name": "Teremana Tequila Reposado",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Watermelon Juice",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Grapefruit Soda (Top-Up)",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Lemon Slice(s)",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "cda0312a-f388-4c3b-8f31-7c9e3c95c3e4",
+          "name": "Blindside Blitz",
+          "ingredients": [
+            {
+              "name": "Teremana Tequila Reposado",
+              "amount": 60,
+              "unit": "ml"
+            },
+            {
+              "name": "Lime Juice",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Ginger Beer (Top-Up)",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Lime Wheel",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Mint Sprig",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "5cccdaf4-27e4-4468-a372-80ddcf0a6c77",
+          "name": "Two-Point Conversion",
+          "ingredients": [
+            {
+              "name": "Teremana Tequila Reposado",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Pineapple Juice",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Watermelon Juice",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Lime Juice",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Agave Syrup",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Pineapple Wedge",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        }
+      ]
+    },
+    "turf": {
+      "id": "94ef4e56-b2ad-45b1-9d32-168d6e065ce0",
+      "slug": "turf-tonic",
+      "name": "Turf & Tonic",
+      "compatible": true,
+      "recipes": [
+        {
+          "id": "e46d994e-eaf6-461e-b579-510cb3002235",
+          "name": "Red Zone",
+          "ingredients": [
+            {
+              "name": "Bulleit Bourbon",
+              "amount": 60,
+              "unit": "ml"
+            },
+            {
+              "name": "Cherry Juice",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Maple Syrup",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Cherry",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "adb5f538-9a8e-4b1a-9a95-d55d0669ef65",
+          "name": "Gridiron Fizz",
+          "ingredients": [
+            {
+              "name": "Bulleit Bourbon",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Lemon Juice",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Orgeat Syrup",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Lemon Wheel",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Club Soda (Top-Up)",
+              "amount": 45,
+              "unit": "ml"
+            }
+          ]
+        },
+        {
+          "id": "168ea3f6-3269-429b-98cf-9619c4a9c611",
+          "name": "Halftime Green Tea",
+          "ingredients": [
+            {
+              "name": "Bulleit Bourbon",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Chilled Green Tea",
+              "amount": 60,
+              "unit": "ml"
+            },
+            {
+              "name": "Lemon Juice",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Mint Sprig",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Lime Wheel",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "dbae85e0-20df-423e-bfde-dbb524935ded",
+          "name": "Ruby Scrimmage",
+          "ingredients": [
+            {
+              "name": "Bulleit Bourbon",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Lemon Juice",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Lemon Wedge",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Grapefruit Soda (Top-Up)",
+              "amount": 45,
+              "unit": "ml"
+            }
+          ]
+        },
+        {
+          "id": "95a1abc0-1f0b-40f0-a552-664fff61f521",
+          "name": "Almond Field Goal",
+          "ingredients": [
+            {
+              "name": "Bulleit Bourbon",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Orgeat Syrup",
+              "amount": 22,
+              "unit": "ml"
+            },
+            {
+              "name": "Lemon Juice",
+              "amount": 22,
+              "unit": "ml"
+            },
+            {
+              "name": "Almond Flakes",
+              "amount": 1,
+              "unit": "pinch"
+            }
+          ]
+        },
+        {
+          "id": "731dd9e1-421c-4352-8158-1aa0f15d7bdc",
+          "name": "Fullback",
+          "ingredients": [
+            {
+              "name": "Bulleit Bourbon",
+              "amount": 60,
+              "unit": "ml"
+            },
+            {
+              "name": "Maple Syrup",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Orgeat Syrup",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Orange Wedge",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        }
+      ]
+    },
+    "botanicals": {
+      "id": "2d96468c-a526-44f4-832c-7677e5633fd4",
+      "slug": "13-botanicals",
+      "name": "13 Botanicals",
+      "compatible": true,
+      "recipes": [
+        {
+          "id": "1f06a8e3-1da6-4a8a-b932-85945c97394a",
+          "name": "Venetian Brandy",
+          "ingredients": [
+            {
+              "name": "Brandy",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Cynar",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Dry Vermouth",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Orange Peel",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "c820d79c-574e-4876-b24e-f57575327e71",
+          "name": "Artichoke Martini",
+          "ingredients": [
+            {
+              "name": "Cynar",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Dry Vermouth",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Olive(s)",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Orange Zest",
+              "amount": 2,
+              "unit": "pinch"
+            }
+          ]
+        },
+        {
+          "id": "9bc9cb7a-7b19-437c-b993-693ed413d75a",
+          "name": "Sour Monk",
+          "ingredients": [
+            {
+              "name": "Brandy",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Cynar",
+              "amount": 22,
+              "unit": "ml"
+            },
+            {
+              "name": "Lemon Juice",
+              "amount": 22,
+              "unit": "ml"
+            },
+            {
+              "name": "Simple Syrup",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Mint Sprig",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Lemon Wedge",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "b05824a5-778a-469a-b7b3-eaf35683c46c",
+          "name": "The Golden Bitter",
+          "ingredients": [
+            {
+              "name": "Brandy",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Cynar",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Orange Juice",
+              "amount": 22,
+              "unit": "ml"
+            },
+            {
+              "name": "Simple Syrup",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Orange Wheel",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Star Anise(s)",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "dbdc3f9a-0a37-4f74-b354-2e307afadf87",
+          "name": "The Dry Side",
+          "ingredients": [
+            {
+              "name": "Cynar",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Dry Vermouth",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Lemon Juice",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Lemon Twist",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        }
+      ]
+    },
+    "summer-mocktails": {
+      "id": "793b842e-4c1e-474c-9d6e-109f261cbfc9",
+      "slug": "a-summer-mocktail-mixlist",
+      "name": "A Summer Mocktail Mixlist",
+      "compatible": true,
+      "recipes": [
+        {
+          "id": "a2e63a8a-6f22-411b-bb5b-bf5b3ad63618",
+          "name": "Cucumber Crush",
+          "ingredients": [
+            {
+              "name": "Cucumber Juice",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Lime Juice",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Ginger Syrup",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Cucumber Ribbon",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Mint Sprig",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "f7f23d28-9bf9-4010-af4f-4016de155998",
+          "name": "Tropical Calm",
+          "ingredients": [
+            {
+              "name": "Pineapple Juice",
+              "amount": 45,
+              "unit": "ml"
+            },
+            {
+              "name": "Coconut Water",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Lime Juice",
+              "amount": 15,
+              "unit": "ml"
+            },
+            {
+              "name": "Pineapple Wedge",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Edible Flower",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "86a1107b-0888-484b-9eaf-a26d1cdae86b",
+          "name": "Hibiscus Highball",
+          "ingredients": [
+            {
+              "name": "Hibiscus Syrup",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Lime Juice",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Coconut Water",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Dehydrated Lime Wheel",
+              "amount": 1,
+              "unit": "each"
+            },
+            {
+              "name": "Hibiscus Flower",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "id": "32406420-d0cd-45d0-8755-0716daec77fb",
+          "name": "Zen Island Sour",
+          "ingredients": [
+            {
+              "name": "Lime Juice",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Hibiscus Syrup",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Pineapple Juice",
+              "amount": 30,
+              "unit": "ml"
+            },
+            {
+              "name": "Lime Wheel",
+              "amount": 1,
+              "unit": "each"
+            }
+          ]
+        }
+      ]
+    },
+    "bean-barrel": {
+      "id": "bean-barrel",
+      "slug": "bean-barrel",
+      "name": "Bean & Barrel",
+      "compatible": null,
+      "source": "Official Barsys public recipe pages; not verified against source CMS",
+      "recipes": [
+        {
+          "id": "bean-barrel-published-0",
+          "name": "Black Tide",
+          "ingredients": [
+            {
+              "name": "Mr. Black Coffee Liqueur",
+              "amount": 44.36,
+              "unit": "ml"
+            },
+            {
+              "name": "dark rum",
+              "amount": 29.574,
+              "unit": "ml"
+            },
+            {
+              "name": "simple syrup",
+              "amount": 14.787,
+              "unit": "ml"
+            }
+          ],
+          "reviewRequired": true,
+          "sourceUrl": "https://barsys.com/recipe/black-tide",
+          "reviewNote": "Published recipe draft. Confirm 360 service, brands, all garnishes and unmeasured top-ups before approving. Liquid oz converted using 29.5735295625 ml per US fl oz. Published ingredient notes: For one Black Tide Cocktail: 1.5 oz Mr. Black Coffee Liqueur 1 oz dark rum 0.5 oz simple syrup Optional garnish: Cocoa powder and three coffee beans Pro tip: Chill the glass well - temperature keeps the drink tight and focused."
+        },
+        {
+          "id": "bean-barrel-published-1",
+          "name": "Buttery Brew",
+          "ingredients": [
+            {
+              "name": "Mr. Black Coffee Liqueur",
+              "amount": 44.36,
+              "unit": "ml"
+            },
+            {
+              "name": "butterscotch schnapps",
+              "amount": 29.574,
+              "unit": "ml"
+            },
+            {
+              "name": "dark rum",
+              "amount": 14.787,
+              "unit": "ml"
+            }
+          ],
+          "reviewRequired": true,
+          "sourceUrl": "https://barsys.com/recipe/buttery-brew",
+          "reviewNote": "Published recipe draft. Confirm 360 service, brands, all garnishes and unmeasured top-ups before approving. Liquid oz converted using 29.5735295625 ml per US fl oz. Published ingredient notes: For one Buttery Brew Cocktail: 1.5 oz Mr. Black Coffee Liqueur 1 oz butterscotch schnapps 0.5 oz dark rum Ice cubes Optional garnish: Flamed star anise and coffee beans Pro tip: Flame the star anise briefly - aroma is key, not char."
+        },
+        {
+          "id": "bean-barrel-published-2",
+          "name": "Dark & Minty",
+          "ingredients": [
+            {
+              "name": "Mr. Black Coffee Liqueur",
+              "amount": 59.147,
+              "unit": "ml"
+            },
+            {
+              "name": "peppermint schnapps",
+              "amount": 14.787,
+              "unit": "ml"
+            },
+            {
+              "name": "dark rum",
+              "amount": 14.787,
+              "unit": "ml"
+            }
+          ],
+          "reviewRequired": true,
+          "sourceUrl": "https://barsys.com/recipe/dark-minty",
+          "reviewNote": "Published recipe draft. Confirm 360 service, brands, all garnishes and unmeasured top-ups before approving. Liquid oz converted using 29.5735295625 ml per US fl oz. Published ingredient notes: For one Dark & Minty Cocktail: 2 oz Mr. Black Coffee Liqueur 0.5 oz peppermint schnapps 0.5 oz dark rum Ice cubes Optional garnish: Lemon wedge and Club soda (to top) Pro tip: Keep the peppermint restrained - it should cool the coffee, not turn it into candy."
+        },
+        {
+          "id": "bean-barrel-published-3",
+          "name": "Roasted Jaffa",
+          "ingredients": [
+            {
+              "name": "Mr. Black Coffee Liqueur",
+              "amount": 44.36,
+              "unit": "ml"
+            },
+            {
+              "name": "dark rum",
+              "amount": 29.574,
+              "unit": "ml"
+            },
+            {
+              "name": "orange juice",
+              "amount": 29.574,
+              "unit": "ml"
+            }
+          ],
+          "reviewRequired": true,
+          "sourceUrl": "https://barsys.com/recipe/roasted-jaffa",
+          "reviewNote": "Published recipe draft. Confirm 360 service, brands, all garnishes and unmeasured top-ups before approving. Liquid oz converted using 29.5735295625 ml per US fl oz. Published ingredient notes: For one Roasted Jaffa Cocktail: 1.5 oz Mr. Black Coffee Liqueur 1 oz dark rum 1 oz orange juice Optional garnish: Orange peel Pro tip: Fresh orange juice keeps the citrus vibrant against the darker flavors."
+        },
+        {
+          "id": "bean-barrel-published-4",
+          "name": "Rum Toffee",
+          "ingredients": [
+            {
+              "name": "Mr. Black Coffee Liqueur",
+              "amount": 29.574,
+              "unit": "ml"
+            },
+            {
+              "name": "dark rum",
+              "amount": 29.574,
+              "unit": "ml"
+            },
+            {
+              "name": "butterscotch schnapps",
+              "amount": 29.574,
+              "unit": "ml"
+            },
+            {
+              "name": "simple syrup",
+              "amount": 14.787,
+              "unit": "ml"
+            }
+          ],
+          "reviewRequired": true,
+          "sourceUrl": "https://barsys.com/recipe/rum-toffee",
+          "reviewNote": "Published recipe draft. Confirm 360 service, brands, all garnishes and unmeasured top-ups before approving. Liquid oz converted using 29.5735295625 ml per US fl oz. Published ingredient notes: For one Rum Toffee Cocktail: 1 oz Mr. Black Coffee Liqueur 1 oz dark rum 1 oz butterscotch schnapps 0.5 oz simple syrup Crushed ice Salt (for rim) Optional garnish: Grated dark chocolate Pro tip: Don’t over-salt the rim. You want contrast, not a margarita moment."
+        }
+      ]
+    },
+    "zen-juniper": {
+      "id": "zen-juniper",
+      "slug": "zen-juniper",
+      "name": "Zen & Juniper",
+      "compatible": null,
+      "source": "Official Barsys public recipe pages; not verified against source CMS",
+      "recipes": [
+        {
+          "id": "zen-juniper-published-0",
+          "name": "Serene Sipper",
+          "ingredients": [
+            {
+              "name": "Sipsmith London Dry Gin",
+              "amount": 44.36,
+              "unit": "ml"
+            },
+            {
+              "name": "Cointreau",
+              "amount": 29.574,
+              "unit": "ml"
+            },
+            {
+              "name": "chilled green tea",
+              "amount": 29.574,
+              "unit": "ml"
+            }
+          ],
+          "reviewRequired": true,
+          "sourceUrl": "https://barsys.com/recipe/serene-sipper",
+          "reviewNote": "Published recipe draft. Confirm 360 service, brands, all garnishes and unmeasured top-ups before approving. Liquid oz converted using 29.5735295625 ml per US fl oz. Published ingredient notes: For one Serene Sipper Cocktail: 1.5 oz Sipsmith London Dry Gin 1.0 oz Cointreau 1.0 oz chilled green tea Glass: Nick & Nora Garnish: Fresh thyme sprig Pro Tip: Use unsweetened green tea and chill it fully before mixing to keep the drink dry and clean."
+        },
+        {
+          "id": "zen-juniper-published-1",
+          "name": "Peach Tea Press",
+          "ingredients": [
+            {
+              "name": "Sipsmith London Dry Gin",
+              "amount": 44.36,
+              "unit": "ml"
+            },
+            {
+              "name": "Cointreau",
+              "amount": 14.787,
+              "unit": "ml"
+            },
+            {
+              "name": "peach schnapps",
+              "amount": 29.574,
+              "unit": "ml"
+            },
+            {
+              "name": "chilled green tea",
+              "amount": 29.574,
+              "unit": "ml"
+            }
+          ],
+          "reviewRequired": true,
+          "sourceUrl": "https://barsys.com/recipe/peach-tea-press",
+          "reviewNote": "Published recipe draft. Confirm 360 service, brands, all garnishes and unmeasured top-ups before approving. Liquid oz converted using 29.5735295625 ml per US fl oz. Published ingredient notes: For one Peach Tea Press Cocktail: 1.5 oz Sipsmith London Dry Gin 0.5 oz Cointreau 1.0 oz peach schnapps 1.0 oz chilled green tea Ice Cubes Glass: Highball glass Garnish: Lemon wedge and mint sprig and Club soda (to top) Pro Tip: Use unsweetened green tea and plenty of ice to keep the drink crisp and refreshing."
+        },
+        {
+          "id": "zen-juniper-published-2",
+          "name": "Velvet Peach",
+          "ingredients": [
+            {
+              "name": "Sipsmith London Dry Gin",
+              "amount": 29.574,
+              "unit": "ml"
+            },
+            {
+              "name": "Cointreau",
+              "amount": 29.574,
+              "unit": "ml"
+            },
+            {
+              "name": "peach schnapps",
+              "amount": 29.574,
+              "unit": "ml"
+            }
+          ],
+          "reviewRequired": true,
+          "sourceUrl": "https://barsys.com/recipe/velvet-peach",
+          "reviewNote": "Published recipe draft. Confirm 360 service, brands, all garnishes and unmeasured top-ups before approving. Liquid oz converted using 29.5735295625 ml per US fl oz. Published ingredient notes: For one Velvet Peach Cocktail: 1.0 oz Sipsmith London Dry Gin 1.0 oz Cointreau 1.0 oz peach schnapps Ice Cubes Sugar Glass: Rocks glass Garnish: Orange slice and mint sprig Pro Tip: Keep the sugar rim light - it should frame the drink, not turn it candy-sweet."
+        },
+        {
+          "id": "zen-juniper-published-3",
+          "name": "Peach & Ginger Snap",
+          "ingredients": [
+            {
+              "name": "Sipsmith London Dry Gin",
+              "amount": 44.36,
+              "unit": "ml"
+            },
+            {
+              "name": "Cointreau",
+              "amount": 14.787,
+              "unit": "ml"
+            },
+            {
+              "name": "peach schnapps",
+              "amount": 22.18,
+              "unit": "ml"
+            }
+          ],
+          "reviewRequired": true,
+          "sourceUrl": "https://barsys.com/recipe/peach-ginger-snap",
+          "reviewNote": "Published recipe draft. Confirm 360 service, brands, all garnishes and unmeasured top-ups before approving. Liquid oz converted using 29.5735295625 ml per US fl oz. Published ingredient notes: For one Peach & Ginger Snap Cocktail: 1.5 oz Sipsmith London Dry Gin 0.5 oz Cointreau 0.75 oz peach schnapps Crushed Ice Glass: Rocks glass Garnish: Lemon wheel and Ginger beer (to top) Pro Tip: Use a spicy ginger beer - the heat is what keeps the peach from tasting flat."
+        },
+        {
+          "id": "zen-juniper-published-4",
+          "name": "Nectarine Mule",
+          "ingredients": [
+            {
+              "name": "Sipsmith London Dry Gin",
+              "amount": 44.36,
+              "unit": "ml"
+            },
+            {
+              "name": "Cointreau",
+              "amount": 14.787,
+              "unit": "ml"
+            },
+            {
+              "name": "honey syrup",
+              "amount": 14.787,
+              "unit": "ml"
+            }
+          ],
+          "reviewRequired": true,
+          "sourceUrl": "https://barsys.com/recipe/nectarine-mule",
+          "reviewNote": "Published recipe draft. Confirm 360 service, brands, all garnishes and unmeasured top-ups before approving. Liquid oz converted using 29.5735295625 ml per US fl oz. Published ingredient notes: For one Nectarine Mule Cocktail: 1.5 oz Sipsmith London Dry Gin 0.5 oz Cointreau 0.5 oz honey syrup Ice Cubes Glass: Copper mug Garnish: Lemon wedge and fresh thyme and Ginger beer (to top) Pro Tip: Use a lightly spiced ginger beer - too aggressive and it will overpower the honey."
+        }
+      ]
+    },
+    "bean-bolt-bitter": {
+      "id": "bean-bolt-bitter",
+      "slug": "bean-bolt-bitter",
+      "name": "Bean, Bolt & Bitter",
+      "compatible": null,
+      "source": "Official Barsys public recipe pages; not verified against source CMS",
+      "recipes": [
+        {
+          "id": "bean-bolt-bitter-published-0",
+          "name": "Roasted Monk",
+          "ingredients": [
+            {
+              "name": "Coffee liqueur",
+              "amount": 29.574,
+              "unit": "ml"
+            },
+            {
+              "name": "Campari",
+              "amount": 29.574,
+              "unit": "ml"
+            },
+            {
+              "name": "Simple syrup",
+              "amount": 14.787,
+              "unit": "ml"
+            }
+          ],
+          "reviewRequired": true,
+          "sourceUrl": "https://barsys.com/recipe/roasted-monk",
+          "reviewNote": "Published recipe draft. Confirm 360 service, brands, all garnishes and unmeasured top-ups before approving. Liquid oz converted using 29.5735295625 ml per US fl oz. Published ingredient notes: For one Roasted Monk Cocktail: 1 oz Coffee liqueur 1 oz Campari 0.5 oz Simple syrup Glass: Rocks glass Garnish: Orange peel Pro Tip: Use a high-quality coffee liqueur. It defines the entire drink."
+        },
+        {
+          "id": "bean-bolt-bitter-published-1",
+          "name": "Milanese Bubble",
+          "ingredients": [
+            {
+              "name": "Campari",
+              "amount": 59.147,
+              "unit": "ml"
+            },
+            {
+              "name": "Simple syrup",
+              "amount": 14.787,
+              "unit": "ml"
+            }
+          ],
+          "reviewRequired": true,
+          "sourceUrl": "https://barsys.com/recipe/milanese-bubble",
+          "reviewNote": "Published recipe draft. Confirm 360 service, brands, all garnishes and unmeasured top-ups before approving. Liquid oz converted using 29.5735295625 ml per US fl oz. Published ingredient notes: For one Milanese Bubble Cocktail: 2 oz Campari 0.5 oz Simple syrup Glass: Collins (or highball) Garnish: Lemon twist and Club soda, to top Pro Tip: Adjust the simple syrup slightly based on how bitter you like your drink."
+        },
+        {
+          "id": "bean-bolt-bitter-published-2",
+          "name": "Desert Dusk",
+          "ingredients": [
+            {
+              "name": "Amaretto",
+              "amount": 29.574,
+              "unit": "ml"
+            },
+            {
+              "name": "Coffee liqueur",
+              "amount": 29.574,
+              "unit": "ml"
+            },
+            {
+              "name": "Blood orange juice",
+              "amount": 29.574,
+              "unit": "ml"
+            }
+          ],
+          "reviewRequired": true,
+          "sourceUrl": "https://barsys.com/recipe/desert-dusk",
+          "reviewNote": "Published recipe draft. Confirm 360 service, brands, all garnishes and unmeasured top-ups before approving. Liquid oz converted using 29.5735295625 ml per US fl oz. Published ingredient notes: For one Desert Dusk Cocktail: 1 oz Amaretto 1 oz Coffee liqueur 1 oz Blood orange juice Glass: Rocks glass Garnish: Coffee beans and a light dusting of cinnamon Pro Tip: Fresh blood orange juice works best. It gives better texture and a deeper flavor."
+        },
+        {
+          "id": "bean-bolt-bitter-published-3",
+          "name": "Nutty Grifter",
+          "ingredients": [
+            {
+              "name": "Coffee liqueur",
+              "amount": 44.36,
+              "unit": "ml"
+            },
+            {
+              "name": "Amaretto",
+              "amount": 29.574,
+              "unit": "ml"
+            },
+            {
+              "name": "Simple syrup",
+              "amount": 14.787,
+              "unit": "ml"
+            }
+          ],
+          "reviewRequired": true,
+          "sourceUrl": "https://barsys.com/recipe/nutty-grifter",
+          "reviewNote": "Published recipe draft. Confirm 360 service, brands, all garnishes and unmeasured top-ups before approving. Liquid oz converted using 29.5735295625 ml per US fl oz. Published ingredient notes: For one Nutty Grifter Cocktail: 1.5 oz Coffee liqueur 1 oz Amaretto 0.5 oz Simple syrup Glass: Coupe Garnish: Orange twist Pro Tip: Skip the extra syrup if your coffee liqueur is already on the sweeter side."
+        }
+      ]
+    },
+    "vermouth-valley": {
+      "id": "vermouth-valley",
+      "slug": "vermouth-valley",
+      "name": "Vermouth Valley",
+      "compatible": null,
+      "source": "Official Barsys public recipe pages; not verified against source CMS",
+      "recipes": [
+        {
+          "id": "vermouth-valley-published-0",
+          "name": "Maraschino Vesper",
+          "ingredients": [
+            {
+              "name": "Reyka Small Batch Vodka",
+              "amount": 59.147,
+              "unit": "ml"
+            },
+            {
+              "name": "dry vermouth",
+              "amount": 14.787,
+              "unit": "ml"
+            },
+            {
+              "name": "maraschino liqueur",
+              "amount": 14.787,
+              "unit": "ml"
+            }
+          ],
+          "reviewRequired": true,
+          "sourceUrl": "https://barsys.com/recipe/maraschino-vesper",
+          "reviewNote": "Published recipe draft. Confirm 360 service, brands, all garnishes and unmeasured top-ups before approving. Liquid oz converted using 29.5735295625 ml per US fl oz. Published ingredient notes: For one Maraschino Vesper Cocktail: 2 oz Reyka Small Batch Vodka 0.5 oz dry vermouth 0.5 oz maraschino liqueur Glass: Chilled coupe Garnish: Maraschino cherry dropped into the glass and a lemon twist Pro Tip: Go easy on the maraschino - it should soften the drink, not announce itself."
+        },
+        {
+          "id": "vermouth-valley-published-1",
+          "name": "Silver Orchard",
+          "ingredients": [
+            {
+              "name": "Reyka Small Batch Vodka",
+              "amount": 59.147,
+              "unit": "ml"
+            },
+            {
+              "name": "dry vermouth",
+              "amount": 22.18,
+              "unit": "ml"
+            },
+            {
+              "name": "fresh lime juice",
+              "amount": 14.787,
+              "unit": "ml"
+            }
+          ],
+          "reviewRequired": true,
+          "sourceUrl": "https://barsys.com/recipe/silver-orchard",
+          "reviewNote": "Published recipe draft. Confirm 360 service, brands, all garnishes and unmeasured top-ups before approving. Liquid oz converted using 29.5735295625 ml per US fl oz. Published ingredient notes: For one Silver Orchard Cocktail: 2 oz Reyka Small Batch Vodka 0.75 oz dry vermouth 0.5 oz fresh lime juice Glass: Chilled coupe Garnish: Thin lime wheel Pro Tip: Keep the lime juice fresh and measured - too much and the drink loses its balance fast."
+        },
+        {
+          "id": "vermouth-valley-published-2",
+          "name": "Cherry Martini",
+          "ingredients": [
+            {
+              "name": "Reyka Small Batch Vodka",
+              "amount": 59.147,
+              "unit": "ml"
+            },
+            {
+              "name": "Foro Vermouth di Torino Rosso",
+              "amount": 14.787,
+              "unit": "ml"
+            },
+            {
+              "name": "maraschino liqueur",
+              "amount": 7.393,
+              "unit": "ml"
+            }
+          ],
+          "reviewRequired": true,
+          "sourceUrl": "https://barsys.com/recipe/cherry-martini",
+          "reviewNote": "Published recipe draft. Confirm 360 service, brands, all garnishes and unmeasured top-ups before approving. Liquid oz converted using 29.5735295625 ml per US fl oz. Published ingredient notes: For one Cherry Martini Cocktail: 2 oz Reyka Small Batch Vodka 0.5 oz Foro Vermouth di Torino Rosso 0.25 oz maraschino liqueur Glass: Martini glass Garnish: Maraschino cherries and a flamed orange peel Pro Tip: Keep the maraschino light - it should deepen the drink, not sweeten it."
+        },
+        {
+          "id": "vermouth-valley-published-3",
+          "name": "Botanical Blush",
+          "ingredients": [
+            {
+              "name": "Foro Vermouth di Torino Rosso",
+              "amount": 29.574,
+              "unit": "ml"
+            },
+            {
+              "name": "dry vermouth",
+              "amount": 29.574,
+              "unit": "ml"
+            },
+            {
+              "name": "fresh grapefruit juice",
+              "amount": 29.574,
+              "unit": "ml"
+            }
+          ],
+          "reviewRequired": true,
+          "sourceUrl": "https://barsys.com/recipe/botanical-blush",
+          "reviewNote": "Published recipe draft. Confirm 360 service, brands, all garnishes and unmeasured top-ups before approving. Liquid oz converted using 29.5735295625 ml per US fl oz. Published ingredient notes: For one Botanical Blush Cocktail: 1 oz Foro Vermouth di Torino Rosso 1 oz dry vermouth 1 oz fresh grapefruit juice Ice Rocks Glass: Rocks glass Garnish: Grapefruit slice Pro Tip: Use freshly squeezed grapefruit juice - bottled juice flattens the bitterness and dulls the finish."
+        },
+        {
+          "id": "vermouth-valley-published-4",
+          "name": "Dry Horizon",
+          "ingredients": [
+            {
+              "name": "Reyka Small Batch Vodka",
+              "amount": 44.36,
+              "unit": "ml"
+            },
+            {
+              "name": "dry vermouth",
+              "amount": 29.574,
+              "unit": "ml"
+            },
+            {
+              "name": "fresh grapefruit juice",
+              "amount": 14.787,
+              "unit": "ml"
+            }
+          ],
+          "reviewRequired": true,
+          "sourceUrl": "https://barsys.com/recipe/dry-horizon",
+          "reviewNote": "Published recipe draft. Confirm 360 service, brands, all garnishes and unmeasured top-ups before approving. Liquid oz converted using 29.5735295625 ml per US fl oz. Published ingredient notes: For one Dry Horizon Cocktail: 1.5 oz Reyka Small Batch Vodka 1 oz dry vermouth 0.5 oz fresh grapefruit juice Glass: Coupe Garnish: Grapefruit twist and a sprig of mint Pro Tip: Keep the grapefruit juice light - too much will push the drink toward sour instead of dry."
+        }
+      ]
+    },
+    "boisson-non-alcoholic-agave-lover-s-mixlist": {
+      "id": "boisson-non-alcoholic-agave-lover-s-mixlist",
+      "slug": "boisson-non-alcoholic-agave-lover-s-mixlist",
+      "name": "Boisson Non-Alcoholic Agave Lover’s",
+      "compatible": null,
+      "source": "Official Barsys public recipe pages; not verified against source CMS",
+      "recipes": [
+        {
+          "id": "boisson-non-alcoholic-agave-lover-s-mixlist-published-0",
+          "name": "Tommy’s Non Alcoholic Margarita",
+          "ingredients": [
+            {
+              "name": "Almave Distilled Blanco Non-Alcoholic Blue Agave Spirit",
+              "amount": 88.721,
+              "unit": "ml"
+            },
+            {
+              "name": "Fresh Lime Juice",
+              "amount": 20.701,
+              "unit": "ml"
+            },
+            {
+              "name": "Agave Syrup",
+              "amount": 14.787,
+              "unit": "ml"
+            }
+          ],
+          "reviewRequired": true,
+          "sourceUrl": "https://barsys.com/recipe/tommy-s-non-alcoholic-margarita-2",
+          "reviewNote": "Published recipe draft. Confirm 360 service, brands, all garnishes and unmeasured top-ups before approving. Liquid oz converted using 29.5735295625 ml per US fl oz. Published ingredient notes: 3 oz Almave Distilled Blanco Non-Alcoholic Blue Agave Spirit 0.7 oz Fresh Lime Juice 0.5 oz Agave Syrup 1 Piece Lime Wheel"
+        },
+        {
+          "id": "boisson-non-alcoholic-agave-lover-s-mixlist-published-1",
+          "name": "Zero Oaxacan Gold",
+          "ingredients": [
+            {
+              "name": "Optimist Smokey Non-Alcoholic Distilled Spirit",
+              "amount": 59.147,
+              "unit": "ml"
+            },
+            {
+              "name": "Non-Alcoholic Triple Sec",
+              "amount": 20.701,
+              "unit": "ml"
+            },
+            {
+              "name": "Fresh Lime Juice",
+              "amount": 20.701,
+              "unit": "ml"
+            },
+            {
+              "name": "Agave Syrup",
+              "amount": 14.787,
+              "unit": "ml"
+            }
+          ],
+          "reviewRequired": true,
+          "sourceUrl": "https://barsys.com/recipe/zero-oaxacan-gold",
+          "reviewNote": "Published recipe draft. Confirm 360 service, brands, all garnishes and unmeasured top-ups before approving. Liquid oz converted using 29.5735295625 ml per US fl oz. Published ingredient notes: 2 oz Optimist Smokey Non-Alcoholic Distilled Spirit 0.7 oz Non-Alcoholic Triple Sec 0.7 oz Fresh Lime Juice 0.5 oz Agave Syrup 1 Piece Lime Twist"
+        },
+        {
+          "id": "boisson-non-alcoholic-agave-lover-s-mixlist-published-2",
+          "name": "Non Alcoholic Pina Sour",
+          "ingredients": [
+            {
+              "name": "Optimist Smokey Non-Alcoholic Distilled Spirit",
+              "amount": 59.147,
+              "unit": "ml"
+            },
+            {
+              "name": "Fresh Pineapple Juice",
+              "amount": 20.701,
+              "unit": "ml"
+            },
+            {
+              "name": "Fresh Lime Juice",
+              "amount": 20.701,
+              "unit": "ml"
+            },
+            {
+              "name": "Agave Syrup",
+              "amount": 14.787,
+              "unit": "ml"
+            }
+          ],
+          "reviewRequired": true,
+          "sourceUrl": "https://barsys.com/recipe/non-alcoholic-pina-sour",
+          "reviewNote": "Published recipe draft. Confirm 360 service, brands, all garnishes and unmeasured top-ups before approving. Liquid oz converted using 29.5735295625 ml per US fl oz. Published ingredient notes: 2 oz Optimist Smokey Non-Alcoholic Distilled Spirit 0.7 oz Fresh Pineapple Juice 0.7 oz Fresh Lime Juice 0.5 oz Agave Syrup 1 Piece Grilled Pineapple Slice"
+        },
+        {
+          "id": "boisson-non-alcoholic-agave-lover-s-mixlist-published-3",
+          "name": "Almave Spirit Free Pineapple Highball",
+          "ingredients": [
+            {
+              "name": "Almave Distilled Blanco Non-Alcoholic Blue Agave Spirit",
+              "amount": 59.147,
+              "unit": "ml"
+            },
+            {
+              "name": "Non-Alcoholic Triple Sec",
+              "amount": 14.787,
+              "unit": "ml"
+            },
+            {
+              "name": "Fresh Pineapple Juice",
+              "amount": 29.574,
+              "unit": "ml"
+            },
+            {
+              "name": "Fresh Lime Juice",
+              "amount": 14.787,
+              "unit": "ml"
+            }
+          ],
+          "reviewRequired": true,
+          "sourceUrl": "https://barsys.com/recipe/almave-spirit-free-pineapple-highball",
+          "reviewNote": "Published recipe draft. Confirm 360 service, brands, all garnishes and unmeasured top-ups before approving. Liquid oz converted using 29.5735295625 ml per US fl oz. Published ingredient notes: 2 oz Almave Distilled Blanco Non-Alcoholic Blue Agave Spirit 0.5 oz Non-Alcoholic Triple Sec 1 oz Fresh Pineapple Juice 0.5 oz Fresh Lime Juice 1 Piece Pineapple Wedge"
+        },
+        {
+          "id": "boisson-non-alcoholic-agave-lover-s-mixlist-published-4",
+          "name": "Optimist Old Fashioned",
+          "ingredients": [
+            {
+              "name": "Optimist Smokey Non-Alcoholic Distilled Spirit",
+              "amount": 59.147,
+              "unit": "ml"
+            },
+            {
+              "name": "Non-Alcoholic Triple Sec",
+              "amount": 8.872,
+              "unit": "ml"
+            },
+            {
+              "name": "Agave Syrup",
+              "amount": 14.787,
+              "unit": "ml"
+            }
+          ],
+          "reviewRequired": true,
+          "sourceUrl": "https://barsys.com/recipe/optimist-old-fashioned",
+          "reviewNote": "Published recipe draft. Confirm 360 service, brands, all garnishes and unmeasured top-ups before approving. Liquid oz converted using 29.5735295625 ml per US fl oz. Published ingredient notes: 2 oz Optimist Smokey Non-Alcoholic Distilled Spirit 0.3 oz Non-Alcoholic Triple Sec 0.5 oz Agave Syrup 1 Piece Orange Peel"
+        }
+      ]
+    },
+    "the-ultra-records": {
+      "id": "the-ultra-records",
+      "slug": "the-ultra-records",
+      "name": "The Ultra Records",
+      "compatible": null,
+      "source": "Official Barsys public recipe pages; not verified against source CMS",
+      "recipes": [
+        {
+          "id": "the-ultra-records-published-0",
+          "name": "Waxman-hattan",
+          "ingredients": [
+            {
+              "name": "Rye Whiskey",
+              "amount": 59.147,
+              "unit": "ml"
+            },
+            {
+              "name": "Sweet Vermouth",
+              "amount": 29.574,
+              "unit": "ml"
+            }
+          ],
+          "reviewRequired": true,
+          "sourceUrl": "https://barsys.com/recipe/waxman-hattan",
+          "reviewNote": "Published recipe draft. Confirm 360 service, brands, all garnishes and unmeasured top-ups before approving. Liquid oz converted using 29.5735295625 ml per US fl oz. Published ingredient notes: Single Serve 2 oz Rye Whiskey 1 oz Sweet Vermouth 2 dashes Angostura Bitters Garnish: Maraschino cherry (optional but recommended) Pro Tip Chill your mixing glass first - a colder stir keeps the drink cleaner, tighter, and perfectly balanced without watering it down."
+        },
+        {
+          "id": "the-ultra-records-published-1",
+          "name": "Out of Office",
+          "ingredients": [
+            {
+              "name": "Vodka",
+              "amount": 59.147,
+              "unit": "ml"
+            },
+            {
+              "name": "Club Soda",
+              "amount": 118.294,
+              "unit": "ml"
+            }
+          ],
+          "reviewRequired": true,
+          "sourceUrl": "https://barsys.com/recipe/out-of-office",
+          "reviewNote": "Published recipe draft. Confirm 360 service, brands, all garnishes and unmeasured top-ups before approving. Liquid oz converted using 29.5735295625 ml per US fl oz. Published ingredient notes: Single Serve 2 oz Vodka 4 oz Club Soda Dash of lime juice Garnish: Lemon wedge Pro Tip Use very cold club soda and add it last to keep the bubbles strong. A quick squeeze of fresh lime over the top enhances the aroma without making the drink sour."
+        },
+        {
+          "id": "the-ultra-records-published-2",
+          "name": "U R the Gin to my Tonic",
+          "ingredients": [
+            {
+              "name": "Gin",
+              "amount": 59.147,
+              "unit": "ml"
+            },
+            {
+              "name": "Tonic Water",
+              "amount": 118.294,
+              "unit": "ml"
+            }
+          ],
+          "reviewRequired": true,
+          "sourceUrl": "https://barsys.com/recipe/u-r-the-gin-to-my-tonic",
+          "reviewNote": "Published recipe draft. Confirm 360 service, brands, all garnishes and unmeasured top-ups before approving. Liquid oz converted using 29.5735295625 ml per US fl oz. Published ingredient notes: Single Serve 2 oz Gin 4 oz Tonic Water Optional: Citrus garnish of your choice Garnish: Lemon wheel, lime wedge, or a bougie grapefruit twist Pro Tip Use premium tonic - it makes or breaks a gin and tonic. And always add tonic last to keep the carbonation tight and lively."
+        },
+        {
+          "id": "the-ultra-records-published-3",
+          "name": "Vip",
+          "ingredients": [
+            {
+              "name": "Casamigos Blanco Tequila",
+              "amount": 26.616,
+              "unit": "ml"
+            },
+            {
+              "name": "Cointreau Triple Sec",
+              "amount": 23.659,
+              "unit": "ml"
+            },
+            {
+              "name": "Fresh Lime Juice",
+              "amount": 26.616,
+              "unit": "ml"
+            }
+          ],
+          "reviewRequired": true,
+          "sourceUrl": "https://barsys.com/recipe/vip",
+          "reviewNote": "Published recipe draft. Confirm 360 service, brands, all garnishes and unmeasured top-ups before approving. Liquid oz converted using 29.5735295625 ml per US fl oz. Published ingredient notes: Single Serve 0.9 oz Casamigos Blanco Tequila 0.8 oz Cointreau Triple Sec 0.9 oz Fresh Lime Juice Garnish: Lime wheel Optional Garnish: Salt rim Pro Tip Use fresh lime juice, never bottled - the flavor difference is huge and defines the quality of your Vip."
+        },
+        {
+          "id": "the-ultra-records-published-4",
+          "name": "The Afters",
+          "ingredients": [
+            {
+              "name": "Vodka",
+              "amount": 59.147,
+              "unit": "ml"
+            },
+            {
+              "name": "Coffee Liqueur",
+              "amount": 14.787,
+              "unit": "ml"
+            },
+            {
+              "name": "Simple Syrup",
+              "amount": 7.393,
+              "unit": "ml"
+            }
+          ],
+          "reviewRequired": true,
+          "sourceUrl": "https://barsys.com/recipe/the-afters",
+          "reviewNote": "Published recipe draft. Confirm 360 service, brands, all garnishes and unmeasured top-ups before approving. Liquid oz converted using 29.5735295625 ml per US fl oz. Published ingredient notes: Single Serve 2 oz Vodka 0.5 oz Coffee Liqueur 0.25 oz Simple Syrup Optional: 0.5-1 oz Espresso (if available) Garnish: Coffee beans or a light dusting of cocoa Pro Tip If using espresso, let it cool slightly before shaking - hot espresso melts the ice too fast and thins the drink."
+        }
+      ]
+    },
+    "spritz": {
+      "id": "garden-spritz-club",
+      "slug": "garden-spritz-club",
+      "name": "Garden Spritz Club",
+      "aliases": [
+        "Après Spritz Club",
+        "Apres Spritz Club"
+      ],
+      "mappingBasis": "Owner confirmed on September 9, 2026; official Garden Spritz page uses the identical Après Spritz cover URL.",
+      "compatible": null,
+      "source": "Official Barsys public recipe pages; source CMS verification pending",
+      "recipes": [
+        {
+          "id": "garden-spritz-published-0",
+          "name": "Sunlit Aperol Spritz",
+          "ingredients": [
+            {
+              "name": "Aperol",
+              "amount": 44.36,
+              "unit": "ml"
+            },
+            {
+              "name": "Prosecco (Top-Up)",
+              "amount": 73.934,
+              "unit": "ml"
+            },
+            {
+              "name": "Club Soda",
+              "amount": 29.574,
+              "unit": "ml"
+            },
+            {
+              "name": "Orange Slice(s)",
+              "amount": 0.5,
+              "unit": "each"
+            }
+          ],
+          "reviewRequired": true,
+          "sourceUrl": "https://barsys.com/recipe/sunlit-aperol-spritz",
+          "unmeasuredIngredients": [],
+          "reviewNote": "Official public recipe, not yet checked against the 360 CMS. Liquid US fl oz converted to ml. Prosecco and soda are manual top-ups, not machine reservoir ingredients. Confirm garnish counts and ice separately; unspecified amounts are excluded from costs. Published text: For one Sunlit Aperol Spritz : 1.5 oz Aperol 2.5 oz Prosecco 1 oz soda water Glass: Wine glass Garnish: Half orange slice Pro Tip: Add Prosecco before soda to maintain a tight bubble structure and avoid flattening the drink."
+        },
+        {
+          "id": "garden-spritz-published-1",
+          "name": "Crimson Garden Campari Spritz",
+          "ingredients": [
+            {
+              "name": "Campari",
+              "amount": 29.574,
+              "unit": "ml"
+            },
+            {
+              "name": "Prosecco (Top-Up)",
+              "amount": 73.934,
+              "unit": "ml"
+            },
+            {
+              "name": "Club Soda",
+              "amount": 29.574,
+              "unit": "ml"
+            }
+          ],
+          "reviewRequired": true,
+          "sourceUrl": "https://barsys.com/recipe/crimson-garden-campari-spritz",
+          "unmeasuredIngredients": [
+            "Olives and orange peel; one large clear ice cube"
+          ],
+          "reviewNote": "Official public recipe, not yet checked against the 360 CMS. Liquid US fl oz converted to ml. Prosecco and soda are manual top-ups, not machine reservoir ingredients. Confirm garnish counts and ice separately; unspecified amounts are excluded from costs. Published text: For one Crimson Garden Campari Spritz: 1 oz Campari 2.5 oz Prosecco 1 oz soda water 1 Large Clear Ice Cube Glass: Rocks glass Garnish: Olives and orange peel Pro Tip: Add Prosecco before soda to maintain tight bubbles. Express the orange peel over the glass before dropping it in for maximum aroma."
+        },
+        {
+          "id": "garden-spritz-published-2",
+          "name": "Lemon Blossom Limoncello Spritz",
+          "ingredients": [
+            {
+              "name": "Limoncello",
+              "amount": 44.36,
+              "unit": "ml"
+            },
+            {
+              "name": "Prosecco (Top-Up)",
+              "amount": 73.934,
+              "unit": "ml"
+            },
+            {
+              "name": "Club Soda",
+              "amount": 29.574,
+              "unit": "ml"
+            }
+          ],
+          "reviewRequired": true,
+          "sourceUrl": "https://barsys.com/recipe/lemon-blossom-limoncello-spritz",
+          "unmeasuredIngredients": [
+            "Lemon wheel"
+          ],
+          "reviewNote": "Official public recipe, not yet checked against the 360 CMS. Liquid US fl oz converted to ml. Prosecco and soda are manual top-ups, not machine reservoir ingredients. Confirm garnish counts and ice separately; unspecified amounts are excluded from costs. Published text: For one Lemon Blossom Limoncello Spritz: 1.5 oz limoncello 2.5 oz Prosecco 1 oz soda water Glass: Highball Garnish: Lemon wheel Pro Tip: Use a dry Prosecco. Too much residual sugar will overpower the citrus balance."
+        },
+        {
+          "id": "garden-spritz-published-3",
+          "name": "Garden Velvet Spritz",
+          "ingredients": [
+            {
+              "name": "Elderflower Liqueur",
+              "amount": 22.18,
+              "unit": "ml"
+            },
+            {
+              "name": "Blackcurrant Juice",
+              "amount": 22.18,
+              "unit": "ml"
+            },
+            {
+              "name": "Prosecco (Top-Up)",
+              "amount": 73.934,
+              "unit": "ml"
+            },
+            {
+              "name": "Club Soda",
+              "amount": 29.574,
+              "unit": "ml"
+            }
+          ],
+          "reviewRequired": true,
+          "sourceUrl": "https://barsys.com/recipe/garden-velvet-spritz",
+          "unmeasuredIngredients": [
+            "Lemon twist"
+          ],
+          "reviewNote": "Official public recipe, not yet checked against the 360 CMS. Liquid US fl oz converted to ml. Prosecco and soda are manual top-ups, not machine reservoir ingredients. Confirm garnish counts and ice separately; unspecified amounts are excluded from costs. Published text: For one Garden Velvet Spritz: 0.75 oz St-Germain 0.75 oz blackcurrant juice 2.5 oz Prosecco 1 oz soda water Glass: Coupe Garnish: Lemon twist Pro Tip: Use a dry Prosecco to maintain balance. Blackcurrant already brings richness, so dryness keeps the structure clean."
+        },
+        {
+          "id": "garden-spritz-published-4",
+          "name": "Spring Citrus Sparkler Spritz",
+          "ingredients": [
+            {
+              "name": "Limoncello",
+              "amount": 29.574,
+              "unit": "ml"
+            },
+            {
+              "name": "Blackcurrant Juice",
+              "amount": 14.787,
+              "unit": "ml"
+            },
+            {
+              "name": "Prosecco (Top-Up)",
+              "amount": 73.934,
+              "unit": "ml"
+            },
+            {
+              "name": "Club Soda",
+              "amount": 29.574,
+              "unit": "ml"
+            }
+          ],
+          "reviewRequired": true,
+          "sourceUrl": "https://barsys.com/recipe/spring-citrus-sparkler-spritz",
+          "unmeasuredIngredients": [
+            "Lemon peel"
+          ],
+          "reviewNote": "Official public recipe, not yet checked against the 360 CMS. Liquid US fl oz converted to ml. Prosecco and soda are manual top-ups, not machine reservoir ingredients. Confirm garnish counts and ice separately; unspecified amounts are excluded from costs. Published text: For one Spring Citrus Sparkler Spritz : 1.0 oz Limoncello 0.5 oz Blackcurrant juice 2.5 oz Prosecco 1 oz Soda water Glass: Highball Garnish: Lemon peel Pro Tip: Use a dry Prosecco to balance the natural sweetness of limoncello and blackcurrant."
+        },
+        {
+          "id": "garden-spritz-published-5",
+          "name": "Sunset Spritz",
+          "ingredients": [
+            {
+              "name": "Aperol",
+              "amount": 22.18,
+              "unit": "ml"
+            },
+            {
+              "name": "Campari",
+              "amount": 14.787,
+              "unit": "ml"
+            },
+            {
+              "name": "Blackcurrant Juice",
+              "amount": 7.393,
+              "unit": "ml"
+            },
+            {
+              "name": "Prosecco (Top-Up)",
+              "amount": 73.934,
+              "unit": "ml"
+            },
+            {
+              "name": "Club Soda",
+              "amount": 29.574,
+              "unit": "ml"
+            }
+          ],
+          "reviewRequired": true,
+          "sourceUrl": "https://barsys.com/recipe/sunset-spritz",
+          "unmeasuredIngredients": [
+            "Orange peel"
+          ],
+          "reviewNote": "Official public recipe, not yet checked against the 360 CMS. Liquid US fl oz converted to ml. Prosecco and soda are manual top-ups, not machine reservoir ingredients. Confirm garnish counts and ice separately; unspecified amounts are excluded from costs. Published text: For one Sunset Spritz: 0.75 oz Aperol 0.5 oz Campari 0.25 oz blackcurrant juice 2.5 oz Prosecco 1 oz soda water Glass: Coupe Garnish: Orange peel Pro Tip: Pour Prosecco slowly to maintain tight bubbles and avoid over-agitating the bitters."
+        },
+        {
+          "id": "garden-spritz-published-6",
+          "name": "Elderflower Garden Hugo Spritz",
+          "ingredients": [
+            {
+              "name": "Elderflower Liqueur",
+              "amount": 44.36,
+              "unit": "ml"
+            },
+            {
+              "name": "Prosecco (Top-Up)",
+              "amount": 73.934,
+              "unit": "ml"
+            },
+            {
+              "name": "Club Soda",
+              "amount": 29.574,
+              "unit": "ml"
+            }
+          ],
+          "reviewRequired": true,
+          "sourceUrl": "https://barsys.com/recipe/elderflower-garden-hugo-spritz",
+          "unmeasuredIngredients": [
+            "Lemon slice"
+          ],
+          "reviewNote": "Official public recipe, not yet checked against the 360 CMS. Liquid US fl oz converted to ml. Prosecco and soda are manual top-ups, not machine reservoir ingredients. Confirm garnish counts and ice separately; unspecified amounts are excluded from costs. Published text: For one Elderflower Garden Hugo Spritz : 1.5 oz St-Germain 2.5 oz Prosecco 1 oz soda water Glass: Coupe Garnish: Lemon slice Pro Tip: Use a dry Prosecco to maintain balance and prevent the elderflower from becoming overly sweet."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,12 @@
+#records details{border-block-start:1px solid #ccc;padding:18px 0;overflow-wrap:anywhere}
+#records summary{cursor:pointer;font-weight:700;line-height:1.6;padding:8px 0}
+#records form{max-width:680px;display:grid;gap:16px;padding:12px 0}
+#records input[type=checkbox]{width:24px;height:24px;vertical-align:middle;margin-inline-start:12px}
+#records input:not([type=checkbox]){max-width:100%;min-width:0}
+#records [hidden]{display:none!important}
+#records summary:focus-visible,#records input:focus-visible,#records button:focus-visible{outline:3px solid #111;outline-offset:4px}
+#health,#message{overflow-wrap:anywhere}
+
+#deliveries details{padding:12px 0;border-bottom:1px solid #ccc;overflow-wrap:anywhere}
+#deliveries summary{cursor:pointer;padding:8px 0}
+#deliveries summary:focus-visible{outline:3px solid #111;outline-offset:4px}

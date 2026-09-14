@@ -1,0 +1,11 @@
+/* Staff identity only; no Google APIs beyond authentication and no localStorage. */
+(()=>{'use strict';
+ if(!/^https?:$/.test(location.protocol)||document.querySelector('meta[http-equiv="Content-Security-Policy"]')?.content.includes("connect-src 'none'"))return;
+ let current=null;
+ async function request(path,options={}){const r=await fetch(path,{...options,headers:{'Content-Type':'application/json',...options.headers}});const data=await r.json();if(!r.ok)throw new Error(data.error||'Sign-in failed.');return data;}
+ async function refresh(){const state=await request('/api/auth/me');current=state.user;for(const el of document.querySelectorAll('[data-staff-login]')){el.hidden=!!current;el.textContent='Staff sign in';el.href='/admin/login.html';}for(const el of document.querySelectorAll('[data-staff-dashboard]')){el.hidden=!['owner','crew'].includes(current?.role);el.textContent=current?.role==='crew'?'My assignments':'Dashboard';el.href=current?.role==='crew'?'/admin/crew.html':'/admin';}for(const el of document.querySelectorAll('[data-staff-logout]'))el.hidden=!current;for(const el of document.querySelectorAll('[data-staff-identity]')){el.hidden=!current;el.textContent=current?.email||'';}document.dispatchEvent(new CustomEvent('barsys:auth',{detail:state}));return state;}
+ document.addEventListener('click',async event=>{if(!event.target.closest('[data-staff-logout]'))return;try{await request('/api/auth/logout',{method:'POST',body:'{}'});location.replace('/');}catch{alert('Sign-out could not be confirmed. Please retry.');}});
+ // The public landing page offers sign-in, with a dashboard link only after server authorization.
+ for(const nav of document.querySelectorAll('nav[aria-label="Main navigation"],nav[aria-label="Mobile navigation"]')){const login=document.createElement('a');login.dataset.staffLogin='';login.href='/admin/login.html';login.textContent='Staff sign in';const dash=document.createElement('a');dash.dataset.staffDashboard='';dash.href='/admin';dash.textContent='Dashboard';dash.hidden=true;nav.append(login,dash);}
+ window.BarsysStaff={refresh};refresh().catch(()=>{});window.addEventListener('pageshow',event=>{if(event.persisted)refresh().catch(()=>{});});document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh().catch(()=>{});});
+})();

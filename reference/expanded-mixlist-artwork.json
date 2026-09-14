@@ -1,0 +1,96 @@
+{
+  "checkedAt": "2026-09-09",
+  "records": [
+    {
+      "id": "bold-frequency",
+      "page": "https://barsys.com/mixlist/bold-frequency",
+      "remote": "https://media.barsys.com/images/blog_images/1771920500_ChatGPT%20Image%20Feb%2024,%202026,%2001_37_09%20PM.png",
+      "local": "assets/mixlists/bold-frequency.jpg",
+      "bytes": 1517237
+    },
+    {
+      "id": "sharp",
+      "page": "https://barsys.com/mixlist/sharp-steady",
+      "remote": "https://media.barsys.com/images/blog_images/1773397008_ChatGPT%20Image%20Mar%2013,%202026,%2003_46_33%20PM.png",
+      "local": "assets/mixlists/sharp.jpg",
+      "bytes": 1725182
+    },
+    {
+      "id": "silk",
+      "page": "https://barsys.com/mixlist/silk-snap",
+      "remote": "https://media.barsys.com/images/blog_images/1773314696_ChatGPT%20Image%20Mar%2012,%202026,%2004_40_23%20PM.png",
+      "local": "assets/mixlists/silk.jpg",
+      "bytes": 1553680
+    },
+    {
+      "id": "coast",
+      "page": "https://barsys.com/mixlist/clear-coast",
+      "remote": "https://media.barsys.com/images/blog_images/1773140885_ChatGPT%20Image%20Mar%2010,%202026,%2004_37_33%20PM.png",
+      "local": "assets/mixlists/coast.jpg",
+      "bytes": 1688702
+    },
+    {
+      "id": "dusk",
+      "page": "https://barsys.com/mixlist/dusk-to-agave",
+      "remote": "https://media.barsys.com/images/blog_images/1782118574_Barsys_Mixlist_2026_June_Dusk%20To%20Agave_Cover_1x1_AT_GA.jpg",
+      "local": "assets/mixlists/dusk.jpg",
+      "bytes": 1148200
+    },
+    {
+      "id": "molasses",
+      "page": "https://barsys.com/mixlist/molasses-theory",
+      "remote": "https://media.barsys.com/images/blog_images/1772006267_ChatGPT%20Image%20Feb%2025,%202026,%2001_26_30%20PM.png",
+      "local": "assets/mixlists/molasses.jpg",
+      "bytes": 1437982
+    },
+    {
+      "id": "circuit",
+      "page": "https://barsys.com/mixlist/the-bold-circuit",
+      "remote": "https://media.barsys.com/images/blog_images/1779702183_Barsys_Mixlist_2026_May_The%20Bold%20Circuit%20Cover_1x1_AT_GA.jpg",
+      "local": "assets/mixlists/circuit.jpg",
+      "bytes": 790241
+    },
+    {
+      "id": "confessions",
+      "page": "https://barsys.com/mixlist/confessions-in-glass",
+      "remote": "https://media.barsys.com/images/blog_images/1770547615_Barsys_Mixlist_2026_Feb_Confessions%20In%20Glass%20Cover_1x1_AT_GA.jpg",
+      "local": "assets/mixlists/confessions.jpg",
+      "bytes": 666887
+    },
+    {
+      "id": "sombra",
+      "page": "https://barsys.com/mixlist/sombra-sol",
+      "remote": "https://media.barsys.com/images/blog_images/1778567235_Barsys_Mixlist_2026_Feb_Sombra%20&%20Sol_Cover_1x1_AT_GA%20(1).jpg",
+      "local": "assets/mixlists/sombra.jpg",
+      "bytes": 1003138
+    },
+    {
+      "id": "flora",
+      "page": "https://barsys.com/mixlist/flora-bitter",
+      "remote": "https://media.barsys.com/images/blog_images/1770282929_Barsys_Mixlist_2026_Feb_Flora-Bitters%20Cover_1x1_AT_GA.jpg",
+      "local": "assets/mixlists/flora.jpg",
+      "bytes": 968255
+    },
+    {
+      "id": "punt",
+      "page": "https://barsys.com/mixlist/punt-pass-pour",
+      "remote": "https://media.barsys.com/images/blog_images/1769515443_Barsys_Mixlist_2026_Jan_Punt%20Pass%20&%20Pour_Cover_1x1_AT_GA.jpg",
+      "local": "assets/mixlists/punt.jpg",
+      "bytes": 926518
+    },
+    {
+      "id": "turf",
+      "page": "https://barsys.com/mixlist/turf-tonic",
+      "remote": "https://media.barsys.com/images/blog_images/1769080687_Barsys_Mixlist_2026_Jan_Turf%20&%20Tonic_1x1_AT_GA.jpg",
+      "local": "assets/mixlists/turf.jpg",
+      "bytes": 1984927
+    },
+    {
+      "id": "botanicals",
+      "page": "https://barsys.com/mixlist/13-botanicals",
+      "remote": "https://media.barsys.com/images/blog_images/1770207818_Barsys_Mixlist_2026_Feb_13%20Botanicals%20Cover_1x1_AT_GA.jpg",
+      "local": "assets/mixlists/botanicals.jpg",
+      "bytes": 1187972
+    }
+  ]
+}

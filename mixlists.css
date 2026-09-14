@@ -1,0 +1,37 @@
+/* V3.4 official collection covers. Square artwork is shown without portrait cropping. */
+#featured-menus { --mixlist-gap:24px; display:grid; grid-template-columns:none; grid-auto-flow:column; grid-auto-columns:calc((100% - 3 * var(--mixlist-gap)) / 4); gap:var(--mixlist-gap); overflow-x:auto; overflow-y:hidden; padding:3px 0 16px; scroll-snap-type:x mandatory; scrollbar-width:thin; scrollbar-color:#777 #eee; overscroll-behavior-x:contain; cursor:grab; }
+#featured-menus.dragging { cursor:grabbing; scroll-snap-type:none; }
+#featured-menus .menu-card { width:auto; min-width:0; scroll-snap-align:start; display:flex; flex-direction:column; }
+#featured-menus .menu-card[hidden] { display:none!important; }
+#featured-menus .menu-image { height:auto!important; aspect-ratio:1; flex:none; width:100%; }
+#featured-menus .menu-image>img { aspect-ratio:1; object-fit:contain; object-position:center!important; transform:none; filter:none; }
+#featured-menus .menu-image:hover>img { transform:scale(1.025); }
+#featured-menus .menu-image .illustration-label { display:none; }
+#featured-menus .menu-card h3 { font-size:clamp(18px,1.55vw,23px); min-height:2.5em; margin-bottom:8px; }
+#featured-menus .menu-card>p { font-size:14px; min-height:3.4em; }
+#featured-menus .menu-card-footer { margin-top:auto; }
+#featured-menus .menu-details-link { margin-bottom:9px; }
+#featured-menus .photo-fallback { position:absolute; inset:0; display:grid; place-content:center; gap:12px; background:#171717; color:#ccc; text-align:center; font:11px/1.7 Arial,sans-serif; letter-spacing:1.4px; padding:20px; pointer-events:none; }
+#featured-menus .menu-image>img { z-index:1; }
+#featured-menus .menu-image .menu-tag { z-index:2; }
+.cover-unavailable { display:none; letter-spacing:0; font-size:15px; line-height:1.5; }
+.cover-unavailable small { display:block; font-size:11px; color:#aaa; margin-top:8px; }
+#featured-menus [data-loaded=true] .photo-fallback { visibility:hidden; }
+#featured-menus [data-failed=true] .cover-loading { display:none; }
+#featured-menus [data-failed=true] .cover-unavailable { display:block; }
+#featured-menus [data-failed=true]>img { opacity:0; }
+.mixlist-navigation { margin:14px 0 0; display:flex; justify-content:space-between; align-items:center; gap:20px; color:#666; font-size:12px; }
+.mixlist-hint { font-size:9px; letter-spacing:1.1px; }
+.collection-cover { display:flex; flex-direction:column; justify-content:center; background:#111; }
+.collection-cover #collection-image { position:relative; inset:auto; width:100%; height:auto; max-height:68vh; object-fit:contain!important; aspect-ratio:1; flex:0 1 auto; }
+.collection-cover #collection-image-note { position:static; display:block; padding:18px; text-align:center; background:#111; margin:0; font-size:9px; letter-spacing:1px; }
+.collection-cover[data-failed=true]::before { content:'Artwork unavailable. Connect to view the original Barsys cover.'; color:#bbb; font-size:14px; line-height:1.8; text-align:center; padding:45px 30px; }
+.collection-cover[data-failed=true] #collection-image { display:none; }
+.taste-stage #taste-image { object-fit:contain!important; object-position:center!important; background:#111; }
+.taste-stage[data-failed=true]::before { content:'Connect to load the original Barsys mixlist artwork.'; position:absolute; inset:0; display:grid; place-content:center; color:#ccc; text-align:center; padding:30px; font-size:14px; }
+.taste-stage[data-failed=true] #taste-image { opacity:0; }
+@media(max-width:1100px) { #featured-menus { --mixlist-gap:20px; grid-auto-columns:calc((100% - 2 * var(--mixlist-gap)) / 3); } }
+@media(max-width:799px) { #featured-menus { grid-auto-columns:calc((100% - var(--mixlist-gap)) / 2); } .mixlist-hint { display:none; } }
+@media(max-width:599px) { #featured-menus { --mixlist-gap:16px; grid-auto-columns:86%; } #featured-menus .menu-card h3 { font-size:22px; min-height:2.4em; } #featured-menus .menu-card>p { font-size:15px; } .menu-toolbar { flex-wrap:wrap; gap:16px; } .menu-toolbar .gallery-controls { display:flex; } .menu-filters { max-width:100%; gap:6px; } .menu-filters .filter-pill { font-size:11px; padding:9px 10px; } .collection-cover #collection-image { max-height:48vh; } }
+@media(prefers-reduced-motion:reduce) { #featured-menus .menu-image:hover>img { transform:none; } }
+html[data-motion=off] #featured-menus .menu-image:hover>img { transform:none; }

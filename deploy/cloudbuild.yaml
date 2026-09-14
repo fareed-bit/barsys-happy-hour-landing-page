@@ -1,0 +1,7 @@
+steps:
+- name: gcr.io/cloud-builders/docker
+  args: ['build', '-t', 'us-east4-docker.pkg.dev/happy-hour-landing-version-2/barsys-staging/app:workflow-20260909', '.']
+images:
+- us-east4-docker.pkg.dev/happy-hour-landing-version-2/barsys-staging/app:workflow-20260909
+options:
+  logging: CLOUD_LOGGING_ONLY

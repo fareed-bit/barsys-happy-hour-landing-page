@@ -1,0 +1,41 @@
+{
+  "checkedAt": "2026-09-09",
+  "records": [
+    {
+      "id": "bean-barrel",
+      "page": "https://barsys.com/mixlist/bean-barrel",
+      "remote": "https://media.barsys.com/images/blog_images/1767789541_Barsys_Mixlist_2026_Jan_Bean%20And%20Barrel_Cover_1x1_AT_GA.jpg",
+      "local": "assets/mixlists/bean-barrel.jpg"
+    },
+    {
+      "id": "zen-juniper",
+      "page": "https://barsys.com/mixlist/zen-juniper",
+      "remote": "https://media.barsys.com/images/blog_images/1767963306_Barsys_Mixlist_2025_Jan_Zen%20&%20Juniper%20Cover_1x1_AT_GA.jpg",
+      "local": "assets/mixlists/zen-juniper.jpg"
+    },
+    {
+      "id": "bean-bolt-bitter",
+      "page": "https://barsys.com/mixlist/bean-bolt-bitter",
+      "remote": "https://media.barsys.com/images/blog_images/1782119079_Barsys_Mixlist_2026_June_Bean,%20Bolt%20&%20Bitters_Cover_1x1_AT_GA.jpg",
+      "local": "assets/mixlists/bean-bolt-bitter.jpg"
+    },
+    {
+      "id": "vermouth-valley",
+      "page": "https://barsys.com/mixlist/vermouth-valley",
+      "remote": "https://media.barsys.com/images/blog_images/1769602705_Barsys_Mixlist_2026_Jan_Vermouth%20Valley_1x1_AT_GA.jpg",
+      "local": "assets/mixlists/vermouth-valley.jpg"
+    },
+    {
+      "id": "boisson-non-alcoholic-agave-lover-s-mixlist",
+      "page": "https://barsys.com/mixlist/boisson-non-alcoholic-agave-lover-s-mixlist",
+      "remote": "https://media.barsys.com/images/blog_images/1763397093_IMG-20251117-WA0003.jpg",
+      "local": "assets/mixlists/boisson-non-alcoholic-agave-lover-s-mixlist.jpg"
+    },
+    {
+      "id": "the-ultra-records",
+      "page": "https://barsys.com/mixlist/the-ultra-records",
+      "remote": "https://media.barsys.com/images/blog_images/1765197563_Barsys_Mixlist_2025_Dec_The%20Ultra%20Records%20Annual%20Showcase%20Cover_1x1_AT_GA.jpg",
+      "local": "assets/mixlists/the-ultra-records.jpg"
+    }
+  ]
+}

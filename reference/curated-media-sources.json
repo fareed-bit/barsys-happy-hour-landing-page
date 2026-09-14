@@ -1,0 +1,223 @@
+{
+  "build": "V3.7",
+  "basis": "Approved curated selection from the prior complete visual review.",
+  "notes": [
+    "The web working copies are muted; original audio and source files are unchanged.",
+    "No publication-rights or music clearance is implied.",
+    "Clips from different events form a demonstration of steps, not one continuous drink or exact mixlist recipe."
+  ],
+  "assets": [
+    {
+      "mediaKey": "hero",
+      "sourceFilename": "Barseys_NYC_Deliverable3.mp4",
+      "sourceCollection": "Four NYC deliverables",
+      "sourceUrl": null,
+      "sourceSha256": "e79e0cd7e6a1a356f93675c932a60306f6fc72dbe00dfdbdaa4ea8d023982914",
+      "fullVideo": "assets/curated/films/nyc-event.mp4",
+      "preview": "assets/curated/loops/nyc-event.mp4",
+      "sourceTrim": [
+        0.9,
+        8.8
+      ],
+      "poster": "assets/curated/posters/nyc-event.jpg",
+      "audio": "Removed from working web copies; original audio not modified.",
+      "sourceSegments": [
+        [
+          0.9,
+          5.25
+        ],
+        [
+          6.65,
+          8.8
+        ]
+      ],
+      "editNote": "Autoplay hero omits the dining-table insert; full film is preserved."
+    },
+    {
+      "mediaKey": "office",
+      "sourceFilename": "IMG_8864.MOV",
+      "sourceCollection": "BuzzFeed HH",
+      "sourceUrl": "https://drive.google.com/file/d/10lIcGi5ZfBeBLXua4oC3mY8-30OA6I_W/view",
+      "sourceSha256": "aa8471749e5aeeb55df726dd3460867b69d0df597096cf4d3c637229b66233b1",
+      "fullVideo": "assets/curated/films/buzzfeed-office.mp4",
+      "preview": "assets/curated/loops/buzzfeed-office.mp4",
+      "sourceTrim": [
+        0.2,
+        4.1
+      ],
+      "poster": "assets/curated/posters/buzzfeed-office.jpg",
+      "audio": "Removed from working web copies; original audio not modified."
+    },
+    {
+      "mediaKey": "gala",
+      "sourceFilename": "IMG_1474.MOV",
+      "sourceCollection": "Scarsdale Library",
+      "sourceUrl": "https://drive.google.com/file/d/1Mk57nVI0QOnHJFfxty22Wgtza2ipVj-S/view",
+      "sourceSha256": "6e2b651aec86be8d1f8aa88cb5b32a7407cb52d18be7736907cef4b0c4cbac87",
+      "fullVideo": "assets/curated/films/scarsdale-gala.mp4",
+      "preview": "assets/curated/loops/scarsdale-gala.mp4",
+      "sourceTrim": [
+        4.7,
+        12.0
+      ],
+      "poster": "assets/curated/posters/scarsdale-gala.jpg",
+      "audio": "Removed from working web copies; original audio not modified."
+    },
+    {
+      "mediaKey": "experienceSelect",
+      "sourceFilename": "Barseys_NYC_Deliverable1.mp4",
+      "sourceCollection": "Four NYC deliverables",
+      "sourceUrl": null,
+      "sourceSha256": "4527b291984cb72e0c9eb6330d4f7848cc952a151fc75ffce81c285a2ecbb2a3",
+      "fullVideo": "assets/curated/films/choose-your-drink.mp4",
+      "preview": "assets/curated/loops/choose-your-drink.mp4",
+      "sourceTrim": [
+        0,
+        7.8
+      ],
+      "poster": "assets/curated/posters/choose-your-drink.jpg",
+      "audio": "Removed from working web copies; original audio not modified."
+    },
+    {
+      "mediaKey": "experiencePour",
+      "sourceFilename": "IMG_2816.MOV",
+      "sourceCollection": "HotWorx",
+      "sourceUrl": "https://drive.google.com/file/d/1-DVL9C-BZ3vSKaVUVRUj8c7JcAGNRA11/view",
+      "sourceSha256": "c45ce193bc5ad6bb49d9d932b08db16a707bef3d5c804dfd100decf7cc57341e",
+      "fullVideo": "assets/curated/films/watch-the-pour.mp4",
+      "preview": "assets/curated/loops/watch-the-pour.mp4",
+      "sourceTrim": [
+        0.15,
+        4.1
+      ],
+      "poster": "assets/curated/posters/watch-the-pour.jpg",
+      "audio": "Removed from working web copies; original audio not modified."
+    },
+    {
+      "mediaKey": "experienceFinish",
+      "sourceFilename": "Barseys_NYC_Deliverable4.mp4",
+      "sourceCollection": "Four NYC deliverables",
+      "sourceUrl": null,
+      "sourceSha256": "ba497aaef0e08723782626822978757caa3c6435dadad7f987cc6658602eed65",
+      "fullVideo": "assets/curated/films/the-finishing-touch.mp4",
+      "preview": "assets/curated/loops/the-finishing-touch.mp4",
+      "sourceTrim": [
+        0,
+        5.8
+      ],
+      "poster": "assets/curated/posters/the-finishing-touch.jpg",
+      "audio": "Removed from working web copies; original audio not modified."
+    },
+    {
+      "mediaKey": "experienceCheers",
+      "sourceFilename": "IMG_1491.MOV",
+      "sourceCollection": "Scarsdale Library",
+      "sourceUrl": "https://drive.google.com/file/d/1sWezRaSi8mI4SF8hDhSLtx8kP0LJPeFW/view",
+      "sourceSha256": "3cd68cbe4298e590d4692ac6add0571eac894c1af9c6aa430257d50f6ffb41f6",
+      "fullVideo": "assets/curated/films/pick-up-and-cheers.mp4",
+      "preview": "assets/curated/loops/pick-up-and-cheers.mp4",
+      "sourceTrim": [
+        0.5,
+        7.3
+      ],
+      "poster": "assets/curated/posters/pick-up-and-cheers.jpg",
+      "audio": "Removed from working web copies; original audio not modified."
+    },
+    {
+      "mediaKey": "occasion",
+      "sourceFilename": "Barseys_NYC_Deliverable2.mp4",
+      "sourceCollection": "Four NYC deliverables",
+      "sourceUrl": null,
+      "sourceSha256": "1084aaefe5d256db4f6146c24590896dbdea9c5ef75cbebf9679e67df2f332cf",
+      "fullVideo": "assets/curated/films/client-occasion.mp4",
+      "preview": null,
+      "sourceTrim": [
+        3.8,
+        7.8
+      ],
+      "poster": "assets/curated/posters/client-occasion.jpg",
+      "audio": "Removed from working web copies; original audio not modified."
+    },
+    {
+      "assetKey": "officeReaction",
+      "sourceFilename": "IMG_8871.HEIC",
+      "sourceCollection": "BuzzFeed HH",
+      "sourceUrl": "https://drive.google.com/file/d/10fbbfsgkQBytT_jrVRUTpji0YimE8Em_/view",
+      "sourceSha256": "1609e8535695c3eb2a9457c0f6702072814f757c015bc695bf3ad5ab9bd7bdaf",
+      "local": "assets/curated/photos/officeReaction.webp",
+      "placement": "Supporting photo or hero still; not mixlist artwork."
+    },
+    {
+      "assetKey": "officeWide",
+      "sourceFilename": "IMG_8859.HEIC",
+      "sourceCollection": "BuzzFeed HH",
+      "sourceUrl": "https://drive.google.com/file/d/1qTFDfA7A-IuJkpHA27hFGLCpZdFTBayU/view",
+      "sourceSha256": "564bb0ca5e18b3365eb111fbc83cc4220f0d943600ce59889a7e5cfefc13b165",
+      "local": "assets/curated/photos/officeWide.webp",
+      "placement": "Supporting photo or hero still; not mixlist artwork."
+    },
+    {
+      "assetKey": "popUpSetup",
+      "sourceFilename": "IMG_2019.HEIC",
+      "sourceCollection": "Abbode pop up",
+      "sourceUrl": "https://drive.google.com/file/d/19xFlaqcpW4lZeEqt3sidg2AgNXKaSc-I/view",
+      "sourceSha256": "e0e18ec0185ea1c29d6d24952e4f877346902f5ca351c94d4615d7577e03c303",
+      "local": "assets/curated/photos/popUpSetup.webp",
+      "placement": "Supporting photo or hero still; not mixlist artwork."
+    },
+    {
+      "assetKey": "galaGuest",
+      "sourceFilename": "IMG_1503.HEIC",
+      "sourceCollection": "Scarsdale Library",
+      "sourceUrl": "https://drive.google.com/file/d/1-VcwyznRrNTnb3V8kpVkFHMW0WBUu_MM/view",
+      "sourceSha256": "2461093e91b724aaeef3b425627a775484e2191631e3fe2c4ffc79fbdd0fc14b",
+      "local": "assets/curated/photos/galaGuest.webp",
+      "placement": "Supporting photo or hero still; not mixlist artwork."
+    },
+    {
+      "assetKey": "galaRoom",
+      "sourceFilename": "IMG_1498.HEIC",
+      "sourceCollection": "Scarsdale Library",
+      "sourceUrl": "https://drive.google.com/file/d/1I6pE-3QlhFZVlHzcOeO4OFNSBtNrb9gQ/view",
+      "sourceSha256": "f2ea719146054e9e145a426814c54c26055c9414e89823a660fcee8003c04465",
+      "local": "assets/curated/photos/galaRoom.webp",
+      "placement": "Supporting photo or hero still; not mixlist artwork."
+    },
+    {
+      "assetKey": "garnishDetail",
+      "sourceFilename": "IMG_7656.HEIC",
+      "sourceCollection": "US Open @ Park Terrace",
+      "sourceUrl": "https://drive.google.com/file/d/1NjdipFBbGX4RdUpOOSEBv86zX8lLlHi0/view",
+      "sourceSha256": "bef2d2f4382fabe2ce826b69caba93635dd2d9bd6f7a0e53498dbcd26ca01c22",
+      "local": "assets/curated/photos/garnishDetail.webp",
+      "placement": "Supporting photo or hero still; not mixlist artwork."
+    },
+    {
+      "assetKey": "skylineToast",
+      "sourceFilename": "IMG_7688.HEIC",
+      "sourceCollection": "US Open @ Park Terrace",
+      "sourceUrl": "https://drive.google.com/file/d/1Nfd2RiRpV81J4S4lSX2Ut2A-ffcLEqmR/view",
+      "sourceSha256": "3becadef109338d41319f117aaaebad6400768154bc17d42988e70bbc36bfe2c",
+      "local": "assets/curated/photos/skylineToast.webp",
+      "placement": "Supporting photo or hero still; not mixlist artwork."
+    },
+    {
+      "assetKey": "officeSelection",
+      "sourceFilename": "IMG_8865.HEIC",
+      "sourceCollection": "BuzzFeed HH",
+      "sourceUrl": "https://drive.google.com/file/d/18XUaXCm5c_JsCmR2EPg6Yyzvrk6wUxLc/view",
+      "sourceSha256": "e3c31a31b11fd8abbb3d01ac7f7179b0e1ea74668c4bb7cafa3bc8e42f799360",
+      "local": "assets/curated/photos/officeSelection.webp",
+      "placement": "Supporting photo or hero still; not mixlist artwork."
+    },
+    {
+      "assetKey": "brandedMenu",
+      "sourceFilename": "IMG_2032_VSCO.jpg",
+      "sourceCollection": "Abbode pop up",
+      "sourceUrl": "https://drive.google.com/file/d/1rTblbtbQmCcE0T7yW9PFp6o-_DhZA4S2/view",
+      "sourceSha256": "6db1c9b01d4c901253cb2b355f908b86a6aa509d2d41e01329ccb6a101dc4d90",
+      "local": "assets/curated/photos/brandedMenu.webp",
+      "placement": "Supporting photo or hero still; not mixlist artwork."
+    }
+  ]
+}

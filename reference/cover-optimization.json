@@ -1,0 +1,114 @@
+[
+  {
+    "key": "signature",
+    "path": "assets/mixlists/signature.jpg",
+    "source": "https://media.barsys.com/images/blog_images/1746172082_1746079798_Barsys_RB_2025_April_Signature_03_1x1_MA_GA.jpg",
+    "original": "reference/original-covers/signature.jpg",
+    "dimensions": [
+      960,
+      960
+    ],
+    "originalBytes": 648909,
+    "workingBytes": 114717,
+    "originalSha256": "fb8a5d3bbc7ed18d94acc7295f1b01f11f1597296626be70bc794dfc59d777a2",
+    "workingSha256": "49a76009a10bc06e4fdd2e18de56a6248104eb98fbd74648a257837b45e4d2a0"
+  },
+  {
+    "key": "agave",
+    "path": "assets/mixlists/agave.jpg",
+    "source": "https://media.barsys.com/images/blog_images/1746172257_1746079609_Barsys_RB_2025_April_Agave_Lovers_03_1x1_MA_GA%281%29.jpg",
+    "original": "reference/original-covers/agave.jpg",
+    "dimensions": [
+      960,
+      960
+    ],
+    "originalBytes": 448366,
+    "workingBytes": 174070,
+    "originalSha256": "7afa5be43854ec3f8afedd5b4f52c28392d87284236405b8941f90ba6c94144a",
+    "workingSha256": "b9724ea32150bf1b5c8e3908a257682b1db4dc2d1a3f56a91e0a0448f915e08f"
+  },
+  {
+    "key": "spritz",
+    "path": "assets/mixlists/spritz.jpg",
+    "source": "https://media.barsys.com/images/blog_images/1771401074_Barsys_Mixlist_2026_Feb_Apres%20Spritz%20Club_Cover_1x1_AT_GA.jpg",
+    "original": "reference/original-covers/spritz.jpg",
+    "dimensions": [
+      960,
+      960
+    ],
+    "originalBytes": 547563,
+    "workingBytes": 82648,
+    "originalSha256": "5c1c01446a3c5c1a16f2a80d2291ea2a9d950df51dd87218450f7a35db2faff3",
+    "workingSha256": "6366659e6c1e7c5c702fc5851f6b4e6520b311f20aa8393866a17142fbd481f8"
+  },
+  {
+    "key": "fluid",
+    "path": "assets/mixlists/fluid.png",
+    "source": "https://media.barsys.com/images/blog_images/1771230625_ChatGPT%20Image%20Feb%2016%2C%202026%2C%2001_53_21%20PM.png",
+    "original": "reference/original-covers/fluid.png",
+    "dimensions": [
+      960,
+      960
+    ],
+    "originalBytes": 1452091,
+    "workingBytes": 1181322,
+    "originalSha256": "5f45e585e273633c094fa54f51d207c4489ad35a7fe905499226f2b26fbfbb92",
+    "workingSha256": "8274a78610ce2161f0a1f3043b8bf4931b23796d5ec597bcc2444387fb492580"
+  },
+  {
+    "key": "vibrant",
+    "path": "assets/mixlists/vibrant.jpg",
+    "source": "https://media.barsys.com/images/blog_images/1746172348_1746079772_Barsys_RB_2025_April_Vibrant_Classics_03_1x1_MA_GA.jpg",
+    "original": "reference/original-covers/vibrant.jpg",
+    "dimensions": [
+      960,
+      960
+    ],
+    "originalBytes": 773729,
+    "workingBytes": 127608,
+    "originalSha256": "1bc1999ea6c7ff120bad7aa24e6f79b04f2618016d70bf8aace5854f58ca1204",
+    "workingSha256": "a821146c546cdee1a47cfb37e99e15003c3ac39dc8657f14fbb9d6342871c953"
+  },
+  {
+    "key": "neon",
+    "path": "assets/mixlists/neon.jpg",
+    "source": "https://media.barsys.com/images/blog_images/1770719915_Barsys_Mixlist_2026_Feb_Neon%20Shadows_1x1_AT_GA.jpg",
+    "original": "reference/original-covers/neon.jpg",
+    "dimensions": [
+      960,
+      960
+    ],
+    "originalBytes": 1331169,
+    "workingBytes": 114201,
+    "originalSha256": "e7e3d9436a8d50fd36be6a5038b5fc29e7bd02b1598a2db8bb4e5c0865c1e7f7",
+    "workingSha256": "d2c96edaee670117752d25765a4d9d15f0b99662ed21fb99d4e614e3a0424286"
+  },
+  {
+    "key": "love",
+    "path": "assets/mixlists/love.jpg",
+    "source": "https://media.barsys.com/images/blog_images/1770628428_Barsys_Mixlist_2026_Feb_Love%20at%20First%20Sip_1x1_AT_GA.jpg",
+    "original": "reference/original-covers/love.jpg",
+    "dimensions": [
+      960,
+      960
+    ],
+    "originalBytes": 860203,
+    "workingBytes": 151985,
+    "originalSha256": "ca121fadab64255115411a8fb4609a50a57396ff47bd50e2acd3d5bb9d578f6d",
+    "workingSha256": "063c9feb8770f68c87ec7bc8ead11550a0b6a50b3f4cf212f97f7ba878ceaeab"
+  },
+  {
+    "key": "summer-mocktails",
+    "path": "assets/mixlists/summer-mocktails.jpg",
+    "source": "https://media.barsys.com/images/blog_images/1749042177_Barsys_Mixlist_2025_June_Happy_Hour_Mocktail_1x1_MA_GA.jpg",
+    "original": "reference/original-covers/summer-mocktails.jpg",
+    "dimensions": [
+      960,
+      960
+    ],
+    "originalBytes": 1091118,
+    "workingBytes": 185025,
+    "originalSha256": "09b67d06f73a410091fd70e79da8475936b5443865725920cf5fdf43a5310694",
+    "workingSha256": "04d384a75360c24cb39f1bcc8ebd0e804dc38d6f332ee5967d857fe79677ec78"
+  }
+]

@@ -1,0 +1,12 @@
+import test from 'node:test';import assert from 'node:assert/strict';import http from 'node:http';import {mkdtemp,rm} from 'node:fs/promises';import {tmpdir} from 'node:os';import {join} from 'node:path';import {createStore} from '../backend/store.mjs';import {createAPI} from '../backend/api.mjs';import {defaultEvent} from '../backend/operations.mjs';
+test('crew API enforces assignment boundaries and denies every owner endpoint',async t=>{
+ const dir=await mkdtemp(join(tmpdir(),'crew-api-')),store=await createStore({filename:join(dir,'db')});const id='00000000-0000-4000-8000-000000000001',other='00000000-0000-4000-8000-000000000002';for(const i of [id,other])await store.insert({id:i,createdAt:new Date().toISOString(),version:1,payload:{guests:25,details:{name:'Client',budget:'PRIVATE'}},labels:{menus:[]}},i,i);
+ const s=await store.getOperations();s.staff.push({id:'staff',active:true,email:'crew@barsys.com',crewAccess:true});for(const i of [id,other])s.events[i]={...defaultEvent(),stage:3,revenueCents:999999,staffing:i===id?[{staffId:'staff'}]:[]};s.version++;await store.saveOperations(s,s.version-1);
+ const auth={clientId:'test',require:async()=> 'crew@barsys.com'};let handler;const server=http.createServer((req,res)=>handler(req,res));await new Promise(r=>server.listen(0,'127.0.0.1',r));const origin='http://127.0.0.1:'+server.address().port;handler=createAPI({store,origin,auth});t.after(async()=>{await new Promise(r=>server.close(r));await store.close();await rm(dir,{recursive:true,force:true});});
+ const get=p=>fetch(origin+p),post=p=>fetch(origin+'/api/crew/action',{method:'POST',headers:{Origin:origin,'Content-Type':'application/json'},body:JSON.stringify(p)});
+ for(const path of ['/api/admin/operations','/api/admin/inquiries','/api/admin/inquiries/'+id,'/api/admin/inquiries/'+id+'/preparation'])assert.equal((await get(path)).status,403);
+ const response=await(await get('/api/crew/events')).json();assert.equal(response.events.length,1);assert.ok(!JSON.stringify(response).includes('999999'));assert.ok(!JSON.stringify(response).includes('PRIVATE'));
+ assert.equal((await post({version:s.version,action:'task',payload:{eventId:other,stage:3,index:0,done:true}})).status,403);
+ assert.equal((await post({version:s.version,action:'event',payload:{eventId:id}})).status,403);
+ assert.equal((await post({version:s.version,action:'task',payload:{eventId:id,stage:3,index:0,done:true}})).status,200);
+});

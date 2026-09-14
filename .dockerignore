@@ -1,0 +1,9 @@
+node_modules
+.git
+.env*
+release
+qa
+reference/original-covers
+tests
+*.sqlite*
+Barsys-After-Hours-V3-9-Codex-Ready.html

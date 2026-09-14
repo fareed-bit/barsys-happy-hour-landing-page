@@ -1,0 +1,93 @@
+{
+  "source": "https://happyhours.barsys.com/",
+  "reviewed": "2026-09-08",
+  "count": 15,
+  "heading": "In good company",
+  "scope": "Brands and publications displayed together on the source landing page. Event-client or press relationships have not been independently verified.",
+  "rendering": "Offline typographic wordmarks, matching the existing text-only treatment. These are not claimed to be official logo artwork. No font files, remote images, external dependencies or trackers are included.",
+  "brands": [
+    {
+      "name": "Netflix",
+      "class": "ribbon-netflix",
+      "originalRendering": "text"
+    },
+    {
+      "name": "CBS News",
+      "class": "ribbon-cbs",
+      "originalRendering": "image",
+      "originalLogoUrl": "https://media.barsys.com/assets/partners/home-scroll-icon-2.png"
+    },
+    {
+      "name": "Wilhelmina",
+      "class": "ribbon-wilhelmina",
+      "originalRendering": "text"
+    },
+    {
+      "name": "Robb Report",
+      "class": "ribbon-robb",
+      "originalRendering": "image",
+      "originalLogoUrl": "https://media.barsys.com/assets/partners/home-scroll-icon-12.png"
+    },
+    {
+      "name": "Flyhouse",
+      "class": "ribbon-flyhouse",
+      "originalRendering": "text"
+    },
+    {
+      "name": "Gear Patrol",
+      "class": "ribbon-gear",
+      "originalRendering": "image",
+      "originalLogoUrl": "https://media.barsys.com/assets/partners/home-scroll-icon-8.png"
+    },
+    {
+      "name": "Girls Girls Club",
+      "class": "ribbon-girls",
+      "originalRendering": "text"
+    },
+    {
+      "name": "HiConsumption",
+      "class": "ribbon-hiconsumption",
+      "originalRendering": "image",
+      "originalLogoUrl": "https://media.barsys.com/assets/partners/home-scroll-icon-9.png"
+    },
+    {
+      "name": "Sun Mountain",
+      "class": "ribbon-sun",
+      "originalRendering": "text"
+    },
+    {
+      "name": "BuzzFeed",
+      "class": "ribbon-buzzfeed",
+      "originalRendering": "image",
+      "originalLogoUrl": "https://media.barsys.com/assets/partners/home-scroll-icon-1.png"
+    },
+    {
+      "name": "Inside Hook",
+      "class": "ribbon-inside",
+      "originalRendering": "image",
+      "originalLogoUrl": "https://media.barsys.com/assets/partners/home-scroll-icon-10.png"
+    },
+    {
+      "name": "Men's Gear",
+      "class": "ribbon-mens",
+      "originalRendering": "image",
+      "originalLogoUrl": "https://media.barsys.com/assets/partners/home-scroll-icon-11.png"
+    },
+    {
+      "name": "Food Beast",
+      "class": "ribbon-food",
+      "originalRendering": "image",
+      "originalLogoUrl": "https://media.barsys.com/assets/partners/home-scroll-icon-6.png"
+    },
+    {
+      "name": "DataDome",
+      "class": "ribbon-datadome",
+      "originalRendering": "text"
+    },
+    {
+      "name": "MongoDB",
+      "class": "ribbon-mongo",
+      "originalRendering": "text"
+    }
+  ]
+}

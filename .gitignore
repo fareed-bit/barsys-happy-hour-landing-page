@@ -1,0 +1,10 @@
+node_modules/
+.DS_Store
+__pycache__/
+*.pyc
+qa/
+Barsys-After-Hours-*.html
+release/
+node_modules/
+.env*
+*.sqlite*

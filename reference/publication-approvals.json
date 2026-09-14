@@ -1,0 +1,581 @@
+{
+  "version": "3.9",
+  "scope": "Barsys project assets authorized by the user. Specific restrictions and third-party relationship claims are tracked separately; this is not an independent rights audit.",
+  "media": [
+    {
+      "id": "event",
+      "kind": "configured-image",
+      "file": "assets/events/photos/cbk-machine-and-guest.webp",
+      "source": "Supplied archive; see existing source manifests",
+      "description": "A guest holding a drink beside a Barsys machine, tablet and event menu.",
+      "publicationStatus": "authorized_by_owner",
+      "identifiableGuestApproval": "owner_authorization_recorded_not_independently_audited",
+      "approvalEvidence": "Owner confirmation in this project conversation, recorded 2026-09-09; see ownerAuthorization.",
+      "restrictions": "No additional restriction supplied for this project. Record any specific restriction if encountered. Existing source attribution and event scope remain accurate.",
+      "ownershipStatus": "company_owned_user_confirmed"
+    },
+    {
+      "id": "machine",
+      "kind": "configured-image",
+      "file": "assets/machine-brand.jpg",
+      "source": "https://happyhours.barsys.com/photos/machine-rooftop.jpg",
+      "description": "Barsys brand cocktail photography; serving inspiration, not an exact menu recipe",
+      "publicationStatus": "authorized_by_owner",
+      "identifiableGuestApproval": "owner_authorization_recorded_not_independently_audited",
+      "approvalEvidence": "Owner confirmation in this project conversation, recorded 2026-09-09; see ownerAuthorization.",
+      "restrictions": "No additional restriction supplied for this project. Record any specific restriction if encountered. Existing source attribution and event scope remain accurate.",
+      "ownershipStatus": "company_owned_user_confirmed"
+    },
+    {
+      "id": "signature",
+      "kind": "configured-image",
+      "file": "assets/mixlists/signature.jpg",
+      "source": "https://barsys.com/mixlist/the-signature-mixlist",
+      "description": "The Signature Mixlist: four citrus and cranberry cocktails with Reyka, Cointreau and Casamigos bottles on a warm wood backdrop.",
+      "publicationStatus": "authorized_by_owner",
+      "identifiableGuestApproval": "owner_authorization_recorded_not_independently_audited",
+      "approvalEvidence": "Owner confirmation in this project conversation, recorded 2026-09-09; see ownerAuthorization.",
+      "restrictions": "No additional restriction supplied for this project. Record any specific restriction if encountered. Existing source attribution and event scope remain accurate.",
+      "ownershipStatus": "company_owned_user_confirmed"
+    },
+    {
+      "id": "agave",
+      "kind": "configured-image",
+      "file": "assets/mixlists/agave.jpg",
+      "source": "https://barsys.com/mixlist/the-agave-lover-s-mixlist",
+      "description": "The Agave Lover's official cover: agave cocktails, pineapple and citrus beside tequila and mezcal bottles against green curtains.",
+      "publicationStatus": "authorized_by_owner",
+      "identifiableGuestApproval": "owner_authorization_recorded_not_independently_audited",
+      "approvalEvidence": "Owner confirmation in this project conversation, recorded 2026-09-09; see ownerAuthorization.",
+      "restrictions": "No additional restriction supplied for this project. Record any specific restriction if encountered. Existing source attribution and event scope remain accurate.",
+      "ownershipStatus": "company_owned_user_confirmed"
+    },
+    {
+      "id": "spritz",
+      "kind": "configured-image",
+      "file": "assets/mixlists/spritz.jpg",
+      "source": "https://happyhours.barsys.com/",
+      "description": "Apres Spritz Club: seven sparkling and aperitif cocktails in different glasses against a warm brown backdrop.",
+      "publicationStatus": "authorized_by_owner",
+      "identifiableGuestApproval": "owner_authorization_recorded_not_independently_audited",
+      "approvalEvidence": "Owner confirmation in this project conversation, recorded 2026-09-09; see ownerAuthorization.",
+      "restrictions": "No additional restriction supplied for this project. Record any specific restriction if encountered. Existing source attribution and event scope remain accurate.",
+      "ownershipStatus": "company_owned_user_confirmed"
+    },
+    {
+      "id": "fluid",
+      "kind": "configured-image",
+      "file": "assets/mixlists/fluid.png",
+      "source": "https://happyhours.barsys.com/",
+      "description": "Fluid Code official mixlist cover: five colorful drinks with citrus and berries against a vivid blue backdrop.",
+      "publicationStatus": "authorized_by_owner",
+      "identifiableGuestApproval": "owner_authorization_recorded_not_independently_audited",
+      "approvalEvidence": "Owner confirmation in this project conversation, recorded 2026-09-09; see ownerAuthorization.",
+      "restrictions": "No additional restriction supplied for this project. Record any specific restriction if encountered. Existing source attribution and event scope remain accurate.",
+      "ownershipStatus": "company_owned_user_confirmed"
+    },
+    {
+      "id": "vibrant",
+      "kind": "configured-image",
+      "file": "assets/mixlists/vibrant.jpg",
+      "source": "https://barsys.com/mixlist/the-vibrant-classics-mixlist",
+      "description": "The Vibrant Classics official cover: rum and bourbon cocktails with citrus, bottles and a golden-yellow backdrop.",
+      "publicationStatus": "authorized_by_owner",
+      "identifiableGuestApproval": "owner_authorization_recorded_not_independently_audited",
+      "approvalEvidence": "Owner confirmation in this project conversation, recorded 2026-09-09; see ownerAuthorization.",
+      "restrictions": "No additional restriction supplied for this project. Record any specific restriction if encountered. Existing source attribution and event scope remain accurate.",
+      "ownershipStatus": "company_owned_user_confirmed"
+    },
+    {
+      "id": "cheers",
+      "kind": "configured-image",
+      "file": "assets/events/photos/cbk-raise-a-glass.webp",
+      "source": "Supplied archive; see existing source manifests",
+      "description": "Two guests raising their drinks in front of red curtains.",
+      "publicationStatus": "authorized_by_owner",
+      "identifiableGuestApproval": "owner_authorization_recorded_not_independently_audited",
+      "approvalEvidence": "Owner confirmation in this project conversation, recorded 2026-09-09; see ownerAuthorization.",
+      "restrictions": "No additional restriction supplied for this project. Record any specific restriction if encountered. Existing source attribution and event scope remain accurate.",
+      "ownershipStatus": "company_owned_user_confirmed"
+    },
+    {
+      "id": "company",
+      "kind": "configured-image",
+      "file": "assets/events/photos/rooftop-in-good-company.webp",
+      "source": "Supplied archive; see existing source manifests",
+      "description": "A group of guests talking together at a Barsys rooftop event.",
+      "publicationStatus": "authorized_by_owner",
+      "identifiableGuestApproval": "owner_authorization_recorded_not_independently_audited",
+      "approvalEvidence": "Owner confirmation in this project conversation, recorded 2026-09-09; see ownerAuthorization.",
+      "restrictions": "No additional restriction supplied for this project. Record any specific restriction if encountered. Existing source attribution and event scope remain accurate.",
+      "ownershipStatus": "company_owned_user_confirmed"
+    },
+    {
+      "id": "smiles",
+      "kind": "configured-image",
+      "file": "assets/events/photos/cbk-real-smiles.webp",
+      "source": "Supplied archive; see existing source manifests",
+      "description": "Two smiling guests holding drinks against a red curtain backdrop.",
+      "publicationStatus": "authorized_by_owner",
+      "identifiableGuestApproval": "owner_authorization_recorded_not_independently_audited",
+      "approvalEvidence": "Owner confirmation in this project conversation, recorded 2026-09-09; see ownerAuthorization.",
+      "restrictions": "No additional restriction supplied for this project. Record any specific restriction if encountered. Existing source attribution and event scope remain accurate.",
+      "ownershipStatus": "company_owned_user_confirmed"
+    },
+    {
+      "id": "joy",
+      "kind": "configured-image",
+      "file": "assets/events/photos/cbk-jump-for-joy.webp",
+      "source": "Supplied archive; see existing source manifests",
+      "description": "Two guests striking playful poses below a display of Barsys machines.",
+      "publicationStatus": "authorized_by_owner",
+      "identifiableGuestApproval": "owner_authorization_recorded_not_independently_audited",
+      "approvalEvidence": "Owner confirmation in this project conversation, recorded 2026-09-09; see ownerAuthorization.",
+      "restrictions": "No additional restriction supplied for this project. Record any specific restriction if encountered. Existing source attribution and event scope remain accurate.",
+      "ownershipStatus": "company_owned_user_confirmed"
+    },
+    {
+      "id": "together",
+      "kind": "configured-image",
+      "file": "assets/events/photos/cbk-drinks-together.webp",
+      "source": "Supplied archive; see existing source manifests",
+      "description": "Three guests holding drinks and posing together at a Barsys event.",
+      "publicationStatus": "authorized_by_owner",
+      "identifiableGuestApproval": "owner_authorization_recorded_not_independently_audited",
+      "approvalEvidence": "Owner confirmation in this project conversation, recorded 2026-09-09; see ownerAuthorization.",
+      "restrictions": "No additional restriction supplied for this project. Record any specific restriction if encountered. Existing source attribution and event scope remain accurate.",
+      "ownershipStatus": "company_owned_user_confirmed"
+    },
+    {
+      "id": "service",
+      "kind": "configured-image",
+      "file": "assets/events/photos/DSC_6445.webp",
+      "source": "Supplied archive; see existing source manifests",
+      "description": "Guests at the bar in a sunlit room during the June 18 rooftop event.",
+      "publicationStatus": "authorized_by_owner",
+      "identifiableGuestApproval": "owner_authorization_recorded_not_independently_audited",
+      "approvalEvidence": "Owner confirmation in this project conversation, recorded 2026-09-09; see ownerAuthorization.",
+      "restrictions": "No additional restriction supplied for this project. Record any specific restriction if encountered. Existing source attribution and event scope remain accurate.",
+      "ownershipStatus": "company_owned_user_confirmed"
+    },
+    {
+      "id": "setup",
+      "kind": "configured-image",
+      "file": "assets/events/photos/DSC_6371.webp",
+      "source": "Supplied archive; see existing source manifests",
+      "description": "Glassware and an event menu set out beside the windows at the rooftop event.",
+      "publicationStatus": "authorized_by_owner",
+      "identifiableGuestApproval": "owner_authorization_recorded_not_independently_audited",
+      "approvalEvidence": "Owner confirmation in this project conversation, recorded 2026-09-09; see ownerAuthorization.",
+      "restrictions": "No additional restriction supplied for this project. Record any specific restriction if encountered. Existing source attribution and event scope remain accurate.",
+      "ownershipStatus": "company_owned_user_confirmed"
+    },
+    {
+      "id": "neon",
+      "kind": "configured-image",
+      "file": "assets/mixlists/neon.jpg",
+      "source": "https://barsys.com/mixlist/neon-shadows",
+      "description": "Neon Shadows official cover: five cocktails with mint and citrus under blue and magenta lighting.",
+      "publicationStatus": "authorized_by_owner",
+      "identifiableGuestApproval": "owner_authorization_recorded_not_independently_audited",
+      "approvalEvidence": "Owner confirmation in this project conversation, recorded 2026-09-09; see ownerAuthorization.",
+      "restrictions": "No additional restriction supplied for this project. Record any specific restriction if encountered. Existing source attribution and event scope remain accurate.",
+      "ownershipStatus": "company_owned_user_confirmed"
+    },
+    {
+      "id": "love",
+      "kind": "configured-image",
+      "file": "assets/mixlists/love.jpg",
+      "source": "https://barsys.com/mixlist/love-at-first-sip",
+      "description": "Official Barsys collection cover for Love at First Sip.",
+      "publicationStatus": "authorized_by_owner",
+      "identifiableGuestApproval": "owner_authorization_recorded_not_independently_audited",
+      "approvalEvidence": "Owner confirmation in this project conversation, recorded 2026-09-09; see ownerAuthorization.",
+      "restrictions": "No additional restriction supplied for this project. Record any specific restriction if encountered. Existing source attribution and event scope remain accurate.",
+      "ownershipStatus": "company_owned_user_confirmed"
+    },
+    {
+      "id": "summer-mocktails",
+      "kind": "configured-image",
+      "file": "assets/mixlists/summer-mocktails.jpg",
+      "source": "https://barsys.com/mixlist/a-summer-mocktail-mixlist",
+      "description": "Official Barsys collection cover for A Summer Mocktail Mixlist.",
+      "publicationStatus": "authorized_by_owner",
+      "identifiableGuestApproval": "owner_authorization_recorded_not_independently_audited",
+      "approvalEvidence": "Owner confirmation in this project conversation, recorded 2026-09-09; see ownerAuthorization.",
+      "restrictions": "No additional restriction supplied for this project. Record any specific restriction if encountered. Existing source attribution and event scope remain accurate.",
+      "ownershipStatus": "company_owned_user_confirmed"
+    },
+    {
+      "id": "officeReaction",
+      "kind": "configured-image",
+      "file": "assets/curated/photos/officeReaction.webp",
+      "source": "Supplied archive; see existing source manifests",
+      "description": "Guests reacting around an illuminated Barsys machine at the BuzzFeed office happy hour.",
+      "publicationStatus": "authorized_by_owner",
+      "identifiableGuestApproval": "owner_authorization_recorded_not_independently_audited",
+      "approvalEvidence": "Owner confirmation in this project conversation, recorded 2026-09-09; see ownerAuthorization.",
+      "restrictions": "No additional restriction supplied for this project. Record any specific restriction if encountered. Existing source attribution and event scope remain accurate.",
+      "ownershipStatus": "company_owned_user_confirmed"
+    },
+    {
+      "id": "officeWide",
+      "kind": "configured-image",
+      "file": "assets/curated/photos/officeWide.webp",
+      "source": "Supplied archive; see existing source manifests",
+      "description": "A wider view of the BuzzFeed workplace with guests gathered around the cocktail bar.",
+      "publicationStatus": "authorized_by_owner",
+      "identifiableGuestApproval": "owner_authorization_recorded_not_independently_audited",
+      "approvalEvidence": "Owner confirmation in this project conversation, recorded 2026-09-09; see ownerAuthorization.",
+      "restrictions": "No additional restriction supplied for this project. Record any specific restriction if encountered. Existing source attribution and event scope remain accurate.",
+      "ownershipStatus": "company_owned_user_confirmed"
+    },
+    {
+      "id": "popUpSetup",
+      "kind": "configured-image",
+      "file": "assets/curated/photos/popUpSetup.webp",
+      "source": "Supplied archive; see existing source manifests",
+      "description": "The complete Barsys tabletop setup with a tablet and printed menu in a pink interior.",
+      "publicationStatus": "authorized_by_owner",
+      "identifiableGuestApproval": "owner_authorization_recorded_not_independently_audited",
+      "approvalEvidence": "Owner confirmation in this project conversation, recorded 2026-09-09; see ownerAuthorization.",
+      "restrictions": "No additional restriction supplied for this project. Record any specific restriction if encountered. Existing source attribution and event scope remain accurate.",
+      "ownershipStatus": "company_owned_user_confirmed"
+    },
+    {
+      "id": "galaGuest",
+      "kind": "configured-image",
+      "file": "assets/curated/photos/galaGuest.webp",
+      "source": "Supplied archive; see existing source manifests",
+      "description": "A guest and the Barsys bar during the Scarsdale Library formal event.",
+      "publicationStatus": "authorized_by_owner",
+      "identifiableGuestApproval": "owner_authorization_recorded_not_independently_audited",
+      "approvalEvidence": "Owner confirmation in this project conversation, recorded 2026-09-09; see ownerAuthorization.",
+      "restrictions": "No additional restriction supplied for this project. Record any specific restriction if encountered. Existing source attribution and event scope remain accurate.",
+      "ownershipStatus": "company_owned_user_confirmed"
+    },
+    {
+      "id": "galaRoom",
+      "kind": "configured-image",
+      "file": "assets/curated/photos/galaRoom.webp",
+      "source": "Supplied archive; see existing source manifests",
+      "description": "Guests gathered in a decorated ballroom during the Scarsdale Library gala.",
+      "publicationStatus": "authorized_by_owner",
+      "identifiableGuestApproval": "owner_authorization_recorded_not_independently_audited",
+      "approvalEvidence": "Owner confirmation in this project conversation, recorded 2026-09-09; see ownerAuthorization.",
+      "restrictions": "No additional restriction supplied for this project. Record any specific restriction if encountered. Existing source attribution and event scope remain accurate.",
+      "ownershipStatus": "company_owned_user_confirmed"
+    },
+    {
+      "id": "garnishDetail",
+      "kind": "configured-image",
+      "file": "assets/curated/photos/garnishDetail.webp",
+      "source": "Supplied archive; see existing source manifests",
+      "description": "A close-up of prepared drink garnishes at the Park Terrace event.",
+      "publicationStatus": "authorized_by_owner",
+      "identifiableGuestApproval": "owner_authorization_recorded_not_independently_audited",
+      "approvalEvidence": "Owner confirmation in this project conversation, recorded 2026-09-09; see ownerAuthorization.",
+      "restrictions": "No additional restriction supplied for this project. Record any specific restriction if encountered. Existing source attribution and event scope remain accurate.",
+      "ownershipStatus": "company_owned_user_confirmed"
+    },
+    {
+      "id": "skylineToast",
+      "kind": "configured-image",
+      "file": "assets/curated/photos/skylineToast.webp",
+      "source": "Supplied archive; see existing source manifests",
+      "description": "Two drinks raised against the New York skyline at Park Terrace.",
+      "publicationStatus": "authorized_by_owner",
+      "identifiableGuestApproval": "owner_authorization_recorded_not_independently_audited",
+      "approvalEvidence": "Owner confirmation in this project conversation, recorded 2026-09-09; see ownerAuthorization.",
+      "restrictions": "No additional restriction supplied for this project. Record any specific restriction if encountered. Existing source attribution and event scope remain accurate.",
+      "ownershipStatus": "company_owned_user_confirmed"
+    },
+    {
+      "id": "officeSelection",
+      "kind": "configured-image",
+      "file": "assets/curated/photos/officeSelection.webp",
+      "source": "Supplied archive; see existing source manifests",
+      "description": "A guest using the tablet beside the Barsys machine during an office happy hour.",
+      "publicationStatus": "authorized_by_owner",
+      "identifiableGuestApproval": "owner_authorization_recorded_not_independently_audited",
+      "approvalEvidence": "Owner confirmation in this project conversation, recorded 2026-09-09; see ownerAuthorization.",
+      "restrictions": "No additional restriction supplied for this project. Record any specific restriction if encountered. Existing source attribution and event scope remain accurate.",
+      "ownershipStatus": "company_owned_user_confirmed"
+    },
+    {
+      "id": "brandedMenu",
+      "kind": "configured-image",
+      "file": "assets/curated/photos/brandedMenu.webp",
+      "source": "Supplied archive; see existing source manifests",
+      "description": "An event-specific printed mocktail menu beside the Barsys machine at the Abbode pop-up.",
+      "publicationStatus": "authorized_by_owner",
+      "identifiableGuestApproval": "owner_authorization_recorded_not_independently_audited",
+      "approvalEvidence": "Owner confirmation in this project conversation, recorded 2026-09-09; see ownerAuthorization.",
+      "restrictions": "No additional restriction supplied for this project. Record any specific restriction if encountered. Existing source attribution and event scope remain accurate.",
+      "ownershipStatus": "company_owned_user_confirmed"
+    },
+    {
+      "id": "hero",
+      "kind": "video",
+      "file": "assets/curated/films/nyc-event.mp4",
+      "previewFile": "assets/curated/loops/nyc-event.mp4",
+      "sourceFiles": [
+        "Barseys_NYC_Deliverable3.mp4"
+      ],
+      "description": "A bar full of guests, the Barsys machine and conversations from the supplied NYC event film. Silent event footage.",
+      "publicationStatus": "authorized_by_owner",
+      "identifiableGuestApproval": "owner_authorization_recorded_not_independently_audited",
+      "audioReview": "Bundled edits are silent; original music/audio rights not established",
+      "approvalEvidence": "Owner confirmation in this project conversation, recorded 2026-09-09; see ownerAuthorization.",
+      "restrictions": "No additional restriction supplied for this project. Record any specific restriction if encountered. Existing source attribution and event scope remain accurate.",
+      "ownershipStatus": "company_owned_user_confirmed"
+    },
+    {
+      "id": "office",
+      "kind": "video",
+      "file": "assets/curated/films/buzzfeed-office.mp4",
+      "previewFile": "assets/curated/loops/buzzfeed-office.mp4",
+      "sourceFiles": [
+        "IMG_8864.MOV"
+      ],
+      "description": "Guests gathering at the office bar in the BuzzFeed happy-hour archive. Silent event footage.",
+      "publicationStatus": "authorized_by_owner",
+      "identifiableGuestApproval": "owner_authorization_recorded_not_independently_audited",
+      "audioReview": "Bundled edits are silent; original music/audio rights not established",
+      "approvalEvidence": "Owner confirmation in this project conversation, recorded 2026-09-09; see ownerAuthorization.",
+      "restrictions": "No additional restriction supplied for this project. Record any specific restriction if encountered. Existing source attribution and event scope remain accurate.",
+      "ownershipStatus": "company_owned_user_confirmed"
+    },
+    {
+      "id": "gala",
+      "kind": "video",
+      "file": "assets/curated/films/scarsdale-gala.mp4",
+      "previewFile": "assets/curated/loops/scarsdale-gala.mp4",
+      "sourceFiles": [
+        "IMG_1474.MOV"
+      ],
+      "description": "A guest interacting at the bar during the Scarsdale Library gala. A formal-event example, not an office setting. Silent event footage.",
+      "publicationStatus": "authorized_by_owner",
+      "identifiableGuestApproval": "owner_authorization_recorded_not_independently_audited",
+      "audioReview": "Bundled edits are silent; original music/audio rights not established",
+      "approvalEvidence": "Owner confirmation in this project conversation, recorded 2026-09-09; see ownerAuthorization.",
+      "restrictions": "No additional restriction supplied for this project. Record any specific restriction if encountered. Existing source attribution and event scope remain accurate.",
+      "ownershipStatus": "company_owned_user_confirmed"
+    },
+    {
+      "id": "experienceSelect",
+      "kind": "video",
+      "file": "assets/curated/films/choose-your-drink.mp4",
+      "previewFile": "assets/curated/loops/choose-your-drink.mp4",
+      "sourceFiles": [
+        "Barseys_NYC_Deliverable1.mp4"
+      ],
+      "description": "Tablet selection, dispensing and guest interaction from NYC Deliverable 1. This is recorded event footage, not a demonstration of the mixlist currently selected in the planner. Silent event footage.",
+      "publicationStatus": "authorized_by_owner",
+      "identifiableGuestApproval": "owner_authorization_recorded_not_independently_audited",
+      "audioReview": "Bundled edits are silent; original music/audio rights not established",
+      "approvalEvidence": "Owner confirmation in this project conversation, recorded 2026-09-09; see ownerAuthorization.",
+      "restrictions": "No additional restriction supplied for this project. Record any specific restriction if encountered. Existing source attribution and event scope remain accurate.",
+      "ownershipStatus": "company_owned_user_confirmed"
+    },
+    {
+      "id": "experiencePour",
+      "kind": "video",
+      "file": "assets/curated/films/watch-the-pour.mp4",
+      "previewFile": "assets/curated/loops/watch-the-pour.mp4",
+      "sourceFiles": [
+        "IMG_2816.MOV"
+      ],
+      "description": "A close look at the Barsys machine dispensing at the HotWorx activation. The precise recipe and alcohol content of this glass have not been verified. Silent event footage.",
+      "publicationStatus": "authorized_by_owner",
+      "identifiableGuestApproval": "owner_authorization_recorded_not_independently_audited",
+      "audioReview": "Bundled edits are silent; original music/audio rights not established",
+      "approvalEvidence": "Owner confirmation in this project conversation, recorded 2026-09-09; see ownerAuthorization.",
+      "restrictions": "No additional restriction supplied for this project. Record any specific restriction if encountered. Existing source attribution and event scope remain accurate.",
+      "ownershipStatus": "company_owned_user_confirmed"
+    },
+    {
+      "id": "experienceFinish",
+      "kind": "video",
+      "file": "assets/curated/films/the-finishing-touch.mp4",
+      "previewFile": "assets/curated/loops/the-finishing-touch.mp4",
+      "sourceFiles": [
+        "Barseys_NYC_Deliverable4.mp4"
+      ],
+      "description": "Pouring, shaking, straining and service from NYC Deliverable 4. Showing the bartender's finishing work; exact recipes are not specified. Silent event footage.",
+      "publicationStatus": "authorized_by_owner",
+      "identifiableGuestApproval": "owner_authorization_recorded_not_independently_audited",
+      "audioReview": "Bundled edits are silent; original music/audio rights not established",
+      "approvalEvidence": "Owner confirmation in this project conversation, recorded 2026-09-09; see ownerAuthorization.",
+      "restrictions": "No additional restriction supplied for this project. Record any specific restriction if encountered. Existing source attribution and event scope remain accurate.",
+      "ownershipStatus": "company_owned_user_confirmed"
+    },
+    {
+      "id": "experienceCheers",
+      "kind": "video",
+      "file": "assets/curated/films/pick-up-and-cheers.mp4",
+      "previewFile": "assets/curated/loops/pick-up-and-cheers.mp4",
+      "sourceFiles": [
+        "IMG_1491.MOV"
+      ],
+      "description": "A first-person drink-pickup moment from the Scarsdale Library event. Silent event footage.",
+      "publicationStatus": "authorized_by_owner",
+      "identifiableGuestApproval": "owner_authorization_recorded_not_independently_audited",
+      "audioReview": "Bundled edits are silent; original music/audio rights not established",
+      "approvalEvidence": "Owner confirmation in this project conversation, recorded 2026-09-09; see ownerAuthorization.",
+      "restrictions": "No additional restriction supplied for this project. Record any specific restriction if encountered. Existing source attribution and event scope remain accurate.",
+      "ownershipStatus": "company_owned_user_confirmed"
+    },
+    {
+      "id": "occasion",
+      "kind": "video",
+      "file": "assets/curated/films/client-occasion.mp4",
+      "previewFile": null,
+      "sourceFiles": [
+        "Barseys_NYC_Deliverable2.mp4"
+      ],
+      "description": "The supplied NYC Deliverable 2: a hosted dinner with guests, tables and city atmosphere. Venue, catering and decor shown are not standard happy-hour package inclusions. Silent event footage.",
+      "publicationStatus": "authorized_by_owner",
+      "identifiableGuestApproval": "owner_authorization_recorded_not_independently_audited",
+      "audioReview": "Bundled edits are silent; original music/audio rights not established",
+      "approvalEvidence": "Owner confirmation in this project conversation, recorded 2026-09-09; see ownerAuthorization.",
+      "restrictions": "No additional restriction supplied for this project. Record any specific restriction if encountered. Existing source attribution and event scope remain accurate.",
+      "ownershipStatus": "company_owned_user_confirmed"
+    }
+  ],
+  "brands": [
+    {
+      "name": "Netflix",
+      "source": "Original happyhours.barsys.com banner, recorded 2026-09-08",
+      "relationshipStatus": "source_site_reference",
+      "relationshipType": "to_classify",
+      "publicationStatus": "authorized_by_owner",
+      "approvalEvidence": "Displayed on existing Barsys Happy Hours source landing page; retained only with relationship-neutral disclosure. Owner authorized reuse of Barsys project content."
+    },
+    {
+      "name": "CBS News",
+      "source": "Original happyhours.barsys.com banner, recorded 2026-09-08",
+      "relationshipStatus": "source_site_reference",
+      "relationshipType": "to_classify",
+      "publicationStatus": "authorized_by_owner",
+      "approvalEvidence": "Displayed on existing Barsys Happy Hours source landing page; retained only with relationship-neutral disclosure. Owner authorized reuse of Barsys project content."
+    },
+    {
+      "name": "Wilhelmina",
+      "source": "Original happyhours.barsys.com banner, recorded 2026-09-08",
+      "relationshipStatus": "source_site_reference",
+      "relationshipType": "to_classify",
+      "publicationStatus": "authorized_by_owner",
+      "approvalEvidence": "Displayed on existing Barsys Happy Hours source landing page; retained only with relationship-neutral disclosure. Owner authorized reuse of Barsys project content."
+    },
+    {
+      "name": "Robb Report",
+      "source": "Original happyhours.barsys.com banner, recorded 2026-09-08",
+      "relationshipStatus": "source_site_reference",
+      "relationshipType": "to_classify",
+      "publicationStatus": "authorized_by_owner",
+      "approvalEvidence": "Displayed on existing Barsys Happy Hours source landing page; retained only with relationship-neutral disclosure. Owner authorized reuse of Barsys project content."
+    },
+    {
+      "name": "Flyhouse",
+      "source": "Original happyhours.barsys.com banner, recorded 2026-09-08",
+      "relationshipStatus": "source_site_reference",
+      "relationshipType": "to_classify",
+      "publicationStatus": "authorized_by_owner",
+      "approvalEvidence": "Displayed on existing Barsys Happy Hours source landing page; retained only with relationship-neutral disclosure. Owner authorized reuse of Barsys project content."
+    },
+    {
+      "name": "Gear Patrol",
+      "source": "Original happyhours.barsys.com banner, recorded 2026-09-08",
+      "relationshipStatus": "source_site_reference",
+      "relationshipType": "to_classify",
+      "publicationStatus": "authorized_by_owner",
+      "approvalEvidence": "Displayed on existing Barsys Happy Hours source landing page; retained only with relationship-neutral disclosure. Owner authorized reuse of Barsys project content."
+    },
+    {
+      "name": "Girls Girls Club",
+      "source": "Original happyhours.barsys.com banner, recorded 2026-09-08",
+      "relationshipStatus": "source_site_reference",
+      "relationshipType": "to_classify",
+      "publicationStatus": "authorized_by_owner",
+      "approvalEvidence": "Displayed on existing Barsys Happy Hours source landing page; retained only with relationship-neutral disclosure. Owner authorized reuse of Barsys project content."
+    },
+    {
+      "name": "HiConsumption",
+      "source": "Original happyhours.barsys.com banner, recorded 2026-09-08",
+      "relationshipStatus": "source_site_reference",
+      "relationshipType": "to_classify",
+      "publicationStatus": "authorized_by_owner",
+      "approvalEvidence": "Displayed on existing Barsys Happy Hours source landing page; retained only with relationship-neutral disclosure. Owner authorized reuse of Barsys project content."
+    },
+    {
+      "name": "Sun Mountain",
+      "source": "Original happyhours.barsys.com banner, recorded 2026-09-08",
+      "relationshipStatus": "source_site_reference",
+      "relationshipType": "to_classify",
+      "publicationStatus": "authorized_by_owner",
+      "approvalEvidence": "Displayed on existing Barsys Happy Hours source landing page; retained only with relationship-neutral disclosure. Owner authorized reuse of Barsys project content."
+    },
+    {
+      "name": "BuzzFeed",
+      "source": "Original happyhours.barsys.com banner, recorded 2026-09-08",
+      "relationshipStatus": "source_site_reference",
+      "relationshipType": "to_classify",
+      "publicationStatus": "authorized_by_owner",
+      "approvalEvidence": "Displayed on existing Barsys Happy Hours source landing page; retained only with relationship-neutral disclosure. Owner authorized reuse of Barsys project content."
+    },
+    {
+      "name": "Inside Hook",
+      "source": "Original happyhours.barsys.com banner, recorded 2026-09-08",
+      "relationshipStatus": "source_site_reference",
+      "relationshipType": "to_classify",
+      "publicationStatus": "authorized_by_owner",
+      "approvalEvidence": "Displayed on existing Barsys Happy Hours source landing page; retained only with relationship-neutral disclosure. Owner authorized reuse of Barsys project content."
+    },
+    {
+      "name": "Men's Gear",
+      "source": "Original happyhours.barsys.com banner, recorded 2026-09-08",
+      "relationshipStatus": "source_site_reference",
+      "relationshipType": "to_classify",
+      "publicationStatus": "authorized_by_owner",
+      "approvalEvidence": "Displayed on existing Barsys Happy Hours source landing page; retained only with relationship-neutral disclosure. Owner authorized reuse of Barsys project content."
+    },
+    {
+      "name": "Food Beast",
+      "source": "Original happyhours.barsys.com banner, recorded 2026-09-08",
+      "relationshipStatus": "source_site_reference",
+      "relationshipType": "to_classify",
+      "publicationStatus": "authorized_by_owner",
+      "approvalEvidence": "Displayed on existing Barsys Happy Hours source landing page; retained only with relationship-neutral disclosure. Owner authorized reuse of Barsys project content."
+    },
+    {
+      "name": "DataDome",
+      "source": "Original happyhours.barsys.com banner, recorded 2026-09-08",
+      "relationshipStatus": "source_site_reference",
+      "relationshipType": "to_classify",
+      "publicationStatus": "authorized_by_owner",
+      "approvalEvidence": "Displayed on existing Barsys Happy Hours source landing page; retained only with relationship-neutral disclosure. Owner authorized reuse of Barsys project content."
+    },
+    {
+      "name": "MongoDB",
+      "source": "Original happyhours.barsys.com banner, recorded 2026-09-08",
+      "relationshipStatus": "source_site_reference",
+      "relationshipType": "to_classify",
+      "publicationStatus": "authorized_by_owner",
+      "approvalEvidence": "Displayed on existing Barsys Happy Hours source landing page; retained only with relationship-neutral disclosure. Owner authorized reuse of Barsys project content."
+    }
+  ],
+  "ownerAuthorization": {
+    "status": "confirmed_by_user",
+    "date": "2026-09-09",
+    "evidence": "User confirmed that assets from barsys.com, uploaded files and shared Barsys Drive folders are Barsys company-owned assets and may be used for this landing-page project.",
+    "sources": [
+      "https://barsys.com/",
+      "https://drive.google.com/drive/folders/1IuHvQIT1xwjUhBQArPqOqEaCDiSSlbYS",
+      "https://drive.google.com/drive/folders/19PsZjy4aQKfhZqptTjAGPZd54uHnI-4R",
+      "https://drive.google.com/drive/folders/1UxgrD29BkZiWXqPiGIj39El350WXc-1F",
+      "conversation uploads"
+    ],
+    "independentRightsAudit": false
+  }
+}

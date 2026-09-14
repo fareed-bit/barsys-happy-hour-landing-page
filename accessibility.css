@@ -1,0 +1,48 @@
+/* WCAG AA remediation; keeps the original monochrome palette. */
+.service-strip>div>span,.readiness-heading .eyebrow{color:#595959}
+.planner-route button:not(.is-active)>span{color:#595959}
+.field label small,.quick-options summary>span{color:#666}
+.footer-bottom,.footer-bottom span{color:#999}
+:where(a,button,input,select,textarea,summary,[tabindex]):focus-visible{outline:3px solid #111;outline-offset:3px;box-shadow:0 0 0 6px #fff}
+:where(.choice,.menu-choice):has(input:focus-visible){outline:3px solid #111;outline-offset:3px;box-shadow:0 0 0 6px #fff}
+html{scroll-padding-block:100px 120px}
+:where(input,select,textarea,button,a,summary,[tabindex]){scroll-margin-block:110px 130px}
+.readiness-links a,.readiness-links button,.policy-links button,.policy-links a{min-height:28px;display:inline-flex;align-items:center}
+.field input,.field textarea,.field select{border-color:#767676}
+@media(max-width:599px){.motion-toggle,.menu-toggle{min-width:40px;min-height:44px}.subtle-button,.text-link{min-height:32px}.field-hint,.field label small{font-size:12px}.planner-progress{flex-wrap:wrap}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}}
+.route-switch button[aria-pressed="false"]>span,.v3-proposal .field label small,#proposal>.container>.section-heading .eyebrow{color:#595959}
+.taste-options button>span,[data-taste]>span{color:#666}
+#step-label,.wizard-nav button:not([aria-current="step"]),#summary-content>.eyebrow,.permission-options .field-hint{color:#595959}
+.dialog-top .eyebrow,.wizard-menu-card .wm-body>p{color:#595959}
+.video-descriptions{margin-top:24px;padding:20px;border:1px solid #767676;line-height:1.6;color:#222;background:#fff}
+.video-descriptions summary{min-height:44px;cursor:pointer;font-weight:700}
+.video-descriptions h3{font-size:18px;margin:20px 0 8px}.video-descriptions p{font-size:15px;max-width:75ch}
+.taste-console button[data-taste]>span{color:#595959}
+.approval-item dt,.approval-footer{color:#595959}
+#planner .tier-choice:has(input:checked){background:#111;color:#fff}
+#planner .tier-choice:has(input:checked) .choice-title,#planner .tier-choice:has(input:checked) .choice-price{color:#fff}
+#planner .tier-choice:has(input:checked) .choice-description,#planner .tier-choice:has(input:checked) small{color:#ccc}
+#planner .tier-choice:not(:has(input:checked)) .choice-description,#planner .tier-choice:not(:has(input:checked)) small,#back-step{color:#595959}
+#planner .recommend-choice:has(input:checked){background:#111;color:#fff}
+#planner .recommend-choice:has(input:checked) strong{color:#fff}
+#planner .recommend-choice:has(input:checked) small{color:#ccc}
+#planner .recommend-choice:not(:has(input:checked)) small{color:#595959}
+.scope-panel .field-hint,.addon-card .addon-price>span,.addon-card .addon-kicker,.addon-card.is-included>p{color:#595959}
+.v3-proposal .field input,.v3-proposal .field select,.v3-proposal .field textarea{border-color:#767676}
+.choice-check{border-color:#767676}
+.readiness-card>a,.planner-contact>a{display:inline-flex;align-items:center;min-height:28px}
+/* Keep the optional privacy notice from covering keyboard targets on small screens. */
+@media(max-width:599px){.privacy-notice{position:static;width:auto;max-width:none;margin:20px 16px 100px;transform:none}.mobile-book{max-height:100px}}
+
+/* Explicit states avoid inherited opacity reducing route-label contrast. */
+#proposal .route-switch>button>span{opacity:1;color:#595959}
+#proposal .route-switch>button[aria-pressed="true"]>span{color:#ddd}
+/* Increased text spacing must not clip the narrow-screen event summary. */
+@media(max-width:400px){
+ .approval-stats{display:grid;grid-template-columns:1fr;gap:16px}
+ .approval-stats>div{min-width:0;overflow-wrap:anywhere}
+ .approval-price>div{flex-wrap:wrap;overflow-wrap:anywhere}
+}
+/* The fixed mobile planning bar has a white background; keep its secondary label readable. */
+#mobile-book>span{color:#595959}

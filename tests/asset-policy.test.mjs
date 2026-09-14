@@ -1,0 +1,10 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const read=n=>fs.readFileSync(new URL('../'+n,import.meta.url),'utf8');
+test('V3.9: ordinary asset resolution is independent of storage choice',()=>{const app=read('app.js');assert.ok(!app.includes("can('remoteArtwork')"));assert.ok(!app.includes('privacyBlocked'));assert.ok(!app.includes('Enable online artwork'));assert.ok(app.includes('return src;'));});
+test('V3.9: panel has no artwork toggle and still offers optional draft saving',()=>{const h=read('index.html');assert.ok(!h.includes('id="pref-art"'));assert.ok(h.includes('id="pref-save"'));assert.ok(h.includes('id="privacy-reject"'));});
+test('V3.9: owner authorization is recorded for each configured company asset',()=>{const r=JSON.parse(read('reference/publication-approvals.json'));assert.equal(r.ownerAuthorization.status,'confirmed_by_user');assert.equal(r.ownerAuthorization.independentRightsAudit,false);assert.ok(r.media.every(x=>x.publicationStatus==='authorized_by_owner'&&x.approvalEvidence));});
+test('V3.9: artwork copy does not require opt-in',()=>{const p=read('policy-content.js');assert.ok(!p.includes('Only when you enable'));assert.ok(!p.includes('Turning off online artwork'));assert.ok(p.includes('normal page content'));});
+test('V3.9: no image reload on storage-choice changes',()=>{const r=read('readiness.js');assert.ok(!r.includes("document.querySelectorAll('img[data-image]').forEach(img=>A.setImage"));});
+test('V3.9: handoff and source authorization are present',()=>{assert.ok(read('AGENTS.md').includes('Do NOT reinstate an image-consent gate'));assert.ok(read('CODEX-HANDOFF.md').includes('npm run assets'));assert.ok(read('reference/asset-authorization.md').includes('1IuHvQIT1xwjUhBQArPqOqEaCDiSSlbYS'));});

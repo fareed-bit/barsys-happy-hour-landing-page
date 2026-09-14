@@ -1,0 +1,78 @@
+/* V3.3 / A separate event-film story. Scoped to avoid touching the hero or banner. */
+.experience-films { --film-border:#ffffff24; background:#090909; padding:90px 0 68px; }
+.experience-films .section-heading { align-items:flex-end; margin-bottom:34px; }
+.experience-films .section-intro { max-width:380px; width:350px; }
+.experience-films .section-intro>p { color:#ababab; font-size:15px; line-height:1.8; }
+.experience-films .reel-controls { display:flex; align-items:center; justify-content:space-between; gap:20px; margin-top:18px; }
+.experience-films .story-arrows { display:flex; gap:8px; margin:0; }
+.experience-films [data-photo-scroll="-1"] .icon { transform:rotate(180deg); }
+.experience-films .story-arrows .icon-button { width:44px; height:44px; min-width:44px; color:#eee; border-color:#ffffff32; }
+.experience-films .story-arrows .icon-button:hover:not(:disabled) { background:white; color:#111; }
+.experience-films .story-arrows .icon-button:disabled { opacity:.22; }
+.experience-films .previews-toggle { display:inline-flex; gap:9px; align-items:center; color:#d0d0d0; border:1px solid var(--film-border); background:transparent; border-radius:3px; min-height:44px; padding:10px 14px; font-size:12px; white-space:nowrap; }
+.experience-films .previews-toggle:hover:not(:disabled) { border-color:#ffffff90; color:white; }
+.experience-films .previews-toggle:disabled { opacity:.55; cursor:default; }
+.experience-films .previews-toggle .icon { width:14px; height:14px; }
+.experience-films .experience-reel-rail { display:grid; grid-template-columns:1.4fr repeat(3,minmax(0,1fr)); gap:20px; overflow:visible; padding:0; margin:0; scroll-snap-type:x mandatory; }
+.experience-films .experience-reel { min-width:0; margin-top:0!important; background:transparent; }
+.experience-films .reel-visual { position:relative; border:1px solid var(--film-border); border-radius:4px; overflow:hidden; background:#161616; }
+.experience-films .reel-open { height:365px; border-radius:0; overflow:hidden; position:relative; display:block; }
+.experience-films .reel-poster, .experience-films video { width:100%; height:100%; object-fit:cover; object-position:center; position:absolute; inset:0; transform:none; }
+.experience-films video { opacity:0; transition:opacity .45s ease; pointer-events:none; }
+.experience-films video.ready { opacity:1; }
+.experience-films .reel-open:hover>img { transform:none; }
+.experience-films .reel-open::after { display:none; }
+.experience-films .reel-scrim { position:absolute; inset:0; background:linear-gradient(180deg,#0008,transparent 30%,transparent 64%,#000b); pointer-events:none; }
+.experience-films .reel-index { position:absolute; left:15px; top:18px; color:white; font-size:8px; line-height:1.5; letter-spacing:1.1px; }
+.experience-films .reel-index>span { opacity:.6; margin:0 6px; }
+.experience-films .reel-duration { position:absolute; right:13px; top:14px; padding:4px 6px; background:#0004; border:1px solid #ffffff25; border-radius:2px; font-size:9px; letter-spacing:.7px; color:white; }
+.experience-films .reel-watch { position:absolute; bottom:21px; left:15px; display:inline-flex; align-items:center; gap:8px; font-size:9px; letter-spacing:1px; color:white; }
+.experience-films .reel-watch .icon { width:22px; height:22px; transition:transform .3s; }
+.experience-films .reel-open:hover .reel-watch .icon { transform:translate(2px,-2px); }
+.experience-films .reel-pause { position:absolute; right:12px; bottom:12px; z-index:3; display:grid; place-items:center; border:1px solid #ffffff70; border-radius:50%; width:40px; height:40px; color:white; background:#1117; backdrop-filter:blur(8px); }
+.experience-films .reel-pause .icon { width:14px; height:14px; }
+.experience-films .reel-pause:hover:not(:disabled) { background:#fff; color:#111; }
+.experience-films .reel-pause:disabled { opacity:.4; cursor:default; }
+.experience-films .story-body { padding-top:20px; }
+.experience-films .story-meta { font-size:9px; letter-spacing:1.5px; color:#a3a3a3; }
+.experience-films .story-body h3 { margin:12px 0 10px; font-size:24px; font-weight:600; line-height:1.16; letter-spacing:-.85px; min-height:56px; color:#f5f5f5; }
+.experience-films .story-body p { font-size:13px; line-height:1.8; color:#aaa; margin-bottom:17px; max-width:330px; min-height:70px; }
+.experience-films .story-category { display:block; padding-top:14px; border-top:1px solid #ffffff20; font-size:8px; letter-spacing:1.2px; color:#868686; }
+.experience-films .stories-foot { margin-top:32px; padding-top:23px; border-top:1px solid #ffffff20; }
+.experience-films .stories-foot>p { font-size:11px; color:#888; }
+.experience-films .stories-foot>.text-link { font-size:12px; color:#eee; }
+#film-dialog .film-tabs { overflow-x:auto; overscroll-behavior-x:contain; }
+#film-dialog .film-tabs button { flex-shrink:0; }
+@media(min-width:1600px) { .experience-films .reel-open { height:395px; } }
+@media(max-width:1100px) {
+ .experience-films .experience-reel-rail { display:flex; overflow-x:auto; overflow-y:hidden; gap:20px; padding:3px 3px 18px; margin-inline:-3px; scroll-snap-type:x mandatory; scrollbar-width:thin; scrollbar-color:#565656 transparent; }
+ .experience-films .experience-reel { flex:0 0 29%; width:auto; min-width:235px; scroll-snap-align:start; }
+ .experience-films .experience-reel:first-child { flex-basis:39%; }
+ .experience-films .reel-open { height:365px; }
+ .experience-films .story-body h3 { font-size:25px; }
+}
+@media(max-width:700px) {
+ .experience-films { padding:62px 0 49px; }
+ .experience-films .section-heading { display:block; margin-bottom:28px; }
+ .experience-films .section-intro { width:auto; max-width:none; margin-top:20px; }
+ .experience-films .section-intro>p { font-size:15px; max-width:340px; }
+ .experience-films .reel-controls { margin-top:19px; }
+ .experience-films .experience-reel-rail { gap:16px; }
+ .experience-films .experience-reel, .experience-films .experience-reel:first-child { flex:0 0 84%; min-width:0; }
+ .experience-films .reel-open { height:365px; }
+ .experience-films .story-body h3 { font-size:27px; min-height:0; }
+ .experience-films .story-body p { font-size:15px; line-height:1.8; min-height:81px; max-width:none; }
+ .experience-films .story-meta { font-size:10px; }
+ .experience-films .story-category { font-size:9px; }
+ .experience-films .reel-watch { font-size:10px; left:17px; bottom:24px; }
+ .experience-films .reel-index { font-size:9px; left:17px; }
+ .experience-films .reel-pause { width:44px; height:44px; }
+ .experience-films .stories-foot { display:block; padding-top:20px; margin-top:18px; }
+ .experience-films .stories-foot>p { font-size:12px; max-width:310px; line-height:1.8; }
+ .experience-films .stories-foot>.text-link { font-size:13px; margin-top:12px; }
+}
+@media(max-width:374px) { .experience-films .reel-open { height:315px; } .experience-films .previews-toggle { padding:9px 10px; font-size:11px; } .experience-films .reel-controls { gap:12px; } .experience-films .story-body h3 { font-size:24px; } }
+@media(prefers-reduced-motion:reduce) { .experience-films *, .experience-films *::before, .experience-films *::after { transition:none!important; animation:none!important; } }
+@media print { .experience-films { display:none!important; } }
+/* Keep the existing white mobile booking bar's price legible over a dark section. */
+#mobile-book>span strong { color:#111; }
