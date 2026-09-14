@@ -1,3 +1,9 @@
+## Purchase & pack: Astor vs Gopuff split + Slack ping — September 14, 2026 (candidate gopuff-0914; flip pending)
+
+Recommendation block now separates spirits (order via the Astor supplier draft) from mixers/syrups/consumables (Gopuff). "Ping Fareed on Slack to order from Gopuff" POSTs the list to `/api/admin/slack-ping` (owner-only, throttled), which forwards to a Slack incoming webhook read from `BARSYS_SLACK_WEBHOOK_URL`; unset → 503 with guidance, and "Copy Gopuff list" works regardless. **Owner setup required:** create an incoming webhook in the Slack workspace (Apps → Incoming Webhooks → channel), then on the service run `gcloud run services update barsys-happyhours-production --project happy-hour-landing-version-2 --region us-east4 --update-env-vars BARSYS_SLACK_WEBHOOK_URL=https://hooks.slack.com/services/…` (prefer a Secret Manager reference for the URL). Tag `gopuff-0914` (supersedes `gaps-0914`). Flip: `--to-revisions barsys-happyhours-production-gopuff-0914=100`. Rollback `suggest-0914`.
+
+---
+
 ## Still-needed jump buttons — September 14, 2026 (candidate gaps-0914; flip pending)
 
 Each "Still needed" item on the confirm card now names the specific blank fields (e.g. "Blank: Other") and carries a "Go to part n: <card title> →" button that opens the section card holding the fix. Suggest planned costs now sets Other to $0 when nothing else fills it, since a blank planned figure blocks Continue. `npm test` 195/195; browser suites pass. Tag `gaps-0914` (supersedes `suggest-0914`). Flip: `--to-revisions barsys-happyhours-production-gaps-0914=100`. Rollback `suggest-0914`.
