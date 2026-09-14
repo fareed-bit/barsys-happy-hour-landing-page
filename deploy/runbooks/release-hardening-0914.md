@@ -40,7 +40,7 @@ C=https://hardening-0914---barsys-happyhours-production-23nb3wybra-uk.a.run.app
 curl -sS -o /dev/null -w "root %{http_code}\n" $C/                                    # 200
 curl -sS $C/api/status | grep -o '"release":"[^"]*"'                                  # ...-hardening-0914
 curl -sS $C/api/ready                                                                 # {"ready":true}
-curl -sS -o /dev/null -w "datadome %{http_code}\n" $C/admin/event-prep-datadome.html  # 303  (was 200)
+curl -sS -o /dev/null -w "datadome %{http_code}\n" $C/admin/event-prep-datadome.html  # 303 (file deleted; gate answers before lookup; was 200)
 curl -sS -o /dev/null -w "admin %{http_code} -> %{redirect_url}\n" $C/admin           # 303 -> .../admin/login.html?next=%2Fadmin
 curl -sS -o /dev/null -w "login %{http_code}\n" $C/admin/login.html                   # 200
 curl -sSI -H 'Accept-Encoding: gzip' $C/styles.css | grep -iE 'content-encoding|cache-control'   # gzip, public, max-age=600

@@ -18,7 +18,8 @@ test('backend serves required scripts, allows its API and protects private files
  assert.equal((await fetch(base+'/api/admin/inquiries',{headers:{Origin:'https://example.com'}})).status,403);
  const admin=await fetch(base+'/admin',{redirect:'manual'});assert.equal(admin.status,303);assert.equal(admin.headers.get('location'),'/admin/login.html?next=%2Fadmin');
  const staffPage=await fetch(base+'/admin/operations.html?event=abc',{redirect:'manual'});assert.equal(staffPage.status,303);assert.equal(staffPage.headers.get('location'),'/admin/login.html?next=%2Fadmin%2Foperations.html%3Fevent%3Dabc');
- for(const file of ['admin/event-prep-datadome.html','admin/records.html'])assert.equal((await fetch(base+'/'+file,{redirect:'manual'})).status,303,file);
+ for(const file of ['admin/preparation.html','admin/records.html'])assert.equal((await fetch(base+'/'+file,{redirect:'manual'})).status,303,file);
+ assert.equal((await fetch(base+'/admin/event-prep-datadome.html',{redirect:'manual'})).status,303,'removed static page must not be served');
  const login=await (await fetch(base+'/admin/login.html')).text();assert.ok(login.includes('STAFF ACCESS'));
  const image=await fetch(base+'/assets/logos/Black_Horizontal.svg',{headers:{Range:'bytes=0-15'}});assert.equal(image.status,206);assert.equal((await image.arrayBuffer()).byteLength,16);
 });
