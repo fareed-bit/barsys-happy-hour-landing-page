@@ -1,3 +1,22 @@
+## Admin inventory tabs and supplies categorization — September 14, 2026
+
+**Status:** DONE, live. Two code deploys after the morning email activation, both verified in the browser by the owner; recorded here from the 2026-09-14 handoff PDF because this file was not updated at the time.
+
+- r2 `barsys-happyhours-production-admin-tabs-0914-r2` (~14:00 ET): three category tabs (Ingredients / Spirits / Equipment) in the inventory picker on `admin/operations.html`; label wording changes in `admin/inquiry-label.js`, `admin/proposal.js`, `backend/notifications.mjs`; `admin/event-prep-datadome.html` static prep page shipped but not linked from any navigation.
+- r3 `barsys-happyhours-production-admin-supplies-0914-r3` (~14:56 ET, 100% traffic): `SUPPLY_KEYWORDS` list added to `categoryOf()` in `admin/operations.js` so consumable supplies (microfiber towels, Clorox wipes, ice bags, disposable cups) display under Equipment instead of Ingredients. Backend `kind:'consumable'` in `backend/api.mjs` deliberately unchanged: switching to `kind:'equipment'` would trigger per-item asset labels, block bulk counts, break pack sizing and drop the items from the shortage view. Display-only fix.
+- Image `us-east4-docker.pkg.dev/happy-hour-landing-version-2/barsys-staging/app@sha256:f2798dfc297425d9393eeabaf39ff047df461fcfaec7ee2c0108b7e470dcbc82`, tag `supplies-0914-r3`.
+- Rollback ladder (0% traffic, held): `admin-tabs-0914-r2` → `email-0914` (keep through 2026-09-15 15:40 UTC) → `intake-0911`.
+- Cleanup done: failed r1 revision auto-collected; five legacy numeric revisions deleted; quarantined home-directory `.git.BROKEN-2026-09-14` removed.
+- OAuth JavaScript origins as of 15:39 ET: `http://localhost:3089`, `http://localhost`, `https://happyhours.barsys.com`, and a stale `https://opjs-0914-r2---…run.app` debug origin to remove. The two `run.app` production origins previously registered are missing; sign-in via the Cloud Run default URL (which equals `PUBLIC_ORIGIN`) may be rejected until they are re-added.
+
+**Correction to the handoff PDF:** `https://happyhours.barsys.com` is NOT this Cloud Run service. As of 2026-09-14 its DNS CNAME points to `fareed-bit.github.io` and it serves a separate static GitHub Pages marketing landing (last modified 2026-09-05). `/api/*` and `/site/*` return 404 there. No Cloud Run domain mapping exists; the domain cutover remains an unexecuted draft in `deploy/runbooks/dns-search-console.md`. `barsyshappyhours.com` does not resolve.
+
+**Repository:** the project folder had no Git repository (the PDF's `.git/` reference was inaccurate). A local repository was initialized 2026-09-14 with the r3 tree as the baseline commit. `qa/` stays untracked per `.gitignore`.
+
+**Launch gates:** `reference/launch-gates.json` accessibility gate moved to approved citing the 2026-09-11 owner-run VoiceOver acceptance and mobile ergonomic re-audit. `npm run check:launch` now reports all recorded approval gates complete. `npm test` 194/194 on Node 25.6.1 (the sandbox-only sqlite teardown failures did not reproduce on the Mac).
+
+---
+
 ## Customer email activation — September 14, 2026
 
 **Status:** DONE. `BARSYS_BACKGROUND_EMAIL_ENABLED=1`. Public launch surface complete except indexing (deliberate) and custom domain (owner-decision blocker).

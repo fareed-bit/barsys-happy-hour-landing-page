@@ -36,14 +36,14 @@
       "title": "Event-specific alcohol-service authorization and responsible operator",
       "owner": "Operations + counsel",
       "status": "approved",
-      "approvalEvidence": "Owner confirms holding the applicable documentation and maintains it outside this website/dashboard. Recorded as owner operational attestation, not independent verification of coverage or authorization. Event-specific checks remain the owner\u2019s responsibility."
+      "approvalEvidence": "Owner confirms holding the applicable documentation and maintains it outside this website/dashboard. Recorded as owner operational attestation, not independent verification of coverage or authorization. Event-specific checks remain the owner’s responsibility."
     },
     {
       "id": "insurance",
       "title": "Current coverage, limits and event-specific COI/additional-insured documentation",
       "owner": "Operations + insurer",
       "status": "approved",
-      "approvalEvidence": "Owner confirms holding the applicable documentation and maintains it outside this website/dashboard. Recorded as owner operational attestation, not independent verification of coverage or authorization. Event-specific checks remain the owner\u2019s responsibility."
+      "approvalEvidence": "Owner confirms holding the applicable documentation and maintains it outside this website/dashboard. Recorded as owner operational attestation, not independent verification of coverage or authorization. Event-specific checks remain the owner’s responsibility."
     },
     {
       "id": "privacy",
@@ -70,8 +70,8 @@
       "id": "accessibility",
       "title": "Live-site accessibility audit with assistive technologies and representative devices",
       "owner": "Accessibility reviewer",
-      "status": "pending",
-      "approvalEvidence": "September 10 isolated Chromium/Firefox/WebKit review: 35 baseline passes; real mobile-bar contrast issue fixed; 16 targeted retests pass with zero axe violations in recorded scans. Keyboard/focus/error/reduced-motion/reflow/text-spacing and Chromium forced-colors evidence in qa/privacy-a11y-0910/review.md. Owner reports visual/touch pass on iPhone 15 Pro Max with newest iOS (exact version unverified), explicitly without VoiceOver. Authenticated production Chrome keyboard/DOM review covered both planner previews, validation, summary/privacy focus and collection state; see qa/privacy-a11y-0910/production-keyboard-review.md. Spoken VoiceOver remains unverified; native connection timed out. Incomplete/manual criteria remain; no conformance certification."
+      "status": "approved",
+      "approvalEvidence": "Owner-run VoiceOver acceptance completed 2026-09-11 on macOS Safari and iOS Safari against production revision barsys-happyhours-production-site-0911: landing, both planners, five site pages; no blocking or non-blocking issues reported (qa/mobile-a11y-0911/voiceover-result.md, owner-attested en bloc). Mobile ergonomic CSS fixes 2026-09-11: 0 tap targets under 44x44 across 36 site pages at 375/390/414; axe 0 violations at 1440 and 390 (qa/mobile-a11y-0911/mobile-review.md). Earlier isolated Chromium/Firefox/WebKit and authenticated Chrome keyboard evidence in qa/privacy-a11y-0910/. This is an owner-attested acceptance, not a third-party WCAG conformance certification; screen-reader coverage of new dynamic states remains a repeat check after future changes."
     },
     {
       "id": "content",
