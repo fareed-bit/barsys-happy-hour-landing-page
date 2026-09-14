@@ -21,14 +21,14 @@ for (const path of [...sitePaths].sort()) {
 
   // Extract signals
   const title = (decorated.match(/<title[^>]*>([\s\S]*?)<\/title>/i) || [,''])[1].trim();
-  const desc  = (decorated.match(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']*)["']/i) || [,''])[1];
-  const robots = (decorated.match(/<meta[^>]+name=["']robots["'][^>]+content=["']([^"']*)["']/i) || [,''])[1];
-  const canonical = (decorated.match(/<link[^>]+rel=["']canonical["'][^>]+href=["']([^"']*)["']/i) || [,''])[1];
-  const ogTitle = (decorated.match(/<meta[^>]+property=["']og:title["'][^>]+content=["']([^"']*)["']/i) || [,''])[1];
-  const ogDesc  = (decorated.match(/<meta[^>]+property=["']og:description["'][^>]+content=["']([^"']*)["']/i) || [,''])[1];
-  const ogImage = (decorated.match(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']*)["']/i) || [,''])[1];
-  const ogUrl   = (decorated.match(/<meta[^>]+property=["']og:url["'][^>]+content=["']([^"']*)["']/i) || [,''])[1];
-  const ogType  = (decorated.match(/<meta[^>]+property=["']og:type["'][^>]+content=["']([^"']*)["']/i) || [,''])[1];
+  const desc  = (decorated.match(/<meta\b(?=[^>]*name=["']description["'])[^>]*content=["']([^"']*)["']/i) || [,''])[1];
+  const robots = (decorated.match(/<meta\b(?=[^>]*name=["']robots["'])[^>]*content=["']([^"']*)["']/i) || [,''])[1];
+  const canonical = (decorated.match(/<link\b(?=[^>]*rel=["']canonical["'])[^>]*href=["']([^"']*)["']/i) || [,''])[1];
+  const ogTitle = (decorated.match(/<meta\b(?=[^>]*property=["']og:title["'])[^>]*content=["']([^"']*)["']/i) || [,''])[1];
+  const ogDesc  = (decorated.match(/<meta\b(?=[^>]*property=["']og:description["'])[^>]*content=["']([^"']*)["']/i) || [,''])[1];
+  const ogImage = (decorated.match(/<meta\b(?=[^>]*property=["']og:image["'])[^>]*content=["']([^"']*)["']/i) || [,''])[1];
+  const ogUrl   = (decorated.match(/<meta\b(?=[^>]*property=["']og:url["'])[^>]*content=["']([^"']*)["']/i) || [,''])[1];
+  const ogType  = (decorated.match(/<meta\b(?=[^>]*property=["']og:type["'])[^>]*content=["']([^"']*)["']/i) || [,''])[1];
   const twitter = /name=["']twitter:card["']/i.test(decorated);
   const schemaBlocks = [...decorated.matchAll(/<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)]
     .map(m => { try { return JSON.parse(m[1]); } catch { return null; } })
@@ -87,6 +87,7 @@ rows.forEach(r => {
   if (!r.canonical) issues.push([r.path, 'no canonical']);
   if (!r.ogImage) issues.push([r.path, 'no og:image']);
   if (!r.ogType) issues.push([r.path, 'no og:type']);
+  if (r.twitter === false) issues.push([r.path, 'no twitter:card']);
   if (r.h1Count !== 1) issues.push([r.path, `h1 count = ${r.h1Count} (want 1)`]);
   if (r.imgsNoAlt > 0) issues.push([r.path, `${r.imgsNoAlt}/${r.imgTotal} images missing alt`]);
 });

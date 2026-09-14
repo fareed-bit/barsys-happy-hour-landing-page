@@ -1,6 +1,7 @@
 import {sitePaths,seoSettings,sitemap,decorate} from './site-seo.mjs';
 import {defaultPolicy,publicPolicy} from './menu-policy.mjs';
 import http from 'node:http';
+import {createGzip,gzipSync} from 'node:zlib';
 import {createReadStream} from 'node:fs';
 import {stat,realpath,readFile} from 'node:fs/promises';
 import {resolve,extname,sep} from 'node:path';
@@ -36,12 +37,16 @@ const server=http.createServer(async(req,res)=>{
   // Serve only public application assets; never source, secrets, databases, packages or QA exports.
   if(!(/^[\w.-]+\.(html|css|js)$/.test(relative)&&!relative.endsWith('Codex-Ready.html')||/^(assets|admin|site)\/[\w./-]+$/.test(relative))||relative.split('/').some(p=>p.startsWith('.'))||!mime[extname(relative)]){res.writeHead(404);return res.end('Not found');}
   const file=await realpath(resolve(root,relative));if(!file.startsWith(root+sep))throw new Error('Invalid path');const info=await stat(file);if(!info.isFile())throw new Error('Invalid file');
+  // Static delivery: gzip compressible text, cache immutable-by-deploy assets briefly, answer conditional requests. HTML stays no-store because it carries runtime state.
+  const type=mime[extname(file)];const gzip=/^(text\/|application\/(javascript|json|xml)|image\/svg)/.test(type)&&/\bgzip\b/.test(req.headers['accept-encoding']||'');if(gzip)res.setHeader('Vary','Accept-Encoding');
+  if(!relative.endsWith('.html')){res.setHeader('Cache-Control',relative.startsWith('assets/')?'public, max-age=86400':'public, max-age=600, must-revalidate');res.setHeader('Last-Modified',info.mtime.toUTCString());const since=Date.parse(req.headers['if-modified-since']||'');if(!req.headers.range&&Number.isFinite(since)&&since>=Math.floor(info.mtimeMs/1000)*1000){res.writeHead(304);return res.end();}}
+  const sendHTML=html=>{const body=req.method==='HEAD'?'':html;if(gzip&&body){res.writeHead(200,{'Content-Type':mime['.html'],'Content-Encoding':'gzip'});return res.end(gzipSync(Buffer.from(body)));}res.writeHead(200,{'Content-Type':mime['.html']});return res.end(body);};
   if(sitePaths.has(path)&&seo.enabled)res.setHeader('X-Robots-Tag','index, follow');
-  if(relative.startsWith('site/')&&relative.endsWith('.html')&&sitePaths.has(path)){res.writeHead(200,{'Content-Type':mime['.html']});return res.end(req.method==='HEAD'?'':decorate(await readFile(file,'utf8'),path,seo));}
-  if(relative==='index.html'){const html=(await readFile(file,'utf8')).replace("connect-src 'none'","connect-src 'self'").replace('<script src="config.js"></script>','<script src="config.js"></script><script>window.BARSYS_RUNTIME='+JSON.stringify(runtime)+';window.BARSYS.menuPolicy='+JSON.stringify(publicPolicy((await store.getMenuPolicy())||defaultPolicy())).replace(/</g,'\\u003c')+';</script>');res.writeHead(200,{'Content-Type':mime['.html']});return res.end(req.method==='HEAD'?'':decorate(html,'/',seo));}
+  if(relative.startsWith('site/')&&relative.endsWith('.html')&&sitePaths.has(path))return sendHTML(decorate(await readFile(file,'utf8'),path,seo));
+  if(relative==='index.html'){const html=(await readFile(file,'utf8')).replace("connect-src 'none'","connect-src 'self'").replace('<script src="config.js"></script>','<script src="config.js"></script><script>window.BARSYS_RUNTIME='+JSON.stringify(runtime)+';window.BARSYS.menuPolicy='+JSON.stringify(publicPolicy((await store.getMenuPolicy())||defaultPolicy())).replace(/</g,'\\u003c')+';</script>');return sendHTML(decorate(html,'/',seo));}
   let start=0,end=info.size-1,status=200;const headers={'Content-Type':mime[extname(file)],'Accept-Ranges':'bytes'};
   if(req.headers.range){const m=/^bytes=(\d*)-(\d*)$/.exec(req.headers.range);if(!m||(!m[1]&&!m[2])){res.writeHead(416);return res.end();}if(m[1]){start=Number(m[1]);if(m[2])end=Math.min(Number(m[2]),end);}else start=Math.max(0,info.size-Number(m[2]));if(!Number.isSafeInteger(start)||!Number.isSafeInteger(end)||start>end||start>=info.size){res.writeHead(416,{'Content-Range':`bytes */${info.size}`});return res.end();}status=206;headers['Content-Range']=`bytes ${start}-${end}/${info.size}`;}
-  headers['Content-Length']=Math.max(0,end-start+1);res.writeHead(status,headers);if(req.method==='HEAD'||!info.size)return res.end();const stream=createReadStream(file,{start,end});stream.on('error',()=>res.destroy());res.on('close',()=>stream.destroy());stream.pipe(res);
+  const compress=gzip&&status===200&&info.size>1024;if(compress)headers['Content-Encoding']='gzip';else headers['Content-Length']=Math.max(0,end-start+1);res.writeHead(status,headers);if(req.method==='HEAD'||!info.size)return res.end();const stream=createReadStream(file,{start,end});stream.on('error',()=>res.destroy());res.on('close',()=>stream.destroy());if(compress){const encoder=createGzip();encoder.on('error',()=>res.destroy());stream.pipe(encoder).pipe(res);}else stream.pipe(res);
  }catch{if(!res.headersSent)res.writeHead(404);res.end('Not found');}
 });
 server.requestTimeout=15000;server.headersTimeout=10000;

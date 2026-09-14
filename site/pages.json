@@ -2,162 +2,189 @@
   {
     "slug": "packages",
     "title": "A package for your kind of gathering.",
-    "description": "Compare Classic, Signature and Reserve office happy-hour packages."
+    "description": "Compare the Classic, Signature and Reserve office happy-hour packages from Barsys: per-guest rates, a two-hour service baseline and what each package includes."
   },
   {
     "slug": "classic",
     "title": "Classic happy hours",
-    "description": "A relaxed round for the whole office."
+    "description": "A relaxed round for the whole office. An interactive Barsys bar with spirits, ice, mixers, bartending, setup and cleanup. Two hours of open-bar service."
   },
   {
     "slug": "signature",
     "title": "Signature happy hours",
-    "description": "A more considered cocktail experience."
+    "description": "A more considered cocktail experience. Everything in Classic, with premium mixers, dry garnishes and a signature cocktail program."
   },
   {
     "slug": "reserve",
     "title": "Reserve happy hours",
-    "description": "For clients, milestones and special occasions."
+    "description": "For clients, milestones and special occasions. An elevated hospitality experience with premium bartenders, artisan mixers, a dedicated event lead and custom"
   },
   {
     "slug": "mixlists",
     "title": "Find your first pour.",
-    "description": "Explore the Barsys collection library. Package eligibility and final event menus are confirmed in the planner."
+    "description": "Explore the Barsys mixlist library for office happy hours in New York City. Package eligibility and final event menus are confirmed in the planner."
   },
   {
     "slug": "mixlist-signature",
     "title": "The Signature Mixlist",
-    "description": "Bright, balanced. Always a good idea."
+    "description": "Bright, balanced. Always a good idea. Vodka and tequila classics with citrus and cranberry. Explore the published recipes below;",
+    "image": "/assets/mixlists/signature.jpg"
   },
   {
     "slug": "mixlist-agave",
     "title": "The Agave Lover's",
-    "description": "Tequila and mezcal, with a little twist."
+    "description": "Tequila and mezcal, with a little twist. Tequila and mezcal meet lime, pineapple and agave.",
+    "image": "/assets/mixlists/agave.jpg"
   },
   {
     "slug": "mixlist-spritz",
     "title": "Garden Spritz Club",
-    "description": "A golden-hour state of mind."
+    "description": "A golden-hour state of mind. Seven sparkling serves for a sociable, aperitif-style occasion. Also known as Après Spritz Club;",
+    "image": "/assets/mixlists/spritz.jpg"
   },
   {
     "slug": "mixlist-fluid",
     "title": "Fluid Code",
-    "description": "All the occasion. None of the alcohol."
+    "description": "All the occasion. None of the alcohol. The official Fluid Code collection, presented with its original blue cover artwork.",
+    "image": "/assets/mixlists/fluid.png"
   },
   {
     "slug": "mixlist-vibrant",
     "title": "The Vibrant Classics",
-    "description": "Crowd favorites, classic and contemporary."
+    "description": "Crowd favorites, classic and contemporary. Familiar cocktail styles with a bright twist: rum, bourbon, orange liqueur and vermouth.",
+    "image": "/assets/mixlists/vibrant.jpg"
   },
   {
     "slug": "mixlist-neon",
     "title": "Neon Shadows",
-    "description": "Cool mint, bright citrus, a bittersweet edge."
+    "description": "Cool mint, bright citrus, a bittersweet edge. Vodka-based serves exploring mint, honey, citrus and ginger.",
+    "image": "/assets/mixlists/neon.jpg"
   },
   {
     "slug": "mixlist-bold-frequency",
     "title": "Bold Frequency",
-    "description": "Depth, spice, and structure."
+    "description": "Depth, spice, and structure. A Barsys mixlist for office happy hours and events in New York City.",
+    "image": "/assets/mixlists/bold-frequency.jpg"
   },
   {
     "slug": "mixlist-sharp",
     "title": "Sharp & Steady",
-    "description": "Precision meets bold spirit."
+    "description": "Precision meets bold spirit. A Barsys mixlist for office happy hours and events in New York City.",
+    "image": "/assets/mixlists/sharp.jpg"
   },
   {
     "slug": "mixlist-silk",
     "title": "Silk & Snap",
-    "description": "Smooth pear, bright citrus edge."
+    "description": "Smooth pear, bright citrus edge. Smooth pear, bright citrus edge. This collection requires event-team confirmation for 360 service.",
+    "image": "/assets/mixlists/silk.jpg"
   },
   {
     "slug": "mixlist-coast",
     "title": "Clear Coast",
-    "description": "Crisp rum, coastal refreshment."
+    "description": "Crisp rum, coastal refreshment. A Barsys mixlist for office happy hours and events in New York City.",
+    "image": "/assets/mixlists/coast.jpg"
   },
   {
     "slug": "mixlist-dusk",
     "title": "Dusk to Agave",
-    "description": "Añejo warmth, twilight flavor."
+    "description": "Añejo warmth, twilight flavor. A Barsys mixlist for office happy hours and events in New York City.",
+    "image": "/assets/mixlists/dusk.jpg"
   },
   {
     "slug": "mixlist-molasses",
     "title": "Molasses Theory",
-    "description": "Vermouth depth, layered complexity."
+    "description": "Vermouth depth, layered complexity. A Barsys mixlist for office happy hours and events in New York City.",
+    "image": "/assets/mixlists/molasses.jpg"
   },
   {
     "slug": "mixlist-circuit",
     "title": "The Bold Circuit",
-    "description": "Bourbon backbone, bright sparks."
+    "description": "Bourbon backbone, bright sparks. A Barsys mixlist for office happy hours and events in New York City.",
+    "image": "/assets/mixlists/circuit.jpg"
   },
   {
     "slug": "mixlist-love",
     "title": "Love at First Sip",
-    "description": "Sparkling beginnings. A softer finish."
+    "description": "Sparkling beginnings. A softer finish. A vodka-led collection that moves from citrus and sparkling wine to richer chocolate and cream notes.",
+    "image": "/assets/mixlists/love.jpg"
   },
   {
     "slug": "mixlist-confessions",
     "title": "Confessions in Glass",
-    "description": "Gin, strawberry, and secrets."
+    "description": "Gin, strawberry, and secrets. A Barsys mixlist for office happy hours and events in New York City.",
+    "image": "/assets/mixlists/confessions.jpg"
   },
   {
     "slug": "mixlist-sombra",
     "title": "Sombra & Sol",
-    "description": "Smoky mezcal, sun-kissed fruit."
+    "description": "Smoky mezcal, sun-kissed fruit. A Barsys mixlist for office happy hours and events in New York City.",
+    "image": "/assets/mixlists/sombra.jpg"
   },
   {
     "slug": "mixlist-flora",
     "title": "Flora-Bitter",
-    "description": "Botanical meets bitter elegance."
+    "description": "Botanical meets bitter elegance. A Barsys mixlist for office happy hours and events in New York City.",
+    "image": "/assets/mixlists/flora.jpg"
   },
   {
     "slug": "mixlist-punt",
     "title": "Punt, Pass, & Pour",
-    "description": "Game day reposado ritual."
+    "description": "Game day reposado ritual. A Barsys mixlist for office happy hours and events in New York City.",
+    "image": "/assets/mixlists/punt.jpg"
   },
   {
     "slug": "mixlist-turf",
     "title": "Turf & Tonic",
-    "description": "Bourbon plays, field-ready pours."
+    "description": "Bourbon plays, field-ready pours. A Barsys mixlist for office happy hours and events in New York City.",
+    "image": "/assets/mixlists/turf.jpg"
   },
   {
     "slug": "mixlist-botanicals",
     "title": "13 Botanicals",
-    "description": "Cynar-driven herbal depth."
+    "description": "Cynar-driven herbal depth. A Barsys mixlist for office happy hours and events in New York City.",
+    "image": "/assets/mixlists/botanicals.jpg"
   },
   {
     "slug": "mixlist-summer-mocktails",
     "title": "A Summer Mocktail Mixlist",
-    "description": "Cucumber, hibiscus and tropical refreshment."
+    "description": "Cucumber, hibiscus and tropical refreshment. A zero-proof collection built around lime, pineapple, cucumber, hibiscus, coconut water and ginger.",
+    "image": "/assets/mixlists/summer-mocktails.jpg"
   },
   {
     "slug": "mixlist-bean-barrel",
     "title": "Bean & Barrel",
-    "description": "Coffee, dark rum and after-dinner flavors."
+    "description": "Coffee, dark rum and after-dinner flavors. Explore 5 published Barsys drinks. Available by request;",
+    "image": "/assets/mixlists/bean-barrel.jpg"
   },
   {
     "slug": "mixlist-zen-juniper",
     "title": "Zen & Juniper",
-    "description": "Gin, tea and peach with a bright finish."
+    "description": "Gin, tea and peach with a bright finish. Explore 5 published Barsys drinks. Available by request;",
+    "image": "/assets/mixlists/zen-juniper.jpg"
   },
   {
     "slug": "mixlist-bean-bolt-bitter",
     "title": "Bean, Bolt & Bitter",
-    "description": "Roasted coffee, bittersweet citrus and almond."
+    "description": "Roasted coffee, bittersweet citrus and almond. Explore 4 published Barsys drinks. Available by request;",
+    "image": "/assets/mixlists/bean-bolt-bitter.jpg"
   },
   {
     "slug": "mixlist-vermouth-valley",
     "title": "Vermouth Valley",
-    "description": "Vodka, vermouth and botanical aperitif flavors."
+    "description": "Vodka, vermouth and botanical aperitif flavors. Explore 5 published Barsys drinks. Available by request;",
+    "image": "/assets/mixlists/vermouth-valley.jpg"
   },
   {
     "slug": "mixlist-boisson-non-alcoholic-agave-lover-s-mixlist",
     "title": "Boisson Non-Alcoholic Agave Lover’s",
-    "description": "Agave-inspired favorites, without the alcohol."
+    "description": "Agave-inspired favorites, without the alcohol. Explore 5 published Barsys drinks. Available by request;",
+    "image": "/assets/mixlists/boisson-non-alcoholic-agave-lover-s-mixlist.jpg"
   },
   {
     "slug": "mixlist-the-ultra-records",
     "title": "The Ultra Records",
-    "description": "Classic cocktails with an after-hours mood."
+    "description": "Classic cocktails with an after-hours mood. Explore 5 published Barsys drinks. Available by request;",
+    "image": "/assets/mixlists/the-ultra-records.jpg"
   },
   {
     "slug": "about",
@@ -172,11 +199,11 @@
   {
     "slug": "events",
     "title": "A little atmosphere.",
-    "description": "Real Barsys event imagery, from the existing collection."
+    "description": "Real Barsys event imagery from office happy hours, client gatherings and evening events across New York City."
   },
   {
     "slug": "faq",
     "title": "Before the first cheers.",
-    "description": "Answers to the essentials of planning your Barsys event."
+    "description": "Answers to the essentials of planning a Barsys office happy hour: inclusions, menus, dates, custom events and cancellations."
   }
 ]
