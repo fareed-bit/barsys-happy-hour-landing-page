@@ -1,3 +1,9 @@
+## Event recommendation block — September 14, 2026 (candidate reco-0914; flip pending)
+
+Under the shortage table (stock card and planning card), `shoppingList()` now lists: **Buy or count before the event** — each ingredient that is short or not in counted stock, with ml short, packs × pack size (product name) and estimated cost, plus an estimated purchase total; and **Reserve from office stock** — each covered ingredient with the ml needed and how many units of which inventory item to reserve. Built from `shortageRows()` (shared with the table). `npm test` 195/195; browser suites pass. Tag `reco-0914` (supersedes `costs-0914`; includes flashcards, no-cache, cost table). Flip: `--to-revisions barsys-happyhours-production-reco-0914=100`. Rollback `prefill-0914`.
+
+---
+
 ## Shortage table costs + fuzzy stock matching — September 14, 2026 (candidate costs-0914; flip pending)
 
 Owner asked whether ingredient costs exist: yes, `backend/ingredient-prices.json` has sourced pack prices for all 14 DataDome ingredients (Astor Wines, Walmart, WebstaurantStore); only the total ($310.41) was displayed. `shortagesView()` now shows pack · unit price, packs to buy and estimated cost per ingredient from `prep.summary.costs.purchases`, and matches inventory by name tokens with bottle/oz→ml conversion (plain "bottle" = 750 ml; "70z" typo read as 7 oz) when the exact name+unit match fails. Spot-check: all 13 stocked DataDome ingredients match; simple syrup is the only unmatched item. `npm test` 195/195; browser suites pass. Image `sha256:f95bdf9e…`, tag `costs-0914` (supersedes `flash-0914`, includes flashcards + no-cache). Flip: `--to-revisions barsys-happyhours-production-costs-0914=100`. Rollback `prefill-0914`.
