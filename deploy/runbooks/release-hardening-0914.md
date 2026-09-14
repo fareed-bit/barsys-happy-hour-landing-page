@@ -70,5 +70,5 @@ Rolling back re-exposes the DataDome page anonymously. If rollback is needed, de
 
 ## After the flip
 - Consider deleting `admin/event-prep-datadome.html` outright; the event lives in the database and the page is a hard-coded one-off.
-- Remove stale OAuth origin `https://opjs-0914-r2---...run.app`; re-add both `run.app` production origins.
+- DONE 2026-09-14 ~17:00 ET: OAuth JavaScript origins now `http://localhost:3089`, `http://localhost`, `https://happyhours.barsys.com`, `https://barsys-happyhours-production-62880701168.us-east4.run.app`, `https://barsys-happyhours-production-23nb3wybra-uk.a.run.app` (stale `opjs-0914-r2` origin removed by owner; run.app origins re-added and verified after reload). Google notes changes can take minutes to hours to propagate.
 - Record the release in PROJECT-STATE.md and `deploy/production-plan.json` (`releaseRevision`, `rollbackRevision`).
