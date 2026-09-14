@@ -1,13 +1,13 @@
 'use strict';
 const $=s=>document.querySelector(s),esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-document.addEventListener('barsys:auth',e=>{if(!e.detail.user){document.querySelector('#workspace').hidden=true;location.replace('/admin/login.html');}});
+document.addEventListener('barsys:auth',e=>{if(!e.detail.user){document.querySelector('#workspace').hidden=true;location.replace('/admin/login.html?next='+encodeURIComponent(location.pathname+location.search));}});
 let items=[],selected=null,nextOffset=null,statuses=[];
 const money=n=>n===null?'Custom quote':new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(n);
-async function api(path,options={}){const r=await fetch(path,{...options,headers:{'Content-Type':'application/json',...options.headers}});const d=await r.json();if(r.status===401){items=[];selected=null;$('#workspace').hidden=true;location.replace('/admin/login.html');}if(!r.ok)throw new Error(d.error||'Request failed.');return d;}
+async function api(path,options={}){const r=await fetch(path,{...options,headers:{'Content-Type':'application/json',...options.headers}});const d=await r.json();if(r.status===401){items=[];selected=null;$('#workspace').hidden=true;location.replace('/admin/login.html?next='+encodeURIComponent(location.pathname+location.search));}if(!r.ok)throw new Error(d.error||'Request failed.');return d;}
 function message(text){$('#message').textContent=text;}
 async function load(more=false){try{const data=await api('/api/admin/inquiries'+(more?'?offset='+nextOffset:''));items=more?[...items,...data.items]:data.items;nextOffset=data.nextOffset;$('#workspace').hidden=false;$('#more').hidden=nextOffset===null;render();message('');}catch(e){message(e.message);}}
 function render(){
- $('#count').textContent=items.length;$('#new-count').textContent=items.filter(x=>x.status==='received').length;$('#guest-count').textContent=items.reduce((n,x)=>n+x.payload.guests,0);
+ $('#count').textContent=items.length;$('#new-count').textContent=items.filter(x=>x.status==='received').length;$('#guest-count').textContent=items.filter(x=>x.status!=='cancelled').reduce((n,x)=>n+x.payload.guests,0);
  const q=$('#search').value.toLowerCase(),status=$('#filter').value;
  const filtered=items.filter(x=>(!status||x.status===status)&&[x.id,...['name','company','email','city'].map(k=>x.payload.details[k])].join(' ').toLowerCase().includes(q));
  $('#events').innerHTML=filtered.length?filtered.map(x=>`<button class="event" data-id="${x.id}" aria-pressed="${x.id===selected}"><span class="line"><span class="badge">${esc(x.status)}</span><span>${esc(x.payload.details.date||'Date undecided')}</span></span><strong>${esc(x.payload.details.company||x.payload.details.name)}</strong><span>${x.payload.guests} guests · ${esc(x.labels.package)} · ${esc(x.payload.details.city)}</span><small>${esc(x.payload.details.name)} · ${esc(x.owner||'Unassigned')}</small></button>`).join(''):'<div class="empty"><h2>No events yet.</h2><p>Create a plan using either wizard, then choose “Save test inquiry”. Search and status filters apply to loaded events.</p></div>';

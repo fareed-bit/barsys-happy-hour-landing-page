@@ -21,3 +21,8 @@
  #flow-next{padding:18px 14px}.work-item{padding:16px}.work-item strong{font-size:1.15rem}
 }
 @media(max-width:390px){.event-summary{grid-template-columns:1fr}.return-actions{grid-template-columns:1fr}.ops-grid{grid-template-columns:1fr}}
+
+/* Inventory category tabs and sticky status (2026-09-14) */
+.ops-subtabs{display:flex;gap:8px;margin:12px 0;flex-wrap:wrap}.ops-subtabs button{min-height:44px;padding:10px 16px;border:1px solid #ccc;background:#fff;color:#111;border-radius:6px;cursor:pointer;font:inherit}.ops-subtabs button[aria-selected="true"]{background:#111;color:#fff;font-weight:600}
+#inventory-search{width:100%;padding:12px;box-sizing:border-box}
+.ops>#message:not(:empty){position:sticky;top:0;z-index:5;background:#fff;padding:10px 0;border-bottom:1px solid #ddd}
