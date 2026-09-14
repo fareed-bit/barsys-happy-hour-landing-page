@@ -48,11 +48,11 @@ export function recordGaps(event,financials,loads){
  if(event.stage===7&&!financials?.actualComplete)gaps.push('Confirm actual expenses, staff hours, office-stock value and reusable leftovers.');
  return gaps;
 }
-export function purchaseNeeds(rows,state,eventId){
+export function purchaseNeeds(rows,state,eventId,matcher=null){
  const groups=new Map(),unresolved=[];
- for(const row of rows){const matches=state.inventory.filter(x=>x.kind==='consumable'&&x.name.toLowerCase()===row.name.toLowerCase()&&x.unit===row.unit),ids=matches.map(x=>x.id),allocated=state.reservations.filter(r=>r.eventId===eventId&&ids.includes(r.itemId)&&['reserved','dispatched'].includes(r.status)).reduce((n,r)=>n+r.quantity,0),known=matches.length?matches.every(x=>x.quantity!==null):!!state.openingStockZero;
+ for(const row of rows){const exact=state.inventory.filter(x=>x.kind==='consumable'&&x.name.toLowerCase()===row.name.toLowerCase()&&x.unit===row.unit);const m=exact.length||!matcher?{matches:exact,factor:()=>1}:matcher(row,state);const matches=m.matches,factor=m.factor,ids=matches.map(x=>x.id),allocated=state.reservations.filter(r=>r.eventId===eventId&&ids.includes(r.itemId)&&['reserved','dispatched'].includes(r.status)).reduce((n,r)=>n+r.quantity*factor(matches.find(x=>x.id===r.itemId)),0),known=matches.length?matches.every(x=>x.quantity!==null):!!state.openingStockZero;
   if(!known&&allocated<row.amount){unresolved.push(row.name+' — stock count needed');continue;}
-  const free=matches.reduce((n,x)=>n+(x.condition==='ready'?Math.max(0,(x.quantity??0)-state.reservations.filter(r=>r.itemId===x.id&&r.status==='reserved').reduce((n,r)=>n+r.quantity,0)):0),0),amount=Math.max(0,row.amount-allocated-free);
+  const free=matches.reduce((n,x)=>n+(x.condition==='ready'?Math.max(0,(x.quantity??0)-state.reservations.filter(r=>r.itemId===x.id&&r.status==='reserved').reduce((n,r)=>n+r.quantity,0))*factor(x):0),0),amount=Math.max(0,row.amount-allocated-free);
   if(!amount)continue;const p=row.price;if(!p){unresolved.push(row.name+' — price or pack yield needed');continue;}
   const key=p.url?JSON.stringify([p.url,row.unit,p.packAmount,p.priceCents]):row.name.toLowerCase()+'|'+row.unit;
   const g=groups.get(key)||{product:p.product||p.supplier||row.name,unit:row.unit,amount:0,packAmount:p.packAmount,priceCents:p.priceCents,url:p.url||null,ingredients:[]};g.amount+=amount;g.ingredients.push(row.name);groups.set(key,g);
