@@ -26,3 +26,24 @@
 .ops-subtabs{display:flex;gap:8px;margin:12px 0;flex-wrap:wrap}.ops-subtabs button{min-height:44px;padding:10px 16px;border:1px solid #ccc;background:#fff;color:#111;border-radius:6px;cursor:pointer;font:inherit}.ops-subtabs button[aria-selected="true"]{background:#111;color:#fff;font-weight:600}
 #inventory-search{width:100%;padding:12px;box-sizing:border-box}
 .ops>#message:not(:empty){position:sticky;top:0;z-index:5;background:#fff;padding:10px 0;border-bottom:1px solid #ddd}
+
+/* Wizard flow: one card per event step (2026-09-14) */
+.wizard-card{border:1px solid #d8d8d8;border-radius:12px;background:#fff;overflow:hidden;margin:6px 0 30px;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.wizard-head{display:block;padding:26px 28px 20px;border-bottom:1px solid #e8e8e8;background:#fafafa;position:static;box-shadow:none}
+.wizard-head .flow-intro{display:block;margin:0}
+.wizard-head .flow-intro .kicker{margin:0}
+.wizard-head .flow-intro h2{margin:6px 0 8px}
+.wizard-head .flow-intro p{margin:0;max-width:760px}
+.wizard-status{margin:14px 0 0;font-size:.85rem;color:#444;font-weight:600}
+.wizard-body{padding:6px 28px 2px}
+.wizard-body>details{border:0;border-bottom:1px solid #ececec;border-radius:0;padding:16px 0;margin:0;background:transparent}
+.wizard-body>details:last-of-type{border-bottom:0}
+.wizard-body>details>summary{font-size:1.05rem;font-weight:600;padding:4px 0}
+.wizard-card>#flow-next{border:0;border-top:1px solid #e8e8e8;border-radius:0;background:#fafafa;padding:22px 28px 26px}
+.wizard-nav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.wizard-nav button.secondary{background:#fff;color:#111;border:1px solid #bbb}
+.flow-steps button[data-upcoming="true"]{opacity:.7;border-style:dashed}
+.flow-steps button:not(:disabled):not([aria-current=step]):hover{border-color:#111}
+.flow-steps button span{width:28px;height:28px;border-radius:50%;border:1px solid currentColor;display:inline-grid;place-items:center;font-size:.95rem;margin-bottom:8px}
+.flow-steps button[aria-current=step] span{background:#fff;color:#111;border-color:#fff}
+@media(max-width:650px){.wizard-head,.wizard-body,.wizard-card>#flow-next{padding-left:16px;padding-right:16px}.wizard-nav{flex-direction:column;align-items:stretch}.flow-steps button span{width:22px;height:22px;font-size:.8rem;margin:0 6px 0 0}}
