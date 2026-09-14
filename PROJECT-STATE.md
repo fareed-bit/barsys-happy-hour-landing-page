@@ -1,3 +1,9 @@
+## Still-needed jump buttons — September 14, 2026 (candidate gaps-0914; flip pending)
+
+Each "Still needed" item on the confirm card now names the specific blank fields (e.g. "Blank: Other") and carries a "Go to part n: <card title> →" button that opens the section card holding the fix. Suggest planned costs now sets Other to $0 when nothing else fills it, since a blank planned figure blocks Continue. `npm test` 195/195; browser suites pass. Tag `gaps-0914` (supersedes `suggest-0914`). Flip: `--to-revisions barsys-happyhours-production-gaps-0914=100`. Rollback `suggest-0914`.
+
+---
+
 ## Suggest planned costs — September 14, 2026 — LIVE (suggest-0914 at 100% ~18:40 ET; includes flash/nocache/costs/reco)
 
 Button above the cost table in the finance card fills blank planned fields only: Spirits/mixers = cash purchases from the buy list; Existing office stock sent = `costs.knownUsedCents` (when preparation is complete); Payment fees = 3.49% + $0.49 × 2 on the invoice total (or revenue + tax); Glassware & rentals and Equipment & overhead = $0 (owned). Ice, transport and Other are reported as still needing owner input. Marks the form dirty; owner presses Save event & finances. `npm test` 195/195; browser suites pass. Tag `suggest-0914` (supersedes `reco-0914`). Flip: `--to-revisions barsys-happyhours-production-suggest-0914=100`. Rollback `prefill-0914`.
