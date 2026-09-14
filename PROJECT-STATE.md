@@ -1,3 +1,11 @@
+## Wizard event view — September 14, 2026 (candidate wizard-0914, supersedes staff-0914, flip pending)
+
+Owner asked for the event workspace to read as a wizard: one card per step rather than a stacked list. Implemented in `admin/operations.js` `focusStage()` and `admin/operations.css`: each stage renders a `.wizard-card` with header (step n of 5, title, requirement text, checkpoint progress), the stage's sections open inside the body, and the existing `#flow-next` footer (Back, checkpoints, Continue). Other sections hidden; "Show all event details" remains. Completed steps reopen for review; upcoming steps stay previewable (the workflow needs Prepare-side menu confirmation before Confirm can advance — hard-locking them broke the isolated workflow suite) and are styled as upcoming. Card header uses a `div`, not `header`, because the global `header{height:90px;display:flex}` rule collapsed it. Screenshots `qa/wizard-0914/wizard-desktop.png` (1440) and `wizard-phone.png` (390), no horizontal overflow. `npm test` 195/195; lifecycle + workflow browser suites pass.
+
+Candidate `barsys-happyhours-production-wizard-0914` (image `sha256:6bb89ba0…`) at 0%, includes the staff no-labor-cost flag from `staff-0914`. Flip: `gcloud run services update-traffic barsys-happyhours-production --project happy-hour-landing-version-2 --region us-east4 --to-revisions barsys-happyhours-production-wizard-0914=100`. Rollback `hardening-0914`.
+
+---
+
 ## Staff no-labor-cost flag — September 14, 2026 (candidate staff-0914, flip pending)
 
 Owner reported staff assignments "not saving"; the audit log showed no assign attempt reached the server, so the browser's required-field validation was blocking the submit silently (incomplete datetime or empty planned hours inside a collapsed section). Assignment succeeded when all fields were valid. Fix: an `invalid` listener on the operations forms opens the collapsed section and posts "Not saved: complete <field> first" in the status line.
