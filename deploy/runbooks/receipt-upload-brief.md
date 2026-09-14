@@ -1,6 +1,6 @@
 # Build brief: Gopuff receipt upload (photo + amount) for expensing
 
-**Requested 2026-09-14 by owner.** Status: NOT STARTED. Start here in a fresh session; read AGENTS.md and the newest PROJECT-STATE.md entries first.
+**Requested 2026-09-14 by owner.** Status: BUILT 2026-09-14 (candidate `receipts-0914`, proxy GET approach, flip pending). Release notes, smoke and flip: `receipts-0914.md`. The spec below is the original brief; deviations: viewing uses the owner-only proxy route (no signed URLs), removal deletes the object (versioning keeps a noncurrent copy), phone photos are downscaled client-side before upload, and the receipts block also appears in Return & close via `flowSections[4]`.
 
 ## Goal
 On the Purchase & pack card, the owner photographs a Gopuff (or any supplier) receipt on the phone, uploads it with the amount paid, and later exports receipts for expensing. Receipts are financial records (7-year retention per DECISION-REGISTER.md).

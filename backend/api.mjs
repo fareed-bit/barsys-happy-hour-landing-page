@@ -14,8 +14,9 @@ import {applyOperation,stages,checklist,expenseCategories,defaultEvent,finances}
 import {randomUUID,createHash} from 'node:crypto';
 import {validate,estimate,labels,statuses,HttpError} from './model.mjs';
 import {defaultPreparation,validatePreparation,preparationSummary,recipeCatalog} from './preparation.mjs';
+import {createReceiptFiles,decodeReceipt,receiptContentType,receiptObjectPath,receiptsCSV,isDay,RECEIPT_MAX_BYTES} from './receipt-files.mjs';
 const hash=s=>createHash('sha256').update(s).digest('hex');
-export function createAPI({store,local=true,staging=false,origin,auth,gmailFetch,queueNotifications=false,rehearsalMarker="",trustedProxyHops=0}){
+export function createAPI({store,local=true,staging=false,origin,auth,gmailFetch,queueNotifications=false,rehearsalMarker="",trustedProxyHops=0,receiptFiles=createReceiptFiles({})}){
  const testSend=createGmailSend({clientId:auth?.clientId,fetcher:gmailFetch});
  const gmail=createGmail({store,clientId:auth?.clientId,fetcher:gmailFetch});
  const inventoryTemplates=[...new Map(Object.values(recipeCatalog.menus).flatMap(m=>m.recipes.flatMap(r=>r.ingredients)).map(x=>[ingredientKey(x),{name:x.name,unit:x.unit,kind:'consumable'}])).values()].sort((a,b)=>a.name.localeCompare(b.name)).map(x=>{const p=priceCatalog.items.find(p=>ingredientKey(p)===ingredientKey(x));return {...x,packAmount:p?.packAmount||null,product:p?.product||null,packLabel:p?.packLabel||null};});
@@ -25,7 +26,8 @@ export function createAPI({store,local=true,staging=false,origin,auth,gmailFetch
  if(!local&&(!origin?.startsWith('https://')||!auth.clientId))throw new Error('Production requires HTTPS PUBLIC_ORIGIN and GOOGLE_CLIENT_ID.');
  const mode=staging?'STAGING_TEST':local?'LOCAL_TEST':'LIVE';
  async function throttle(req){if(local&&process.env.BARSYS_QA_DISABLE_RATE_LIMIT==='1')return;if(!await store.consumeRate(hash((await auth.user?.(req))?.email||clientAddress(req,trustedProxyHops)),Date.now()))throw new HttpError(429,'Too many requests. Retry in a minute.');}
- async function body(req){if(!/^application\/json(?:;|$)/i.test(req.headers['content-type']||''))throw new HttpError(415,'Use JSON.');let size=0,chunks=[];for await(const chunk of req){size+=chunk.length;if(size>65536)throw new HttpError(413,'Event details are too large.');chunks.push(chunk);}try{return JSON.parse(Buffer.concat(chunks).toString());}catch{throw new HttpError(400,'Invalid JSON.');}}
+ async function body(req,limit=65536,tooLarge='Event details are too large.'){if(!/^application\/json(?:;|$)/i.test(req.headers['content-type']||''))throw new HttpError(415,'Use JSON.');let size=0,chunks=[];for await(const chunk of req){size+=chunk.length;if(size>limit)throw new HttpError(413,tooLarge);chunks.push(chunk);}try{return JSON.parse(Buffer.concat(chunks).toString());}catch{throw new HttpError(400,'Invalid JSON.');}}
+ const receiptObjectRemove=async path=>{try{await receiptFiles.remove(path);}catch(error){console.error(JSON.stringify({severity:'WARNING',event:'receipt_object_remove_failed',path,type:error.name||'Error'}));}};
  function receipt(doc){if(doc.disposedAt)throw new HttpError(410,'This inquiry was removed under the retention policy.');return {id:doc.id,createdAt:doc.createdAt,status:'received',mode:staging?'STAGING_TEST':local?'LOCAL_TEST':'INQUIRY_RECEIVED',booked:false};}
  return async function api(req,res){
   const path=new URL(req.url,'http://localhost').pathname;
@@ -60,7 +62,7 @@ export function createAPI({store,local=true,staging=false,origin,auth,gmailFetch
    }
    if(path.startsWith('/api/admin/')){
     const actor=await auth.require(req);if(actor!==ownerEmail)throw new HttpError(403,'Owner access required.');
-    if(path==='/api/admin/system-health'&&req.method==='GET'){await store.checkHealth();send(200,{database:true,email:await store.notificationHealth(),worker:await store.workerHealth(),checkedAt:new Date().toISOString()});return true;}
+    if(path==='/api/admin/system-health'&&req.method==='GET'){await store.checkHealth();send(200,{database:true,email:await store.notificationHealth(),worker:await store.workerHealth(),receipts:{mode:receiptFiles.mode,bucket:receiptFiles.bucket||null},checkedAt:new Date().toISOString()});return true;}
     if(path==='/api/admin/retention'&&req.method==='GET'){
      const url=new URL(req.url,origin),kind=url.searchParams.get('kind')||'event',offset=Number(url.searchParams.get('offset')||0);
      if(!['event','mail'].includes(kind)||!Number.isSafeInteger(offset)||offset<0)throw new HttpError(400,'Invalid page.');
@@ -78,6 +80,8 @@ export function createAPI({store,local=true,staging=false,origin,auth,gmailFetch
      if(input.confirm!==`RETIRE ${id}`||input.reviewedCopies!==true||input.obligationsCleared!==true||!Number.isInteger(input.version)||!Number.isInteger(input.reviewVersion))throw new HttpError(422,'Confirm record, outside-copy handling and cleared preservation obligations.');
      const result=await store.retireEvent(id,input.version,input.reviewVersion,actor);
      if(!result.removed)throw new HttpError(409,result.error);
+     // Receipt photos leave storage with their rows; the ledger lists the object paths in case a delete has to be finished by hand.
+     for(const objectPath of result.receiptObjects||[])await receiptObjectRemove(objectPath);
      send(200,{removed:true,notice:'Event-linked personal detail removed from active records. Aggregate financial values and pseudonymous identifiers remain. External copies require separate handling.'});return true;
     }
     const mailDisposalMatch=/^\/api\/admin\/retention\/mail\/([a-zA-Z0-9_-]{1,100})\/remove$/.exec(path);
@@ -127,6 +131,46 @@ export function createAPI({store,local=true,staging=false,origin,auth,gmailFetch
       if(command.action==='receive-stock'&&command.payload.templateIndex!==undefined){const template=inventoryTemplates[command.payload.templateIndex];if(!template)throw new HttpError(422,'Choose a valid inventory template.');command.payload.newItem={name:template.name,kind:template.kind,unit:template.unit};}
       const state=applyOperation(previous,command,actor);
       if(!await store.saveOperations(state,previous.version))throw new HttpError(409,'Another staff member changed operations. Refresh and retry.');
+      send(200,operationsView(state));return true;
+     }
+    }
+    if(path==='/api/admin/receipts/export'&&req.method==='GET'){
+     // CSV of every uploaded purchase receipt (optionally by paid-on range) for expensing; links go through the owner-only proxy route.
+     const url=new URL(req.url,origin),from=url.searchParams.get('from')||'',to=url.searchParams.get('to')||'';
+     if((from&&!isDay(from))||(to&&!isDay(to)))throw new HttpError(400,'Use YYYY-MM-DD dates for the receipt range.');
+     const state=await store.getOperations(),rows=[];
+     for(const [eventId,e] of Object.entries(state.events))for(const r of e.receiptFiles||[]){if((from&&r.paidOn<from)||(to&&r.paidOn>to))continue;rows.push({eventId,...r});}
+     rows.sort((a,b)=>a.paidOn.localeCompare(b.paidOn)||a.at.localeCompare(b.at));
+     const info=new Map();for(const eventId of new Set(rows.map(r=>r.eventId))){const doc=await store.get(eventId);info.set(eventId,{name:doc?.payload?.details?.company||doc?.payload?.details?.name||eventId,date:doc?.payload?.details?.date||''});}
+     res.writeHead(200,{'Content-Type':'text/csv; charset=utf-8','Cache-Control':'no-store','Content-Disposition':`attachment; filename="barsys-receipts${from?'-from-'+from:''}${to?'-to-'+to:''}.csv"`});res.end(receiptsCSV(rows,info,origin));return true;
+    }
+    const receiptMatch=/^\/api\/admin\/inquiries\/([a-f0-9-]{36})\/receipts(?:\/([a-f0-9-]{36})(\/remove)?)?$/.exec(path);
+    if(receiptMatch){
+     const [,eventId,receiptId,removing]=receiptMatch;
+     if(!receiptId&&req.method==='POST'){
+      // Upload: JSON {version, filename, contentType, dataBase64, amountCents, supplier, paidOn, note, orderId}. Validate and record through applyOperation first, then store bytes, then commit the state with the version check; a lost race removes the object again.
+      await throttle(req);const input=await body(req,Math.ceil(RECEIPT_MAX_BYTES/3)*4+65536,'Receipt files must be 8 MB or smaller.');
+      if(!await store.get(eventId))throw new HttpError(404,'Event not found.');
+      const previous=await store.getOperations();if(input.version!==previous.version)throw new HttpError(409,'Operations changed. Refresh and retry; the receipt was not saved.');
+      const bytes=decodeReceipt(input.dataBase64),contentType=receiptContentType(input.contentType,bytes),id=randomUUID(),objectPath=receiptObjectPath(eventId,id,contentType);
+      const state=applyOperation(previous,{action:'receipt-file',payload:{eventId,id,objectPath,filename:typeof input.filename==='string'?input.filename.slice(0,200):'',contentType,bytes:bytes.length,amountCents:input.amountCents,supplier:input.supplier,paidOn:input.paidOn,note:typeof input.note==='string'?input.note:'',...(input.orderId?{orderId:input.orderId}:{})}},actor);
+      try{await receiptFiles.put(objectPath,bytes,contentType);}catch(error){if(error.status)throw error;console.error(JSON.stringify({severity:'ERROR',event:'receipt_object_write_failed',type:error.name||'Error',message:String(error.message).slice(0,200)}));throw new HttpError(503,'Receipt storage did not accept the file; nothing was saved. Retry in a minute.');}
+      if(!await store.saveOperations(state,previous.version)){await receiptObjectRemove(objectPath);throw new HttpError(409,'Another staff member changed operations. Refresh and retry; the receipt was not saved.');}
+      send(200,operationsView(state));return true;
+     }
+     if(receiptId&&!removing&&req.method==='GET'){
+      // Proxy the stored bytes to the signed-in owner; no public or signed URLs exist for receipts.
+      const state=await store.getOperations(),row=state.events[eventId]?.receiptFiles?.find(x=>x.id===receiptId);if(!row)throw new HttpError(404,'Receipt not found.');
+      const bytes=await receiptFiles.get(row.objectPath);if(!bytes)throw new HttpError(404,'The receipt file is missing from storage.');
+      const download=new URL(req.url,origin).searchParams.get('download')==='1',name=row.filename.replace(/[^\w.-]+/g,'_').slice(0,120)||'receipt';
+      res.writeHead(200,{'Content-Type':row.contentType,'Content-Length':bytes.length,'Cache-Control':'no-store','X-Content-Type-Options':'nosniff','Content-Disposition':`${download?'attachment':'inline'}; filename="${name}"`});res.end(bytes);return true;
+     }
+     if(receiptId&&removing&&req.method==='POST'){
+      await throttle(req);const input=await body(req),previous=await store.getOperations();if(input.version!==previous.version)throw new HttpError(409,'Operations changed. Refresh and retry; nothing was removed.');
+      const row=previous.events[eventId]?.receiptFiles?.find(x=>x.id===receiptId);if(!row)throw new HttpError(404,'Receipt not found.');
+      const state=applyOperation(previous,{action:'receipt-file-remove',payload:{eventId,id:receiptId}},actor);
+      if(!await store.saveOperations(state,previous.version))throw new HttpError(409,'Another staff member changed operations. Refresh and retry; nothing was removed.');
+      await receiptObjectRemove(row.objectPath);
       send(200,operationsView(state));return true;
      }
     }

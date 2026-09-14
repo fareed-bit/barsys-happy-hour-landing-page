@@ -10,3 +10,4 @@
 #deliveries details{padding:12px 0;border-bottom:1px solid #ccc;overflow-wrap:anywhere}
 #deliveries summary{cursor:pointer;padding:8px 0}
 #deliveries summary:focus-visible{outline:3px solid #111;outline-offset:4px}
+.receipt-export{display:flex;gap:12px;flex-wrap:wrap;align-items:end}.receipt-export label{display:grid;gap:4px}

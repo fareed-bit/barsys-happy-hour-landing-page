@@ -15,7 +15,7 @@ const filename=join(directory,'isolated.sqlite'),store=await createStore({filena
 const token=await seedSession(store);await store.close();
 const socket=net.createServer();await new Promise(r=>socket.listen(0,'127.0.0.1',r));const port=socket.address().port;await new Promise(r=>socket.close(r));
 const origin=`http://localhost:${port}`,env=Object.fromEntries(['PATH','HOME','TMPDIR'].filter(k=>process.env[k]).map(k=>[k,process.env[k]]));
-Object.assign(env,{NODE_ENV:'test',BARSYS_DB:filename,PORT:String(port),GOOGLE_CLIENT_ID:'synthetic-local-client',BARSYS_QA_DISABLE_RATE_LIMIT:'1'});
+Object.assign(env,{NODE_ENV:'test',BARSYS_DB:filename,PORT:String(port),GOOGLE_CLIENT_ID:'synthetic-local-client',BARSYS_QA_DISABLE_RATE_LIMIT:'1',BARSYS_RECEIPT_DIR:join(directory,'receipts')});
 const server=spawn(process.execPath,['backend/server.mjs'],{cwd:root,env,stdio:['ignore','pipe','pipe']});
 const evidence={scope:'Proposal and operations UI on actual backend; isolated SQLite and Chrome',checks:[],screenshots:[],errors:[]};
 let browser;const record=(name)=>{evidence.checks.push({name,passed:true});console.log('PASS:',name);};
@@ -71,6 +71,17 @@ try{
  await browser.evaluate(`(()=>{const f=document.querySelector('.order-form[data-id=""]');f.elements.supplier.value='Synthetic supplier';f.elements.reference.value='QA-ORDER';f.elements.status.value='confirmed';f.elements.amount.value='10';f.elements.notes.value='Browser rehearsal only';f.elements.supplier.dispatchEvent(new Event('input',{bubbles:true}));f.requestSubmit();})()`);await browser.wait("document.getElementById('message').textContent.includes('Saved')");
  await browser.evaluate(`(()=>{const f=document.getElementById('receipt-form');const itemSelect=f.querySelector('select[name="item"]');itemSelect.selectedIndex=Array.from(itemSelect.options).findIndex(o=>o.textContent.includes('ml'));if(itemSelect.selectedIndex<1)itemSelect.selectedIndex=2;itemSelect.dispatchEvent(new Event('input',{bubbles:true}));f.elements.supplier.value='Synthetic supplier';f.elements.reference.value='QA-RECEIPT';f.elements.quantity.value='1000';f.elements.cost.value='10';f.elements.paid.value='10';f.requestSubmit();})()`);await new Promise(r=>setTimeout(r,300));
  const purchaseState=(await api('/api/admin/operations')).state;assert.ok(purchaseState.receipts?.some(r=>r.eventId===id),'Receipt save failed: '+await browser.evaluate("document.getElementById('message').textContent"));record('supplier record and stock receipt save through purchase UI');
+ // Receipt photo upload at 390px: a tiny PNG through the Purchase & pack form; the thumbnail must render from the owner-only proxy route.
+ await browser.wait("document.getElementById('content').textContent.includes('QA-RECEIPT')");
+ const png=join(directory,'receipt.png');await writeFile(png,Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==','base64'));
+ const doc=await browser.call('DOM.getDocument',{depth:0});const fileInput=await browser.call('DOM.querySelector',{nodeId:doc.root.nodeId,selector:'#receipt-upload input[name=file]'});assert.ok(fileInput.nodeId,'Receipt upload form missing');await browser.call('DOM.setFileInputFiles',{files:[png],nodeId:fileInput.nodeId});
+ await browser.evaluate(`(()=>{const f=document.getElementById('receipt-upload');f.elements.amount.value='42.17';f.elements.supplier.value='Gopuff';f.elements.paidOn.value='2026-09-14';f.elements.note.value='Synthetic receipt';f.elements.amount.dispatchEvent(new Event('input',{bubbles:true}));f.requestSubmit();})()`);
+ await browser.wait("document.getElementById('message').textContent.includes('Receipt saved')");
+ const withReceipt=(await api('/api/admin/operations')).state.events[id];assert.equal(withReceipt.receiptFiles?.length,1);assert.equal(withReceipt.receiptFiles[0].amountCents,4217);assert.equal(withReceipt.receiptFiles[0].contentType,'image/png');
+ await browser.evaluate("document.querySelector('[data-card-go=\"1\"]').click()");
+ await browser.wait("(()=>{const i=document.querySelector('.section-card:not([hidden]) .receipt-card img');return !!i&&i.complete&&i.naturalWidth>0;})()");
+ assert.ok(await browser.evaluate('document.documentElement.scrollWidth<=391'),'Receipt card overflow at 390px');await browser.evaluate("document.querySelector('.section-card:not([hidden]) .receipt-card').scrollIntoView({block:'center'})");await shot('workflow-receipt-mobile.png');
+ record('receipt photo uploads through the purchase form and its thumbnail renders at 390px');
  for(let i=0;i<2;i++)await clickTask(id,2,i);
  await advanceTo(id,3);await browser.wait("document.querySelector('.flow-intro h2').textContent.includes('Purchase')");
  snapshot=(await api('/api/admin/operations')).state;const item=snapshot.inventory[0];assert.ok(item&&item.quantity>0,'Receipt did not create inventory');

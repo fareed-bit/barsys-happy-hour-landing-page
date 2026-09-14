@@ -13,7 +13,8 @@ export function validateDisposalLedger(value){
   const seen=new Set();for(const row of value.retired){
    if(!value.inquiries.some(r=>r.id===row.id)||seen.has(row.id)||!row.summary||!Number.isFinite(Date.parse(row.summary.retiredAt)))throw Error('Invalid retirement entry');
    const keys=['retiredAt','revenueCents','invoiceCents','collectedCents','consumedCents','profitCents'];
-   if(Object.keys(row.summary).some(k=>!keys.includes(k))||keys.slice(1).some(k=>!Number.isSafeInteger(row.summary[k])))throw Error('Invalid retirement totals');
+   if(Object.keys(row.summary).some(k=>!keys.includes(k)&&k!=='receiptObjects')||keys.slice(1).some(k=>!Number.isSafeInteger(row.summary[k])))throw Error('Invalid retirement totals');
+   if(row.summary.receiptObjects!==undefined&&(!Array.isArray(row.summary.receiptObjects)||row.summary.receiptObjects.length>1000||row.summary.receiptObjects.some(p=>!/^events\/[a-f0-9-]{36}\/receipts\/[a-f0-9-]{36}\.(jpg|png|pdf)$/.test(p))))throw Error('Invalid retirement receipt paths');
    seen.add(row.id);
   }
  }

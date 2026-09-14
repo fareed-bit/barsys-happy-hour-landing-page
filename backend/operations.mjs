@@ -12,6 +12,7 @@ const num=(x,min,max)=>{if(!Number.isFinite(x)||x<min||x>max)fail('Number outsid
 const money=x=>x===null?null:Number.isInteger(x)?num(x,0,100000000):fail('Amounts must be whole USD cents or unknown.');
 const stamp=x=>{if(typeof x!=='string'||!/^\d{4}-\d\d-\d\dT/.test(x)||!Number.isFinite(Date.parse(x)))fail('Enter a valid start and end time.');return new Date(x).toISOString();};
 const overlap=(a,b)=>a.start<b.end&&b.start<a.end;
+const day=x=>typeof x==='string'&&/^\d{4}-\d\d-\d\d$/.test(x)&&Number.isFinite(Date.parse(x))&&new Date(x).toISOString().slice(0,10)===x;
 export function finances(e,state=null,eventId=null){
  const ledger=e.inventoryCosting&&state?stockCosts(state,eventId):null;
  const plannedStaff=e.staffing.reduce((n,s)=>n+Math.round(s.plannedHours*s.rateCents),0),actualStaff=e.staffing.reduce((n,s)=>n+(s.actualHours===null?0:Math.round(s.actualHours*s.rateCents)),0);
@@ -32,6 +33,20 @@ export function applyOperation(previous,command,actor,now=new Date().toISOString
   s.openingStockZero={at:now,by:actor};
  }else if(action==='receive-stock'){needEvent();receiveStock(s,p,event,actor,now);
  }else if(action==='pay-receipt'){needEvent();const receipt=s.receipts?.find(x=>x.id===p.id&&x.eventId===p.eventId);if(!receipt)fail('Receipt not found.');const paid=money(p.paidCents);if(paid===null||paid<receipt.paidCents||paid>receipt.costCents)fail('Updated total paid must be between the previous amount and invoice cost.');receipt.paidCents=paid;receipt.paymentUpdatedAt=now;
+ }else if(action==='receipt-file'){
+  // Photo/PDF receipt with the amount paid: a financial record kept with the event for seven years. Bytes are stored by the API; only the reference lives here.
+  needEvent();event.receiptFiles??=[];
+  if(!/^[a-f0-9-]{36}$/.test(p.id||'')||event.receiptFiles.some(x=>x.id===p.id))fail('Invalid receipt id.');
+  if(typeof p.objectPath!=='string'||!p.objectPath.startsWith(`events/${p.eventId}/receipts/${p.id}.`)||p.objectPath.length>200)fail('Invalid receipt file path.');
+  if(!Number.isSafeInteger(p.amountCents)||p.amountCents<=0||p.amountCents>100000000)fail('Enter the amount paid, greater than zero.');
+  const supplier=str(p.supplier,200);if(!supplier)fail('Enter the supplier (for example Gopuff).');
+  if(!day(p.paidOn))fail('Enter the date paid (YYYY-MM-DD).');if(p.paidOn>new Date(Date.parse(now)+86400000).toISOString().slice(0,10))fail('The paid date cannot be in the future.');
+  const contentType=str(p.contentType,100);if(!['image/jpeg','image/png','application/pdf'].includes(contentType))fail('Upload a JPEG or PNG photo, or a PDF.');
+  if(!Number.isSafeInteger(p.bytes)||p.bytes<=0||p.bytes>8*1024*1024)fail('Receipt files must be 8 MB or smaller.');
+  if(p.orderId&&!event.orders?.some(x=>x.id===p.orderId))fail('Supplier order not found.');
+  event.receiptFiles.push({id:p.id,objectPath:p.objectPath,filename:str(p.filename||'',200)||'receipt',contentType,bytes:p.bytes,amountCents:p.amountCents,supplier,paidOn:p.paidOn,note:str(p.note||'',500),orderId:p.orderId||null,by:actor,at:now});
+ }else if(action==='receipt-file-remove'){
+  needEvent();const x=(event.receiptFiles||[]).find(x=>x.id===p.id);if(!x)fail('Receipt not found.');event.receiptFiles=event.receiptFiles.filter(y=>y!==x);
  }else if(action==='payment'){needEvent();recordPayment(event,p,actor,now);
  }else if(action==='inventory'){
   const item=p.id?s.inventory.find(x=>x.id===p.id):null;if(p.id&&!item)fail('Inventory item not found.');

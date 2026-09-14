@@ -1,0 +1,108 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {mkdtemp,rm,stat} from 'node:fs/promises';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
+import {emptyOperations,defaultEvent,applyOperation} from '../backend/operations.mjs';
+import {retireEventState} from '../backend/event-retirement.mjs';
+import {validateDisposalLedger} from '../backend/disposal-recovery.mjs';
+import {createReceiptFiles,receiptsCSV} from '../backend/receipt-files.mjs';
+import {startFixture,syntheticInquiry} from './lifecycle-fixture.mjs';
+const E='00000000-0000-4000-8000-000000000001',R='00000000-0000-4000-8000-0000000000aa',actor='fareed@barsys.com',now='2026-09-14T20:00:00.000Z';
+const PNG=Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==','base64');
+const payload=over=>({eventId:E,id:R,objectPath:`events/${E}/receipts/${R}.png`,filename:'gopuff.png',contentType:'image/png',bytes:PNG.length,amountCents:4217,supplier:'Gopuff',paidOn:'2026-09-14',note:'Limes, ice',...over});
+const run=(s,action,p)=>applyOperation(s,{action,payload:p},actor,now);
+test('receipt-file records amount, supplier and date on the event and rejects bad input',()=>{
+ let s=emptyOperations();s.events[E]=defaultEvent();
+ assert.throws(()=>run(s,'receipt-file',payload({amountCents:0})),/greater than zero/);
+ assert.throws(()=>run(s,'receipt-file',payload({amountCents:12.5})),/greater than zero/);
+ assert.throws(()=>run(s,'receipt-file',payload({paidOn:'2026-02-30'})),/date paid/);
+ assert.throws(()=>run(s,'receipt-file',payload({paidOn:'2026-09-20'})),/future/);
+ assert.throws(()=>run(s,'receipt-file',payload({bytes:8*1024*1024+1})),/8 MB/);
+ assert.throws(()=>run(s,'receipt-file',payload({contentType:'image/heic'})),/JPEG or PNG/);
+ assert.throws(()=>run(s,'receipt-file',payload({supplier:'  '})),/supplier/);
+ assert.throws(()=>run(s,'receipt-file',payload({orderId:'missing'})),/order not found/);
+ assert.throws(()=>run(s,'receipt-file',payload({objectPath:'events/other/receipts/x.png'})),/file path/);
+ s=run(s,'receipt-file',payload());
+ assert.equal(s.events[E].receiptFiles.length,1);const {eventId,...expected}=payload();assert.deepEqual(s.events[E].receiptFiles[0],{...expected,orderId:null,by:actor,at:now});
+ assert.equal(s.audit.at(-1).action,'receipt-file');assert.equal(s.audit.at(-1).eventId,E);
+ assert.throws(()=>run(s,'receipt-file',payload()),/Invalid receipt id/);
+ assert.throws(()=>run(s,'receipt-file-remove',{eventId:E,id:'nope'}),/not found/);
+ const removed=run(s,'receipt-file-remove',{eventId:E,id:R});assert.equal(removed.events[E].receiptFiles.length,0);
+ s.events[E].stage=8;assert.throws(()=>run(s,'receipt-file-remove',{eventId:E,id:R}),/closed/);
+});
+test('retirement drops receipt rows and lists their object paths in the ledger summary',()=>{
+ let s=emptyOperations();s.events[E]=defaultEvent();s=run(s,'receipt-file',payload());Object.assign(s.events[E],{stage:8,revenueCents:1000,leftoverCents:0,stockUsedCents:0,staffingConfirmed:true,actualHoursConfirmed:true});s.events[E].expenses.forEach(x=>{x.plannedCents=0;x.actualCents=0;});
+ const {state,summary}=retireEventState({id:E},s,now);
+ assert.equal(state.events[E],undefined);assert.deepEqual(summary.receiptObjects,[`events/${E}/receipts/${R}.png`]);
+ const ledger={schema:1,inquiries:[{id:E,removed_at:now,actor}],mail:[],retired:[{id:E,summary}]};
+ assert.equal(validateDisposalLedger(ledger),ledger);
+ assert.throws(()=>validateDisposalLedger({...ledger,retired:[{id:E,summary:{...summary,receiptObjects:['../etc/passwd']}}]}),/receipt paths/);
+ const plain=retireEventState({id:E},{...s,events:{[E]:{...defaultEvent(),stage:8}}},now).summary;assert.equal('receiptObjects' in plain,false);
+});
+test('receipt upload, proxy view, CSV export and removal work end to end on private local storage',async()=>{
+ const directory=await mkdtemp(join(tmpdir(),'barsys-receipts-')),f=await startFixture({receiptFiles:createReceiptFiles({directory})});
+ try{
+  const created=await f.request('/api/inquiries',{method:'POST',body:syntheticInquiry(),key:'receipt-upload-fixture-01',anonymous:true});assert.equal(created.status,201);const id=created.body.id;
+  const ops=()=>f.request('/api/admin/operations').then(r=>r.body.state);
+  let version=(await ops()).version;const base=`/api/admin/inquiries/${id}/receipts`;
+  const upload=(over={},opts={})=>f.request(base,{method:'POST',body:{version,filename:'gopuff.png',contentType:'image/png',dataBase64:PNG.toString('base64'),amountCents:4217,supplier:'Gopuff',paidOn:'2026-09-14',note:'Limes, ice',...over},...opts});
+  assert.equal((await upload({},{anonymous:true})).status,401);
+  assert.equal((await upload({dataBase64:'A'.repeat(Math.ceil(8*1024*1024/3)*4+8)})).status,413);
+  const wrong=await upload({contentType:'text/plain'});assert.equal(wrong.status,415);
+  const heic=await upload({contentType:'image/heic'});assert.equal(heic.status,415);assert.match(heic.body.error,/HEIC/);
+  const lie=await upload({contentType:'image/jpeg'});assert.equal(lie.status,415);assert.match(lie.body.error,/does not match/);
+  assert.equal((await upload({version:version+5})).status,409);
+  assert.equal((await upload({amountCents:0})).status,422);
+  assert.equal((await f.request(`/api/admin/inquiries/00000000-0000-4000-8000-00000000dead/receipts`,{method:'POST',body:{version}})).status,404);
+  const ok=await upload();assert.equal(ok.status,200,JSON.stringify(ok.body));
+  const row=ok.body.state.events[id].receiptFiles[0];assert.equal(row.amountCents,4217);assert.equal(row.contentType,'image/png');assert.equal(row.bytes,PNG.length);assert.equal(row.by,'fareed@barsys.com');
+  assert.match(row.objectPath,new RegExp(`^events/${id}/receipts/${row.id}\\.png$`));assert.ok((await stat(join(directory,row.objectPath))).isFile());
+  version=ok.body.state.version;
+  const cookie={Cookie:'barsys_session='+f.token};
+  const view=await fetch(f.origin+base+'/'+row.id,{headers:cookie});assert.equal(view.status,200);assert.equal(view.headers.get('content-type'),'image/png');assert.equal(view.headers.get('cache-control'),'no-store');assert.match(view.headers.get('content-disposition'),/^inline; filename="gopuff.png"/);assert.deepEqual(Buffer.from(await view.arrayBuffer()),PNG);
+  assert.equal((await fetch(f.origin+base+'/'+row.id+'?download=1',{headers:cookie})).headers.get('content-disposition'),'attachment; filename="gopuff.png"');
+  assert.equal((await fetch(f.origin+base+'/'+row.id)).status,401);
+  assert.equal((await fetch(f.origin+base+'/'+R,{headers:cookie})).status,404);
+  const csv=await fetch(f.origin+'/api/admin/receipts/export',{headers:cookie});assert.equal(csv.status,200);assert.match(csv.headers.get('content-type'),/^text\/csv/);assert.match(csv.headers.get('content-disposition'),/attachment; filename="barsys-receipts.csv"/);
+  const lines=(await csv.text()).trim().split('\r\n');assert.equal(lines.length,3);assert.equal(lines[0].split(',')[0],'Paid on');
+  const cells=lines[1].split(',');assert.equal(cells[0],'2026-09-14');assert.equal(cells[1],'SYNTHETIC LIFECYCLE - DO NOT FULFILL');assert.equal(cells[3],'Gopuff');assert.equal(cells[4],'42.17');assert.equal(cells.at(-1),`${f.origin}${base}/${row.id}`);assert.match(lines[2],/^TOTAL,,,,42\.17,1 receipt/);
+  assert.equal((await fetch(f.origin+'/api/admin/receipts/export?from=2026-09-15',{headers:cookie}).then(r=>r.text())).trim().split('\r\n').length,2);
+  assert.equal((await fetch(f.origin+'/api/admin/receipts/export?from=2026-09-01&to=2026-09-14',{headers:cookie}).then(r=>r.text())).trim().split('\r\n').length,3);
+  assert.equal((await fetch(f.origin+'/api/admin/receipts/export?from=yesterday',{headers:cookie})).status,400);
+  assert.equal((await fetch(f.origin+'/api/admin/receipts/export')).status,401);
+  const health=await f.request('/api/admin/system-health');assert.equal(health.body.receipts.mode,'local');
+  assert.equal((await f.request(base+'/'+row.id+'/remove',{method:'POST',body:{version:version+1}})).status,409);
+  const removed=await f.request(base+'/'+row.id+'/remove',{method:'POST',body:{version}});assert.equal(removed.status,200);assert.equal(removed.body.state.events[id].receiptFiles.length,0);
+  await assert.rejects(stat(join(directory,row.objectPath)),/ENOENT/);
+  assert.equal((await fetch(f.origin+base+'/'+row.id,{headers:cookie})).status,404);
+  assert.equal((await f.request(base+'/'+row.id+'/remove',{method:'POST',body:{version:removed.body.state.version}})).status,404);
+ }finally{await f.close();await rm(directory,{recursive:true,force:true});}
+});
+test('production without a bucket refuses uploads instead of writing to ephemeral disk',async()=>{
+ const f=await startFixture();
+ try{
+  const created=await f.request('/api/inquiries',{method:'POST',body:syntheticInquiry(),key:'receipt-unconfigured-fixture',anonymous:true});const id=created.body.id;
+  const version=(await f.request('/api/admin/operations')).body.state.version;
+  const r=await f.request(`/api/admin/inquiries/${id}/receipts`,{method:'POST',body:{version,filename:'a.png',contentType:'image/png',dataBase64:PNG.toString('base64'),amountCents:100,supplier:'Gopuff',paidOn:'2026-09-14'}});
+  assert.equal(r.status,503);assert.match(r.body.error,/BARSYS_RECEIPT_BUCKET/);
+  assert.equal((await f.request('/api/admin/operations')).body.state.events[id]?.receiptFiles,undefined);
+  assert.equal((await f.request('/api/admin/system-health')).body.receipts.mode,'unconfigured');
+ }finally{await f.close();}
+});
+test('GCS client uses the JSON API with the service token, no-clobber writes and 404-as-missing reads',async()=>{
+ const calls=[];const fetcher=async(url,init)=>{calls.push({url,method:init.method||'GET',headers:init.headers,body:init.body});if(url.includes('ffff'))return new Response('',{status:404});if(init.method==='DELETE')return new Response('',{status:200});return new Response(PNG,{status:200});};
+ const files=createReceiptFiles({bucket:'happy-hour-landing-version-2-receipts',fetcher,accessToken:async()=>'tok'});
+ assert.equal(files.mode,'gcs');
+ const path=`events/${E}/receipts/${R}.png`;
+ await files.put(path,PNG,'image/png');
+ assert.equal(calls[0].url,`https://storage.googleapis.com/upload/storage/v1/b/happy-hour-landing-version-2-receipts/o?uploadType=media&name=${encodeURIComponent(path)}&ifGenerationMatch=0`);
+ assert.equal(calls[0].method,'POST');assert.equal(calls[0].headers.Authorization,'Bearer tok');assert.equal(calls[0].headers['Content-Type'],'image/png');assert.equal(calls[0].body,PNG);
+ assert.deepEqual(await files.get(path),PNG);assert.equal(calls[1].url,`https://storage.googleapis.com/storage/v1/b/happy-hour-landing-version-2-receipts/o/${encodeURIComponent(path)}?alt=media`);
+ assert.equal(await files.get(`events/${E}/receipts/00000000-0000-4000-8000-00000000ffff.png`),null);
+ await files.remove(path);assert.equal(calls.at(-1).method,'DELETE');
+ await assert.rejects(files.put('../escape.png',PNG,'image/png'),/Invalid receipt path/);
+ assert.throws(()=>createReceiptFiles({bucket:'Bad Bucket'}),/Invalid BARSYS_RECEIPT_BUCKET/);
+ const csv=receiptsCSV([{eventId:E,id:R,paidOn:'2026-09-14',supplier:'=cmd()',amountCents:5,note:'a,"b"',filename:'x.png',contentType:'image/png',by:actor,at:now}],new Map(),'https://x');
+ assert.match(csv,/'=cmd\(\)/);assert.match(csv,/"a,""b"""/);
+});

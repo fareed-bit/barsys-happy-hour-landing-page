@@ -9,6 +9,7 @@ import {fileURLToPath} from 'node:url';
 import {createStore} from './store.mjs';
 import {createAuth} from './auth.mjs';
 import {createAPI} from './api.mjs';
+import {createReceiptFiles} from './receipt-files.mjs';
 const root=resolve(fileURLToPath(new URL('../',import.meta.url)));
 const local=process.env.NODE_ENV!=='production';
 const staging=process.env.STAGING_MODE==='1';
@@ -17,7 +18,9 @@ const origin=process.env.PUBLIC_ORIGIN||`http://localhost:${port}`;
 if(!local&&!process.env.DATABASE_URL)throw new Error('Production requires DATABASE_URL for PostgreSQL. SQLite is local-only.');
 const store=await createStore({databaseURL:process.env.DATABASE_URL,filename:process.env.BARSYS_DB||resolve(root,'../barsys-data/inquiries.sqlite')});
 const auth=createAuth({store,clientId:process.env.GOOGLE_CLIENT_ID,secure:!local});
-const api=createAPI({store,local,staging,origin,auth,queueNotifications:process.env.BARSYS_BACKGROUND_EMAIL_ENABLED==='1',rehearsalMarker:process.env.BARSYS_EMAIL_REHEARSAL_MARKER||'',trustedProxyHops:Number(process.env.BARSYS_TRUSTED_PROXY_HOPS||0)});
+// Receipt photos: GCS bucket in production (BARSYS_RECEIPT_BUCKET); a private local directory only outside production so nothing silently lands on ephemeral disk.
+const receiptFiles=createReceiptFiles({bucket:process.env.BARSYS_RECEIPT_BUCKET||'',directory:local?(process.env.BARSYS_RECEIPT_DIR||resolve(root,'../barsys-data/receipts')):''});
+const api=createAPI({store,local,staging,origin,auth,queueNotifications:process.env.BARSYS_BACKGROUND_EMAIL_ENABLED==='1',rehearsalMarker:process.env.BARSYS_EMAIL_REHEARSAL_MARKER||'',trustedProxyHops:Number(process.env.BARSYS_TRUSTED_PROXY_HOPS||0),receiptFiles});
 const mime={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.jpg':'image/jpeg','.jpeg':'image/jpeg','.png':'image/png','.svg':'image/svg+xml','.webp':'image/webp','.mp4':'video/mp4','.webm':'video/webm','.ico':'image/x-icon','.woff2':'font/woff2'};
 const seo=seoSettings({origin,indexing:process.env.BARSYS_INDEXING_ENABLED,staging,local});
 const runtime={mode:staging?'STAGING_TEST':local?'LOCAL_TEST':'LIVE',secure:!local};
@@ -50,5 +53,5 @@ const server=http.createServer(async(req,res)=>{
  }catch{if(!res.headersSent)res.writeHead(404);res.end('Not found');}
 });
 server.requestTimeout=15000;server.headersTimeout=10000;
-server.listen(port,local?'127.0.0.1':'0.0.0.0',()=>console.log(`Barsys ${local?'LOCAL TEST':'backend'}: ${origin} | Dashboard: ${origin}/admin`));
+server.listen(port,local?'127.0.0.1':'0.0.0.0',()=>console.log(`Barsys ${local?'LOCAL TEST':'backend'}: ${origin} | Dashboard: ${origin}/admin | Receipts: ${receiptFiles.mode}`));
 for(const signal of ['SIGINT','SIGTERM'])process.on(signal,()=>server.close(async()=>{await store.close();process.exit(0);}));

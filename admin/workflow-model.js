@@ -25,7 +25,7 @@ export function equipmentReceipt(action,quantity){
 }
 export const flowSteps=['Confirm','Prepare','Purchase & pack','Run event','Return & close'];
 export const flowStep=stage=>stage<2?stage:stage<4?2:stage<6?3:4;
-export const flowSections=[['finance'],['planning','staff','stock','finance'],['planning','orders','supplier','stock'],['planning','staff'],['stock','staff','finance']];
+export const flowSections=[['finance'],['planning','staff','stock','finance'],['planning','orders','supplier','stock'],['planning','staff'],['stock','staff','orders','finance']];
 export function planningUpdate(original,values,equipment){
  const plan=structuredClone(original);
  plan.drinksPerGuest=values.drinksPerGuest;plan.bufferPercent=values.bufferPercent;plan.menuConfirmed=values.menuConfirmed;plan.machines=values.machines;

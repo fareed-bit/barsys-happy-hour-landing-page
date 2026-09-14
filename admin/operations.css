@@ -78,3 +78,15 @@
 
 .gap-go{display:inline-block;margin:6px 0 2px 10px;padding:6px 12px;min-height:0;font-size:.85rem;background:#fff;color:#111;border:1px solid #111;border-radius:6px}
 .alert li{margin:6px 0}
+
+/* Purchase receipt photos (2026-09-14) */
+.receipt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin:14px 0}
+.receipt-card{border:1px solid #d8d8d8;border-radius:8px;padding:12px;background:#fff;display:grid;gap:8px;min-width:0;align-content:start}
+.receipt-card img{width:100%;height:160px;object-fit:cover;border-radius:6px;background:#eee;display:block}
+.receipt-pdf{display:grid;place-items:center;height:160px;border-radius:6px;background:#eee;font-weight:700;letter-spacing:.1em}
+.receipt-card p{margin:0}.receipt-card small{overflow-wrap:anywhere}.receipt-card .inline-actions{margin:4px 0 0}
+.ops a.button-link{display:inline-flex;align-items:center;justify-content:center;padding:10px 16px;border:1px solid #111;border-radius:6px;background:#111;color:#fff;text-decoration:none;font:inherit}
+.ops-form input[type=file]{padding:10px;border:1px dashed #888;background:#fafafa;min-height:46px}
+.receipt-fill label{display:flex;align-items:center;gap:8px}.receipt-fill select{padding:8px;font:inherit}
+@media(max-width:650px){.receipt-grid{grid-template-columns:1fr 1fr}.receipt-fill label{display:grid}}
+@media(max-width:390px){.receipt-grid{grid-template-columns:1fr}}

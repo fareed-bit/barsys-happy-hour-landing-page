@@ -18,6 +18,8 @@ export function retireEventState(doc,ops,at){
  const state=structuredClone(ops),f=finances(state.events[doc.id],state,doc.id);
  // Preserve aggregate accounting values, not free-text event/client/staff details.
  const summary={retiredAt:at,revenueCents:state.events[doc.id].revenueCents,invoiceCents:f.payments.invoiceCents,collectedCents:f.payments.collectedCents,consumedCents:f.consumed,profitCents:f.profit};
+ // Receipt photos are deleted from storage with their rows; the ledger keeps the object paths (no personal detail) so a failed delete can be finished by hand.
+ const receiptObjects=(state.events[doc.id].receiptFiles||[]).map(r=>r.objectPath);if(receiptObjects.length)summary.receiptObjects=receiptObjects;
  state.retiredReceiptKeys??=[];
  for(const r of state.receipts||[])if(r.eventId===doc.id)state.retiredReceiptKeys.push(receiptKey(r));
  state.retiredReceiptKeys=[...new Set(state.retiredReceiptKeys)];

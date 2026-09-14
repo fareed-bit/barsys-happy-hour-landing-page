@@ -18,7 +18,7 @@ if(process.env.BARSYS_QA_PUBLISHED_POLICY==='1'){const policy=defaultPolicy();po
 await store.close();
 const socket=net.createServer();await new Promise(r=>socket.listen(0,'127.0.0.1',r));const port=socket.address().port;await new Promise(r=>socket.close(r));
 const origin=`http://localhost:${port}`,env=Object.fromEntries(['PATH','HOME','TMPDIR'].filter(k=>process.env[k]).map(k=>[k,process.env[k]]));
-Object.assign(env,{NODE_ENV:'test',BARSYS_DB:filename,PORT:String(port),GOOGLE_CLIENT_ID:'synthetic-local-client'});
+Object.assign(env,{NODE_ENV:'test',BARSYS_DB:filename,PORT:String(port),GOOGLE_CLIENT_ID:'synthetic-local-client',BARSYS_RECEIPT_DIR:join(directory,'receipts')});
 const server=spawn(process.execPath,['backend/server.mjs'],{cwd:root,env,stdio:['ignore','pipe','pipe']});
 const evidence={scope:'Actual backend, isolated SQLite, synthetic records, fresh headless Chrome via CDP',checks:[],screenshots:[],errors:[]};
 let browser;

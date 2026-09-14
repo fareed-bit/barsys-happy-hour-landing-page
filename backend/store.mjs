@@ -86,7 +86,7 @@ export async function createStore({databaseURL,filename}){
     yield ['DELETE FROM notification_jobs WHERE inquiry_id=$1',[id]];yield ['DELETE FROM retention_reviews WHERE id=$1',['event:'+id]];
     yield ['INSERT INTO retired_events(id,document) VALUES($1,$2)',[id,JSON.stringify(summary)]];
     yield ['INSERT INTO retention_disposals(id,removed_at,actor) VALUES($1,$2,$3)',[id,at,actor]];
-    return {removed:true};
+    return {removed:true,receiptObjects:summary.receiptObjects||[]};
    });
   },
   async disposeMail(id,reviewVersion,actor,now=Date.now()){
