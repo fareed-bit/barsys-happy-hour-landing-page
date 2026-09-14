@@ -34,7 +34,7 @@
     scenes[0].setAttribute('aria-label', '1 of 4: Original Barsys hero film');
     tabs[0].querySelector('strong').textContent = 'The Barsys experience';
     const note = document.getElementById('hero-source-note');
-    if (note) note.textContent = 'Featured video imported from the hero section of happyhours.barsys.com. A local copy is included in this build. No production site was changed.';
+    if (note) note.textContent = 'Featured video from the Barsys event archive.';
     const img = scenes[0].querySelector('.scene-poster');
     if (img && films.hero.poster) { img.src = films.hero.poster; img.alt = 'Barsys hero film'; tabs[0].querySelector('img').src = films.hero.poster; }
     if (films.hero.sourceStatus === 'user-provided-hero' && note) note.textContent = 'The featured video was supplied by the project owner as the original hero film. A local copy is included. No production site was changed.';

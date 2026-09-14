@@ -16,6 +16,9 @@ test('backend serves required scripts, allows its API and protects private files
  for(const file of ['backend/server.mjs','package.json','.env','../barsys-data/inquiries.sqlite','tests/backend.test.mjs'])assert.equal((await fetch(base+'/'+file)).status,404,file);
  const status=await (await fetch(base+'/api/status')).json();assert.equal(status.mode,'LOCAL_TEST');
  assert.equal((await fetch(base+'/api/admin/inquiries',{headers:{Origin:'https://example.com'}})).status,403);
- const admin=await (await fetch(base+'/admin')).text();assert.ok(admin.includes('Event desk'));
+ const admin=await fetch(base+'/admin',{redirect:'manual'});assert.equal(admin.status,303);assert.equal(admin.headers.get('location'),'/admin/login.html?next=%2Fadmin');
+ const staffPage=await fetch(base+'/admin/operations.html?event=abc',{redirect:'manual'});assert.equal(staffPage.status,303);assert.equal(staffPage.headers.get('location'),'/admin/login.html?next=%2Fadmin%2Foperations.html%3Fevent%3Dabc');
+ for(const file of ['admin/event-prep-datadome.html','admin/records.html'])assert.equal((await fetch(base+'/'+file,{redirect:'manual'})).status,303,file);
+ const login=await (await fetch(base+'/admin/login.html')).text();assert.ok(login.includes('STAFF ACCESS'));
  const image=await fetch(base+'/assets/logos/Black_Horizontal.svg',{headers:{Range:'bytes=0-15'}});assert.equal(image.status,206);assert.equal((await image.arrayBuffer()).byteLength,16);
 });

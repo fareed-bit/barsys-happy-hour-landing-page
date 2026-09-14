@@ -30,7 +30,9 @@ const server=http.createServer(async(req,res)=>{
   const path=decodeURIComponent(new URL(req.url,origin).pathname);const relative=path==='/'?'index.html':path==='/admin'||path==='/admin/'?'admin/index.html':path.slice(1);
   if(path==='/robots.txt'){res.writeHead(200,{'Content-Type':'text/plain'});return res.end(seo.enabled?'User-agent: *\nAllow: /\nDisallow: /admin/\nDisallow: /api/\nSitemap: '+seo.origin+'/sitemap.xml\n':'User-agent: *\nDisallow: /\n');}
   if(path==='/sitemap.xml'){res.writeHead(200,{'Content-Type':'application/xml'});return res.end(sitemap(seo));}
-  if(staging&&(relative==='index.html'||relative.startsWith('site/')&&relative.endsWith('.html')||relative==='admin/index.html')&&!await auth.user(req)){res.writeHead(303,{Location:'/admin/login.html'});return res.end();}
+  if(staging&&(relative==='index.html'||relative.startsWith('site/')&&relative.endsWith('.html'))&&!await auth.user(req)){res.writeHead(303,{Location:'/admin/login.html'});return res.end();}
+  // Staff pages require a server-verified session in every mode; static admin HTML must never be readable anonymously.
+  if(relative.startsWith('admin/')&&relative.endsWith('.html')&&relative!=='admin/login.html'&&!await auth.user(req)){const next=new URL(req.url,origin);const target=next.pathname.startsWith('/admin')&&/^[\w./?=&%-]*$/.test(next.pathname+next.search)?next.pathname+next.search:'';res.writeHead(303,{Location:'/admin/login.html'+(target?'?next='+encodeURIComponent(target):'')});return res.end();}
   // Serve only public application assets; never source, secrets, databases, packages or QA exports.
   if(!(/^[\w.-]+\.(html|css|js)$/.test(relative)&&!relative.endsWith('Codex-Ready.html')||/^(assets|admin|site)\/[\w./-]+$/.test(relative))||relative.split('/').some(p=>p.startsWith('.'))||!mime[extname(relative)]){res.writeHead(404);return res.end('Not found');}
   const file=await realpath(resolve(root,relative));if(!file.startsWith(root+sep))throw new Error('Invalid path');const info=await stat(file);if(!info.isFile())throw new Error('Invalid file');

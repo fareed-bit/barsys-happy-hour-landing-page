@@ -34,9 +34,9 @@
     </tbody></table></div>
     <p>Expiry cleanup occurs when the application next checks entries; it does not run after a browser tab is closed. Google sign-in/authorization pages manage their own storage outside these planner controls.</p>
     <p>Use <button class="policy-inline" type="button" data-open-privacy>Privacy preferences</button> to manage optional local draft storage. This does not erase server inquiries, imported emails, authentication cookies, backups or exported files. Use staff sign out to revoke a staff session.</p>
-    <p>Server records currently have no automated deletion schedule. Review the Privacy notice and approved deployment policy before collecting public inquiries.</p>`
+    <p>Server records follow the retention periods in the Privacy notice. Deletion is an owner-reviewed step, not an automatic schedule.</p>`
   };
-  policies.terms = {...policies.terms, body:policies.terms.body.replace('This local build creates a preview only.', `This connected build stores an inquiry only after ${action}. It does not create a booking.`)};
+  policies.terms = {...policies.terms, body:policies.terms.body.replace('Sending an inquiry through this website does not create a booking.', `This connected service stores an inquiry only after ${action}. It does not create a booking.`)};
   if (typeof document === 'undefined') return;
   document.documentElement.dataset.appMode = runtime.mode;
   const tag = document.querySelector('#privacy-dialog .policy-tag');
