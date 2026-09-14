@@ -1,3 +1,15 @@
+## Staff no-labor-cost flag — September 14, 2026 (candidate staff-0914, flip pending)
+
+Owner reported staff assignments "not saving"; the audit log showed no assign attempt reached the server, so the browser's required-field validation was blocking the submit silently (incomplete datetime or empty planned hours inside a collapsed section). Assignment succeeded when all fields were valid. Fix: an `invalid` listener on the operations forms opens the collapsed section and posts "Not saved: complete <field> first" in the status line.
+
+Owner also requires Barsys team members to carry no event labor cost (no bartenders on DataDome). Added `internal` flag on staff records (checkbox on add/edit); assignments of internal staff snapshot `rateCents: 0`; dropdown and headings read "Barsys team · no labor cost". Test added; `npm test` 195/195. Interim on production: owner's staff record set to $0/hour, role "Barsys team lead", assigned to DataDome 16:00–20:00 ET (4 planned hours, rate 0).
+
+Candidate `barsys-happyhours-production-staff-0914` (image `sha256:3c496c46…`) deployed at 0%; smoke passed; flip pending owner: `gcloud run services update-traffic barsys-happyhours-production --project happy-hour-landing-version-2 --region us-east4 --to-revisions barsys-happyhours-production-staff-0914=100`. Rollback `hardening-0914`.
+
+DataDome state after tonight: inquiry status confirmed; proposal Rev 6 accepted ($75/guest × 20 + $120 transport = $1,620; tax 8.875% $143.78; total $1,763.78); deposit $881.89 recorded (via $990.77 entry + $108.88 correction; ledger has no edit/void); revenue $1,620; event at Prepare with "Menu and ingredient quantities reviewed" ticked; "Staff and equipment assigned" left open (equipment not yet in inventory). Backlog: payment void action; booking flags (agreementSigned/dateHeld/paymentReceived) have no UI; proposal send.
+
+---
+
 ## Hardening release — September 14, 2026 (evening) — LIVE
 
 **Status:** LIVE. Revision `barsys-happyhours-production-hardening-0914` (source `8862917`, image `sha256:dcb63797…`) serves 100% since ~17:05 ET after the owner ran the traffic flip; rollback `admin-supplies-0914-r3` held at 0%. Post-flip checks on the production URL passed (release string, ready, admin/DataDome 303→login, gzip + caching, no preview copy, og tags, anonymous admin API 401). The static DataDome prep page is removed from the image (restorable from `beeef4d`).
