@@ -1,4 +1,4 @@
-## Purchase list matching — September 14, 2026 (candidate match-0914; flip pending)
+## Purchase list matching — September 14, 2026 — LIVE (match-0914 at 100% ~19:00 ET)
 
 `purchaseNeeds()` ("Buy what is missing" in the supplier/orders view) used exact name+unit matching and listed every ingredient as "stock count needed" even though the shortage table showed them covered. It now accepts a matcher; `admin/operations.js` passes the same name-token + bottle/oz→ml matcher used by the shortage table. Tag `match-0914` (supersedes `gopuff-0914`). Flip: `--to-revisions barsys-happyhours-production-match-0914=100`. Rollback `suggest-0914`.
 
