@@ -1,3 +1,9 @@
+## Purchase list matching — September 14, 2026 (candidate match-0914; flip pending)
+
+`purchaseNeeds()` ("Buy what is missing" in the supplier/orders view) used exact name+unit matching and listed every ingredient as "stock count needed" even though the shortage table showed them covered. It now accepts a matcher; `admin/operations.js` passes the same name-token + bottle/oz→ml matcher used by the shortage table. Tag `match-0914` (supersedes `gopuff-0914`). Flip: `--to-revisions barsys-happyhours-production-match-0914=100`. Rollback `suggest-0914`.
+
+---
+
 ## Purchase & pack: Astor vs Gopuff split + Slack ping — September 14, 2026 (candidate gopuff-0914; flip pending)
 
 Recommendation block now separates spirits (order via the Astor supplier draft) from mixers/syrups/consumables (Gopuff). "Ping Fareed on Slack to order from Gopuff" POSTs the list to `/api/admin/slack-ping` (owner-only, throttled), which forwards to a Slack incoming webhook read from `BARSYS_SLACK_WEBHOOK_URL`; unset → 503 with guidance, and "Copy Gopuff list" works regardless. **Owner setup required:** create an incoming webhook in the Slack workspace (Apps → Incoming Webhooks → channel), then on the service run `gcloud run services update barsys-happyhours-production --project happy-hour-landing-version-2 --region us-east4 --update-env-vars BARSYS_SLACK_WEBHOOK_URL=https://hooks.slack.com/services/…` (prefer a Secret Manager reference for the URL). Tag `gopuff-0914` (supersedes `gaps-0914`). Flip: `--to-revisions barsys-happyhours-production-gopuff-0914=100`. Rollback `suggest-0914`.
