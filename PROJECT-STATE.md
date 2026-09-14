@@ -1,3 +1,9 @@
+## Staffing/stock window prefill — September 14, 2026 (candidate prefill-0914, flip pending)
+
+Owner: assignment dates should come from the event. `defaultWindow()` in `admin/operations.js` prefills Start/End/Planned hours on the assignment form and Departure/Return on the reservation form from the event date plus accepted load-in/departure (fallback: one hour before service start, one hour after service end). Fields remain editable. `npm test` 195/195; browser suites pass. Image `sha256:61eedf5c…`, tag `prefill-0914`. Flip: `gcloud run services update-traffic barsys-happyhours-production --project happy-hour-landing-version-2 --region us-east4 --to-revisions barsys-happyhours-production-prefill-0914=100`. Rollback `wizard-0914-r2`.
+
+---
+
 ## Wizard event view — September 14, 2026 — LIVE (wizard-0914-r2 at 100% since ~18:00 ET)
 
 Owner asked for the event workspace to read as a wizard: one card per step rather than a stacked list. Implemented in `admin/operations.js` `focusStage()` and `admin/operations.css`: each stage renders a `.wizard-card` with header (step n of 5, title, requirement text, checkpoint progress), the stage's sections open inside the body, and the existing `#flow-next` footer (Back, checkpoints, Continue). Other sections hidden; "Show all event details" remains. Completed steps reopen for review; upcoming steps stay previewable (the workflow needs Prepare-side menu confirmation before Confirm can advance — hard-locking them broke the isolated workflow suite) and are styled as upcoming. Card header uses a `div`, not `header`, because the global `header{height:90px;display:flex}` rule collapsed it. Screenshots `qa/wizard-0914/wizard-desktop.png` (1440) and `wizard-phone.png` (390), no horizontal overflow. `npm test` 195/195; lifecycle + workflow browser suites pass.
