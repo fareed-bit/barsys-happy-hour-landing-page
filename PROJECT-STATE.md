@@ -1,3 +1,17 @@
+## Local hardening batch — September 14, 2026 (evening, NOT deployed)
+
+**Status:** committed locally (`beeef4d`), tests green, awaiting owner build/deploy per `deploy/runbooks/release-hardening-0914.md`.
+
+- **Security (P0):** `admin/event-prep-datadome.html` (static page with the DataDome contact's name, email and phone) returned HTTP 200 to anonymous requests on production; the admin HTML gate in `backend/server.mjs` only applied under `STAGING_MODE`. Gate now applies in every mode for `/admin/*.html` except login, and forwards a validated `?next=` so sign-in returns to the requested page (`admin/login.js`).
+- **Live copy:** removed "Local preview only. Nothing is sent to Barsys.", "This local build sends nothing.", the "V3.9 / PRIVATE LOCAL PREVIEW · NO BOOKINGS OR PAYMENTS" footer badge, "in this preview" and related wording from `index.html`, `app.js`, `v3.js`, `hero-carousel.js`, `policy-content.js`, `runtime-content.js`. Inquiry button now reads "Send inquiry" to match the runtime notice.
+- **Delivery:** gzip for text types, `Cache-Control: public, max-age=600` for css/js and `86400` for `assets/`, `Last-Modified` + 304. HTML stays `no-store`.
+- **SEO/social:** `decorate()` adds og:url/type/site_name/locale/title/description/image(+alt) and twitter:card/title/description/image on `/` and all 36 site pages; per-mixlist cover as og:image; Organization schema gains postal address, raster logo and image. Site pages gain favicon; descriptions now 70–160 chars. `scripts/seo-audit.mjs` regexes fixed (the "homepage missing description" finding was a false negative) and it now reports 0 issues (`qa/seo-readiness-0914/audit.md`). Indexing remains OFF.
+- **Dashboard:** `categoryOf()` matches on word boundaries (strawberry items were filed under Equipment via "straw", ginger items under Spirits via "gin"); "All items" tab; typed search spans all categories; in-flight guard and preserved scroll on saves; `preparationNeedsReview` surfaced with a link; consistent 401→login with return path across all admin scripts (records.js had none); menu-policy save confirmation; desk "planned guests" excludes cancelled; Records link in operations header; crew page navigation.
+- **Verification:** `npm test` 194/194; `python3 tests/run-lifecycle-browser.py` passed both suites; local server smoke on :3199 confirmed headers, tags and redirects.
+- **Observed in production (read-only):** DataDome inquiry `5bf6a32f-7cc9-454a-bf11-8e6752201b02` (Sep 17, 20 guests) is present; four synthetic inquiries (`dd5c0852…`, `6b624116…`, `fdde0015…`, `ce41a338…`) remain and inflate desk KPIs; the retention rule blocks their removal through the UI for 12 months. Staff directory is empty, so no event owner can be assigned and the Confirm step cannot advance. Inventory: 12 counted items saved (v13).
+
+---
+
 ## Admin inventory tabs and supplies categorization — September 14, 2026
 
 **Status:** DONE, live. Two code deploys after the morning email activation, both verified in the browser by the owner; recorded here from the 2026-09-14 handoff PDF because this file was not updated at the time.
