@@ -71,3 +71,7 @@
 .flash-dots button.dot-confirm{border-radius:3px}
 @media(prefers-reduced-motion:reduce){.section-card{animation:none}}
 @media(max-width:650px){.flash-nav{padding:14px 16px 18px;flex-direction:column;align-items:stretch}.flash-dots{justify-content:center;order:-1}}
+
+.shopping-list{margin-top:18px;border:2px solid #111}
+.shopping-list ul{padding-left:20px;margin:6px 0 14px}
+.shopping-list li{margin:6px 0;line-height:1.5}
