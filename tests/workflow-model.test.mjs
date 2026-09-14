@@ -37,6 +37,8 @@ test('next action exposes missing records before continuing',async()=>{
  assert.deepEqual(recordGaps({stage:0,owner:'',revenueCents:null},{},[]),['Assign an event owner.','Enter the agreed revenue.']);
  assert.equal(recordGaps({stage:6,owner:'Fareed'},{},[{status:'dispatched'}]).length,1);
  assert.equal(recordGaps({stage:8},{},[{status:'dispatched'}]).length,0);
+ assert.match(recordGaps({stage:0,owner:'Fareed',revenueCents:1,preparationNeedsReview:true},{},[])[0],/Prepare step/);
+ assert.equal(recordGaps({stage:0,owner:'Fareed',revenueCents:1,preparationNeedsReview:false},{},[]).length,0);
 });
 test('procurement subtracts ready stock and current allocations before pack rounding',async()=>{
  const {purchaseNeeds}=await import('../admin/workflow-model.js');const rows=[{name:'Vodka',unit:'ml',amount:1500,price:{packAmount:750,priceCents:2000}}];const s={openingStockZero:true,inventory:[{id:'v',name:'Vodka',kind:'consumable',unit:'ml',quantity:1000,condition:'ready'}],reservations:[{itemId:'v',eventId:'event',quantity:500,status:'reserved'}]};assert.equal(purchaseNeeds(rows,s,'event').purchases[0].packs,1);s.inventory[0].quantity=null;assert.equal(purchaseNeeds(rows,s,'event').unresolved.length,1);s.inventory=[];s.reservations=[];assert.equal(purchaseNeeds(rows,s,'event').purchases[0].packs,2);

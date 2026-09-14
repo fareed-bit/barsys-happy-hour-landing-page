@@ -39,6 +39,7 @@ export function planningUpdate(original,values,equipment){
 export function recordGaps(event,financials,loads){
  if(event.stage===8)return [];
  const gaps=[];
+ if(event.preparationNeedsReview)gaps.push('Review and confirm the saved menu and quantities on the Prepare step (Menu, quantities & equipment card) before continuing.');
  if(!event.owner)gaps.push('Assign an event owner.');
  if([0,7].includes(event.stage)&&event.revenueCents===null)gaps.push('Enter the agreed revenue.');
  if(event.stage===1&&!financials?.plannedComplete)gaps.push('Review staffing and enter every planned cost in View cost breakdown.');
