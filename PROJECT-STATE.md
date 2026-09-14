@@ -1,3 +1,9 @@
+## Suggest planned costs — September 14, 2026 (candidate suggest-0914; flip pending)
+
+Button above the cost table in the finance card fills blank planned fields only: Spirits/mixers = cash purchases from the buy list; Existing office stock sent = `costs.knownUsedCents` (when preparation is complete); Payment fees = 3.49% + $0.49 × 2 on the invoice total (or revenue + tax); Glassware & rentals and Equipment & overhead = $0 (owned). Ice, transport and Other are reported as still needing owner input. Marks the form dirty; owner presses Save event & finances. `npm test` 195/195; browser suites pass. Tag `suggest-0914` (supersedes `reco-0914`). Flip: `--to-revisions barsys-happyhours-production-suggest-0914=100`. Rollback `prefill-0914`.
+
+---
+
 ## Event recommendation block — September 14, 2026 (candidate reco-0914; flip pending)
 
 Under the shortage table (stock card and planning card), `shoppingList()` now lists: **Buy or count before the event** — each ingredient that is short or not in counted stock, with ml short, packs × pack size (product name) and estimated cost, plus an estimated purchase total; and **Reserve from office stock** — each covered ingredient with the ml needed and how many units of which inventory item to reserve. Built from `shortageRows()` (shared with the table). `npm test` 195/195; browser suites pass. Tag `reco-0914` (supersedes `costs-0914`; includes flashcards, no-cache, cost table). Flip: `--to-revisions barsys-happyhours-production-reco-0914=100`. Rollback `prefill-0914`.
