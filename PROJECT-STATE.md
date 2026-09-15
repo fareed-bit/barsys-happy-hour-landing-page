@@ -5,7 +5,7 @@ Owner asked for entries from the other landing page's events spreadsheet (Google
 - **BlackRock** — id `2414cc99-5d63-4f5d-9423-f239b5a464a6`. Executive event, **60 guests** (form said 150), Signature, Neon Shadows (Bold Frequency also requested but Reserve-tier under policy v1 → noted, not selected). Client provides all ingredients, spirits, ice and glassware (glassware: venue). Contact Ranee Turner, ranee.turner@blackrock.com, +44 7500 921571 (in notes/phone). Date, venue undecided.
 - **Nova Intelligence** — id `2651388d-a30b-45ee-8fb6-f8c71b4a50e9`. Recruiting event, 30 guests, Classic, menus left for recommendation (requested The Signature Mixlist + Après/Garden Spritz Club are not Classic-tier; "recipe cards" add-on does not exist → notes). Contact Alexa Kayman, alexa@novaintelligence.com, (914) 677-5967. Owner call 09/15 to finalize.
 
-Both records carry `fareed@barsys.com` as the contact email so the automated "Barsys inquiry received" email (worker every 5 min) goes to the owner, not the client; the real emails are in the notes. Replace via Edit event details when ready. Not created: GEM / Danu Venture Group (09/04, 30 guests) — confirm whether it was the third yellow row.
+Both records carry `fareed@barsys.com` as the contact email so the automated "Barsys inquiry received" email (worker every 5 min) goes to the owner, not the client; the real emails are in the notes. Replace via Edit event details when ready. Not created: GEM / Danu Venture Group (09/04, 30 guests) — owner confirmed 09/14: do not add.
 
 ---
 
