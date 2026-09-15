@@ -16,6 +16,7 @@ import {validate,estimate,labels,statuses,HttpError} from './model.mjs';
 import {defaultPreparation,validatePreparation,preparationSummary,recipeCatalog} from './preparation.mjs';
 import {createReceiptFiles,decodeReceipt,receiptContentType,receiptObjectPath,receiptsCSV,isDay,RECEIPT_MAX_BYTES} from './receipt-files.mjs';
 const hash=s=>createHash('sha256').update(s).digest('hex');
+const pulseCache=new WeakMap(); // per-store 5-minute cache for the public monthly count
 export function createAPI({store,local=true,staging=false,origin,auth,gmailFetch,queueNotifications=false,rehearsalMarker="",trustedProxyHops=0,receiptFiles=createReceiptFiles({})}){
  const testSend=createGmailSend({clientId:auth?.clientId,fetcher:gmailFetch});
  const gmail=createGmail({store,clientId:auth?.clientId,fetcher:gmailFetch});
@@ -42,6 +43,13 @@ export function createAPI({store,local=true,staging=false,origin,auth,gmailFetch
    if(req.method==='POST'&&path==='/api/auth/google'){await throttle(req);send(200,await auth.signIn(req,res,await body(req)));return true;}
    if(req.method==='POST'&&path==='/api/auth/logout'){send(200,await auth.signOut(req,res));return true;}
    if(req.method==='GET'&&path==='/api/ready'){try{await store.checkHealth();send(200,{ready:true});}catch{send(503,{ready:false});}return true;}
+   if(req.method==='GET'&&path==='/api/pulse'){
+    // Public, aggregate only: how many distinct teams sent an inquiry this calendar month (synthetic/test records excluded).
+    const now=Date.now();let cached=pulseCache.get(store);
+    if(!cached||now-cached.at>300000){const start=new Date();start.setDate(1);start.setHours(0,0,0,0);const teams=new Set();let offset=0;
+     for(let page=0;page<5;page++){const rows=await store.list(100,offset);for(const d of rows){if(new Date(d.createdAt)<start)continue;const key=String(d.payload?.details?.company||d.payload?.details?.email||d.id).toLowerCase().trim();if(/synthetic|test only|do not fulfill|rehearsal/.test(key))continue;teams.add(key);}if(rows.length<100)break;offset+=100;}
+     cached={at:now,teams:teams.size};pulseCache.set(store,cached);}
+    send(200,{teamsThisMonth:cached.teams,month:new Date().toISOString().slice(0,7)});return true;}
    if(req.method==='GET'&&path==='/api/status'){send(200,{enabled:true,mode,statuses,release:process.env.K_REVISION||process.env.STAGING_RELEASE||process.env.RELEASE_ID||'local'});return true;}
    if(req.method==='GET'&&path==='/api/menu-policy'){send(200,publicPolicy((await store.getMenuPolicy())||defaultPolicy()));return true;}
    if(staging)await auth.require(req);

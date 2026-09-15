@@ -197,6 +197,12 @@
     "description": "Planning an office happy hour, client gathering or milestone in New York City?"
   },
   {
+    "slug": "technology",
+    "title": "The bar we bring.",
+    "description": "The Barsys 360 cocktail machine and the Shaker Pro smart shaker: what they are, how they pour, and how they work together at a Barsys happy hour.",
+    "image": "/assets/tech/360-hero-hd.jpg"
+  },
+  {
     "slug": "faq",
     "title": "Before the first cheers.",
     "description": "Answers to the essentials of planning a Barsys office happy hour: inclusions, menus, dates, custom events and cancellations."
