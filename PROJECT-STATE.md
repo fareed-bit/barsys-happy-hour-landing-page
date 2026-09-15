@@ -1,4 +1,6 @@
-## Card-by-card walkthrough + flow fixes — September 14, 2026 (candidate flow-0914; flip pending)
+## Card-by-card walkthrough + flow fixes — September 14, 2026 — LIVE (flow-0914 at 100% ~20:10 ET)
+
+Owner ran the flip. Post-flip checks on the production URL passed: root 200, release `barsys-happyhours-production-flow-0914`, ready true, new gap code served in `operations.js` and `workflow-model.js` (css/js no-cache so open tabs pick it up on next load), admin HTML 303→login, receipts export anonymous 401, anonymous upload 403. Traffic 100% on `flow-0914`; no ERROR-severity logs. Rollback `receipts-0914`. DataDome note: enter quantities for portable chargers, microfiber towels and Clorox wipes on Prepare card 2.1 before reserving equipment; the confirm card now says so.
 
 Owner asked for the whole process, card by card, on a DataDome-like test event (Signature · The Signature Mixlist + The Agave Lover's · 20 guests · Sep 17 · $75 × 20 + $120 transport = $1,763.78). Run on an isolated backend + fresh headless Chrome (not production); 110 screenshots at 1440/390 and the report in `qa/walkthrough-0914/README.md`. Inquiry → desk → preparation → proposal r1 → acceptance → Confirm → Prepare → Purchase & pack (Astor record, Gopuff receipt photo, Agave Syrup received, 17 lines dispatched) → Run event → Return & close (17 loads received, hours, Fill actual paid from receipts, deposit + balance) → Financially closed (profit $1,324.73, margin 81.8%) → Records CSV. No overflow, no console errors.
 
