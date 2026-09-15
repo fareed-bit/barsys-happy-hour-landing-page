@@ -46,3 +46,5 @@ html{scroll-padding-block:100px 120px}
 }
 /* The fixed mobile planning bar has a white background; keep its secondary label readable. */
 #mobile-book>span{color:#595959}
+/* Polish (2026-09-14): film descriptions sit in a dark section. */
+#event-photos .video-descriptions{background:#111;color:#d8d8d8;border-color:#3a3a3a}#event-photos .video-descriptions h3{color:#fff}#event-photos .video-descriptions summary{color:#fff}
