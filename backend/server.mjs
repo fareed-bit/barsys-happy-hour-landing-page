@@ -1,4 +1,4 @@
-import {sitePaths,seoSettings,sitemap,decorate} from './site-seo.mjs';
+import {sitePaths,seoSettings,sitemap,decorate,robotsText,llmsText,INDEXNOW_KEY} from './site-seo.mjs';
 import {defaultPolicy,publicPolicy} from './menu-policy.mjs';
 import http from 'node:http';
 import {createGzip,gzipSync} from 'node:zlib';
@@ -32,7 +32,9 @@ const server=http.createServer(async(req,res)=>{
   if(!['GET','HEAD'].includes(req.method)){res.writeHead(405);return res.end();}
   if((req.url==='/admin'||req.url?.startsWith('/admin/'))&&(await auth.user(req))?.role==='crew'&&!req.url.startsWith('/admin/crew.')&&!req.url.startsWith('/admin/style.css')&&!req.url.startsWith('/admin/operations.css')&&!req.url.startsWith('/admin/login.')){res.writeHead(303,{Location:'/admin/crew.html'});return res.end();}
   const path=decodeURIComponent(new URL(req.url,origin).pathname);const relative=path==='/'?'index.html':path==='/admin'||path==='/admin/'?'admin/index.html':path.slice(1);
-  if(path==='/robots.txt'){res.writeHead(200,{'Content-Type':'text/plain'});return res.end(seo.enabled?'User-agent: *\nAllow: /\nDisallow: /admin/\nDisallow: /api/\nSitemap: '+seo.origin+'/sitemap.xml\n':'User-agent: *\nDisallow: /\n');}
+  if(path==='/robots.txt'){res.writeHead(200,{'Content-Type':'text/plain; charset=utf-8'});return res.end(robotsText(seo));}
+  if(path==='/llms.txt'){res.writeHead(seo.enabled?200:404,{'Content-Type':'text/plain; charset=utf-8'});return res.end(seo.enabled?llmsText(seo):'');}
+  if(path==='/'+INDEXNOW_KEY+'.txt'){res.writeHead(200,{'Content-Type':'text/plain'});return res.end(INDEXNOW_KEY);}
   if(path==='/sitemap.xml'){res.writeHead(200,{'Content-Type':'application/xml'});return res.end(sitemap(seo));}
   if(staging&&(relative==='index.html'||relative.startsWith('site/')&&relative.endsWith('.html'))&&!await auth.user(req)){res.writeHead(303,{Location:'/admin/login.html'});return res.end();}
   // Staff pages require a server-verified session in every mode; static admin HTML must never be readable anonymously.

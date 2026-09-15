@@ -203,6 +203,180 @@
     "image": "/assets/tech/360-hero-hd.jpg"
   },
   {
+    "slug": "events",
+    "title": "Event bar service in New York City.",
+    "description": "Barsys brings its cocktail machines, Shaker Pro stations and bartenders to corporate events, brand activations, holiday parties, private celebrations and zero-proof events across New York City.",
+    "image": "/assets/tech/360-hero-hd.jpg",
+    "faq": [
+      [
+        "What kinds of events does Barsys serve in New York City?",
+        "Corporate events (company celebrations, executive and client events, recruiting nights), brand activations and product launches, holiday parties, private celebrations and zero-proof events. Office happy hours are covered at happyhours.barsys.com."
+      ],
+      [
+        "What is included in the per-guest price?",
+        "Barsys 360 cocktail machines, tablets, bartending service, the curated mixlists for your package, standard mixers, and setup and cleanup as agreed in your proposal. Tax, extra hours and unpriced requests are confirmed in the proposal."
+      ],
+      [
+        "How many guests can an event have?",
+        "Standard planning starts at twenty guests. Larger events add machines and staff; formats outside the standard planner are quoted individually."
+      ],
+      [
+        "Does sending an inquiry book the date?",
+        "No. An inquiry does not hold a date, sign an agreement or take payment. We confirm availability, menus and scope by reply."
+      ]
+    ],
+    "service": {
+      "name": "Barsys event bar service",
+      "type": "Event bar service",
+      "audience": "Companies, brands and hosts in New York City"
+    }
+  },
+  {
+    "slug": "corporate-events",
+    "title": "Corporate event bar service in NYC.",
+    "description": "Bar service for company celebrations, executive and client events and recruiting nights in New York City: Barsys 360 cocktail machines, Shaker Pro stations and bartenders, priced per guest.",
+    "image": "/assets/tech/360-dsc5986.jpg",
+    "faq": [
+      [
+        "Can one event serve both cocktails and zero-proof drinks?",
+        "Yes. A zero-proof mixlist can take one of your menu slots, and it runs on the same machines with the same service."
+      ],
+      [
+        "Do you bring everything to our office?",
+        "The Barsys team brings, sets up and takes down machines, tablets, ingredients, ice and glassware as agreed in your proposal. The 360 needs one outlet and no plumbing."
+      ],
+      [
+        "How long is the service?",
+        "Packages use a two-hour service baseline. Additional service hours are available on request at $500 per hour and are confirmed in the proposal."
+      ],
+      [
+        "Which package suits a client or executive event?",
+        "Signature adds a signature cocktail program and premium mixers and garnishes; Reserve adds five curated menus, a dedicated event lead and premium bar presentation."
+      ]
+    ],
+    "service": {
+      "name": "Corporate event bar service",
+      "type": "Corporate event bar service",
+      "audience": "Companies and teams in New York City"
+    }
+  },
+  {
+    "slug": "brand-activations",
+    "title": "Brand activations and product launch bars in NYC.",
+    "description": "Barsys builds the bar into brand activations, product launches, pop-ups and sponsored events in New York City: the Barsys 360 pouring on camera, Shaker Pro stations and bartenders, quoted for the format.",
+    "image": "/assets/tech/sp-served-light.jpg",
+    "faq": [
+      [
+        "How are brand activations priced?",
+        "Individually. Duration, footfall, number of machines, staffing and any custom menu work are quoted for the format. Standard per-guest packages apply where the event runs as a hosted bar for a known guest list."
+      ],
+      [
+        "Can the menu carry our brand?",
+        "Reserve includes up to five curated mixlists, which can be named for the launch or campaign. Recipes and spirit brands are confirmed with Barsys."
+      ],
+      [
+        "Can the machines run zero-proof for a daytime activation?",
+        "Yes. Three of the mixlists are zero-proof and run on the same machines."
+      ],
+      [
+        "What do you need from the venue?",
+        "One outlet per machine and a bar surface. The Barsys 360 has no plumbing or compressor."
+      ]
+    ],
+    "service": {
+      "name": "Brand activation bar service",
+      "type": "Brand activation and product launch bar service",
+      "audience": "Brands, agencies and event producers in New York City"
+    }
+  },
+  {
+    "slug": "holiday-parties",
+    "title": "Holiday party bar service in NYC.",
+    "description": "Holiday party bar service in New York City: Barsys 360 cocktail machines and Shaker Pro stations with seasonal mixlists, bartenders, setup and cleanup, priced per guest.",
+    "image": "/assets/curated/posters/galentines.jpg",
+    "faq": [
+      [
+        "When should we book a December holiday party?",
+        "As soon as the date is set. December dates go first. Sending an inquiry does not hold a date; we confirm availability by reply."
+      ],
+      [
+        "Do you have seasonal menus?",
+        "You choose from 27 curated mixlists; Signature and Reserve add premium mixers and dry garnishes. Final recipes and spirit brands are confirmed with Barsys."
+      ],
+      [
+        "Is there a zero-proof option for guests who are not drinking?",
+        "Yes. A zero-proof mixlist can take one of your menu slots and runs on the same machines."
+      ],
+      [
+        "What does a holiday party cost?",
+        "Classic $55, Signature $85 or Reserve $225 per guest with a two-hour service baseline and a twenty-guest minimum for standard planning. Tax and extras are confirmed in the proposal."
+      ]
+    ],
+    "service": {
+      "name": "Holiday party bar service",
+      "type": "Holiday party bar service",
+      "audience": "Companies and teams in New York City"
+    }
+  },
+  {
+    "slug": "private-events",
+    "title": "Private event bar service in NYC.",
+    "description": "Bar service for private celebrations in New York City: milestones, engagements, birthdays and galas with Barsys 360 cocktail machines, Shaker Pro stations and bartenders.",
+    "image": "/assets/curated/posters/rooftop-sunset.jpg",
+    "faq": [
+      [
+        "Do you do private celebrations, not just companies?",
+        "Yes. Milestones, engagements, birthdays and galas. Standard planning starts at twenty guests; smaller gatherings are quoted individually."
+      ],
+      [
+        "Can the bar run in a home or a rented loft?",
+        "Yes. The Barsys 360 needs one outlet and no plumbing, so it runs in homes, lofts, rooftops and ballrooms."
+      ],
+      [
+        "Who serves the drinks?",
+        "Barsys bartenders. Guests pick on the tablet, the 360 pours, and the bartender shakes, garnishes and hands it over."
+      ],
+      [
+        "What does a private event cost?",
+        "Classic $55, Signature $85 or Reserve $225 per guest with a two-hour service baseline. Formats outside the standard planner are quoted individually."
+      ]
+    ],
+    "service": {
+      "name": "Private event bar service",
+      "type": "Private event bar service",
+      "audience": "Hosts and families in New York City"
+    }
+  },
+  {
+    "slug": "zero-proof-events",
+    "title": "Zero-proof and mocktail events in NYC.",
+    "description": "Zero-proof event bar service in New York City: three zero-proof mixlists poured by Barsys 360 machines and Shaker Pro stations, so every guest gets a made drink.",
+    "image": "/assets/tech/sp-instrument-light.jpg",
+    "faq": [
+      [
+        "Which zero-proof mixlists do you offer?",
+        "Fluid Code, A Summer Mocktail Mixlist and Boisson Non-Alcoholic Agave Lover’s, three of the 27 Barsys mixlists."
+      ],
+      [
+        "Is a zero-proof event cheaper?",
+        "No. The machines, bartenders and service are the same, so the per-guest packages are the same."
+      ],
+      [
+        "Can we mix zero-proof and cocktail menus at one event?",
+        "Yes. A zero-proof mixlist can take one of the menu slots in any package."
+      ],
+      [
+        "Do the machines pour zero-proof drinks the same way?",
+        "Yes. Guests pick on the tablet and the 360 pours to the same measure; bartenders garnish and serve."
+      ]
+    ],
+    "service": {
+      "name": "Zero-proof event bar service",
+      "type": "Zero-proof and mocktail event bar service",
+      "audience": "Companies, brands and hosts in New York City"
+    }
+  },
+  {
     "slug": "faq",
     "title": "Before the first cheers.",
     "description": "Answers to the essentials of planning a Barsys office happy hour: inclusions, menus, dates, custom events and cancellations."

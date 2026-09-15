@@ -22,7 +22,8 @@
     "backend": "node --env-file-if-exists=.env.local backend/server.mjs",
     "test:lifecycle": "node --test --test-concurrency=1 tests/lifecycle-api.test.mjs tests/handoff-readiness.test.mjs",
     "test:lifecycle:browser": "python3 tests/run-lifecycle-browser.py",
-    "build:site": "node scripts/build-site.mjs"
+    "build:site": "node scripts/build-site.mjs",
+    "seo:indexnow": "node scripts/indexnow.mjs"
   },
   "engines": {
     "node": ">=24"
