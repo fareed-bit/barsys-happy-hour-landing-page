@@ -78,3 +78,6 @@ html[data-motion=off]{scroll-behavior:auto}
 /* Polish 2 (2026-09-15): reels fill their cards; films and photos read as one section. */
 .curated-experience .reel-poster,.curated-experience video{object-fit:cover}
 #event-gallery.v3-stories{padding-bottom:24px}.snapshot-section{padding-top:8px}
+/* Polish 3 (2026-09-15): planner notice as a plain line; footer preference button reads like its neighbours. */
+#runtime-data-notice{background:transparent;border:0;padding:0;margin:14px 0 4px;color:#6a6a6a}
+.footer-policies button{font:inherit;font-size:inherit;color:inherit;background:none;border:0;padding:0;text-decoration:underline;text-underline-offset:3px;cursor:pointer;line-height:inherit}

@@ -1,3 +1,9 @@
+## Landing polish 3 — September 15, 2026 (~01:40 ET, built, candidate pending)
+
+Three consistency fixes: the drinks section eyebrow reads THE MIXLISTS (matching the nav and site pages); the planner's one-line runtime notice is a plain muted line instead of a grey box (`#runtime-data-notice`, CSS only; test modes keep their text); the footer "Choose/Manage your preferences" button is styled like the policy links beside it. Verified: `npm test` 209/209; both browser suites pass.
+
+---
+
 ## polish2-0915 LIVE — September 15, 2026 (~01:25 ET, 100% traffic)
 
 Owner ran the flip. Post-flip checks on the production URL passed: root 200, release `barsys-happyhours-production-polish2-0915`, ready true, admin 303, receipts export anon 401, upload anon 403, both polish-2 CSS rules served. Headless Chrome at 1440/390 against production (nothing sent): LIVE, Send inquiry on both paths, 9.2 / 12.8 screens, no console errors. No ERROR logs on the revision. Traffic 100% on `polish2-0915`; `brand-0915` is the rollback. **Revision cleanup (~01:30 ET, owner-approved):** tag removed and revision `trim2-0914` deleted; the service holds `polish2-0915` (100%) and `brand-0915` (0%, rollback) only. Production re-checked: release polish2-0915, ready true.
