@@ -167,7 +167,8 @@ export async function createStore({databaseURL,filename}){
   async deleteSession(token){await sql('DELETE FROM staff_sessions WHERE token_hash=$1 RETURNING token_hash',[token]);},
   async findKey(key){const rows=await sql('SELECT * FROM inquiries WHERE idempotency_key=$1',[key]);return rows[0];},
   async get(id){const rows=await sql('SELECT document FROM inquiries WHERE id=$1',[id]);const doc=rows[0]?JSON.parse(rows[0].document):null;return doc?.disposedAt?null:doc;},
-  async list(limit=100,offset=0){return (await sql('SELECT document FROM inquiries WHERE id NOT IN (SELECT id FROM retention_disposals) ORDER BY created_at DESC, id DESC LIMIT $1 OFFSET $2',[limit,offset])).map(r=>JSON.parse(r.document));},
+  // Owner "Delete event" is a soft delete: the document keeps a `deleted` marker, leaves every active list, and stays visible on Records and health for restore or retirement.
+  async list(limit=100,offset=0,scope='active'){const hidden=scope==='all'?'':(pool?" AND (document::jsonb ->> 'deleted') IS NULL":" AND json_extract(document,'$.deleted') IS NULL");return (await sql('SELECT document FROM inquiries WHERE id NOT IN (SELECT id FROM retention_disposals)'+hidden+' ORDER BY created_at DESC, id DESC LIMIT $1 OFFSET $2',[limit,offset])).map(r=>JSON.parse(r.document));},
   async insert(doc,key,fingerprint,queue=false){
    if(!pool){db.exec('BEGIN IMMEDIATE');try{
     if(doc.source?.type==='gmail'){const row=db.prepare('SELECT document FROM email_inquiries WHERE id=?').get(doc.source.messageId);if(!row||JSON.parse(row.document).disposedAt)throw new Error('Email copy unavailable. Reload before creating an event.');}

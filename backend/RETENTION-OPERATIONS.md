@@ -5,6 +5,9 @@ The Records and health page calculates review dates and supports holds. Owner-co
 
 Removal is blocked for holds, unexpired records, proposals, preparation, imported-mail sources, confirmed/completed/progressed events, operations history/reservations or unresolved notification jobs. Completed-event financial records and Gmail imports stay in the separate review procedure below. Do not force these through the inquiry removal endpoint.
 
+## Owner delete (soft)
+The desk and operations offer “Delete event” for inquiries that have not progressed (no accepted proposal, payments, receipts, staffing, orders or live stock). It marks the document `deleted`, removes it from every active list and keeps it on Records and health as “Deleted (hidden)” with Restore. Nothing is erased; retention review and retirement still apply to hidden records.
+
 ## Eligible inquiry procedure
 1. In Records and health, open the record and verify its identity against the event desk. Check no event conversion, dispute, audit, insurance claim or required-record obligation applies. Apply a hold with a short reason if any do.
 2. Save the review and refresh. Confirm it is Review due. Inventory sent email, exports, clipboard/download copies and backups; removal from the active database does not erase those copies.

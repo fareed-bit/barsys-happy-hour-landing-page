@@ -66,7 +66,7 @@ export function createAPI({store,local=true,staging=false,origin,auth,gmailFetch
     if(path==='/api/admin/retention'&&req.method==='GET'){
      const url=new URL(req.url,origin),kind=url.searchParams.get('kind')||'event',offset=Number(url.searchParams.get('offset')||0);
      if(!['event','mail'].includes(kind)||!Number.isSafeInteger(offset)||offset<0)throw new HttpError(400,'Invalid page.');
-     const docs=kind==='event'?await store.list(51,offset):await store.listMail(offset),ops=await store.getOperations();
+     const docs=kind==='event'?await store.list(51,offset,'all'):await store.listMail(offset),ops=await store.getOperations();
      const items=await Promise.all(docs.slice(0,50).map(async d=>retentionView(d,kind,await store.getRetention(kind+':'+(kind==='event'?d.id:d.messageId))||{},ops)));
      send(200,{items,nextOffset:docs.length>50?offset+50:null});return true;
     }
@@ -173,6 +173,21 @@ export function createAPI({store,local=true,staging=false,origin,auth,gmailFetch
       await receiptObjectRemove(row.objectPath);
       send(200,operationsView(state));return true;
      }
+    }
+    const deleteMatch=/^\/api\/admin\/inquiries\/([a-f0-9-]{36})\/(delete|restore)$/.exec(path);
+    if(deleteMatch&&req.method==='POST'){
+     // Soft delete: hides test or dead inquiries from the desk, work queue and operations. Progressed events keep going through the retention review instead.
+     await throttle(req);const input=await body(req),id=deleteMatch[1],doc=await store.get(id);if(!doc)throw new HttpError(404,'Event not found.');
+     if(!Number.isInteger(input.version)||input.version!==doc.version)throw new HttpError(409,'This event changed. Refresh before deleting.');
+     const now=new Date().toISOString(),old=doc.version;
+     if(deleteMatch[2]==='delete'){
+      if(doc.deleted)throw new HttpError(409,'Already deleted.');if(input.confirm!==true)throw new HttpError(422,'Confirm the deletion.');
+      const ops=await store.getOperations(),e=ops.events[id];
+      if(doc.acceptances?.length||doc.booking?.confirmed||(e&&(e.stage>0||e.payments?.length||e.receiptFiles?.length||e.orders?.length||e.staffing?.length))||ops.reservations.some(r=>r.eventId===id&&r.status!=='released')||ops.receipts?.some(r=>r.eventId===id))throw new HttpError(409,'This event has progressed (accepted proposal, payments, receipts, staffing, orders or stock). Retire it through Records and health instead.');
+      doc.deleted={at:now,by:actor};doc.history.push({at:now,actor,action:'Event deleted (hidden from the desk and operations; restorable from Records and health)'});
+     }else{if(!doc.deleted)throw new HttpError(409,'This event is not deleted.');delete doc.deleted;doc.history.push({at:now,actor,action:'Event restored'});}
+     doc.version++;doc.updatedAt=now;if(!await store.update(doc,old))throw new HttpError(409,'Another staff member saved this event. Refresh and retry.');
+     send(200,{[deleteMatch[2]==='delete'?'deleted':'restored']:true,version:doc.version});return true;
     }
     const editMatch=/^\/api\/admin\/inquiries\/([a-f0-9-]{36})\/(details|accept-proposal)$/.exec(path);
     if(editMatch){
