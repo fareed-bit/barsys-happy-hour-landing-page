@@ -10,7 +10,7 @@ for(const file of ['config.js','media.config.js'])vm.runInNewContext(readFileSyn
 const C=box.window.BARSYS,M=box.window.BARSYS_MEDIA;
 const html=readFileSync(resolve(root,'index.html'),'utf8');
 test('V3.7: eight full films, with all four NYC uploads represented',()=>{
- assert.equal(Object.keys(M).length,14);
+ assert.equal(Object.keys(M).length,23);
  for(const n of [1,2,3,4])assert.ok(Object.values(M).some(m=>m.sourceFiles.includes(`Barseys_NYC_Deliverable${n}.mp4`)));
 });
 test('V3.7: hero and experience source files do not overlap',()=>{
@@ -32,11 +32,12 @@ test('V3.7: media cases are labeled by their actual context',()=>{
  assert.ok(M.occasion.description.includes('not standard happy-hour package inclusions'));
  assert.equal(M.hero.sourceStatus,'curated-upload');
 });
-test('eight hero scenes (two archive films plus six 2026 event clips), four experience previews and six photo cards',()=>{
- assert.equal((html.match(/data-scene="\d"/g)||[]).length,8);
- assert.equal((html.match(/data-go-scene="\d"/g)||[]).length,8);
- assert.ok(html.includes('<span>/ 08</span>'));
- for(const k of ['rooftopPour','glassIn','shakenByHand','theRoom','windowPour','garnish'])assert.ok(html.includes(`data-carousel-video="${k}"`)&&M[k]?.previewSrc,k);
+test('seventeen hero scenes (two archive films, six Park Terrace clips, nine 2026 Barsys happy hours), four experience previews and six photo cards',()=>{
+ assert.equal((html.match(/data-scene="\d+"/g)||[]).length,17);
+ assert.equal((html.match(/data-go-scene="\d+"/g)||[]).length,17);
+ assert.ok(html.includes('<span>/ 17</span>'));
+ assert.equal((html.match(/class="scene-inset"/g)||[]).length,17,'every scene carries a framed still');
+ for(const k of ['rooftopPour','glassIn','shakenByHand','theRoom','windowPour','garnish','rooftopSunset','galentines','y2kNight','stPatricks','apresSki','springBar','pradaNight','mastersMartini','afterDark'])assert.ok(html.includes(`data-carousel-video="${k}"`)&&M[k]?.previewSrc,k);
  assert.equal((html.match(/data-experience-video=/g)||[]).length,4);
  assert.equal((html.match(/class="snapshot-card"/g)||[]).length,6);
 });

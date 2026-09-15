@@ -90,6 +90,12 @@
     }
     if (manual) document.getElementById('hero-announcement').textContent = `${index + 1} of ${scenes.length}. ${scene.dataset.title}`;
   }
+  function revealTab(tab) {
+    const rail = tab?.parentElement;
+    if (!rail || rail.scrollWidth <= rail.clientWidth + 1) return;
+    const left = tab.offsetLeft - (rail.clientWidth - tab.offsetWidth) / 2;
+    rail.scrollTo({ left: Math.max(0, left), behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  }
   function go(next, manual = false) {
     index = (next + scenes.length) % scenes.length;
     elapsed = 0;
@@ -104,6 +110,7 @@
       tab.classList.toggle('is-active', i === index);
       tab.setAttribute('aria-pressed', String(i === index));
     });
+    revealTab(tabs[index]);
     const v = active().querySelector('video');
     if (v?.readyState > 0) { try { v.currentTime = 0; } catch (_) {} }
     updateLabels(manual);
