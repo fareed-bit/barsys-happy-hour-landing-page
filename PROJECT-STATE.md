@@ -1,3 +1,9 @@
+## Owner staff record: no labor cost — September 14, 2026 (~23:45 ET, production)
+
+Owner asked to add the staff record with the no-labor-cost flag. A record already existed (id `8b77dc53-affe-44b3-bd9e-3c12ee83dca3`, name "fareed", role "Barsys team lead", email fareed@barsys.com, rate $0, crew access on, flag off). Updated through the owner's own signed-in Operations tab (same-origin `action:'staff'` command, operations version 61 → 62): `internal: true`, name capitalized to "Fareed", everything else unchanged. Effect: assigned hours never add labor cost; the Confirm-card owner default and the Assign select now use this record. Owner pending list shrinks to: BlackRock record update (ranee.turner@blackrock.com, Oct 6 18:00), BlackRock proposal entry/acceptance when signed, W-9 for BlackRock AP, Slack webhook (parked).
+
+---
+
 ## owner-0914 LIVE — September 14, 2026 (~23:30 ET, 100% traffic)
 
 Owner ran the flip. Post-flip checks on the production URL passed: root 200, release `barsys-happyhours-production-owner-0914`, ready true, admin HTML 303, receipts export anon 401, upload anon 403, `/site/events.html` 404, served index has `#quick-remember`, none of the removed blocks, six FAQ entries; served `v3.js` carries the one-step send, `operations.js`/`app.js` carry the owner defaults. Headless Chrome at 1440/390 against production (nothing sent): appMode LIVE, "Send inquiry" on quick step 2 and wizard step 5, 9.0 / 12.2 screens, no console errors. No ERROR-severity logs on the revision. Traffic: `owner-0914` 100%; `delete-0914` (rollback), `landing-0914` (superseded) and `trim-0914` at 0%. **Revision cleanup (~23:40 ET, owner-approved):** tags `landing-0914` and `trim-0914` removed, both revisions deleted. The service now holds `owner-0914` (100%) and `delete-0914` (0%, rollback) only. Production re-checked: release owner-0914, ready true.
