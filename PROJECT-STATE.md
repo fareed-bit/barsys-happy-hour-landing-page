@@ -1,3 +1,9 @@
+## Bing Webmaster Tools imported events.barsys.com — September 15, 2026 (~09:55 ET)
+
+Owner signed in to Bing Webmaster Tools and approved the Google consent (webmasters.readonly). Import from Google Search Console added `events.barsys.com`, `barsys.com` and `apex.barsys.com` alongside the existing `happyhours.barsys.com` (Bing data for the old site: 5 clicks / 203 impressions in ~3 months). Certificate for events.barsys.com still pending on Cloud Run (DNS resolves on 8.8.8.8 and 1.1.1.1; Google's challenge retrying). Remaining: HTTPS → owner flips `launch-0915` → IndexNow ping → submit sitemap in Search Console and Bing → merge PR #33. Optional cleanup: remove apex.barsys.com from Bing if unwanted.
+
+---
+
 ## events.barsys.com: Search Console verified, OAuth origin added — September 15, 2026 (~09:40 ET)
 
 Owner entered the Domain property; Search Console auto-verified `sc-domain:events.barsys.com` (URL carried `after_verification_success`; parent barsys.com is verified in the account), so no TXT record was needed. OAuth client `62880701168-obfj7mpq…` now lists `https://events.barsys.com` as JavaScript origin 6 (added and saved through the owner's Cloud Console tab via Kapture; confirmed after reload). Certificate: Cloud Run reports the DNS challenge not yet visible publicly and is retrying; background watcher polls HTTPS. Bing Webmaster Tools needs the owner's sign-in (import from Search Console). Remaining after HTTPS: owner flips `launch-0915`, then `npm run seo:indexnow https://events.barsys.com`, submit `https://events.barsys.com/sitemap.xml` in Search Console, merge PR #33.
