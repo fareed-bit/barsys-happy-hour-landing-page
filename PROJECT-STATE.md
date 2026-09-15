@@ -1,3 +1,15 @@
+## Eight hero scenes from Drive — September 15, 2026 (~03:20 ET, built; candidate hero8-0915)
+
+Owner granted Drive scope; 15 clips pulled from Drive (`scratchpad/drive/`, not committed) and six chosen for distinct scenes: rooftop 360 with skyline (`copy_42EA…mov`), corporate happy hour glass-in (`Corporate Happy Hour.mov`), bartender shaking (IMG_7663), the room mid-party (IMG_7681), 360 pouring by the window (IMG_7686), garnishing (IMG_7709). Each cut with ffmpeg to a muted 7 s 480×854 loop (0.36–0.8 MB), a 720p full film (≤30 s, 1.9–5.6 MB) and a poster; keys `rooftopPour`, `glassIn`, `shakenByHand`, `theRoom`, `windowPour`, `garnish` in `media.config.js` (14 films). Hero now has 8 scenes and 8 tabs (`/ 08`), tabs in one row ≥1200 px. Kickers stay factual (ROOFTOP EVENT / CORPORATE HAPPY HOUR / EVENT CLIP). Verified: `npm test` 211/211; both browser suites pass; local step-through at 1920 and 390: all eight loops load and play. Next: commit, build `hero8-0915`, deploy 0%, smoke, owner flips.
+
+---
+
+## tech-0915 LIVE — September 15, 2026 (~02:55 ET, 100% traffic)
+
+Owner ran the flip and granted Drive scope (`gcloud auth login --enable-gdrive-access`). Production: release `barsys-happyhours-production-tech-0915`, ready true, technology page 200, `/api/pulse` live, admin 303, export anon 401, browser smoke clean. Traffic 100% on `tech-0915`; `polish3-0915` rollback; `brand-0915`, `polish2-0915` at 0% (deletable). Hero-video pull started from Drive (see next entry when done).
+
+---
+
 ## Candidate tech-0915 — September 15, 2026 (~02:40 ET, 0% traffic, flip pending)
 
 Technology page + engagement toast (below) from commit `d5ea7ae`. Preflight 0; `npm test` 211/211; both browser suites pass; isolated render: toast shows "3 NYC teams planned a happy hour with us in September. Plan yours" at 1440/390 and dismisses, technology page renders four sections with all images. Image `…/barsys-staging/app@sha256:dd0bb9898e590d3408aee79d35c731b7bad3446bd2a7ab3473c8a53dbb52794e`. Revision `barsys-happyhours-production-tech-0915` at 0%, tag `tech-0915`, env inherited. Tag-URL smoke: root 200, release string, ready true, `/api/pulse` → `{"teamsThisMonth":3,"month":"2026-09"}` against the production database, technology page 200, tech image 200, pulse.js 200, admin 303, export anon 401; browser smoke no console errors. Flip (owner): `gcloud run services update-traffic barsys-happyhours-production --project happy-hour-landing-version-2 --region us-east4 --to-revisions barsys-happyhours-production-tech-0915=100`. Rollback `polish3-0915`. Hero videos (7+) follow in a separate candidate once Drive access is granted.
