@@ -1,3 +1,9 @@
+## Candidate polish3-0915 — September 15, 2026 (~01:45 ET, 0% traffic, flip pending)
+
+Polish 3 (below) from commit `5efeaf4`. Preflight 0; `npm test` 209/209; both browser suites pass. Image `…/barsys-staging/app@sha256:88b67d6ed3a11ced8055277d587ff945aeebceed46e63ce18b6e6f54e70ff283` (Cloud Build `0f6d7a99`, 36 s). Revision `barsys-happyhours-production-polish3-0915` at 0%, tag `polish3-0915`, env inherited. Tag-URL smoke passed: root 200, release string, ready true, admin 303, receipts export anon 401, upload anon 403, THE MIXLISTS eyebrow and both CSS rules served. Browser smoke (nothing sent): LIVE, Send inquiry both paths, 9.2 / 12.8 screens, no console errors. Flip (owner): `gcloud run services update-traffic barsys-happyhours-production --project happy-hour-landing-version-2 --region us-east4 --to-revisions barsys-happyhours-production-polish3-0915=100`. Rollback `polish2-0915`; `brand-0915` (0%) can be deleted after the flip.
+
+---
+
 ## Landing polish 3 — September 15, 2026 (~01:40 ET, built, candidate pending)
 
 Three consistency fixes: the drinks section eyebrow reads THE MIXLISTS (matching the nav and site pages); the planner's one-line runtime notice is a plain muted line instead of a grey box (`#runtime-data-notice`, CSS only; test modes keep their text); the footer "Choose/Manage your preferences" button is styled like the policy links beside it. Verified: `npm test` 209/209; both browser suites pass.
