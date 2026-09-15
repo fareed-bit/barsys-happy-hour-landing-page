@@ -17,7 +17,7 @@
   {
     "slug": "reserve",
     "title": "Reserve happy hours",
-    "description": "For clients, milestones and special occasions. An elevated hospitality experience with premium bartenders, artisan mixers, a dedicated event lead and custom"
+    "description": "For clients, milestones and special occasions."
   },
   {
     "slug": "mixlists",
@@ -195,11 +195,6 @@
     "slug": "contact",
     "title": "Tell us what you have in mind.",
     "description": "Planning an office happy hour, client gathering or milestone in New York City?"
-  },
-  {
-    "slug": "events",
-    "title": "A little atmosphere.",
-    "description": "Real Barsys event imagery from office happy hours, client gatherings and evening events across New York City."
   },
   {
     "slug": "faq",
