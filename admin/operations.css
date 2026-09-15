@@ -90,3 +90,6 @@
 .receipt-fill label{display:flex;align-items:center;gap:8px}.receipt-fill select{padding:8px;font:inherit}
 @media(max-width:650px){.receipt-grid{grid-template-columns:1fr 1fr}.receipt-fill label{display:grid}}
 @media(max-width:390px){.receipt-grid{grid-template-columns:1fr}}
+
+/* Phone: the needs table keeps ingredient, needed, on hand and shortage; price/pack columns stay on desktop (2026-09-14 trim) */
+@media(max-width:650px){.needs-table th:nth-child(n+3):nth-child(-n+5),.needs-table td:nth-child(n+3):nth-child(-n+5){display:none}}

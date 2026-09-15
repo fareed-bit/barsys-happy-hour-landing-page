@@ -25,7 +25,7 @@ export function equipmentReceipt(action,quantity){
 }
 export const flowSteps=['Confirm','Prepare','Purchase & pack','Run event','Return & close'];
 export const flowStep=stage=>stage<2?stage:stage<4?2:stage<6?3:4;
-export const flowSections=[['finance'],['planning','staff','stock','finance'],['planning','orders','supplier','stock'],['planning','staff'],['stock','staff','orders','finance']];
+export const flowSections=[['finance'],['planning','staff','stock','finance'],['planning','orders','stock'],['planning','staff'],['stock','staff','orders','finance']];
 export function planningUpdate(original,values,equipment){
  const plan=structuredClone(original);
  plan.drinksPerGuest=values.drinksPerGuest;plan.bufferPercent=values.bufferPercent;plan.menuConfirmed=values.menuConfirmed;plan.machines=values.machines;
@@ -42,7 +42,7 @@ export function recordGaps(event,financials,loads){
  if(event.preparationNeedsReview)gaps.push('Review and confirm the saved menu and quantities on the Prepare step (Menu, quantities & equipment card) before continuing.');
  if(!event.owner)gaps.push('Assign an event owner.');
  if([0,7].includes(event.stage)&&event.revenueCents===null)gaps.push('Enter the agreed revenue.');
- if(event.stage===1&&!financials?.plannedComplete)gaps.push('Review staffing and enter every planned cost in View cost breakdown.');
+ if(event.stage===1&&!financials?.plannedComplete)gaps.push('Enter every planned cost and tick staffing reviewed.');
  if(event.stage===3&&(!loads.length||loads.some(x=>x.status==='reserved')))gaps.push('Record and dispatch the outgoing inventory load.');
  if(event.stage>=6&&loads.some(x=>['reserved','dispatched'].includes(x.status)))gaps.push('Receive dispatched loads or release unused reservations.');
  if(event.stage===7&&financials?.payments?.balanceCents!==0)gaps.push('Settle the client balance in Client payments before financial closeout.');
