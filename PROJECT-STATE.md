@@ -1,3 +1,24 @@
+## events.barsys.com is live — September 15, 2026 (~09:32–09:41 UTC / 05:32–05:41 ET)
+
+Owner flipped `barsys-happyhours-production` to `launch-0915` at 100% at 09:32 UTC. Certificate was issued by Google Trust Services (WR3, CN events.barsys.com, valid Sep 15 → Dec 14 2026) roughly one to two minutes before the flip; the `CertificateProvisioned` condition had cleared after Google's HTTP-01 challenge retries following DNS live at ~09:15 UTC. Domain mapping stayed `mappedRouteName: barsys-happyhours-production`; no DNS or mapping change was needed.
+
+**Post-flip verification (all pass, evidence live in the run.app default host and events.barsys.com):**
+- `/api/status` — release `barsys-happyhours-production-launch-0915`, mode LIVE.
+- `/` and `/site/events.html` — HTTP 200, `X-Robots-Tag: index, follow`, canonical `https://events.barsys.com/…`, full Organization + WebSite + BreadcrumbList + FAQPage + Service graph.
+- `/robots.txt` — 18 User-agents (Google + 17 named AI/search agents), each with `Disallow: /admin/` and `/api/`, and `Sitemap: https://events.barsys.com/sitemap.xml`.
+- `/sitemap.xml` — 43 `<loc>` entries, all `https://events.barsys.com/…`, zero non-events hosts. All 43 URLs return HTTP 200 with `X-Robots-Tag: index, follow` under a Googlebot User-Agent.
+- `/llms.txt` — HTTP 200, 5,026 bytes, 35 lines.
+- `/admin/` and `/admin/operations.html` — HTTP 303 anon; `/api/admin/export` — HTTP 401 anon.
+- Cloud Run logs, `severity>=ERROR`, revision `launch-0915`, since 09:32 UTC — zero entries.
+
+**IndexNow:** `npm run seo:indexnow https://events.barsys.com` → HTTP 202 for 43 URLs on events.barsys.com. **Google Search Console:** `sc-domain:events.barsys.com` sitemap `https://events.barsys.com/sitemap.xml` submitted (initial state "Couldn't fetch" is the normal placeholder for the first Domain-property sitemap submission; server serves the sitemap 200 as Googlebot). **Bing Webmaster Tools:** sitemap `https://events.barsys.com/sitemap.xml` submitted, status Processing, 0 errors / 0 warnings.
+
+**PR #33** on `fareed-bit/Barsys-Updated-Happyhour` (repoints 42 CTAs on the old GitHub Pages site to `https://events.barsys.com/#proposal` plus a footer cross-link on every page) is now safe to merge; the receiving origin is fully answering.
+
+**Rollback ladder retained:** `barsys-happyhours-production-models-0915` at 0% (image `models-0915`, previous SEO foundation). Cleanup remaining: delete 0% revisions `seo-0915` and `studio-0915` (superseded by `launch-0915`, same image).
+
+---
+
 ## Bing Webmaster Tools imported events.barsys.com — September 15, 2026 (~09:55 ET)
 
 Owner signed in to Bing Webmaster Tools and approved the Google consent (webmasters.readonly). Import from Google Search Console added `events.barsys.com`, `barsys.com` and `apex.barsys.com` alongside the existing `happyhours.barsys.com` (Bing data for the old site: 5 clicks / 203 impressions in ~3 months). Certificate for events.barsys.com still pending on Cloud Run (DNS resolves on 8.8.8.8 and 1.1.1.1; Google's challenge retrying). Remaining: HTTPS → owner flips `launch-0915` → IndexNow ping → submit sitemap in Search Console and Bing → merge PR #33. Optional cleanup: remove apex.barsys.com from Bing if unwanted.
