@@ -101,9 +101,8 @@
     $('.quick-estimate-note').textContent=A.estimateNote();
     const count=$('#quick-addon-count');if(count)count.textContent=t.lines.filter(l=>l.selected).length+' selected';
     const tier=$('#quick-tier');if(tier&&document.activeElement!==tier)tier.value=s.tier;
-    $('#taste-add').innerHTML=s.menus.includes(taste)?`Added. View my event ${icon('arrow')}`:`Add this collection ${icon('plus')}`;
-    $('#taste-add').disabled=!window.BarsysQuote.menuAvailable(taste,s.tier,C)&&!s.menus.includes(taste);
-    $('#taste-add').setAttribute('aria-pressed',String(s.menus.includes(taste)));
+    const tasteAdd=$('#taste-add');
+    if(tasteAdd){tasteAdd.innerHTML=s.menus.includes(taste)?`Added. View my event ${icon('arrow')}`:`Add this collection ${icon('plus')}`;tasteAdd.disabled=!window.BarsysQuote.menuAvailable(taste,s.tier,C)&&!s.menus.includes(taste);tasteAdd.setAttribute('aria-pressed',String(s.menus.includes(taste)));}
     if(collection){$('#collection-add').disabled=!window.BarsysQuote.menuAvailable(collection,s.tier,C)&&!s.menus.includes(collection);const selected=s.menus.includes(collection);$('#collection-add').innerHTML=`${selected?'Remove from my event':'Add to my event'} ${icon(selected?'check':'plus')}`;$('#collection-add').setAttribute('aria-pressed',String(selected));}
   }
   let plannerOpener=null, plannerBackground=[];
@@ -146,7 +145,8 @@
   }
   function setTaste(id) {
     if(!Object.hasOwn(tasteCopy,id))return;
-    taste=id;const m=C.menus.find(x=>x.id===id), info=tasteCopy[id];
+    taste=id;if(!$('#taste-image'))return;
+    const m=C.menus.find(x=>x.id===id), info=tasteCopy[id];
     $$('[data-taste]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.taste===id)));
     $('#taste-base').textContent=info.base;$('#taste-name').textContent=m.name;$('#taste-notes').textContent=info.notes;
     const image=$('#taste-image');clearTimeout(imageTimer);image.classList.add('changing');

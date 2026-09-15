@@ -25,7 +25,8 @@
     const panel=$('#privacy-dialog');if(!panel)return;
     $('#pref-save').checked=!!prefs.rememberSelections;
     $('#privacy-device-status').textContent=storageAvailable?'Your preference decision is saved on this device for up to 180 days.':'Browser storage is unavailable. Choices apply to this open tab only.';
-    $('#privacy-notice').hidden=!!prefs.decided;
+    const notice=$('#privacy-notice');if(notice)notice.hidden=!!prefs.decided;
+    const inline=$('#quick-remember');if(inline)inline.checked=!!prefs.rememberSelections;
     const launch=$('#preferences-state');if(launch)launch.textContent=prefs.decided?'Manage your preferences':'Choose your preferences';
   }
   function save(values){
@@ -69,6 +70,7 @@
     if(b.id==='privacy-close')$('#privacy-dialog').close();
     if(b.id==='privacy-clear')clearSaved();
   });
+  document.addEventListener('change',e=>{if(e.target?.id==='quick-remember')save({rememberSelections:e.target.checked});});
   $('#privacy-dialog').addEventListener('close',()=>{if(lastFocus?.isConnected)lastFocus.focus({preventScroll:true});});
   $('#privacy-dialog').addEventListener('click',e=>{const d=e.currentTarget,r=d.getBoundingClientRect();if(e.target===d&&(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom))d.close();});
   // Cross-tab withdrawal: refresh only the named preference record.

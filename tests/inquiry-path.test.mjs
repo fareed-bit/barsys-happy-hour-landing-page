@@ -37,7 +37,8 @@ test('inquiry client exposes a single idempotent send and injects no panels',()=
 
 test('static copy no longer describes production as a local preview',()=>{
   for(const s of ['LOCAL PREVIEW','THIS LOCAL PREVIEW','for this copy'])assert.equal(index.includes(s),false,s);
-  assert.match(index,/Nothing is booked or charged here\./);
+  assert.match(index,/<label class="quick-privacy quick-remember"><input id="quick-remember" type="checkbox"\/>/);
+  assert.equal(index.includes('id="privacy-notice"'),false,'first-visit privacy popup removed');
   assert.match(runtime,/'Send inquiry shares your plan and contact details with the Barsys team\./);
   assert.match(runtime,/Only \$\{action\} stores the inquiry in \$\{destination\}/);
 });

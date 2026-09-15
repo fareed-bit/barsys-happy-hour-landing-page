@@ -63,3 +63,7 @@ html[data-motion=off]{scroll-behavior:auto}
 .wizard-brand>span {font-size:9px;letter-spacing:1.5px;color:#686868;}
 .approval-logo {width:170px;height:auto;display:block;object-fit:contain;}
 @media(max-width:599px){.wizard-brand{margin-bottom:19px;gap:9px}.wizard-brand img{width:130px}.approval-logo{width:140px;max-width:100%}}
+/* Batch 2 (2026-09-14): one CTA per phone viewport, inline draft-storage choice, photo rail continues the films section. */
+@media(max-width:700px){.nav-cta{display:none}}
+.quick-remember{cursor:pointer}.quick-remember input{width:15px;height:15px;min-height:0;accent-color:#171717;margin:0}
+.snapshot-section{padding-top:0}.snapshot-section .snapshot-heading{margin-bottom:14px;justify-content:flex-end}
