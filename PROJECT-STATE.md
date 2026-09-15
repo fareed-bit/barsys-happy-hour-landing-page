@@ -1,3 +1,9 @@
+## polish3-0915 LIVE — September 15, 2026 (~01:55 ET, 100% traffic)
+
+Owner ran the flip. Post-flip checks on the production URL passed: root 200, release `barsys-happyhours-production-polish3-0915`, ready true, admin 303, receipts export anon 401, upload anon 403, THE MIXLISTS eyebrow and the plain-notice CSS served. Headless Chrome at 1440/390 against production (nothing sent): LIVE, Send inquiry on both paths, 9.2 / 12.8 screens, no console errors. No ERROR logs on the revision. Traffic 100% on `polish3-0915`; `polish2-0915` is the rollback; `brand-0915` still at 0% — the delete was blocked by the session's permission classifier this time, so the owner runs it: `gcloud run services update-traffic barsys-happyhours-production --project happy-hour-landing-version-2 --region us-east4 --remove-tags brand-0915 && gcloud run revisions delete barsys-happyhours-production-brand-0915 --project happy-hour-landing-version-2 --region us-east4 --quiet`.
+
+---
+
 ## Candidate polish3-0915 — September 15, 2026 (~01:45 ET, 0% traffic, flip pending)
 
 Polish 3 (below) from commit `5efeaf4`. Preflight 0; `npm test` 209/209; both browser suites pass. Image `…/barsys-staging/app@sha256:88b67d6ed3a11ced8055277d587ff945aeebceed46e63ce18b6e6f54e70ff283` (Cloud Build `0f6d7a99`, 36 s). Revision `barsys-happyhours-production-polish3-0915` at 0%, tag `polish3-0915`, env inherited. Tag-URL smoke passed: root 200, release string, ready true, admin 303, receipts export anon 401, upload anon 403, THE MIXLISTS eyebrow and both CSS rules served. Browser smoke (nothing sent): LIVE, Send inquiry both paths, 9.2 / 12.8 screens, no console errors. Flip (owner): `gcloud run services update-traffic barsys-happyhours-production --project happy-hour-landing-version-2 --region us-east4 --to-revisions barsys-happyhours-production-polish3-0915=100`. Rollback `polish2-0915`; `brand-0915` (0%) can be deleted after the flip.
