@@ -1,3 +1,9 @@
+## Candidate polish2-0915 — September 15, 2026 (~01:20 ET, 0% traffic, flip pending)
+
+Polish 2 (below) from commit `76d66f2`. Preflight 0; `npm test` 209/209; both browser suites pass. Image `…/barsys-staging/app@sha256:2cac74b1100766dfdb47ebdca97b40158dbfadad0239b26ed3dacbb76d68d535` (Cloud Build `524b5676`, 33 s). Revision `barsys-happyhours-production-polish2-0915` at 0%, tag `polish2-0915`, env inherited. Tag-URL smoke passed: root 200, release string, ready true, admin 303, receipts export anon 401, upload anon 403, both new CSS rules served. Browser smoke (nothing sent): LIVE, Send inquiry both paths, 9.2 / 12.8 screens, no console errors. Flip (owner): `gcloud run services update-traffic barsys-happyhours-production --project happy-hour-landing-version-2 --region us-east4 --to-revisions barsys-happyhours-production-polish2-0915=100`. Rollback `brand-0915`; `trim2-0914` (0%) can be deleted after the flip.
+
+---
+
 ## Landing polish 2 — September 15, 2026 (~01:00 ET, built, candidate pending)
 
 Owner: "continue polishing the landing page." Full-page pass on the live site at 1920 and 390 (segments in the session scratchpad). Two CSS-only fixes in `v3.css`: the four Real-events reels now fill their 9:14 cards (`object-fit: cover` instead of `contain`, which left dark side bars beside the portrait clips at every width), and the films-to-photos gap shrinks (`#event-gallery` bottom padding 64 → 24 px, photo block top 8 px) so the section reads as one. Checked and left alone: GIRLS GIRLS CLUB in the brand ribbon is a deliberate two-line wordmark; the hero, packages, mixlists, planner, FAQ and footer render cleanly at both widths; the phone bottom dock and header are correct. Verified: `npm test` 209/209; both browser suites pass; local re-render at 1920/390 with no console errors.
