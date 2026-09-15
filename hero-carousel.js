@@ -31,7 +31,7 @@
   if (['live-site-import','user-provided-hero'].includes(films.hero?.sourceStatus)) {
     scenes[0].dataset.kicker = 'BARSYS / THE ORIGINAL HERO FILM';
     scenes[0].dataset.title = 'The Barsys experience.';
-    scenes[0].setAttribute('aria-label', '1 of 4: Original Barsys hero film');
+    scenes[0].setAttribute('aria-label', '1 of 2: Original Barsys hero film');
     tabs[0].querySelector('strong').textContent = 'The Barsys experience';
     const note = document.getElementById('hero-source-note');
     if (note) note.textContent = 'Featured video from the Barsys event archive.';

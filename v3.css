@@ -67,3 +67,4 @@ html[data-motion=off]{scroll-behavior:auto}
 @media(max-width:700px){.nav-cta{display:none}}
 .quick-remember{cursor:pointer}.quick-remember input{width:15px;height:15px;min-height:0;accent-color:#171717;margin:0}
 .snapshot-section{padding-top:0}.snapshot-section .snapshot-heading{margin-bottom:14px;justify-content:flex-end}
+.package-card .package-features{margin-bottom:24px}

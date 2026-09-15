@@ -32,3 +32,5 @@ header [data-staff-identity]{font-size:11px;letter-spacing:0;font-weight:normal}
 }
 
 .notification-preview{border-block:1px solid #ccc;padding:18px 0;margin:22px 0}.notification-preview summary{cursor:pointer;font-weight:700}.notification-preview section{border-top:1px solid #ddd;margin-top:20px;padding-top:12px}.notification-preview pre{font:inherit;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.6}.notification-preview p{overflow-wrap:anywhere}
+/* Batch 4 (2026-09-14): one-line event rows on the desk. */
+.event-row .line{align-items:center}.event-row .line strong{margin:0;font-size:17px;flex:1;min-width:0}.event-meta{display:block;color:#555;font-size:13px;margin-top:8px;overflow-wrap:anywhere}

@@ -28,12 +28,14 @@ test('V3.7: inline loops and complete films are separate local assets',()=>{
 test('V3.7: media cases are labeled by their actual context',()=>{
  assert.ok(html.includes('BUZZFEED / OFFICE HAPPY HOUR'));
  assert.ok(html.includes('SCARSDALE LIBRARY / GALA'));
- assert.ok(html.includes('PARK TERRACE / CITY MOMENT'));
+ assert.ok(!html.includes('PARK TERRACE / CITY MOMENT'),'the Park Terrace still left the hero on 2026-09-14; it stays in the photo lightbox via config.gallery');
  assert.ok(M.occasion.description.includes('not standard happy-hour package inclusions'));
  assert.equal(M.hero.sourceStatus,'curated-upload');
 });
-test('V3.7: four hero choices, four experience previews and six photo cards',()=>{
- assert.equal((html.match(/data-scene="\d"/g)||[]).length,4);
+test('two hero scenes (NYC film, BuzzFeed office), four experience previews and six photo cards',()=>{
+ assert.equal((html.match(/data-scene="\d"/g)||[]).length,2);
+ assert.equal((html.match(/data-go-scene="\d"/g)||[]).length,2);
+ assert.ok(html.includes('<span>/ 02</span>'));
  assert.equal((html.match(/data-experience-video=/g)||[]).length,4);
  assert.equal((html.match(/class="snapshot-card"/g)||[]).length,6);
 });
@@ -42,5 +44,4 @@ test('V3.7: all lightbox photos have a matching local source',()=>{
  assert.equal(new Set(C.gallery.map(g=>g.image)).size,C.gallery.length);
  for(const item of C.gallery)assert.ok(existsSync(resolve(root,C.assets[item.image].local)));
  const skyline=C.gallery.findIndex(g=>g.image==='skylineToast');assert.ok(skyline>=0);
- assert.ok(html.includes('data-photo="skylineToast"'));
 });

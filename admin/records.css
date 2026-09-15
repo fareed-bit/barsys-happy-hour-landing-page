@@ -11,3 +11,5 @@
 #deliveries summary{cursor:pointer;padding:8px 0}
 #deliveries summary:focus-visible{outline:3px solid #111;outline-offset:4px}
 .receipt-export{display:flex;gap:12px;flex-wrap:wrap;align-items:end}.receipt-export label{display:grid;gap:4px}
+/* Batch 4 (2026-09-14): one card per job. */
+main>section.card{border:1px solid #d5d5cf;border-radius:6px;padding:18px 20px;margin:16px 0;background:#fff}main>section.card h2{margin:0 0 8px;font-size:18px}main>section.card>p{margin:0 0 10px}.records-tools{display:flex;gap:12px;align-items:end;flex-wrap:wrap}#deliveries-wrap summary{cursor:pointer;padding:6px 0}

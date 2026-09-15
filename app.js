@@ -109,7 +109,6 @@ function closeMobileNav(){$('#mobile-nav').hidden=true;$('.menu-toggle').setAttr
         <div class="package-price"><strong>${dollars(p.rate)}</strong><span>/ guest</span></div>
         <p class="event-subtotal"><span data-package-subtotal="${id}">${dollars(p.rate*state.guests)}</span> for <span data-guest-count>${state.guests}</span> guests &middot; before tax</p>
         <ul class="package-features">${p.features.map(feature => `<li>${icon('check')}${esc(feature)}</li>`).join('')}</ul>
-        <details class="package-details"><summary>What's included ${icon('chevron')}</summary><p>${esc(p.detail)}</p></details>
         <button type="button" class="button ${id === 'signature' ? 'button-light' : 'button-outline'}" data-select-package="${id}">Choose ${esc(p.name)}${icon('arrow')}</button>
       </article>`).join('');
   }
