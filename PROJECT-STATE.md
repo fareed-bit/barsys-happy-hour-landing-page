@@ -1,3 +1,9 @@
+## polish2-0915 LIVE — September 15, 2026 (~01:25 ET, 100% traffic)
+
+Owner ran the flip. Post-flip checks on the production URL passed: root 200, release `barsys-happyhours-production-polish2-0915`, ready true, admin 303, receipts export anon 401, upload anon 403, both polish-2 CSS rules served. Headless Chrome at 1440/390 against production (nothing sent): LIVE, Send inquiry on both paths, 9.2 / 12.8 screens, no console errors. No ERROR logs on the revision. Traffic 100% on `polish2-0915`; `brand-0915` is the rollback; `trim2-0914` at 0% (deletable on the owner's word).
+
+---
+
 ## Candidate polish2-0915 — September 15, 2026 (~01:20 ET, 0% traffic, flip pending)
 
 Polish 2 (below) from commit `76d66f2`. Preflight 0; `npm test` 209/209; both browser suites pass. Image `…/barsys-staging/app@sha256:2cac74b1100766dfdb47ebdca97b40158dbfadad0239b26ed3dacbb76d68d535` (Cloud Build `524b5676`, 33 s). Revision `barsys-happyhours-production-polish2-0915` at 0%, tag `polish2-0915`, env inherited. Tag-URL smoke passed: root 200, release string, ready true, admin 303, receipts export anon 401, upload anon 403, both new CSS rules served. Browser smoke (nothing sent): LIVE, Send inquiry both paths, 9.2 / 12.8 screens, no console errors. Flip (owner): `gcloud run services update-traffic barsys-happyhours-production --project happy-hour-landing-version-2 --region us-east4 --to-revisions barsys-happyhours-production-polish2-0915=100`. Rollback `brand-0915`; `trim2-0914` (0%) can be deleted after the flip.
