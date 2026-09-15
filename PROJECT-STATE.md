@@ -1,3 +1,14 @@
+## Landing-page inquiries entered — September 14, 2026 (~20:42 ET)
+
+Owner asked for entries from the other landing page's events spreadsheet (Google Sheet `1Fh9dS0IMCnph5qwjZAe54tx3YDUIyZd9wYo31nZannc`, eight rows; the sheet export carries no cell colours, so the "three in yellow" were taken as the two the owner named plus DataDome, which already exists). Created on production through the public intake API (same-origin POST, idempotency keys `landing-sheet-blackrock-2026-09-09-01`, `landing-sheet-nova-2026-09-14-01`):
+
+- **BlackRock** — id `2414cc99-5d63-4f5d-9423-f239b5a464a6`. Executive event, **60 guests** (form said 150), Signature, Neon Shadows (Bold Frequency also requested but Reserve-tier under policy v1 → noted, not selected). Client provides all ingredients, spirits, ice and glassware (glassware: venue). Contact Ranee Turner, ranee.turner@blackrock.com, +44 7500 921571 (in notes/phone). Date, venue undecided.
+- **Nova Intelligence** — id `2651388d-a30b-45ee-8fb6-f8c71b4a50e9`. Recruiting event, 30 guests, Classic, menus left for recommendation (requested The Signature Mixlist + Après/Garden Spritz Club are not Classic-tier; "recipe cards" add-on does not exist → notes). Contact Alexa Kayman, alexa@novaintelligence.com, (914) 677-5967. Owner call 09/15 to finalize.
+
+Both records carry `fareed@barsys.com` as the contact email so the automated "Barsys inquiry received" email (worker every 5 min) goes to the owner, not the client; the real emails are in the notes. Replace via Edit event details when ready. Not created: GEM / Danu Venture Group (09/04, 30 guests) — confirm whether it was the third yellow row.
+
+---
+
 ## Trim the fat — September 14, 2026 — LIVE (trim-0914 at 100% ~20:30 ET)
 
 Owner ran the flip. Post-flip checks on the production URL passed: root 200, release `barsys-happyhours-production-trim-0914`, ready true, trimmed `operations.js` / `workflow-model.js` / `operations.css` served, admin HTML 303→login, receipts export anonymous 401. Traffic 100% on `trim-0914`; `flow-0914` (rollback) and `receipts-0914` held at 0%. No ERROR-severity logs.
