@@ -1,3 +1,9 @@
+## BlackRock record: client email set — September 14, 2026 (~23:50 ET, production)
+
+Owner said "continue" on the pending list. Record `2414cc99-5d63-4f5d-9423-f239b5a464a6` already carried date 2026-10-06 and start 18:00 (owner had set them; version 2). Verified first that the admin details edit path saves without queuing notifications (customer email is queued only at intake) and that the change preview reported `changed: [email]`, no operational or schedule impact, no blockers. Then set contact email to ranee.turner@blackrock.com through the owner's signed-in Operations tab (PATCH `/api/admin/inquiries/:id/details`, event version 2 → 3, operations 62 → 63). Note for the owner: the record's menus are The Agave Lover's + The Vibrant Classics while the sent proposal names Neon Shadows + Bold Frequency; left untouched pending the owner's call (Bold Frequency is Reserve-tier under policy v1). Still owner-side: enter and accept the BlackRock proposal when signed (rate 70, machines 2, grace 6, tax 8.875, deposit 50), W-9 for BlackRock AP, Slack webhook (parked).
+
+---
+
 ## Owner staff record: no labor cost — September 14, 2026 (~23:45 ET, production)
 
 Owner asked to add the staff record with the no-labor-cost flag. A record already existed (id `8b77dc53-affe-44b3-bd9e-3c12ee83dca3`, name "fareed", role "Barsys team lead", email fareed@barsys.com, rate $0, crew access on, flag off). Updated through the owner's own signed-in Operations tab (same-origin `action:'staff'` command, operations version 61 → 62): `internal: true`, name capitalized to "Fareed", everything else unchanged. Effect: assigned hours never add labor cost; the Confirm-card owner default and the Assign select now use this record. Owner pending list shrinks to: BlackRock record update (ranee.turner@blackrock.com, Oct 6 18:00), BlackRock proposal entry/acceptance when signed, W-9 for BlackRock AP, Slack webhook (parked).
