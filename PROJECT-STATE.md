@@ -1,3 +1,9 @@
+## Landing polish 2 — September 15, 2026 (~01:00 ET, built, candidate pending)
+
+Owner: "continue polishing the landing page." Full-page pass on the live site at 1920 and 390 (segments in the session scratchpad). Two CSS-only fixes in `v3.css`: the four Real-events reels now fill their 9:14 cards (`object-fit: cover` instead of `contain`, which left dark side bars beside the portrait clips at every width), and the films-to-photos gap shrinks (`#event-gallery` bottom padding 64 → 24 px, photo block top 8 px) so the section reads as one. Checked and left alone: GIRLS GIRLS CLUB in the brand ribbon is a deliberate two-line wordmark; the hero, packages, mixlists, planner, FAQ and footer render cleanly at both widths; the phone bottom dock and header are correct. Verified: `npm test` 209/209; both browser suites pass; local re-render at 1920/390 with no console errors.
+
+---
+
 ## brand-0915 LIVE — September 15, 2026 (~00:45 ET, 100% traffic)
 
 Owner ran the flip. Post-flip checks on the production URL passed: root 200, release `barsys-happyhours-production-brand-0915`, ready true, admin 303, receipts export anon 401, upload anon 403, wordmark PNG 200; served index carries the HappyHour wordmark in header and footer (old mark gone), `--container:1560px`, three Experience stills, two hero scenes. Headless Chrome at 1440/390 against production (nothing sent): LIVE, Send inquiry on both paths, 9.2 / 12.9 screens, hero loop playing on load, no console errors. No ERROR logs on the revision. Traffic 100% on `brand-0915`; `trim2-0914` is the rollback. **Revision cleanup (~00:50 ET, owner-approved):** tags removed and revisions `polish-0915`, `owner-0914`, `delete-0914` deleted; the service holds `brand-0915` (100%) and `trim2-0914` (0%, rollback) only. Production re-checked: release brand-0915, ready true.
