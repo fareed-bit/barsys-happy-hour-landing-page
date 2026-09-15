@@ -8,7 +8,9 @@
   const test = runtime.mode !== 'LIVE';
   const action = test ? 'Save test inquiry' : 'Send inquiry';
   const destination = runtime.mode === 'LOCAL_TEST' ? 'the local server\'s event database' : 'the hosted event database';
-  const context = `${label}: creating a plan or exporting a summary does not submit it. Only ${action} stores the inquiry in ${destination}. ${test ? 'Use synthetic details for testing. ' : ''}A saved inquiry does not hold a date, sign an agreement or take payment.`;
+  const context = test
+    ? `${label}. Only ${action} stores the inquiry in ${destination}. Use synthetic details for testing. A saved inquiry does not hold a date, sign an agreement or take payment.`
+    : 'Send inquiry shares your plan and contact details with the Barsys team. An inquiry does not hold a date, sign an agreement or take payment.';
   policies.privacy = {
     title:'Privacy notice', tag:label + ' / TECHNICAL DATA-HANDLING NOTICE', body:`
     <p class="policy-lead">${context}</p>

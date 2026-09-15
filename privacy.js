@@ -41,7 +41,7 @@
     try {[KEY,DRAFT,MOTION,...LEGACY].forEach(k=>localStorage.removeItem(k));}catch(_){}
     prefs={version:1,rememberSelections:false,decided:false};sync();
     document.dispatchEvent(new CustomEvent('barsys:privacy',{detail:{...prefs}}));
-    $('#privacy-feedback').textContent='Saved choices for this copy were cleared. Your current open event plan remains in this tab. Use Start over to clear that plan too.';
+    $('#privacy-feedback').textContent='Saved choices cleared. Your open plan stays in this tab.';
   }
   window.BarsysPrivacy=Object.freeze({
     can:k=>prefs[k]===true,
