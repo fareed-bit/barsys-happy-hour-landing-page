@@ -1,4 +1,6 @@
-## Trim the fat — September 14, 2026 (candidate trim-0914; flip pending)
+## Trim the fat — September 14, 2026 — LIVE (trim-0914 at 100% ~20:30 ET)
+
+Owner ran the flip. Post-flip checks on the production URL passed: root 200, release `barsys-happyhours-production-trim-0914`, ready true, trimmed `operations.js` / `workflow-model.js` / `operations.css` served, admin HTML 303→login, receipts export anonymous 401. Traffic 100% on `trim-0914`; `flow-0914` (rollback) and `receipts-0914` held at 0%. No ERROR-severity logs.
 
 Owner, after the card-by-card walkthrough: "the process has to be simple and to the point, no fluff." Dashboard-only trim in `admin/operations.js` / `workflow-model.js`; backend rules, data and API unchanged.
 
