@@ -20,7 +20,7 @@
   {
     "slug": "reserve",
     "title": "Reserve happy hours",
-    "description": "Reserve happy hours: five curated cocktail menus, a dedicated event lead and Barsys 360 machines for clients, milestones and executive occasions.",
+    "description": "For clients, milestones and special occasions.",
     "image": "/assets/tech/360-hero-hd.jpg"
   },
   {
@@ -80,7 +80,7 @@
   {
     "slug": "mixlist-silk",
     "title": "Silk & Snap",
-    "description": "Smooth pear with a bright citrus edge. A vodka-and-pear collection; requires event-team confirmation for Barsys 360 service.",
+    "description": "Smooth pear, bright citrus edge. Smooth pear, bright citrus edge. This collection requires event-team confirmation for 360 service.",
     "image": "/assets/mixlists/silk.jpg"
   },
   {
@@ -212,7 +212,7 @@
   {
     "slug": "events",
     "title": "Event bar service in New York City.",
-    "description": "Barsys brings its cocktail machines, Shaker Pro stations and bartenders to corporate, brand, holiday, private and zero-proof events across NYC.",
+    "description": "Barsys brings its cocktail machines, Shaker Pro stations and bartenders to corporate events, brand activations, holiday parties, private celebrations and zero-proof events across New York City.",
     "image": "/assets/tech/360-hero-hd.jpg",
     "faq": [
       [
@@ -241,7 +241,7 @@
   {
     "slug": "corporate-events",
     "title": "Corporate event bar service in NYC.",
-    "description": "Bar service for company celebrations, executive and client events and recruiting nights in NYC: Barsys 360 machines and bartenders, priced per guest.",
+    "description": "Bar service for company celebrations, executive and client events and recruiting nights in New York City: Barsys 360 cocktail machines, Shaker Pro stations and bartenders, priced per guest.",
     "image": "/assets/tech/360-dsc5986.jpg",
     "faq": [
       [
@@ -270,7 +270,7 @@
   {
     "slug": "brand-activations",
     "title": "Brand activations and product launch bars in NYC.",
-    "description": "Bar service for brand activations, product launches, pop-ups and sponsored events in NYC: Barsys 360 pouring on camera, Shaker Pro and bartenders.",
+    "description": "Barsys builds the bar into brand activations, product launches, pop-ups and sponsored events in New York City: the Barsys 360 pouring on camera, Shaker Pro stations and bartenders, quoted for the format.",
     "image": "/assets/tech/sp-served-light.jpg",
     "faq": [
       [
@@ -299,7 +299,7 @@
   {
     "slug": "holiday-parties",
     "title": "Holiday party bar service in NYC.",
-    "description": "Holiday party bar service in NYC: Barsys 360 cocktail machines and Shaker Pro stations with seasonal mixlists, bartenders, setup and cleanup.",
+    "description": "Holiday party bar service in New York City: Barsys 360 cocktail machines and Shaker Pro stations with seasonal mixlists, bartenders, setup and cleanup, priced per guest.",
     "image": "/assets/curated/posters/galentines.jpg",
     "faq": [
       [
@@ -328,7 +328,7 @@
   {
     "slug": "private-events",
     "title": "Private event bar service in NYC.",
-    "description": "Bar service for private celebrations in NYC: milestones, engagements, birthdays and galas with Barsys 360 machines and Shaker Pro stations.",
+    "description": "Bar service for private celebrations in New York City: milestones, engagements, birthdays and galas with Barsys 360 cocktail machines, Shaker Pro stations and bartenders.",
     "image": "/assets/curated/posters/rooftop-sunset.jpg",
     "faq": [
       [
@@ -357,7 +357,7 @@
   {
     "slug": "zero-proof-events",
     "title": "Zero-proof and mocktail events in NYC.",
-    "description": "Zero-proof event bar service in NYC: three zero-proof mixlists poured by Barsys 360 machines and Shaker Pro so every guest gets a made drink.",
+    "description": "Zero-proof event bar service in New York City: three zero-proof mixlists poured by Barsys 360 machines and Shaker Pro stations, so every guest gets a made drink.",
     "image": "/assets/tech/sp-instrument-light.jpg",
     "faq": [
       [
@@ -387,6 +387,40 @@
     "slug": "faq",
     "title": "Before the first cheers.",
     "description": "Answers to the essentials of planning a Barsys office happy hour: inclusions, menus, dates, custom events and cancellations.",
+    "image": "/assets/lineup.jpg"
+  },
+  {
+    "slug": "blog/how-to-plan-nyc-office-holiday-party-bar",
+    "title": "How to Plan an NYC Office Holiday Party Bar (2026 Guide)",
+    "description": "A step-by-step guide to booking bar service for your NYC office holiday party — timing, guest counts, package selection, and what to expect.",
+    "image": "/assets/curated/posters/galentines.jpg",
+    "publishedDate": "2026-09-16"
+  },
+  {
+    "slug": "blog/barsys-360-what-it-pours-at-corporate-event",
+    "title": "What a Barsys 360 Actually Pours at a Corporate Event",
+    "description": "The Barsys 360 pours cocktails to 1/10th of an ounce from 6 insulated canisters — here’s how it works at a real NYC corporate event.",
+    "image": "/assets/tech/360-hero-hd.jpg",
+    "publishedDate": "2026-09-16"
+  },
+  {
+    "slug": "blog/corporate-open-bar-pricing-nyc",
+    "title": "Corporate Open Bar Pricing in NYC — What to Actually Expect",
+    "description": "Per-guest pricing for corporate open bar in NYC: Classic $55, Signature $85, Reserve $225. What’s included, what’s extra, and how to budget.",
+    "image": "/assets/tech/360-hero-hd.jpg",
+    "publishedDate": "2026-09-16"
+  },
+  {
+    "slug": "blog/zero-proof-mocktail-bar-office-event",
+    "title": "Zero-Proof and Mocktail Bar for the Modern Office Event",
+    "description": "Three zero-proof mixlists on the same Barsys 360 machines — Fluid Code, Summer Mocktails, Boisson NA Agave. Same theatre, no proof, priced the same.",
+    "image": "/assets/tech/sp-instrument-light.jpg",
+    "publishedDate": "2026-09-16"
+  },
+  {
+    "slug": "blog/",
+    "title": "The Barsys blog.",
+    "description": "Field notes from Barsys on bar service in New York City: planning, pricing, the machines and zero-proof menus.",
     "image": "/assets/lineup.jpg"
   }
 ]
