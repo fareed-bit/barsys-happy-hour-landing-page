@@ -19,7 +19,21 @@ const sprite=landing.slice(landing.lastIndexOf('<svg',spriteIdx),landing.indexOf
 // Default hero image per category (only used when page() is called without one)
 const DEFAULT_HERO='/assets/lineup.jpg';
 
+// SEO description overrides for pages whose meta description needs to differ
+// from the data-driven or hand-authored default. Keyed by slug.
+const SEO_DESCRIPTIONS={
+  'reserve':'Reserve happy hours: five curated cocktail menus, a dedicated event lead and Barsys 360 machines for clients, milestones and executive occasions.',
+  'mixlist-silk':'Smooth pear with a bright citrus edge. A vodka-and-pear collection; requires event-team confirmation for Barsys 360 service.',
+  'events':'Barsys brings its cocktail machines, Shaker Pro stations and bartenders to corporate, brand, holiday, private and zero-proof events across NYC.',
+  'corporate-events':'Bar service for company celebrations, executive and client events and recruiting nights in NYC: Barsys 360 machines and bartenders, priced per guest.',
+  'brand-activations':'Bar service for brand activations, product launches, pop-ups and sponsored events in NYC: Barsys 360 pouring on camera, Shaker Pro and bartenders.',
+  'holiday-parties':'Holiday party bar service in NYC: Barsys 360 cocktail machines and Shaker Pro stations with seasonal mixlists, bartenders, setup and cleanup.',
+  'private-events':'Bar service for private celebrations in NYC: milestones, engagements, birthdays and galas with Barsys 360 machines and Shaker Pro stations.',
+  'zero-proof-events':'Zero-proof event bar service in NYC: three zero-proof mixlists poured by Barsys 360 machines and Shaker Pro so every guest gets a made drink.'
+};
+
 function page(slug,title,description,body,image=null,intro=description){
+  if(SEO_DESCRIPTIONS[slug])description=SEO_DESCRIPTIONS[slug];
   pages.push({slug,title,description,...(image?{image}:{})});
   const heroImg=image||DEFAULT_HERO;
   const navLinks=nav.map(([id,label])=>{const href=id==='blog'?'/site/blog/':`/site/${id}.html`;return `<a href="${href}"${id===slug?' aria-current="page"':''}>${label}</a>`;}).join('');
