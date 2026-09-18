@@ -41,3 +41,6 @@ html[data-motion=off]{scroll-behavior:auto}html[data-motion=off] *,html[data-mot
 /* The mobile booking bar appears after the hero, not over the first CTA. */
 html[data-hero-visible="true"] .mobile-book{transform:translateY(120%);visibility:hidden}
 @media(max-width:599px){.hero-kicker{font-size:7px;letter-spacing:1.3px}.motion-toggle{min-width:32px;min-height:40px}.film-credit{font-size:5px}.hero h1{letter-spacing:-2.4px}}
+
+/* Liquor-partner clarification note under the package intro (spirits sourced via partner liquor store, not Barsys). */
+.package-liquor-note{margin-top:10px;font-size:13px;line-height:1.6;color:#9a9a9a}

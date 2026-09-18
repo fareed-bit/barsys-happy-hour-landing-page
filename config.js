@@ -16,10 +16,11 @@ window.BARSYS = {
       "description": "A relaxed round for the whole office.",
       "features": [
         "2 curated cocktail menus",
-        "Standard mixers",
-        "Bartending service"
+        "Standard mixers & ice",
+        "Bartending service",
+        "Spirits through our liquor partner"
       ],
-      "detail": "An interactive Barsys bar with spirits, ice, mixers, bartending, setup and cleanup. Two hours of open-bar service.",
+      "detail": "An interactive Barsys bar with bartending, mixers, ice, setup and cleanup. Two hours of service. Spirits are sourced through our liquor store partner, who invoices you directly.",
       "positioning": "The team happy hour"
     },
     "signature": {
@@ -30,9 +31,10 @@ window.BARSYS = {
       "features": [
         "Signature cocktail program",
         "Premium mixers & dry garnishes",
-        "Custom menu options"
+        "Custom menu options",
+        "Spirits through our liquor partner"
       ],
-      "detail": "Everything in Classic, with premium mixers, dry garnishes and a signature cocktail program. The event team confirms staffing and menu details.",
+      "detail": "Everything in Classic, with premium mixers, dry garnishes and a signature cocktail program. Spirits are sourced through our liquor store partner, who invoices you directly. The event team confirms staffing and menu details.",
       "positioning": "The elevated occasion"
     },
     "reserve": {
@@ -43,9 +45,10 @@ window.BARSYS = {
       "features": [
         "5 fully curated cocktail menus",
         "Dedicated event lead",
-        "Premium bar presentation"
+        "Premium bar presentation",
+        "Spirits through our liquor partner"
       ],
-      "detail": "An elevated hospitality experience with premium bartenders, artisan mixers, a dedicated event lead and custom branding options. Final scope is confirmed in your proposal.",
+      "detail": "An elevated hospitality experience with premium bartenders, artisan mixers, a dedicated event lead and custom branding options. Spirits are sourced through our liquor store partner, who invoices you directly. Final scope is confirmed in your proposal.",
       "positioning": "The high-touch event"
     }
   },
@@ -950,14 +953,14 @@ window.BARSYS = {
     },
     {
       "id": "spirits",
-      "name": "Spirit upgrades",
-      "description": "Request a different spirit selection. Specific brands and substitutions are confirmed in your quote.",
+      "name": "Spirits & liquor order",
+      "description": "Barsys isn't a liquor retailer, so spirits aren't part of our package price. Tell us your preference here and we'll place the order with our liquor store partner on your behalf — they confirm and invoice you directly, separate from your Barsys package. That confirmed order is one of the steps that locks in your date.",
       "icon": "glass",
       "unit": "guest",
       "price": null,
       "approved": false,
       "maxQuantity": 1,
-      "unitLabel": "per guest",
+      "unitLabel": "Confirmed & invoiced by our liquor partner",
       "category": "drinks",
       "variants": [
         [

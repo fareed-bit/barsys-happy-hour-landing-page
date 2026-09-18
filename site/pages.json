@@ -8,7 +8,7 @@
   {
     "slug": "classic",
     "title": "Classic happy hours",
-    "description": "A relaxed round for the whole office. An interactive Barsys bar with spirits, ice, mixers, bartending, setup and cleanup. Two hours of open-bar service.",
+    "description": "A relaxed round for the whole office. An interactive Barsys bar with bartending, mixers, ice, setup and cleanup. Two hours of service.",
     "image": "/assets/tech/360-hero-hd.jpg"
   },
   {
@@ -221,7 +221,11 @@
       ],
       [
         "What is included in the per-guest price?",
-        "Barsys 360 cocktail machines, tablets, bartending service, the curated mixlists for your package, standard mixers, and setup and cleanup as agreed in your proposal. Tax, extra hours and unpriced requests are confirmed in the proposal."
+        "Barsys 360 cocktail machines, tablets, bartending service, the curated mixlists for your package, standard mixers, and setup and cleanup as agreed in your proposal. Spirits are sourced through our liquor store partner, not included in this price. Tax, extra hours and unpriced requests are confirmed in the proposal."
+      ],
+      [
+        "Who provides the alcohol?",
+        "Barsys isn’t a licensed liquor retailer, so spirits are ordered through our liquor store partner on your behalf. They confirm your purchase and send the invoice directly to you, separate from your Barsys package."
       ],
       [
         "How many guests can an event have?",
@@ -250,7 +254,11 @@
       ],
       [
         "Do you bring everything to our office?",
-        "The Barsys team brings, sets up and takes down machines, tablets, ingredients, ice and glassware as agreed in your proposal. The 360 needs one outlet and no plumbing."
+        "The Barsys team brings, sets up and takes down machines, tablets, mixers, ice and glassware as agreed in your proposal. The 360 needs one outlet and no plumbing. Spirits are sourced through our liquor store partner, who invoices you directly."
+      ],
+      [
+        "Who provides the alcohol?",
+        "Barsys isn’t a licensed liquor retailer, so spirits are ordered through our liquor store partner on your behalf. They confirm your purchase and send the invoice directly to you, separate from your Barsys package."
       ],
       [
         "How long is the service?",
@@ -279,7 +287,11 @@
       ],
       [
         "Can the menu carry our brand?",
-        "Reserve includes up to five curated mixlists, which can be named for the launch or campaign. Recipes and spirit brands are confirmed with Barsys."
+        "Reserve includes up to five curated mixlists, which can be named for the launch or campaign. Recipes are confirmed with Barsys; spirit brands are confirmed with our liquor store partner."
+      ],
+      [
+        "Who provides the alcohol?",
+        "Barsys isn’t a licensed liquor retailer, so spirits are ordered through our liquor store partner on your behalf. They confirm your purchase and send the invoice directly to you, separate from your Barsys package."
       ],
       [
         "Can the machines run zero-proof for a daytime activation?",
@@ -308,7 +320,11 @@
       ],
       [
         "Do you have seasonal menus?",
-        "You choose from 27 curated mixlists; Signature and Reserve add premium mixers and dry garnishes. Final recipes and spirit brands are confirmed with Barsys."
+        "You choose from 27 curated mixlists; Signature and Reserve add premium mixers and dry garnishes. Final recipes are confirmed with Barsys; spirit brands are confirmed with our liquor store partner."
+      ],
+      [
+        "Who provides the alcohol?",
+        "Barsys isn’t a licensed liquor retailer, so spirits are ordered through our liquor store partner on your behalf. They confirm your purchase and send the invoice directly to you, separate from your Barsys package."
       ],
       [
         "Is there a zero-proof option for guests who are not drinking?",
@@ -341,7 +357,11 @@
       ],
       [
         "Who serves the drinks?",
-        "Barsys bartenders. Guests pick on the tablet, the 360 pours, and the bartender shakes, garnishes and hands it over."
+        "Barsys bartenders. Guests pick on the tablet, the 360 pours, and the bartender shakes, garnishes and hands it over. Spirits are sourced through our liquor store partner, not purchased by Barsys."
+      ],
+      [
+        "Who provides the alcohol?",
+        "Barsys isn’t a licensed liquor retailer, so spirits are ordered through our liquor store partner on your behalf. They confirm your purchase and send the invoice directly to you, separate from your Barsys package."
       ],
       [
         "What does a private event cost?",
