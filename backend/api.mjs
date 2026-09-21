@@ -53,6 +53,13 @@ export function createAPI({store,local=true,staging=false,origin,auth,gmailFetch
     send(200,{teamsThisMonth:cached.teams,month:new Date().toISOString().slice(0,7)});return true;}
    if(req.method==='GET'&&path==='/api/status'){send(200,{enabled:true,mode,statuses,collins:collins.configured(),release:process.env.K_REVISION||process.env.STAGING_RELEASE||process.env.RELEASE_ID||'local'});return true;}
    if(req.method==='GET'&&path==='/api/menu-policy'){send(200,publicPolicy((await store.getMenuPolicy())||defaultPolicy()));return true;}
+   if(req.method==='POST'&&path==='/api/collins/vision'){
+    await throttle(req);
+    if(!collins.configured())throw new HttpError(503,'Collins is not available in this environment.');
+    try{send(200,await collins.vision(await body(req,2_000_000,'That photo is too large.')));}
+    catch(error){throw new HttpError(error.status||502,error.message||'Collins could not read that photo.');}
+    return true;
+   }
    if(req.method==='POST'&&path==='/api/collins/ask'){
     await throttle(req);
     if(!collins.configured())throw new HttpError(503,'Collins is not available in this environment.');

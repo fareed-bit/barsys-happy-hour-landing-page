@@ -78,6 +78,49 @@ function cleanContext(input) {
   };
 }
 
+/* Photo read. The image arrives as a data: URL already downscaled by the client -
+ * this only bounds it and forwards. The engine returns a card whose shape varies by
+ * mode; we pass through the text fields it is documented to carry and drop the rest
+ * rather than rendering a shape we have not seen.
+ *
+ * Capped at 1.5MB of base64. Above that the client downscaled badly or is not a
+ * photo, and a marketing page has no business relaying megabytes to a model. */
+const MAX_IMAGE_CHARS = 1_500_000;
+
+export async function vision(payload) {
+  if (!configured()) { const e = new Error('Collins is not configured for this environment.'); e.status = 503; throw e; }
+  const image = typeof payload?.image === 'string' ? payload.image : '';
+  if (!/^data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+/=]+$/.test(image)) {
+    const e = new Error('Send a JPEG, PNG or WebP photo.'); e.status = 400; throw e;
+  }
+  if (image.length > MAX_IMAGE_CHARS) { const e = new Error('That photo is too large — try again.'); e.status = 413; throw e; }
+  const sessionId = typeof payload?.sessionId === 'string' && /^[\w-]{1,100}$/.test(payload.sessionId) ? payload.sessionId : undefined;
+  const ctx = cleanContext(payload?.context);
+  const body = JSON.stringify({ image, mode: 'read', context: { zero: ctx.zero, mood: ctx.mood }, ...(sessionId ? { sessionId } : {}) });
+
+  const call = async cookie => fetchWithTimeout(`${BASE}/api/collins/vision`, {
+    method: 'POST', headers: { 'content-type': 'application/json', origin: ORIGIN, cookie }, body,
+  });
+  let res;
+  try {
+    res = await call(await ageCookie());
+    if (res.status === 401 || res.status === 403) res = await call(await ageCookie(true));
+  } catch (cause) {
+    const e = new Error(cause?.name === 'AbortError' ? 'Reading that photo took too long.' : 'Collins is unreachable right now.');
+    e.status = 502; throw e;
+  }
+  if (!res.ok) {
+    const e = new Error(res.status === 429 ? 'Collins is catching up — try again in a moment.' : 'Collins could not read that photo.');
+    e.status = res.status === 429 ? 429 : 502; throw e;
+  }
+  const d = await res.json().catch(() => null);
+  if (d?.noRead) { const e = new Error('Collins could not make out the bottles. Try a closer, brighter shot.'); e.status = 422; throw e; }
+  const str = v => (typeof v === 'string' && v.trim() ? v.trim().slice(0, 1200) : '');
+  const card = { title: str(d?.title), vibe: str(d?.vibe), say: str(d?.say), text: str(d?.text) };
+  if (!card.say && !card.text && !card.title) { const e = new Error('Collins had nothing to say about that photo.'); e.status = 502; throw e; }
+  return { ...card, sessionId: typeof d?.sessionId === 'string' ? d.sessionId : undefined };
+}
+
 export async function ask(payload) {
   if (!configured()) { const e = new Error('Collins is not configured for this environment.'); e.status = 503; throw e; }
   const message = typeof payload?.message === 'string' ? payload.message.trim() : '';
