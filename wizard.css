@@ -137,6 +137,7 @@ body.planner-focus .route-switch{margin-bottom:16px}
  body.planner-focus .v3-proposal>.container>.section-heading{display:none}
  body.planner-focus .planner-close{top:calc(10px + env(safe-area-inset-top));right:12px;width:42px;height:42px;background:rgba(255,255,255,.94);box-shadow:0 4px 18px rgba(0,0,0,.08)}
  body.planner-focus .route-switch{margin:calc(64px + env(safe-area-inset-top)) 16px 12px;width:calc(100% - 32px)}
+ body.planner-focus .deck-top{margin-top:calc(62px + env(safe-area-inset-top))}
  body.planner-focus .quick-shell,body.planner-focus .planner-shell{border:0;border-radius:0;box-shadow:none}
  body.planner-focus .v3-proposal .quick-main,body.planner-focus .v3-proposal .planner-main{padding-top:22px}
  body.planner-focus #quick-content h3,body.planner-focus #step-content h3{font-size:34px;max-width:310px}
@@ -192,8 +193,8 @@ body.planner-focus .route-switch{margin-bottom:16px}
 .compact-review p{font-size:12px;line-height:1.6;color:#333}
 .compact-review small{font-size:10px;color:#777;display:block;margin-top:3px}
 .compact-review button{font-size:11px;text-decoration:underline;text-underline-offset:3px;min-height:36px;flex-shrink:0;color:#333;background:none}
-.success-receipt{border-block:1px solid #e3e3e3;display:flex;justify-content:center;gap:26px;padding:16px 0;margin:16px 0;font-size:12px}
-.success-receipt span{display:grid;gap:6px;text-align:center}
+.success-receipt{border-block:1px solid #e3e3e3;display:flex;flex-wrap:wrap;gap:14px 30px;padding:16px 0;margin:16px 0;font-size:12px}
+.success-receipt span{display:grid;gap:6px;text-align:left}
 .success-receipt small{font-size:9px;letter-spacing:1px;color:#888}
 .deck-bottom{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-top:20px;border-top:1px solid #eee}
 .deck-estimate button{padding:0;text-align:left;min-height:44px;background:none}
@@ -216,6 +217,8 @@ body.planner-focus .route-switch{margin-bottom:16px}
 .sheet-tabs button{flex:1;min-height:40px;font-size:12px;border-radius:6px;background:#f4f4f4;color:#444}
 .sheet-tabs button[aria-pressed=true]{background:#111;color:#fff}
 .sheet-body{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;padding:22px 26px 28px;scrollbar-width:thin}
+#estimate-body .price-breakdown{border-top:0;padding-top:0}
+#custom-body>.field-grid+.field{margin-top:19px}
 .sheet-footer{padding:15px 26px max(15px,env(safe-area-inset-bottom));border-top:1px solid #eee;display:flex;justify-content:space-between;gap:15px;align-items:center;flex-shrink:0;background:#fafafa}
 .sheet-footer>span{font-size:11px;color:#777}
 .sheet-footer .button{min-height:44px;font-size:12px}
@@ -233,5 +236,22 @@ body.planner-focus .route-switch{margin-bottom:16px}
  .sheet{width:100%}
  .deck-bottom{flex-wrap:wrap}
  #resume-dock{bottom:calc(10px + env(safe-area-inset-bottom));left:12px;right:12px;transform:none;width:auto}
+ .deck-top{flex-direction:column;align-items:stretch;gap:10px}
+ #step-nav{min-width:0;width:100%;gap:4px;position:static;margin-inline:0;padding:0;border-bottom:0;background:none}
+ #step-nav button{padding:8px 2px}
+ .deck-top-actions{justify-content:space-between}
 }
-@media(max-width:390px){.stepper{gap:12px}.presets button{min-width:44px}}
+@media(max-width:390px){.stepper{gap:12px}.presets button{min-width:44px}#step-nav{gap:3px}#step-nav button{padding:8px 0}}
+/* Small phones (320px class): the package row's nowrap price and the fixed-width Continue button
+   both exceed the card, and the deck clips them. Let both reflow instead. */
+@media(max-width:355px){
+ .v3-proposal .tier-choice{flex-wrap:wrap;row-gap:6px}
+ .v3-proposal .choice-price{white-space:normal}
+ .deck-actions{width:100%;justify-content:space-between;gap:10px}
+ #next-card{flex:1;min-width:0;justify-content:center;gap:10px;padding-inline:14px}
+ .stepper{gap:10px}.stepper input{width:104px}
+ .sheet-header,.sheet-tabs,.sheet-body,.sheet-footer{padding-inline:16px}
+ .sheet-footer{gap:10px}.sheet-footer>span{min-width:0;font-size:10px}
+ .sheet-footer .button{flex-shrink:0;width:auto}
+}
+@media(max-width:319px){.deck-actions{flex-wrap:wrap;row-gap:10px}#next-card{width:100%;flex-basis:100%;order:-1}}

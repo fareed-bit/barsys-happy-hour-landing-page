@@ -209,7 +209,7 @@ if(b.id==='previous-card'){if(flipped){flipped=false;renderCard('flip');}else if
 if(b.id==='open-customize')openSheet('customize',b);
 if(b.id==='open-estimate'||b.hasAttribute('data-open-sheet'))openSheet('estimate',b);
 if(b.hasAttribute('data-close-sheet'))closeSheet(b.dataset.closeSheet);
-if(b.hasAttribute('data-custom-tab')){customTab=b.dataset.customTab;renderCustom();}
+if(b.hasAttribute('data-custom-tab')){customTab=b.dataset.customTab;renderCustom();$('#custom-body').scrollTop=0;}
 if(b.hasAttribute('data-beverage')){setOption('beverage',b.dataset.beverage);menuZero=b.dataset.beverage==='zero';if($('#customize').open&&customTab==='menus')renderCustom(`[data-beverage="${b.dataset.beverage}"]`);}
 if(b.hasAttribute('data-addon')){const id=b.dataset.addon,a=C.addons.find(x=>x.id===id);const n=Q.quantity(a,state);setAddon(id,b.dataset.delta?n+Number(b.dataset.delta):n?0:1);refreshAddonHosts();}
 if(b.id==='request-extra-menu')extraMenuRequest();
