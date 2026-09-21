@@ -34,3 +34,15 @@ body.sub-page .sub-closing h2{color:#f4f4f0;margin:0 0 32px;font-size:clamp(32px
 body.sub-page .sub-closing .button{background:#f4f4f0;color:#0a0a0a;padding:16px 26px;display:inline-flex;gap:8px;align-items:center;font-weight:600}
 body.sub-page .sub-closing p{margin:24px 0 0;color:#c9c8c0;font-size:14px;letter-spacing:.02em}
 @media(max-width:700px){body.sub-page .container{padding:0 22px}body.sub-page .sub-hero-copy{padding:80px 22px 40px}body.sub-page .sub-body{padding:40px 22px}body.sub-page .sub-body .split{grid-template-columns:1fr;gap:24px}body.sub-page .sub-closing{padding:40px 22px}}
+/* Site pages link site.css after v3.css, so v3's mobile header rules lose the cascade
+   on equal specificity: the brand stays at its 200px HTML width and .nav-cta keeps its
+   desktop size, overflowing the header by 17px at 390px. Size the header down rather
+   than hiding the CTA - these pages ship no script, so the hamburger is inert and the
+   CTA is the only working navigation in the header. 2026-09-21. */
+@media(max-width:700px){
+ .site-header .nav-wrap{gap:12px}
+ .site-header .brand img{width:132px;height:auto}
+ .site-header .nav-cta{font-size:10px;min-height:40px;padding:10px 12px;gap:8px}
+ .site-header .nav-cta .icon{width:14px;height:14px}
+}
+@media(max-width:374px){.site-header .brand img{width:112px}.site-header .nav-cta{font-size:9px;padding:9px 10px;gap:6px}}
