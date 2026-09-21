@@ -255,3 +255,15 @@ body.planner-focus .route-switch{margin-bottom:16px}
  .sheet-footer .button{flex-shrink:0;width:auto}
 }
 @media(max-width:319px){.deck-actions{flex-wrap:wrap;row-gap:10px}#next-card{width:100%;flex-basis:100%;order:-1}}
+
+/* Add-ons card: recommended essentials up front, everything else one click away.
+   Mirrors the .quick-options disclosure rather than inventing a second pattern. */
+#step-content .mini-heading{margin:0 0 14px}
+.addon-more{border:1px solid #d6d6d6;border-radius:6px;margin-top:18px;padding:0 18px}
+.addon-more>summary{min-height:56px;display:flex;justify-content:space-between;align-items:center;gap:14px;font-size:14px;font-weight:600;cursor:pointer;list-style:none;color:#222}
+.addon-more>summary::-webkit-details-marker{display:none}
+.addon-more>summary>span{color:#777;font-size:11px;font-weight:400;white-space:nowrap}
+.addon-more[open]{padding-bottom:20px}
+.addon-more[open]>summary{border-bottom:1px solid #e4e4e4;margin-bottom:20px}
+.card-addons .scope-panel{margin-bottom:18px}
+@media(max-width:650px){.addon-more{padding:0 13px}.addon-more[open]{padding-bottom:14px}}

@@ -48,3 +48,16 @@ test('Local-only security and no analytics or request code',()=>{
 test('Required source files are available',()=>{
   for(const file of ['index.html','styles.css','app.js','config.js','assets.available.js','scripts/server.mjs','events.css','media.config.js','motion.js','scripts/build-preview.mjs'])assert.ok(existsSync(resolve(root,file)));
 });
+
+// An add-on that is included with a package renders includedNotes[tier] instead of its
+// description. collins shipped with includedIn but no includedNotes, which threw
+// "Cannot read properties of undefined" for every Reserve plan the moment the add-ons
+// were rendered in the deck rather than only in the Customize sheet.
+test('every add-on included with a package explains the inclusion for that package',()=>{
+  for(const a of c.addons)
+    for(const tier of a.includedIn||[]){
+      assert.ok(Object.hasOwn(c.packages,tier),`${a.id} is included in unknown package ${tier}`);
+      assert.equal(typeof a.includedNotes?.[tier],'string',`${a.id} has no includedNotes for ${tier}`);
+      assert.ok(a.includedNotes[tier].trim().length>0,`${a.id} has an empty includedNote for ${tier}`);
+    }
+});

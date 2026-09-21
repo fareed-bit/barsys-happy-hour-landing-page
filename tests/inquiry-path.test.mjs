@@ -1,16 +1,31 @@
 // The unified planner sends in one step when connected; preview vocabulary stays confined to standalone builds.
 // V4.0: the old two-route (Quick proposal / Customize everything) wizard was replaced by a single
-// 4-card planner in app.js. v3.js no longer owns any step/route state, so the "quick planner" checks
-// below now target app.js's card flow instead.
+// flashcard planner in app.js. v3.js no longer owns any step/route state, so the "quick planner" checks
+// below now target app.js's card flow instead. Step indices are derived from cardTitles rather than
+// hardcoded, so inserting a card into the deck does not silently rot these assertions.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 const read=f=>readFileSync(new URL('../'+f,import.meta.url),'utf8');
 const v3=read('v3.js'),app=read('app.js'),readiness=read('readiness.js'),client=read('inquiry-client.js'),index=read('index.html'),runtime=read('runtime-content.js');
 
+const cardTitles=app.match(/const cardTitles=\[(.*?)\];/)[1].split(',').map(s=>s.trim().slice(1,-1));
+const submitStep=cardTitles.length-1, successStep=cardTitles.length;
+
+test('the deck runs guests, package, add-ons, location and details',()=>{
+  assert.deepEqual(cardTitles,['Guests','Package','Add-ons','Location & date','Your details']);
+  const card=app.match(/function addonsCard\(\)\{([^]*?)\n\}/)[1];
+  assert.match(app,/const ESSENTIAL_ADDONS=\['collins','beer-wine'\];/);
+  assert.match(card,/RECOMMENDED ADD-ONS/);
+  assert.match(card,/glasswareMarkup\(state,'detail'\)\}\$\{addonGrid\(essentials\)/);
+  assert.match(card,/<details class="addon-more"[^]*?Other add-ons/);
+  assert.match(card,/addonGrid\(others\)/);
+  assert.match(app,/\[guestCard,packageCard,addonsCard,whenCard,contactCard,successCard\]\[step\]/);
+});
+
 test('the unified planner labels the final action by mode and sends directly when connected',()=>{
   assert.match(app,/CONNECTED\?\(LIVE_MODE\?'Send inquiry':'Save test inquiry'\):'Create local event plan'/);
-  assert.match(app,/if\(step===3\)\{if\(CONNECTED\)sendInquiry\(\);else submitLocalPlan\(\);return;\}/);
+  assert.match(app,new RegExp(`if\\(step===${submitStep}\\)\\{if\\(CONNECTED\\)sendInquiry\\(\\);else submitLocalPlan\\(\\);return;\\}`));
   assert.match(app,/'Inquiry sent':'Test inquiry saved'/);
   assert.doesNotMatch(app,/LOCAL PREVIEW/);
   assert.doesNotMatch(v3,/LOCAL PREVIEW/);
@@ -18,7 +33,7 @@ test('the unified planner labels the final action by mode and sends directly whe
 
 test('sendInquiry sends through window.BarsysInquiry and lands on the success card',()=>{
   assert.match(app,/async function sendInquiry\(\)\{[^]*?window\.BarsysInquiry\.send\(\)/);
-  assert.match(app,/receiptId=receipt\.id;step=4;furthest=4;renderCard\('forward'\)/);
+  assert.match(app,new RegExp(`receiptId=receipt\\.id;step=${successStep};furthest=${successStep};renderCard\\('forward'\\)`));
 });
 
 test('contact form asks for five things and one consent line',()=>{

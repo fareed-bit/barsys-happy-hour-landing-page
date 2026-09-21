@@ -1077,6 +1077,9 @@ window.BARSYS = {
       "includedIn": [
         "reserve"
       ],
+      "includedNotes": {
+        "reserve": "Collins is included with Reserve at every event size \u2014 iPads, stands, our team on site and your branding, at no additional charge."
+      },
       "variantPrices": {
         "s": { "price": 950, "approved": true },
         "m": { "price": 1450, "approved": true },
