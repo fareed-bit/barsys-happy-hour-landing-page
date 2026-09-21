@@ -92,8 +92,9 @@ const ownBar=p=>p.bringsOwnBar===true;
 const packageBanner=(id,p)=>`<section class="package-banner"><div class="pb-row">`
  +`<span class="pb-badge">${esc(p.badge)}</span><h3>${esc(p.name)}</h3>`
  +`<p class="pb-price">$${p.rate}<span> / guest</span></p>`
- +`<p class="pb-meta">${money(p.minimumFee)} minimum &middot; one iPad per ${p.guestsPerStation} guests &middot; your bar, your bartenders</p>`
+ +`<p class="pb-meta">${money(p.minimumFee)} minimum &middot; one iPad per ${p.guestsPerStation} guests</p>`
  +`</div><p class="pb-tagline">${esc(p.tagline)}</p>`
+ +`<ul class="pb-features">${p.features.map(f=>`<li>${esc(f)}</li>`).join('')}</ul>`
  +`<a class="pb-cta" href="/site/${id}.html">Explore ${p.name} <span aria-hidden="true">&#8599;</span></a></section>`;
 const CO=c.packages.collins;
 const CH=c.addons.find(a=>a.id==='collins-hours');

@@ -209,8 +209,9 @@ function closeMobileNav(){$('#mobile-nav').hidden=true;$('.menu-toggle').setAttr
       <section class="package-banner" data-reveal><div class="pb-row">
         <span class="pb-badge">${esc(p.badge)}</span><h3>${esc(p.name)}</h3>
         <p class="pb-price">${dollars(p.rate)}<span> / guest</span></p>
-        <p class="pb-meta">${dollars(p.minimumFee)} minimum &middot; one iPad per ${p.guestsPerStation} guests &middot; your bar, your bartenders</p>
+        <p class="pb-meta">${dollars(p.minimumFee)} minimum &middot; one iPad per ${p.guestsPerStation} guests</p>
       </div><p class="pb-tagline">${esc(p.tagline)}</p>
+      <ul class="pb-features">${p.features.map(f=>`<li>${icon('check')}<span>${esc(f)}</span></li>`).join('')}</ul>
       <button type="button" class="pb-cta" data-select-package="${id}">Choose ${esc(p.name)}${icon('arrow')}</button></section>`).join('');
     $('#package-grid').innerHTML = tiers.map(([id, p], index) => `
       <article data-reveal class="package-card ${id}" aria-labelledby="package-${id}">
