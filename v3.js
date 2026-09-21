@@ -1,4 +1,5 @@
-/* V3 experience + quick proposal. All selections use the existing planner.
+/* V4 marketing interactions: taste picker, collection dialog, event summary, and the
+   focus-trapped chrome around the single unified planner (card flow lives in app.js).
    No request, payment, analytics SDK or personal-data persistence is performed.
    Public integration events contain only interface actions, never contact data. */
 (() => {
@@ -7,106 +8,29 @@
   const $ = (s,r=document) => r.querySelector(s), $$ = (s,r=document) => [...r.querySelectorAll(s)];
   const esc = v => String(v ?? '').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const icon = n => `<svg class="icon" aria-hidden="true"><use href="#i-${n}"/></svg>`;
-  const dollars = n => new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(n);
   const money = n => new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',minimumFractionDigits:2,maximumFractionDigits:2}).format(n);
   const get = () => A.getState();
-  const RT=window.BARSYS_RUNTIME, connected=!!RT, live=RT?.mode==='LIVE';
-  const sendLabel=connected?(live?'Send inquiry':'Save test inquiry'):'Create proposal preview';
+  const RT=window.BARSYS_RUNTIME;
   let receipt=null;
   const motion = () => document.documentElement.dataset.motion !== 'off' && !matchMedia('(prefers-reduced-motion: reduce)').matches;
   const emit = (action,info={}) => window.dispatchEvent(new CustomEvent('barsys:interaction',{detail:{action,...info}}));
-  const TODAY = (()=>{const d=new Date();return new Date(d.getTime()-d.getTimezoneOffset()*60000).toISOString().slice(0,10);})();
   const occasions = [['team','Team happy hour'],['client','Client event'],['celebration','Company celebration'],['recruiting','Recruiting event'],['executive','Executive event'],['exploring','Just exploring'],['birthday','Birthday party'],['engagement','Engagement party'],['venue','Venue event'],['other','Another occasion']];
-  let quickStep=0, route='quick', taste='signature', collection=null, dialogFocus=null, summaryFocus=null, imageTimer;
+  let taste='signature', collection=null, dialogFocus=null, summaryFocus=null, imageTimer;
   const tasteCopy = {
     signature: {base:'VODKA & TEQUILA',notes:'Bright, citrus-forward crowd favorites. Think Cosmopolitan, Margarita, Madras and Tequila Twilight.'},
     spritz: {base:'THE SPARKLING COLLECTION',notes:'Light, bright and made for getting together. A golden-hour mood, even when the office is the venue.'},
     fluid: {base:'ZERO PROOF. FULL OF OCCASION.',notes:'An alcohol-free collection with its own place at the bar. Same occasion, without the alcohol.'}
   };
   const dateLabel = v => v && /^\d{4}-\d{2}-\d{2}$/.test(v) ? new Date(v+'T12:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}) : 'Date to be decided';
-  const field = (key,label,{type='text',required=false,wide=false,placeholder='',hint='',autocomplete=''}={}) => {
-    const value=get().details[key]||'';
-    return `<div class="field ${wide?'field-full':''}"><label for="quick-${key}">${label}${required?'':' <small>(optional)</small>'}</label><input id="quick-${key}" name="${key}" data-quick-field="${key}" value="${esc(value)}" type="${type}" ${required?'required':''} ${type==='date'?`min="${TODAY}"`:type==='number'?'min="0" step="1"':''} ${autocomplete?`autocomplete="${autocomplete}"`:''} placeholder="${esc(placeholder)}" maxlength="${key==='email'?254:200}" ${hint?`aria-describedby="hint-${key}"`:''}/>${hint?`<span class="field-hint" id="hint-${key}">${hint}</span>`:''}</div>`;
-  };
-  function renderQuick(focus=false) {
+  function updateTasteAvailability() {
     const s=get();
-    $('#quick-error').hidden=true;
-    $('#quick-step-count').textContent=quickStep===2?'02 / 02':`0${quickStep+1} / 02`;
-    $('#quick-step-label').textContent=['The essentials','Your details',connected?(live?'Inquiry sent':'Test inquiry saved'):'Your preview'][quickStep];
-    $('#quick-progress-fill').style.width=quickStep===0?'50%':'100%';
-    $('.quick-controls').hidden=quickStep===2;
-    $('#quick-back').style.visibility=quickStep>0?'visible':'hidden';
-    $('#quick-next').innerHTML=quickStep===0?`Next: your details ${icon('arrow')}`:`${sendLabel} ${icon('check')}`;
-    if(quickStep===0) {
-      $('#quick-content').innerHTML=`<h3 tabindex="-1">Tell us the basics.</h3><p class="step-description">About a minute. Headcount and location are enough to start — everything else can stay flexible.</p><div class="quick-fields quick-essentials">
-      <div class="field"><label for="quick-guests">How many guests?</label><input id="quick-guests" data-guest-input type="number" inputmode="numeric" min="1" max="10000" step="1" required value="${s.guests}"/><span class="field-hint">An estimate is fine.</span></div>
-      <div class="field"><label for="quick-tier">Package</label><select id="quick-tier">${Object.entries(C.packages).map(([id,p])=>`<option value="${id}" ${s.tier===id?'selected':''}>${p.name} · ${dollars(p.rate)}/guest</option>`).join('')}</select><span class="field-hint">You can change this later.</span></div>
-      ${field('city','Where is the event?',{required:true,placeholder:'New York',autocomplete:'address-level2'})}
-      <div class="field"><label for="quick-region">State</label><select id="quick-region" data-quick-field="region" required>${[['NY','NY'],['NJ','NJ'],['CT','CT'],['Other','Other']].map(([id,name])=>`<option value="${id}" ${s.details.region===id?'selected':''}>${name}</option>`).join('')}</select></div>
-      ${field('date','Date',{type:'date'})}
-      </div><details class="quick-options"><summary>Occasion, timing & preferences <span>Optional ${icon('plus')}</span></summary><div class="quick-fields">
-      <div class="field"><label for="quick-occasion">Occasion</label><select id="quick-occasion">${occasions.map(([id,name])=>`<option value="${id}" ${s.type===id?'selected':''}>${name}</option>`).join('')}</select></div>
-      ${field('startTime','Start time / Eastern Time',{type:'time'})}
-      <div class="field"><label for="quick-hours">Requested service</label><select id="quick-hours" data-hours><option value="" ${s.serviceHours===null?'selected':''}>Not sure yet</option>${[1,2,3,4,5,6,7,8].map(n=>`<option value="${n}" ${s.serviceHours===n?'selected':''}>${n} hours${n===2?' / included baseline':' / custom scope'}</option>`).join('')}</select></div>
-      ${field('budget','Approximate budget',{type:'number',placeholder:'Optional total budget'})}
-      <div class="field"><label for="quick-beverage">Beverage preference</label><select id="quick-beverage" data-option="beverage">${[['mixed','Cocktails + mocktails'],['zero','Entirely zero proof'],['recommend','Help choosing']].map(([id,name])=>`<option value="${id}" ${s.beverage===id?'selected':''}>${name}</option>`).join('')}</select></div>
-      </div><p class="field-hint">Additional hours are quote requests. Tax and any unpriced requests stay outside the subtotal.</p></details>
-      ${window.BarsysReadiness.eventFields(s,'quick')}<details class="quick-options quick-addon-drawer"><summary>Any extras in mind? <span id="quick-addon-count">Optional ${icon('plus')}</span></summary><p class="step-description">Nothing is added automatically. Choose any requests to include in your plan.</p><div data-addon-host>${A.addonsMarkup('quick')}</div></details>`;
-    } else if(quickStep===1) {
-      $('#quick-content').innerHTML=`<h3 tabindex="-1">Where should we send the proposal?</h3><p class="step-description">Just your contact details.</p><div class="quick-fields quick-contact-fields">
-      ${field('name','Your full name',{required:true,placeholder:'Alex Morgan',autocomplete:'name'})}
-      ${field('company','Company',{required:A.corporate(),placeholder:A.corporate()?'Your company':'Optional for private events',autocomplete:'organization'})}
-      ${field('email',A.corporate()?'Work email':'Email',{type:'email',required:true,placeholder:'alex@example.com',autocomplete:'email'})}
-      ${field('phone','Phone',{type:'tel',autocomplete:'tel'})}
-      <div class="field field-full"><label for="quick-notes">Anything else? <small>Optional</small></label><textarea id="quick-notes" data-quick-field="notes" maxlength="2000" placeholder="Preferred brands, branding details, venue or ingredient requests.">${esc(s.details.notes)}</textarea></div></div>
-      <details class="quick-review"><summary>Review my event <span>Optional check ${icon('chevron')}</span></summary>${A.reviewMarkup()}</details>${window.BarsysReadiness.consentLine(s,'quick')}`;
-    } else {
-      const c=s.details;
-      $('#quick-content').innerHTML=connected?`<div class="quick-success"><div class="success-icon">${icon('check')}</div><h3 tabindex="-1">${live?'Inquiry sent.':'Test inquiry saved.'}</h3><p class="success-message">${live?`We'll be in touch at <strong>${esc(c.email)}</strong> to confirm availability, menus and scope. Nothing is booked or charged.`:`Saved to the ${RT.mode==='LOCAL_TEST'?'local':'staging'} database. Nothing was sent to the event team.`}</p>${receipt?`<p class="field-hint">Reference ${esc(receipt.id)}</p>`:''}<div class="success-actions"><button type="button" class="button button-outline" data-download-summary>Download summary ${icon('arrow')}</button></div></div>`
-      :`<div class="quick-success"><div class="success-icon">${icon('check')}</div><h3 tabindex="-1">Your preview is ready.</h3><p class="success-message"><strong>Nothing has been sent or booked.</strong></p><div class="success-actions"><button type="button" class="button" data-open-summary>View event summary ${icon('arrow')}</button><button type="button" class="button button-outline" data-download-summary>Download summary ${icon('arrow')}</button><button type="button" class="text-link" data-copy-summary>Copy the details</button></div><button type="button" class="text-link" id="quick-edit">Edit the essentials ${icon('arrow')}</button></div>`;
-    }
-    updateQuickSummary();
-    if(focus){$('#quick-content h3')?.focus({preventScroll:true});$('#quick-planner').scrollIntoView({behavior:motion()?'smooth':'auto',block:'start'});}
-  }
-  function quickError(text,el) {
-    $('#quick-error').textContent=text;$('#quick-error').hidden=false;
-    if(el){el.setAttribute('aria-invalid','true');el.setAttribute('aria-describedby',[...(el.getAttribute('aria-describedby')||'').split(' ').filter(Boolean).filter(x=>x!=='quick-error'),'quick-error'].join(' '));for(let parent=el.parentElement;parent;parent=parent.parentElement)if(parent.tagName==='DETAILS')parent.open=true;el.focus();}
-  }
-  function validateQuick() {
-    const fields=$$('input,select,textarea',$('#quick-content'));
-    for(const f of fields){
-      if(f.disabled) continue;
-      f.removeAttribute('aria-invalid');
-      if(['text','email'].includes(f.type)) f.value=f.value.trim();
-      if(f.hasAttribute('data-quick-field')) A.setDetails({[f.dataset.quickField]:f.value});
-      if(!f.checkValidity()) {
-        const message=f.id==='quick-guests'?`Please enter a whole number from 1 to 10,000.`:f.type==='email'?'Please enter a valid email address.':f.type==='date'?'Choose today or a future date, or leave the date undecided.':`Please enter ${f.id==='quick-name'?'your name':f.id==='quick-company'?'your company':f.id==='quick-city'?'your event city':'a valid value'}.`;
-        quickError(message,f);return false;
-      }
-    }
-    const guest=$('#quick-guests');if(guest&&!A.setGuests(Number(guest.value),guest)){quickError('Please enter a valid whole guest count.',guest);return false;}
-    return true;
-  }
-  function updateQuickSummary() {
-    const s=get(),t=A.getEstimate(),p=C.packages[s.tier];
     const allowedTastes=Object.keys(tasteCopy).filter(id=>window.BarsysQuote.menuAvailable(id,s.tier,C));$$('[data-taste]').forEach(b=>b.hidden=!allowedTastes.includes(b.dataset.taste));if(!allowedTastes.includes(taste)&&allowedTastes.length){setTaste(allowedTastes[0]);return;}
-
-    const names=s.menus.map(id=>C.menus.find(m=>m.id===id)?.name).filter(Boolean);
-    const rows=[['users',`${s.guests} guests / ${p.name}`],['clock',A.serviceLabel()],['calendar',dateLabel(s.details.date)],['pin',[s.details.city,s.details.region].filter(Boolean).join(', ')||'Location undecided'],['glass',A.menuLabel()]];
-    if(s.program==='recurring')rows.push(['calendar',`Recurring requested / ${s.frequency}`]);
-    $('#quick-summary-lines').innerHTML=rows.map(([i,v])=>`<div class="qs-row">${icon(i)}<span>${esc(v)}</span></div>`).join('');
-    $('#quick-total').textContent=t.subtotal===null?'Custom quote':money(t.subtotal);$('#quick-mobile-estimate').textContent=t.subtotal===null?'Custom quote':money(t.subtotal);
-    const dock=$('#mobile-plan-dock-price');if(dock)dock.textContent=t.subtotal===null?`${s.guests} guests · Custom quote`:`${s.guests} guests · ${money(t.subtotal)}`;
-    $('#quick-breakdown').innerHTML=A.priceMarkup();
-    $('.quick-estimate-note').textContent=A.estimateNote();
-    const count=$('#quick-addon-count');if(count)count.textContent=t.lines.filter(l=>l.selected).length+' selected';
-    const tier=$('#quick-tier');if(tier&&document.activeElement!==tier)tier.value=s.tier;
     const tasteAdd=$('#taste-add');
     if(tasteAdd){tasteAdd.innerHTML=s.menus.includes(taste)?`Added. View my event ${icon('arrow')}`:`Add this collection ${icon('plus')}`;tasteAdd.disabled=!window.BarsysQuote.menuAvailable(taste,s.tier,C)&&!s.menus.includes(taste);tasteAdd.setAttribute('aria-pressed',String(s.menus.includes(taste)));}
     if(collection){$('#collection-add').disabled=!window.BarsysQuote.menuAvailable(collection,s.tier,C)&&!s.menus.includes(collection);const selected=s.menus.includes(collection);$('#collection-add').innerHTML=`${selected?'Remove from my event':'Add to my event'} ${icon(selected?'check':'plus')}`;$('#collection-add').setAttribute('aria-pressed',String(selected));}
   }
   let plannerOpener=null, plannerBackground=[];
-  function openPlanner(value='quick') {
+  function openPlanner(target) {
     if(!document.body.classList.contains('planner-focus')) {
       plannerOpener=document.activeElement;
       // Inert siblings along the ancestor path, keeping native modal dialogs usable.
@@ -120,9 +44,11 @@
       $('#proposal').setAttribute('aria-modal','true');
     }
     document.body.classList.add('planner-focus','plan-intent');
-    showRoute(value,false);
-    requestAnimationFrame(()=>$(route==='full'?'#step-content h3':'#quick-content h3')?.focus({preventScroll:true}));
-    emit('planner_opened',{route});
+    A.openFull();
+    if(typeof target==='number')A.goStep(target);
+    else if(target&&typeof target==='object'){if(Number.isInteger(target.card))A.goStep(target.card);if(target.sheet)document.dispatchEvent(new CustomEvent('barsys:opensheet',{detail:target.sheet}));}
+    requestAnimationFrame(()=>$('#card-title')?.focus({preventScroll:true}));
+    emit('planner_opened');
   }
   function closePlanner() {
     document.body.classList.remove('planner-focus');
@@ -135,14 +61,6 @@
     catch(error) { if(error.name!=='SecurityError')throw error; }
     emit('planner_closed');
   }
-  function showRoute(value,scroll=false) {
-    route=value==='full'?'full':'quick';
-    $$('[data-plan-route]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.planRoute===route)));
-    $('#quick-planner').hidden=route!=='quick';$('#planner').hidden=route!=='full';
-    if(route==='full')A.openFull();else renderQuick();
-    emit('planner_route',{route});
-    if(scroll)$('#proposal').scrollIntoView({behavior:motion()?'smooth':'instant'});
-  }
   function setTaste(id) {
     if(!Object.hasOwn(tasteCopy,id))return;
     taste=id;if(!$('#taste-image'))return;
@@ -152,7 +70,7 @@
     const image=$('#taste-image');clearTimeout(imageTimer);image.classList.add('changing');
     imageTimer=setTimeout(()=>{A.setImage(image,id);image.closest('.taste-stage').dataset.taste=id;image.classList.remove('changing');},motion()?160:0);
     $('#taste-image-label').textContent='OFFICIAL BARSYS MIXLIST / '+(m.zeroProof?'ZERO PROOF':'COCKTAIL COLLECTION');
-    updateQuickSummary();emit('taste_selected',{collection:id});
+    updateTasteAvailability();emit('taste_selected',{collection:id});
   }
   function openCollection(id) {
     const m=C.menus.find(x=>x.id===id);if(!m?.image)return;
@@ -161,8 +79,8 @@
     $('#collection-flavor').textContent=m.flavor||m.description;$('#collection-detail').textContent=m.detail||m.description;
     A.setImage($('#collection-image'),m.image);
     $('#collection-image-note').textContent='OFFICIAL BARSYS MIXLIST ARTWORK';
-    $('#collection-recipes').innerHTML=(m.examples?`<div class="collection-recipes">${m.examples.map(x=>`<span>${esc(x)}</span>`).join('')}</div>`:'')+(m.recipeSource||m.imageSource?`<a class="recipe-source" href="${esc(m.recipeSource||m.imageSource)}" target="_blank" rel="noopener noreferrer">View the original Barsys collection \u2197</a>`:'');
-    updateQuickSummary();$('#collection-dialog').showModal();$('.collection-close').focus({preventScroll:true});emit('collection_viewed',{collection:id});
+    $('#collection-recipes').innerHTML=(m.examples?`<div class="collection-recipes">${m.examples.map(x=>`<span>${esc(x)}</span>`).join('')}</div>`:'')+(m.recipeSource||m.imageSource?`<a class="recipe-source" href="${esc(m.recipeSource||m.imageSource)}" target="_blank" rel="noopener noreferrer">View the original Barsys collection ↗</a>`:'');
+    updateTasteAvailability();$('#collection-dialog').showModal();$('.collection-close').focus({preventScroll:true});emit('collection_viewed',{collection:id});
   }
   const dataRow=(label,value)=>`<div class="approval-item"><dt>${esc(label)}</dt><dd>${esc(value||'To be confirmed')}</dd></div>`;
   function approvalMarkup() {
@@ -173,7 +91,7 @@
     <div class="approval-stats"><div><strong>${e.guests}</strong><span>APPROXIMATE GUESTS</span></div><div><strong>${esc(e.package)}</strong><span>STARTING PACKAGE</span></div><div><strong>${e.serviceHours===null?'TBD':e.serviceHours+' hours'}</strong><span>REQUESTED SERVICE</span></div></div>
     <dl class="approval-grid">${dataRow('Organizer',c.name)}${dataRow('Email',c.email)}${c.company?dataRow('Company',c.company):''}${dataRow('Date / time',dateLabel(c.date)+' / '+(c.startTime?c.startTime+' Eastern Time':'time undecided'))}${dataRow('Location',[c.city,c.region,c.venue,c.venueType].filter(Boolean).join('\n'))}${dataRow('Program',e.program==='recurring'?`${e.requestedCadence} / ${e.commitmentPreference} commitment / ${e.billingPreference} billing (requested)`:'Single event')}${dataRow('Menu preferences',[e.menus.join('\n'),e.menuRecommendationRequested?'Team recommendation requested':''].filter(Boolean).join('\n')||'Team recommendation')}${dataRow('Beverage preference',e.beveragePreference==='zero'?'Entirely zero proof':e.beveragePreference==='mixed'?'Cocktails + mocktails':'Help choosing')}${dataRow('Add-on requests',e.addons.map(l=>lineLabel(l)+' / '+(l.status==='included'?'Included':l.status==='priced'?money(l.total):'Quoted separately')).join('\n')||'None selected')}${c.budget?dataRow('Budget preference',c.budget):''}${c.phone?dataRow('Phone',c.phone):''}${c.restrictions?dataRow('Ingredient requests',c.restrictions):''}${c.notes?dataRow('Organizer notes',c.notes):''}</dl>
     <div class="approval-price"><div><span>${esc(e.package)} / ${e.guests} guests</span><strong>${t.base===null?'Custom quote':money(t.base)}</strong></div>${t.priced.map(l=>`<div><span>${esc(lineLabel(l))}</span><strong>${money(l.total)}</strong></div>`).join('')}${t.scopeCosts.map(l=>`<div><span>${esc(l.name)}</span><span>${l.status==='priced'?money(l.total):esc(l.label)}</span></div>`).join('')}<div class="approval-total"><span>Subtotal before tax</span><span>${t.subtotal===null?'Custom quote':money(t.subtotal)}</span></div><div><span>Tax</span><span>To be confirmed</span></div>${t.pending.length?`<h3>Requests outside this subtotal</h3>${t.pending.map(l=>`<div><span>${esc(lineLabel(l))}</span><span>Quoted separately</span></div>`).join('')}`:''}<p class="approval-optional">${esc(A.estimateNote())}</p></div>
-    <h3>Included in the package baseline</h3><p>Two hours of service, Barsys machines, bartending, spirits, mixers, ice, cocktail and zero-proof options, setup and cleanup. Requested additional time is not included unless priced above. Package-specific menu, presentation and staffing scope need final confirmation.</p>
+    <h3>Included in the package baseline</h3><p>Two hours of service, Barsys machines, bartending, mixers, ice, cocktail and zero-proof options, setup and cleanup. Spirits are sourced through our liquor store partner, who invoices you directly. Requested additional time is not included unless priced above. Package-specific menu, presentation and staffing scope need final confirmation.</p>
     ${window.BarsysReadiness.summaryMarkup(d)}<div class="approval-next"><h3 style="margin-top:0">Next: confirm with the event team</h3><p>The Barsys team (${esc(C.email)}) confirms availability, final scope, ingredient requirements, unpriced requests, tax and terms with you.</p></div><div class="approval-footer">Planning summary generated in your browser. Not an invoice or a booking confirmation.</div>`;
   }
   function openSummary() {
@@ -184,56 +102,38 @@
     const html=`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src data:; style-src 'unsafe-inline'; script-src 'unsafe-inline'; form-action 'none'; base-uri 'none'"><title>Barsys | Event Planning Summary</title><style>${css}</style></head><body><div class="tools"><span>EVENT SUMMARY / NOT A BOOKING</span><button type="button" id="print">Print / save PDF</button></div><main class="approval-sheet">${approvalMarkup()}</main><script>document.getElementById('print').addEventListener('click',()=>window.print());</script></body></html>`;
     const url=URL.createObjectURL(new Blob([html],{type:'text/html'})),link=document.createElement('a');link.href=url;link.download='Barsys-Event-Summary.html';document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),4000);A.toast('Summary download requested. Check your browser downloads.');emit('summary_download_requested');
   }
-  $('#quick-form').addEventListener('submit',async event=>{event.preventDefault();if(quickStep===2)return;if(!validateQuick())return;if(get().details.date&&get().details.date<TODAY){quickStep=0;renderQuick();quickError('Choose a future date or leave it undecided.',$('#quick-date'));return;}
-    if(quickStep===1&&connected){const b=$('#quick-next');b.disabled=true;b.textContent=live?'Sending…':'Saving…';try{if(!window.BarsysInquiry)throw new Error('Not sent. Email '+C.email+'.');receipt=await window.BarsysInquiry.send();}catch(error){b.disabled=false;renderQuick();quickError(error.message||'Not sent. Please try again.');return;}b.disabled=false;quickStep=2;renderQuick(true);emit('inquiry_sent');return;}
-    quickStep++;renderQuick(true);emit(quickStep===2?'proposal_preview_created':'proposal_details_opened');});
-  $('#quick-back').addEventListener('click',()=>{if(quickStep>0){quickStep--;renderQuick(true);}});
-  $('#quick-reset').addEventListener('click',()=>{A.reset();receipt=null;quickStep=0;renderQuick(true);});
-  $('#quick-planner').addEventListener('input',event=>{
-    document.body.classList.add('plan-intent');
-    const f=event.target;
-    if(f.matches('[data-guest-input]')&&f.checkValidity()) $('#quick-error').hidden=true;
-    if(f.hasAttribute('data-quick-field')){A.setDetails({[f.dataset.quickField]:f.value});f.removeAttribute('aria-invalid');$('#quick-error').hidden=true;}
-  });
-  $('#quick-planner').addEventListener('change',event=>{
-    const f=event.target;
-    if(f.hasAttribute('data-quick-field'))A.setDetails({[f.dataset.quickField]:f.value});
-    if(f.id==='quick-occasion')A.setOccasion(f.value);
-    if(f.id==='quick-tier'){A.setTier(f.value);A.refreshAddonHosts();}
-    
-  });
-  document.addEventListener('barsys:state',updateQuickSummary);
-  document.addEventListener('barsys:route',e=>{if(quickStep===2)quickStep=0;openPlanner(e.detail);});
+  document.addEventListener('barsys:state',updateTasteAvailability);
+  document.addEventListener('barsys:open',e=>openPlanner(e.detail));
+  document.addEventListener('barsys:close',closePlanner);
+  document.addEventListener('barsys:opensheet',e=>{const id=e.detail;const opener=id==='customize'?$('#open-customize'):$('#open-estimate');if(opener&&!$('#'+id)?.open)opener.click();});
   document.addEventListener('barsys:collection',e=>openCollection(e.detail));
   document.addEventListener('click',e=>{
     const t=e.target.closest('button,a');if(!t)return;
-    if(t.matches('a[href="#proposal"]')){e.preventDefault();openPlanner('quick');return;}
+    if(t.matches('a[href="#proposal"]')){e.preventDefault();openPlanner();return;}
     if(t.id==='planner-close'){closePlanner();return;}
     if(t.matches('[data-adjust-guests], [data-package], [data-taste], #taste-add, #collection-add'))document.body.classList.add('plan-intent');
     if(t.hasAttribute('data-taste'))setTaste(t.dataset.taste);
     if(t.id==='taste-add'){
-      if(get().menus.includes(taste)){showRoute('quick',true);return;}
+      if(get().menus.includes(taste)){openPlanner();return;}
       if(A.addMenu(taste)){A.toast('Collection added to your event. Keep exploring or build your proposal.');emit('collection_added',{collection:taste});}
-      updateQuickSummary();
+      updateTasteAvailability();
     }
-    if(t.hasAttribute('data-plan-route'))showRoute(t.dataset.planRoute);
     if(t.hasAttribute('data-rich-menu'))openCollection(t.dataset.richMenu);
     if(t.hasAttribute('data-close-collection'))$('#collection-dialog').close();
-    if(t.id==='collection-add'&&collection){A.toggleMenu(collection);updateQuickSummary();}
+    if(t.id==='collection-add'&&collection){A.toggleMenu(collection);updateTasteAvailability();}
     if(t.hasAttribute('data-open-summary'))openSummary();
     if(t.hasAttribute('data-download-summary'))downloadSummary();
     if(t.hasAttribute('data-copy-summary'))A.copyPlan();
     if(t.id==='close-summary')$('#summary-dialog').close();
     if(t.id==='print-summary'){document.body.classList.add('printing-plan');window.print();}
-    if(t.id==='quick-summary-toggle'){const open=t.getAttribute('aria-expanded')!=='true';t.setAttribute('aria-expanded',String(open));$('.quick-summary').classList.toggle('expanded',open);}
-    if(t.id==='quick-edit'){quickStep=0;renderQuick(true);}
-    if(t.getAttribute('href')==='#planner')showRoute('full');
+    if(t.id==='resume-dock-open'){openPlanner();return;}
+    if(t.getAttribute('href')==='#planner')openPlanner();
   });
   window.addEventListener('afterprint',()=>document.body.classList.remove('printing-plan'));
   $('#collection-dialog').addEventListener('close',()=>{collection=null;if(dialogFocus?.isConnected)dialogFocus.focus({preventScroll:true});});
   $('#summary-dialog').addEventListener('close',()=>{document.body.classList.remove('printing-plan');if(summaryFocus?.isConnected)summaryFocus.focus({preventScroll:true});});
   for(const dialog of [$('#collection-dialog'),$('#summary-dialog')])dialog.addEventListener('click',e=>{const r=dialog.getBoundingClientRect();if(e.target===dialog&&(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom))dialog.close();});
-  window.addEventListener('hashchange',()=>{if(location.hash==='#planner')openPlanner('full');else if(location.hash==='#proposal')openPlanner('quick');});
+  window.addEventListener('hashchange',()=>{if(location.hash==='#planner'||location.hash==='#proposal')openPlanner();});
   document.addEventListener('keydown',e=>{
     if(!document.body.classList.contains('planner-focus')||document.querySelector('dialog[open]'))return;
     if(e.key==='Escape'){e.preventDefault();closePlanner();return;}
@@ -244,6 +144,6 @@
     if(e.shiftKey&&(document.activeElement===first||!targets.includes(document.activeElement))){e.preventDefault();last?.focus();}
     else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first?.focus();}
   });
-  renderQuick();setTaste('signature');if(location.hash==='#planner')showRoute('full');
-  window.BarsysV3=Object.freeze({getRoute:()=>route,getQuickStep:()=>quickStep,getTaste:()=>taste,summaryMarkup:approvalMarkup});
+  setTaste('signature');if(location.hash==='#planner'||location.hash==='#proposal')openPlanner();
+  window.BarsysV3=Object.freeze({getTaste:()=>taste,summaryMarkup:approvalMarkup});
 })();

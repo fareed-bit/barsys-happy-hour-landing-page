@@ -10,7 +10,9 @@
 .wizard-nav button[aria-current=step]{background:#111;color:white}.wizard-nav button:hover{border-color:#999}.wizard-nav button:focus-visible{outline:2px solid #111;outline-offset:2px}
 .v3-proposal .field-grid{gap:21px 17px}.v3-proposal .field label{font-size:13px;font-weight:600}.v3-proposal .field label small{font-size:10px;font-weight:400;color:#777;margin-left:3px}.v3-proposal .field input,.v3-proposal .field select,.v3-proposal .field textarea{font-size:16px;min-height:49px;border:1px solid #c8c8c8;border-radius:5px;background:white;color:#181818;padding:11px 12px;width:100%;max-width:100%}
 .v3-proposal .field input:focus,.v3-proposal .field select:focus,.v3-proposal .field textarea:focus{outline:2px solid #111;outline-offset:2px}.v3-proposal .field textarea{min-height:95px}.v3-proposal .field-hint{font-size:11px;line-height:1.6;color:#757575}.wizard-extra-fields{margin-top:26px}
-.v3-proposal .tier-choices{gap:11px}.v3-proposal .tier-choice{padding:20px 18px;gap:15px;border-radius:7px;min-height:105px}.v3-proposal .choice:has(input:checked){border-color:#171717;box-shadow:inset 0 0 0 1px #171717;background:#f6f6f6}.v3-proposal .choice:has(input:checked) .choice-check{border-color:#111}.v3-proposal .choice-title{font-size:18px;font-weight:650}.v3-proposal .choice-description{font-size:12px;line-height:1.6;max-width:290px}.v3-proposal .choice-price{font-size:29px;line-height:1.2}.v3-proposal .choice-price small{font-size:10px}
+.v3-proposal .tier-choices{gap:11px}.v3-proposal .tier-choice{padding:20px 18px;gap:15px;border-radius:7px;min-height:105px}.v3-proposal .choice:has(input:checked){border-color:#171717;box-shadow:inset 0 0 0 1px #171717;background:#f6f6f6;color:#171717}
+.v3-proposal .choice:has(input:checked) .choice-description{color:#5a5a5a}
+.v3-proposal .choice:has(input:checked) .choice-price small{color:#777}.v3-proposal .choice:has(input:checked) .choice-check{border-color:#111}.v3-proposal .choice-title{font-size:18px;font-weight:650}.v3-proposal .choice-description{font-size:12px;line-height:1.6;max-width:290px}.v3-proposal .choice-price{font-size:29px;line-height:1.2}.v3-proposal .choice-price small{font-size:10px}
 .wizard-notice{display:flex;gap:12px;padding:16px 17px;border:1px solid #dcdcdc;background:#f7f7f7;border-radius:5px;font-size:12px;line-height:1.7;color:#555;margin-top:23px}.wizard-notice .icon{width:17px;height:17px;margin-top:2px}
 .recurring-options{padding:21px;border:1px solid #ddd;margin-top:20px;border-radius:7px}.recurring-options>p:last-child{font-size:12px;margin-top:16px;line-height:1.6}.mini-heading{font-size:10px;letter-spacing:1.6px;margin-bottom:18px;color:#555}
 .beverage-options{display:flex;flex-wrap:wrap;gap:7px}.beverage-options button{padding:11px 14px;min-height:44px;border:1px solid #ccc;border-radius:25px;background:white;color:#444;font-size:12px}.beverage-options button[aria-pressed=true]{background:#111;color:#fff;border-color:#111}
@@ -139,3 +141,97 @@ body.planner-focus .route-switch{margin-bottom:16px}
  body.planner-focus .v3-proposal .quick-main,body.planner-focus .v3-proposal .planner-main{padding-top:22px}
  body.planner-focus #quick-content h3,body.planner-focus #step-content h3{font-size:34px;max-width:310px}
 }
+
+/* Unified 4-card planner (guests / package / location & date / your details) + Customize & Estimate
+   sheets + resume dock. Replaces the old two-route (Quick proposal / Customize everything) wizard
+   and its .quick-shell / .planner-shell / .route-switch layout, 2026-09-21. Reuses existing
+   .field / .choice.tier-choice / .addon-card / .wizard-menu-grid / .review-grid / .wizard-nav
+   components wherever possible; the rules below cover only genuinely new structure. */
+.v3-proposal .deck-top,.v3-proposal .deck,.v3-proposal .deck-bottom,.v3-proposal .keyboard-hint,.v3-proposal .local-notice{max-width:660px;margin-left:auto;margin-right:auto}
+.deck-top{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.deck-top-actions{display:flex;align-items:center;gap:14px;flex-shrink:0}
+#step-nav{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:0;padding-bottom:0;border-bottom:0;flex:1;min-width:200px}
+.customize-link{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-size:12px;font-weight:700;color:#222;background:#f2f2f2;border:1px solid #ddd;border-radius:30px;padding:8px 16px}
+.customize-link:hover{border-color:#111}
+.customize-link .icon{width:16px;height:16px}
+#custom-count{min-width:18px;padding:3px 6px;background:#111;color:#fff;border-radius:20px;text-align:center;font-size:10px;font-weight:700}
+.deck{position:relative;perspective:1600px;min-height:0;margin:26px auto}
+.stack-mid,.stack-back{pointer-events:none;position:absolute;border:1px solid #e2e2e2;border-radius:10px;background:#fcfcf9;left:9px;right:9px;top:10px;bottom:-8px}
+.stack-back{left:18px;right:18px;top:19px;bottom:-15px;background:#efefef}
+.flashcard{position:relative;border:1px solid #dedede;border-radius:9px;background:#fff;box-shadow:0 15px 44px #0000000d;overflow:hidden;min-height:420px}
+.flashcard form{height:100%}
+.flashcard.forward{animation:card-next .3s var(--ease)}
+.flashcard.backward{animation:card-prev .3s var(--ease)}
+.flashcard.flip{animation:card-flip .36s var(--ease)}
+@keyframes card-next{from{opacity:.15;transform:translateX(20px)}to{opacity:1;transform:none}}
+@keyframes card-prev{from{opacity:.15;transform:translateX(-20px)}to{opacity:1;transform:none}}
+@keyframes card-flip{0%{transform:rotateY(85deg) scale(.98);opacity:.25}55%{opacity:1}100%{transform:rotateY(0);opacity:1}}
+#step-content{padding:32px 36px 8px}
+.card-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:28px;margin-bottom:6px}
+.card-kicker{font-size:10px;letter-spacing:1.6px;color:#8f8f84;font-weight:700}
+.flip-link{display:flex;align-items:center;gap:7px;font-size:11px;font-weight:700;color:#555;min-height:36px}
+.flip-link .icon{width:14px;height:14px}
+.card-guest{text-align:center}
+.card-guest .card-meta{text-align:left}
+.stepper{display:flex;align-items:center;justify-content:center;gap:22px;margin:26px 0 14px}
+.stepper button{border:1px solid #ddd;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;flex-shrink:0}
+.stepper button:hover{background:#f2f2f2}
+.stepper input{border:0;text-align:center;background:none;font-size:60px;width:170px;max-width:60%;font-weight:700;letter-spacing:-2px;color:#111;-moz-appearance:textfield}
+.stepper input::-webkit-outer-spin-button,.stepper input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.stepper input.long-number{font-size:42px}
+.presets{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+.presets button{min-width:52px;min-height:40px;border:1px solid #ddd;border-radius:22px;font-size:12px}
+.presets button[aria-pressed=true]{background:#111;color:#fff;border-color:#111}
+.card-tip{font-size:11px;color:#888;text-align:center;margin-top:22px}
+.location-row{display:grid;grid-template-columns:minmax(0,1fr) 150px;gap:14px}
+.date-choices{display:flex;gap:9px;margin-top:8px}
+.date-choices button{min-height:42px;padding:10px 15px;font-size:12px;border:1px solid #ddd;border-radius:6px;flex:1}
+.date-choices button[aria-pressed=true]{background:#f2f0e8;border-color:#a89771}
+.date-field{margin-top:12px}
+.compact-review{border-top:1px solid #e3e3e3;margin-top:22px;padding-top:16px;display:flex;gap:12px;align-items:flex-start;justify-content:space-between}
+.compact-review p{font-size:12px;line-height:1.6;color:#333}
+.compact-review small{font-size:10px;color:#777;display:block;margin-top:3px}
+.compact-review button{font-size:11px;text-decoration:underline;text-underline-offset:3px;min-height:36px;flex-shrink:0;color:#333;background:none}
+.success-receipt{border-block:1px solid #e3e3e3;display:flex;justify-content:center;gap:26px;padding:16px 0;margin:16px 0;font-size:12px}
+.success-receipt span{display:grid;gap:6px;text-align:center}
+.success-receipt small{font-size:9px;letter-spacing:1px;color:#888}
+.deck-bottom{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-top:20px;border-top:1px solid #eee}
+.deck-estimate button{padding:0;text-align:left;min-height:44px;background:none}
+.deck-estimate button>span{display:flex;align-items:center;gap:5px;font-size:9px;letter-spacing:1.1px;color:#777}
+.deck-estimate .icon{width:12px;height:12px}
+.deck-estimate strong{font-size:23px;font-weight:700;letter-spacing:-.6px;display:block;margin-top:4px}
+.deck-estimate p{font-size:9px;color:#888;margin-top:4px}
+.deck-actions{display:flex;align-items:center;gap:16px}
+.back-button{display:flex;align-items:center;gap:6px;min-height:46px;font-size:12px;color:#555;padding:0 6px;background:none}
+.back-button .icon{transform:rotate(180deg);width:16px;height:16px}
+.keyboard-hint{display:flex;justify-content:center;gap:5px;align-items:center;font-size:9px;color:#999;margin-top:18px}
+.keyboard-hint kbd{font:inherit;font-size:9px;padding:3px 5px;border-radius:4px;border:1px solid #ddd;background:#fafafa}
+/* Sheets: slide-out panels for menus/add-ons/details and the estimate breakdown. */
+.sheet{position:fixed;inset:0 0 0 auto;margin:0;width:min(560px,100%);max-width:100%;height:100%;height:100dvh;max-height:none;background:#fff;overflow:hidden;border-left:1px solid #ddd;box-shadow:-10px 0 40px #0002;border-radius:0}
+.sheet[open]{display:flex;flex-direction:column}
+.sheet-header{padding:26px 28px 20px;display:flex;justify-content:space-between;gap:15px;align-items:center;border-bottom:1px solid #e5e5e5;flex-shrink:0}
+.sheet-header h2{font-size:25px;font-weight:700;letter-spacing:-.8px;line-height:1.15}
+.sheet-header .eyebrow{font-size:8px;margin-bottom:9px;color:#888}
+.sheet-tabs{display:flex;gap:7px;padding:15px 26px;border-bottom:1px solid #eee;flex-shrink:0}
+.sheet-tabs button{flex:1;min-height:40px;font-size:12px;border-radius:6px;background:#f4f4f4;color:#444}
+.sheet-tabs button[aria-pressed=true]{background:#111;color:#fff}
+.sheet-body{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;padding:22px 26px 28px;scrollbar-width:thin}
+.sheet-footer{padding:15px 26px max(15px,env(safe-area-inset-bottom));border-top:1px solid #eee;display:flex;justify-content:space-between;gap:15px;align-items:center;flex-shrink:0;background:#fafafa}
+.sheet-footer>span{font-size:11px;color:#777}
+.sheet-footer .button{min-height:44px;font-size:12px}
+/* Resume dock: sticky running total once the visitor has engaged and scrolled past the hero. */
+#resume-dock{position:fixed;z-index:60;bottom:20px;left:50%;transform:translateX(-50%);width:min(440px,calc(100% - 32px));padding:8px 8px 8px 18px;display:flex;justify-content:space-between;gap:14px;align-items:center;background:#111;color:#fff;border-radius:12px;box-shadow:0 12px 40px #0004}
+#resume-dock small{display:block;font-size:8px;color:#aaa;letter-spacing:1.4px;margin-bottom:4px}
+#resume-dock strong{font-size:13px;font-weight:700}
+#resume-dock .button{padding:11px 15px;min-height:40px;font-size:11px;background:#fff;color:#111;border-color:#fff}
+@media(max-width:650px){
+ .v3-proposal .deck-top,.v3-proposal .deck,.v3-proposal .deck-bottom,.v3-proposal .keyboard-hint,.v3-proposal .local-notice{max-width:none}
+ #step-content{padding:22px 18px 8px}
+ .flashcard{min-height:0}
+ .stepper input{font-size:44px;width:130px}
+ .location-row{grid-template-columns:1fr}
+ .sheet{width:100%}
+ .deck-bottom{flex-wrap:wrap}
+ #resume-dock{bottom:calc(10px + env(safe-area-inset-bottom));left:12px;right:12px;transform:none;width:auto}
+}
+@media(max-width:390px){.stepper{gap:12px}.presets button{min-width:44px}}
