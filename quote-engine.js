@@ -12,8 +12,12 @@
     return band?Math.round(band[1]*100)/100:null;
   }
   const packageUnitLabel = p => flatPackage(p)?'flat, per event':'/ guest';
-  // Flat packages bring their own bar, so they offer only the add-ons that still apply.
-  const packageAddons = (p,C=window.BARSYS) => C.addons.filter(a=>!p.addonIds||p.addonIds.includes(a.id));
+  // Both directions: a package may list the add-ons it takes, and an add-on may name the
+  // packages it belongs to. Either side left unset means "no restriction from here".
+  const packageAddons = (tier,C=window.BARSYS) => {
+    const p=C.packages[tier]||{};
+    return C.addons.filter(a=>(!p.addonIds||p.addonIds.includes(a.id))&&(!a.packageIds||a.packageIds.includes(tier)));
+  };
   const included = (item,state) => (item.includedIn||[]).includes(state.tier);
   const quantity = (item,state) => Math.max(0,Math.min(item.maxQuantity||1,Math.trunc(Number(state.addons?.[item.id]?.quantity)||0)));
   function line(item,state) {
@@ -35,7 +39,7 @@
     const eligible=reasons.length===0;
     const base=eligible?packagePrice(p,state.guests):null;
     if(eligible&&base===null)reasons.push(`Group size ${state.guests}: custom event scope required.`);
-    const lines=packageAddons(p,C).map(a=>line(a,state)).filter(l=>l.selected||l.status==='included');
+    const lines=packageAddons(state.tier,C).map(a=>line(a,state)).filter(l=>l.selected||l.status==='included');
     const pending=lines.filter(l=>l.selected&&l.status==='quote');
     const priced=lines.filter(l=>l.selected&&l.status==='priced');
     const addOnTotal=priced.reduce((sum,l)=>sum+Math.round(l.total*100),0)/100;

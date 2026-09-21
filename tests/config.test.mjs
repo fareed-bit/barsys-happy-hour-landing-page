@@ -88,3 +88,20 @@ test('every add-on lists what it includes',()=>{
     }
   }
 });
+
+// setHours and setAddon find the hourly by the extendsService flag, so each package needs
+// exactly one: none and the service-time dropdown charges nothing, two and they fight.
+test('every package offers exactly one add-on that extends service time',()=>{
+  const offered=tier=>c.addons.filter(a=>{
+    const p=c.packages[tier];
+    return (!p.addonIds||p.addonIds.includes(a.id))&&(!a.packageIds||a.packageIds.includes(tier));
+  });
+  for(const tier of Object.keys(c.packages)){
+    const hourly=offered(tier).filter(a=>a.extendsService);
+    assert.equal(hourly.length,1,`${tier} offers ${hourly.length} service-time add-ons: ${hourly.map(a=>a.id)}`);
+    assert.equal(hourly[0].unit,'hour',`${tier}'s service-time add-on must be priced by the hour`);
+  }
+  for(const a of c.addons)
+    for(const tier of a.packageIds||[])
+      assert.ok(Object.hasOwn(c.packages,tier),`${a.id} names unknown package ${tier}`);
+});

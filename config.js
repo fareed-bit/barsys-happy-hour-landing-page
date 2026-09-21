@@ -61,6 +61,7 @@ window.BARSYS = {
       ],
       "menuLimit": 0,
       "addonIds": [
+        "collins-hours",
         "branding",
         "photographer"
       ],
@@ -982,7 +983,29 @@ window.BARSYS = {
       "approved": true,
       "maxQuantity": 6,
       "unitLabel": "per additional hour",
-      "category": "service"
+      "category": "service",
+      "extendsService": true
+    },
+    {
+      "id": "collins-hours",
+      "name": "Additional service time",
+      "packageIds": [
+        "collins"
+      ],
+      "description": "Time on site beyond the two-hour baseline. An extra Collins hour is our team running the stations, not a full bar, and is priced accordingly.",
+      "includes": [
+        "Time on site beyond the two-hour baseline",
+        "Our team running the stations, not a full bar",
+        "Event-day extensions need separate authorization and availability"
+      ],
+      "icon": "clock",
+      "unit": "hour",
+      "price": 250,
+      "approved": true,
+      "maxQuantity": 6,
+      "unitLabel": "per additional hour",
+      "category": "service",
+      "extendsService": true
     },
     {
       "id": "spirits",

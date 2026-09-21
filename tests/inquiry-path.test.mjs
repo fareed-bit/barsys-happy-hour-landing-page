@@ -16,7 +16,7 @@ test('the deck runs guests, package, add-ons, location and details',()=>{
   assert.deepEqual(cardTitles,['Guests','Package','Add-ons','Location & date','Your details']);
   const card=app.match(/function addonsCard\(\)\{([^]*?)\n\}/)[1];
   assert.match(app,/const ESSENTIAL_ADDONS=\['beer-wine','extra-hours'\];/);
-  assert.match(card,/const offered=Q\.packageAddons\(C\.packages\[state\.tier\],C\);/);
+  assert.match(card,/const offered=Q\.packageAddons\(state\.tier,C\);/);
   assert.match(card,/RECOMMENDED ADD-ONS/);
   assert.match(card,/const scope=Q\.flatPackage\(C\.packages\[state\.tier\]\)\?'':window\.BarsysReadiness\.glasswareMarkup\(state,'detail'\)/);
   assert.match(card,/\$\{scope\}\$\{addonGrid\(essentials\)/);
