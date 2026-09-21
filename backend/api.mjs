@@ -1,4 +1,5 @@
 import {clientAddress} from './request-identity.mjs';
+import * as collins from './collins.mjs';
 import {retentionView,retentionChange} from './retention.mjs';
 import {createGmailSend} from './gmail-send.mjs';
 import {inquiryNotifications} from './notifications.mjs';
@@ -50,8 +51,15 @@ export function createAPI({store,local=true,staging=false,origin,auth,gmailFetch
      for(let page=0;page<5;page++){const rows=await store.list(100,offset);for(const d of rows){if(new Date(d.createdAt)<start)continue;const key=String(d.payload?.details?.company||d.payload?.details?.email||d.id).toLowerCase().trim();if(/synthetic|test only|do not fulfill|rehearsal/.test(key))continue;teams.add(key);}if(rows.length<100)break;offset+=100;}
      cached={at:now,teams:teams.size};pulseCache.set(store,cached);}
     send(200,{teamsThisMonth:cached.teams,month:new Date().toISOString().slice(0,7)});return true;}
-   if(req.method==='GET'&&path==='/api/status'){send(200,{enabled:true,mode,statuses,release:process.env.K_REVISION||process.env.STAGING_RELEASE||process.env.RELEASE_ID||'local'});return true;}
+   if(req.method==='GET'&&path==='/api/status'){send(200,{enabled:true,mode,statuses,collins:collins.configured(),release:process.env.K_REVISION||process.env.STAGING_RELEASE||process.env.RELEASE_ID||'local'});return true;}
    if(req.method==='GET'&&path==='/api/menu-policy'){send(200,publicPolicy((await store.getMenuPolicy())||defaultPolicy()));return true;}
+   if(req.method==='POST'&&path==='/api/collins/ask'){
+    await throttle(req);
+    if(!collins.configured())throw new HttpError(503,'Collins is not available in this environment.');
+    try{send(200,await collins.ask(await body(req)));}
+    catch(error){throw new HttpError(error.status||502,error.message||'Collins could not answer that right now.');}
+    return true;
+   }
    if(staging)await auth.require(req);
    if(req.method==='POST'&&path==='/api/inquiries'){
     await throttle(req);const key=req.headers['idempotency-key'];if(typeof key!=='string'||!/^[a-zA-Z0-9_-]{16,100}$/.test(key))throw new HttpError(400,'A valid submission key is required.');

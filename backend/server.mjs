@@ -23,7 +23,8 @@ const receiptFiles=createReceiptFiles({bucket:process.env.BARSYS_RECEIPT_BUCKET|
 const api=createAPI({store,local,staging,origin,auth,queueNotifications:process.env.BARSYS_BACKGROUND_EMAIL_ENABLED==='1',rehearsalMarker:process.env.BARSYS_EMAIL_REHEARSAL_MARKER||'',trustedProxyHops:Number(process.env.BARSYS_TRUSTED_PROXY_HOPS||0),receiptFiles});
 const mime={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.jpg':'image/jpeg','.jpeg':'image/jpeg','.png':'image/png','.svg':'image/svg+xml','.webp':'image/webp','.mp4':'video/mp4','.webm':'video/webm','.ico':'image/x-icon','.woff2':'font/woff2'};
 const seo=seoSettings({origin,indexing:process.env.BARSYS_INDEXING_ENABLED,staging,local});
-const runtime={mode:staging?'STAGING_TEST':local?'LOCAL_TEST':'LIVE',secure:!local};
+import * as collinsBridge from './collins.mjs';
+const runtime={mode:staging?'STAGING_TEST':local?'LOCAL_TEST':'LIVE',secure:!local,collins:collinsBridge.configured()};
 const server=http.createServer(async(req,res)=>{
  res.setHeader('Cache-Control','no-store');res.setHeader('X-Content-Type-Options','nosniff');res.setHeader('X-Frame-Options','DENY');res.setHeader('Referrer-Policy','same-origin');res.setHeader('X-Robots-Tag','noindex, nofollow');
  if(local&&![`localhost:${port}`,`127.0.0.1:${port}`].includes(req.headers.host)){res.writeHead(403);res.end('Invalid host');return;}
