@@ -46,3 +46,4 @@ body.sub-page .sub-closing p{margin:24px 0 0;color:#c9c8c0;font-size:14px;letter
  .site-header .nav-cta .icon{width:14px;height:14px}
 }
 @media(max-width:374px){.site-header .brand img{width:112px}.site-header .nav-cta{font-size:9px;padding:9px 10px;gap:6px}}
+.collins-intro{border-top:1px solid #ccc;margin-top:48px;padding-top:40px}

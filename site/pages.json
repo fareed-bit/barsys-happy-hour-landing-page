@@ -24,6 +24,12 @@
     "image": "/assets/tech/360-hero-hd.jpg"
   },
   {
+    "slug": "collins",
+    "title": "Collins",
+    "description": "Collins is the Barsys interactive bartender for New York City events: a flat fee per event rather than per guest, held to the menu you are pouring, with iPads, stands, staff on site and your branding included.",
+    "image": "/assets/tech/360-hero-hd.jpg"
+  },
+  {
     "slug": "mixlists",
     "title": "Find your first pour.",
     "description": "Explore the Barsys mixlist library for office happy hours in New York City. Package eligibility and final event menus are confirmed in the planner.",

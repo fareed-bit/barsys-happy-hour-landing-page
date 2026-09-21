@@ -44,6 +44,7 @@ window.BARSYS = {
       "description": "For clients, milestones and special occasions.",
       "features": [
         "5 fully curated cocktail menus",
+        "Collins interactive bartender included",
         "Dedicated event lead",
         "Premium bar presentation",
         "Spirits through our liquor partner"
@@ -1061,6 +1062,40 @@ window.BARSYS = {
       "maxQuantity": 1,
       "unitLabel": "per guest",
       "category": "drinks"
+    },
+    {
+      "id": "collins",
+      "name": "Collins interactive bartender",
+      "description": "A bartender your guests can talk to, held to the menu you are actually pouring. Three iPads and stands, one to two of our team on site, an interface themed to your brand, setup and breakdown. Flat fee per event rather than per guest. Included with Reserve.",
+      "icon": "spark",
+      "unit": "event",
+      "price": null,
+      "approved": false,
+      "maxQuantity": 1,
+      "unitLabel": "flat, per event",
+      "category": "details",
+      "includedIn": [
+        "reserve"
+      ],
+      "variantPrices": {
+        "s": { "price": 950, "approved": true },
+        "m": { "price": 1450, "approved": true },
+        "l": { "price": 1950, "approved": true }
+      },
+      "variants": [
+        [
+          "s",
+          "Up to 75 guests / 3 stations"
+        ],
+        [
+          "m",
+          "76-150 guests / 5 stations"
+        ],
+        [
+          "l",
+          "151-250 guests / 8 stations"
+        ]
+      ]
     },
     {
       "id": "photographer",
