@@ -57,6 +57,7 @@ window.BARSYS = {
       "menuLimit": 0,
       "bringsOwnBar": true,
       "guestsPerStation": 25,
+      "minimumFee": 1500,
       "addonIds": [
         "collins-hours",
         "branding",

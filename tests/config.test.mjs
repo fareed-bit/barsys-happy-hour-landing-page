@@ -98,3 +98,15 @@ test('every package offers exactly one add-on that extends service time',()=>{
     for(const tier of a.packageIds||[])
       assert.ok(Object.hasOwn(c.packages,tier),`${a.id} names unknown package ${tier}`);
 });
+
+// A minimum only means anything below the headcount where the rate overtakes it, and it must
+// sit inside the range the planner can quote, or it is either dead or always on.
+test('a package minimum fee bites below a real headcount inside the quotable range',()=>{
+  for(const [id,p] of Object.entries(c.packages)){
+    if(!Number.isFinite(p.minimumFee))continue;
+    assert.ok(p.minimumFee>0&&Number.isInteger(p.minimumFee),`${id} minimumFee must be whole dollars`);
+    const breakEven=p.minimumFee/p.rate;
+    assert.ok(breakEven>c.minGuests,`${id}'s minimum never applies: ${p.rate}/guest clears it by ${c.minGuests} guests`);
+    assert.ok(breakEven<c.maxGuests,`${id}'s minimum applies at every quotable size, so it is the price, not a floor`);
+  }
+});
