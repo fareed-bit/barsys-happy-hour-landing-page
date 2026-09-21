@@ -65,6 +65,8 @@ window.BARSYS = {
       ],
       "description": "For rooms that already have a bar.",
       "positioning": "Your bar, our AI bartender",
+      "badge": "NEW PACKAGE",
+      "tagline": "Photograph your bar. Collins builds the menu from what you actually have, with precise measurements and step-by-step guidance for whoever is pouring.",
       "howItWorks": "Upload a photo of your bar. Collins reads the ingredients you actually have and builds a menu around them and your preferences \u2014 with a stocked bar the combinations run deep. It gives the recipes with precise measurements, and walks you or your bartender through executing each one.",
       "features": [
         "Photograph your bar; Collins builds the menu from what is there",

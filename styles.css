@@ -44,3 +44,21 @@ html[data-hero-visible="true"] .mobile-book{transform:translateY(120%);visibilit
 
 /* Liquor-partner clarification note under the package intro (spirits sourced via partner liquor store, not Barsys). */
 .package-liquor-note{margin-top:10px;font-size:13px;line-height:1.6;color:#9a9a9a}
+/* Collins sits under the three tiers as a banner rather than a fourth card: it is a
+   different shape of product (no bar, no menus) and a per-guest rate that would invite
+   a straight comparison in the row. Gold marks it as new without restyling the tiers. */
+.package-banner{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px 32px;align-items:center;border:1px solid #c0982c;border-radius:8px;background:rgba(201,162,39,.055);padding:18px 22px;margin-top:22px}
+.package-banner .pb-row{grid-column:1;grid-row:1;display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;min-width:0}
+.package-banner .pb-badge{background:#c9a227;color:#1a1500;font-size:9px;font-weight:700;letter-spacing:1.4px;padding:5px 9px;border-radius:3px;white-space:nowrap}
+.package-banner h3{margin:0;font-size:23px;line-height:1.1;letter-spacing:-.5px;font-weight:700}
+.package-banner .pb-price{margin:0;font-size:15px;font-weight:600;white-space:nowrap}
+.package-banner .pb-price span{font-weight:400;opacity:.72}
+.package-banner .pb-meta{margin:0;font-size:12px;line-height:1.5;opacity:.75}
+.package-banner .pb-tagline{grid-column:1;grid-row:2;margin:0;font-size:13px;line-height:1.6;max-width:72ch;opacity:.86}
+.package-banner .pb-cta{grid-column:2;grid-row:1/span 2;align-self:center;white-space:nowrap;display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:11px 16px;background:transparent;color:inherit;font-family:inherit;cursor:pointer;border:1px solid currentColor;border-radius:5px;font-size:13px;font-weight:600;text-decoration:none}
+.package-banner .pb-cta .icon{width:14px;height:14px;fill:currentColor}
+@media(max-width:760px){
+ .package-banner{grid-template-columns:1fr;gap:12px;padding:16px}
+ .package-banner .pb-cta{grid-column:1;grid-row:auto;justify-self:start}
+ .package-banner h3{font-size:21px}
+}

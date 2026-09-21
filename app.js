@@ -203,7 +203,16 @@ function closeMobileNav(){$('#mobile-nav').hidden=true;$('.menu-toggle').setAttr
     $$('img[data-image]:not([data-initialized])', root).forEach(img => setImage(img, img.dataset.image));
   }
   function renderPackages() {
-    $('#package-grid').innerHTML = Object.entries(C.packages).map(([id, p], index) => `
+    const tiers = Object.entries(C.packages).filter(([, p]) => !Q.bringsOwnBar(p));
+    const banners = Object.entries(C.packages).filter(([, p]) => Q.bringsOwnBar(p));
+    $('#package-banner').innerHTML = banners.map(([id, p]) => `
+      <section class="package-banner" data-reveal><div class="pb-row">
+        <span class="pb-badge">${esc(p.badge)}</span><h3>${esc(p.name)}</h3>
+        <p class="pb-price">${dollars(p.rate)}<span> / guest</span></p>
+        <p class="pb-meta">${dollars(p.minimumFee)} minimum &middot; one iPad per ${p.guestsPerStation} guests &middot; your bar, your bartenders</p>
+      </div><p class="pb-tagline">${esc(p.tagline)}</p>
+      <button type="button" class="pb-cta" data-select-package="${id}">Choose ${esc(p.name)}${icon('arrow')}</button></section>`).join('');
+    $('#package-grid').innerHTML = tiers.map(([id, p], index) => `
       <article data-reveal class="package-card ${id}" aria-labelledby="package-${id}">
         <div class="package-top"><span class="package-type">${esc(p.positioning || `EXPERIENCE 0${index+1}`)}</span>${id === 'signature' ? `<span class="recommendation">${icon('spark')}THE SWEET SPOT</span>` : ''}</div>
         <h3 id="package-${id}">${esc(p.name)}</h3><p class="package-desc">${esc(p.description)}</p>

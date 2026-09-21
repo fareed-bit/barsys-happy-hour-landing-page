@@ -28,6 +28,9 @@ test('Guest limits and menu limits are internally consistent',()=>{
       assert.ok(Array.isArray(p.addonIds)&&p.addonIds.every(x=>c.addons.some(a=>a.id===x)),`${id} offers an unknown add-on`);
       assert.ok(Number.isInteger(p.guestsPerStation)&&p.guestsPerStation>0,`${id} needs a guests-per-station ratio`);
       assert.ok(typeof p.howItWorks==='string'&&p.howItWorks.length>0,`${id} needs a howItWorks line`);
+      assert.ok(typeof p.badge==='string'&&p.badge.length>0,`${id} renders as a banner and needs a badge`);
+      assert.ok(typeof p.tagline==='string'&&p.tagline.length>0,`${id} renders as a banner and needs a tagline`);
+      assert.ok(p.tagline.length<=200,`${id}'s banner tagline must stay short enough to keep the banner to two lines`);
     } else {
       assert.ok(p.menuLimit>0 && p.menuLimit<=c.menus.length);
     }
