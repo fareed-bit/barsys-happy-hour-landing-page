@@ -29,3 +29,17 @@
  .collins-ask .ca-form{flex-wrap:wrap}
  .collins-ask .ca-form .button{width:100%;justify-content:center}
 }
+
+/* Mood row, taken from ai.barsys.com: it opens on intent rather than a blank text box,
+   and `mood` is a context field the engine actually uses. Kept as quiet outline chips
+   rather than the Collins theatre treatment - this is the HappyHour page. */
+.collins-ask .ca-moods{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
+.collins-ask .ca-mood{border:1px solid #ddd;border-radius:20px;background:none;font-family:inherit;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#555;padding:9px 15px;min-height:44px;cursor:pointer}
+.collins-ask .ca-mood:hover{border-color:#999;color:#222}
+.collins-ask .ca-mood[aria-pressed="true"]{background:#151515;border-color:#151515;color:#f6f6f4}
+/* The reply is the page's voice, not a chat transcript — closer to how Collins sets its
+   own answers as display type than to a messaging bubble. */
+.collins-ask .ca-collins{background:none;padding:4px 0 8px;font-size:clamp(17px,1.9vw,21px);line-height:1.5;letter-spacing:-.2px;color:#141414;max-width:62ch}
+.collins-ask .ca-collins b{font-weight:650}
+.collins-ask .ca-you{font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:8px 13px}
+.collins-ask .ca-error{font-size:14px;line-height:1.6;color:#5f5f5f}

@@ -14,13 +14,14 @@
   const panel = $('#collins-ask');
   if (!panel) return;
   const log = $('#collins-log'), form = $('#collins-form'), input = $('#collins-input'),
-        send = $('#collins-send'), chips = $('#collins-chips');
+        send = $('#collins-send'), chips = $('#collins-chips'), moods = $('#collins-moods');
   const STARTERS = [
     'What batches well for 80 people?',
     'Something for a crowd that says they hate gin',
     'A zero-proof drink that still feels like a cocktail',
   ];
-  let sessionId, busy = false;
+  const MOODS = [['zero-proof','Zero proof'],['unwind','Unwind'],['celebrate','Celebrate'],['impress','Impress'],['explore','Explore']];
+  let sessionId, busy = false, mood = null;
 
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   /* The engine marks emphasis with * or ** and expects the client to render it. */
@@ -45,7 +46,8 @@
       .map(id => window.BARSYS?.menus?.find(m => m.id === id)?.name)
       .filter(Boolean);
     return {
-      zero: s?.beverage === 'zero',
+      zero: s?.beverage === 'zero' || mood === 'zero-proof',
+      mood,
       city: s?.details?.city?.trim() || null,
       tod: hour < 11 ? 'morning' : hour < 17 ? 'day' : hour < 22 ? 'evening' : 'night',
       ...(names.length ? { menu: names } : {}),
@@ -54,6 +56,10 @@
 
   function renderChips() {
     chips.innerHTML = STARTERS.map(q => `<button type="button" class="ca-chip">${esc(q)}</button>`).join('');
+  }
+  function renderMoods() {
+    moods.innerHTML = MOODS.map(([id, label]) =>
+      `<button type="button" class="ca-mood" data-mood="${id}" aria-pressed="${mood === id}">${esc(label)}</button>`).join('');
   }
 
   async function ask(question) {
@@ -87,11 +93,16 @@
   }
 
   form.addEventListener('submit', e => { e.preventDefault(); ask(input.value); });
+  moods.addEventListener('click', e => {
+    const b = e.target.closest('.ca-mood'); if (!b) return;
+    mood = mood === b.dataset.mood ? null : b.dataset.mood;
+    renderMoods();
+  });
   chips.addEventListener('click', e => { const b = e.target.closest('.ca-chip'); if (b) ask(b.textContent); });
 
   /* The server declares whether the bridge is reachable when it renders the page,
      so a build without Collins configured shows no control at all. Asked instead of
      told, this would be a blocked fetch and a CSP violation in the console on the
      static preview server, which serves the page with connect-src 'none'. */
-  if (window.BARSYS_RUNTIME?.collins) { renderChips(); panel.hidden = false; }
+  if (window.BARSYS_RUNTIME?.collins) { renderMoods(); renderChips(); panel.hidden = false; }
 })();
