@@ -46,4 +46,9 @@ body.sub-page .sub-closing p{margin:24px 0 0;color:#c9c8c0;font-size:14px;letter
  .site-header .nav-cta .icon{width:14px;height:14px}
 }
 @media(max-width:374px){.site-header .brand img{width:112px}.site-header .nav-cta{font-size:9px;padding:9px 10px;gap:6px}}
-.collins-intro{border-top:1px solid #ccc;margin-top:48px;padding-top:40px}
+.cards.cards-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:1100px){.cards.cards-4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.cards.cards-4{grid-template-columns:1fr}}
+.cards article .card-note{margin-top:14px}
+.cards article{display:flex;flex-direction:column}
+.cards article a{margin-top:auto;padding-top:30px}
