@@ -2,7 +2,7 @@
   {
     "slug": "packages",
     "title": "A package for your kind of gathering.",
-    "description": "Compare the Classic, Signature and Reserve office happy-hour packages from Barsys: per-guest rates, a two-hour service baseline and what each package includes.",
+    "description": "Compare the Classic, Signature, Reserve and Collins happy-hour packages from Barsys: per-guest rates for a Barsys bar, a flat fee for Collins on your own bar, and what each package includes.",
     "image": "/assets/tech/360-hero-hd.jpg"
   },
   {
@@ -26,7 +26,7 @@
   {
     "slug": "collins",
     "title": "Collins",
-    "description": "Collins is the Barsys interactive bartender for New York City events: a flat fee per event rather than per guest, held to the menu you are pouring, with iPads, stands, staff on site and your branding included.",
+    "description": "Collins is the Barsys AI bartender for New York City rooms that already have a bar: a flat fee per event rather than a rate per guest, held to the drinks list you are already pouring, with iPads, stands, staff on site and your branding included.",
     "image": "/assets/tech/360-hero-hd.jpg"
   },
   {

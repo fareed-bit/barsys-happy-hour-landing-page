@@ -15,9 +15,12 @@ const submitStep=cardTitles.length-1, successStep=cardTitles.length;
 test('the deck runs guests, package, add-ons, location and details',()=>{
   assert.deepEqual(cardTitles,['Guests','Package','Add-ons','Location & date','Your details']);
   const card=app.match(/function addonsCard\(\)\{([^]*?)\n\}/)[1];
-  assert.match(app,/const ESSENTIAL_ADDONS=\['collins','beer-wine'\];/);
+  assert.match(app,/const ESSENTIAL_ADDONS=\['beer-wine','extra-hours'\];/);
+  assert.match(card,/const offered=Q\.packageAddons\(C\.packages\[state\.tier\],C\);/);
   assert.match(card,/RECOMMENDED ADD-ONS/);
-  assert.match(card,/glasswareMarkup\(state,'detail'\)\}\$\{addonGrid\(essentials\)/);
+  assert.match(card,/const scope=Q\.flatPackage\(C\.packages\[state\.tier\]\)\?'':window\.BarsysReadiness\.glasswareMarkup\(state,'detail'\)/);
+  assert.match(card,/\$\{scope\}\$\{addonGrid\(essentials\)/);
+  assert.match(card,/if\(!essentials\.length\)return/);
   assert.match(card,/<details class="addon-more"[^]*?Other add-ons/);
   assert.match(card,/addonGrid\(others\)/);
   assert.match(app,/\[guestCard,packageCard,addonsCard,whenCard,contactCard,successCard\]\[step\]/);

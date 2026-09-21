@@ -4,6 +4,16 @@
 (() => {
   'use strict';
   const units = {event:()=>1,guest:s=>s.guests,hour:(s,q)=>q,quantity:(s,q)=>q,guest_quantity:(s,q)=>s.guests*q};
+  const packageBand = (p,guests) => (p.bands||[]).find(([max])=>guests<=max)||null;
+  const flatPackage = p => Array.isArray(p.bands);
+  function packagePrice(p,guests){
+    if(!flatPackage(p))return Number.isFinite(p.rate)?Math.round(p.rate*100)*guests/100:null;
+    const band=packageBand(p,guests);
+    return band?Math.round(band[1]*100)/100:null;
+  }
+  const packageUnitLabel = p => flatPackage(p)?'flat, per event':'/ guest';
+  // Flat packages bring their own bar, so they offer only the add-ons that still apply.
+  const packageAddons = (p,C=window.BARSYS) => C.addons.filter(a=>!p.addonIds||p.addonIds.includes(a.id));
   const included = (item,state) => (item.includedIn||[]).includes(state.tier);
   const quantity = (item,state) => Math.max(0,Math.min(item.maxQuantity||1,Math.trunc(Number(state.addons?.[item.id]?.quantity)||0)));
   function line(item,state) {
@@ -23,8 +33,9 @@
     const city=(state.details.city||'').trim().toLowerCase();
     if(state.details.region!=='NY'||!['new york','new york city','nyc','manhattan','brooklyn','queens','bronx','the bronx','staten island'].includes(city))reasons.push('Location: service scope and travel to be confirmed.');
     const eligible=reasons.length===0;
-    const base=eligible?Math.round(p.rate*100)*state.guests/100:null;
-    const lines=C.addons.map(a=>line(a,state)).filter(l=>l.selected||l.status==='included');
+    const base=eligible?packagePrice(p,state.guests):null;
+    if(eligible&&base===null)reasons.push(`Group size ${state.guests}: custom event scope required.`);
+    const lines=packageAddons(p,C).map(a=>line(a,state)).filter(l=>l.selected||l.status==='included');
     const pending=lines.filter(l=>l.selected&&l.status==='quote');
     const priced=lines.filter(l=>l.selected&&l.status==='priced');
     const addOnTotal=priced.reduce((sum,l)=>sum+Math.round(l.total*100),0)/100;
@@ -42,10 +53,10 @@
     const glassIncluded=(C.quoteRules.glassware?.includedIn||[]).includes(state.tier);
     const mode=state.details.glassware||'discuss';
     const scopeCosts=[{id:'delivery',name:'Delivery & venue access',optional:false,status:deliveryApproved?'priced':'quote',label:deliveryApproved?'Approved event cost':'To be confirmed',total:deliveryApproved?Math.round(delivery.price*100)/100:null}];
-    scopeCosts.push({id:'glassware',name:'Glassware',optional:false,status:glassIncluded?'included':mode==='venue'?'venue-supplied':'quote',label:glassIncluded?'Included in package':mode==='venue'?'Venue supplies / review':mode==='barsys'?'Barsys supply / quote':'Scope undecided',total:glassIncluded?0:null});
+    if(!flatPackage(p))scopeCosts.push({id:'glassware',name:'Glassware',optional:false,status:glassIncluded?'included':mode==='venue'?'venue-supplied':'quote',label:glassIncluded?'Included in package':mode==='venue'?'Venue supplies / review':mode==='barsys'?'Barsys supply / quote':'Scope undecided',total:glassIncluded?0:null});
     const eventCostTotal=scopeCosts.filter(l=>l.status==='priced').reduce((n,l)=>n+Math.round(l.total*100),0)/100;
     const subtotal=base===null?null:(Math.round(base*100)+Math.round(addOnTotal*100)+Math.round(eventCostTotal*100))/100;
-    return {rate:p.rate,base,addOnTotal,subtotal,tax:null,total:null,currency:'USD',eligible,scopeCosts,eventCostTotal,lines,pending,priced,reasons,menuLimit:allowed,menuOverflow:overflow,unavailableMenus,includedMenus:p.menuLimit,requiresQuote:!eligible||pending.length>0||reasons.length>0||scopeCosts.some(l=>l.status==='quote'),serviceHours:state.serviceHours,includedServiceHours:rules.includedServiceHours,taxLabel:'Tax to be confirmed',version:rules.version};
+    return {rate:p.rate,packageUnitLabel:packageUnitLabel(p),flatPackage:flatPackage(p),base,addOnTotal,subtotal,tax:null,total:null,currency:'USD',eligible,scopeCosts,eventCostTotal,lines,pending,priced,reasons,menuLimit:allowed,menuOverflow:overflow,unavailableMenus,includedMenus:p.menuLimit,requiresQuote:!eligible||pending.length>0||reasons.length>0||scopeCosts.some(l=>l.status==='quote'),serviceHours:state.serviceHours,includedServiceHours:rules.includedServiceHours,taxLabel:'Tax to be confirmed',version:rules.version};
   }
-  window.BarsysQuote=Object.freeze({calculate,line,included,quantity,menuAvailable});
+  window.BarsysQuote=Object.freeze({calculate,line,included,quantity,menuAvailable,packagePrice,packageUnitLabel,packageAddons,flatPackage});
 })();

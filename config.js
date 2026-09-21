@@ -44,13 +44,40 @@ window.BARSYS = {
       "description": "For clients, milestones and special occasions.",
       "features": [
         "5 fully curated cocktail menus",
-        "Collins interactive bartender included",
         "Dedicated event lead",
         "Premium bar presentation",
         "Spirits through our liquor partner"
       ],
       "detail": "An elevated hospitality experience with premium bartenders, artisan mixers, a dedicated event lead and custom branding options. Spirits are sourced through our liquor store partner, who invoices you directly. Final scope is confirmed in your proposal.",
       "positioning": "The high-touch event"
+    },
+    "collins": {
+      "name": "Collins",
+      "rate": null,
+      "bands": [
+        [75, 2250],
+        [150, 3250],
+        [250, 4500]
+      ],
+      "menuLimit": 0,
+      "addonIds": [
+        "branding",
+        "photographer"
+      ],
+      "description": "For rooms that already have a bar.",
+      "positioning": "Your bar, our AI bartender",
+      "features": [
+        "An AI bartender your guests can talk to",
+        "Held to the drinks list you are already pouring",
+        "iPads and stands, scaled to the room",
+        "Our team on site to run the stations",
+        "Interface themed to your brand"
+      ],
+      "serviceFeatures": [
+        "2 hours on site, setup and breakdown included",
+        "No Barsys bar, machines or menus \u2014 your bar stays yours"
+      ],
+      "detail": "Collins on your own bar: iPads and stands scaled to the room, our team on site to run them, an interface themed to your brand, setup and breakdown. We do not pour \u2014 your bar, your bartenders and your spirits stay yours. A flat fee per event rather than a rate per guest."
     }
   },
   "assets": {
@@ -1093,50 +1120,6 @@ window.BARSYS = {
       "maxQuantity": 1,
       "unitLabel": "per guest",
       "category": "drinks"
-    },
-    {
-      "id": "collins",
-      "name": "Collins interactive bartender",
-      "description": "A bartender your guests can talk to, held to the menu you are actually pouring. Three iPads and stands, one to two of our team on site, an interface themed to your brand, setup and breakdown. Flat fee per event rather than per guest. Included with Reserve.",
-      "includes": [
-        "Three iPads and stands",
-        "One to two of our team on site",
-        "Your menu, locked — nothing outside it is recommended",
-        "Interface themed to your brand",
-        "Setup and breakdown"
-      ],
-      "icon": "spark",
-      "unit": "event",
-      "price": null,
-      "approved": false,
-      "maxQuantity": 1,
-      "unitLabel": "flat, per event",
-      "category": "details",
-      "includedIn": [
-        "reserve"
-      ],
-      "includedNotes": {
-        "reserve": "Collins is included with Reserve at every event size \u2014 iPads, stands, our team on site and your branding, at no additional charge."
-      },
-      "variantPrices": {
-        "s": { "price": 950, "approved": true },
-        "m": { "price": 1450, "approved": true },
-        "l": { "price": 1950, "approved": true }
-      },
-      "variants": [
-        [
-          "s",
-          "Up to 75 guests / 3 stations"
-        ],
-        [
-          "m",
-          "76-150 guests / 5 stations"
-        ],
-        [
-          "l",
-          "151-250 guests / 8 stations"
-        ]
-      ]
     },
     {
       "id": "photographer",
