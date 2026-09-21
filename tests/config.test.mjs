@@ -61,3 +61,16 @@ test('every add-on included with a package explains the inclusion for that packa
       assert.ok(a.includedNotes[tier].trim().length>0,`${a.id} has an empty includedNote for ${tier}`);
     }
 });
+
+// Add-on cards render includes[] as a bullet list; an add-on without one silently falls
+// back to its description paragraph, which is the layout this replaced.
+test('every add-on lists what it includes',()=>{
+  for(const a of c.addons){
+    assert.ok(Array.isArray(a.includes)&&a.includes.length>=2,`${a.id} has no includes list`);
+    for(const item of a.includes){
+      assert.equal(typeof item,'string');
+      assert.ok(item.trim().length>0,`${a.id} has an empty include`);
+      assert.ok(!item.trim().endsWith('.'),`${a.id} include should not end in a period: ${item}`);
+    }
+  }
+});

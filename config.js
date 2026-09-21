@@ -944,6 +944,11 @@ window.BARSYS = {
       "id": "extra-hours",
       "name": "Additional service time",
       "description": "Request additional time before booking. Event-day extensions require separate authorization and staff availability; no overtime rate is assumed here.",
+      "includes": [
+        "Service time beyond the two-hour baseline",
+        "Requested and priced before booking",
+        "Event-day extensions need separate authorization and availability"
+      ],
       "icon": "clock",
       "unit": "hour",
       "price": 500,
@@ -956,6 +961,12 @@ window.BARSYS = {
       "id": "spirits",
       "name": "Spirits & liquor order",
       "description": "Barsys isn't a liquor retailer, so spirits aren't part of our package price. Tell us your preference here and we'll place the order with our liquor store partner on your behalf — they confirm and invoice you directly, separate from your Barsys package. That confirmed order is one of the steps that locks in your date.",
+      "includes": [
+        "We place the order with our liquor store partner",
+        "They confirm and invoice you directly",
+        "Separate from your Barsys package price",
+        "A confirmed order helps lock in your date"
+      ],
       "icon": "glass",
       "unit": "guest",
       "price": null,
@@ -982,6 +993,10 @@ window.BARSYS = {
       "id": "extra-mixlists",
       "name": "Additional mixlists",
       "description": "More collections beyond your package allowance. Add capacity here, then choose your favorites.",
+      "includes": [
+        "Collections beyond your package allowance",
+        "Add capacity here, then choose your favorites"
+      ],
       "icon": "plus",
       "unit": "guest_quantity",
       "price": 5,
@@ -994,6 +1009,10 @@ window.BARSYS = {
       "id": "garnishes",
       "name": "Premium garnish presentation",
       "description": "An upgraded garnish treatment. Package garnish inclusions are never charged twice.",
+      "includes": [
+        "An upgraded garnish treatment",
+        "Package garnish inclusions are never charged twice"
+      ],
       "icon": "leaf",
       "unit": "guest",
       "price": 8,
@@ -1014,6 +1033,10 @@ window.BARSYS = {
       "id": "branding",
       "name": "Branded event touches",
       "description": "Choose a branding request. Production, quantities and any custom artwork are scoped separately.",
+      "includes": [
+        "Your choice of branding request",
+        "Production, quantities and custom artwork scoped separately"
+      ],
       "icon": "spark",
       "unit": "event",
       "price": null,
@@ -1043,6 +1066,10 @@ window.BARSYS = {
       "id": "beer-wine",
       "name": "Beer & wine service",
       "description": "Request beer and wine alongside the bar. Selection, quantities and service need confirmation.",
+      "includes": [
+        "Beer and wine served alongside the bar",
+        "Selection, quantities and service confirmed with you"
+      ],
       "icon": "glass",
       "unit": "guest",
       "price": 15,
@@ -1055,6 +1082,10 @@ window.BARSYS = {
       "id": "zero-station",
       "name": "Dedicated zero-proof station",
       "description": "A separate alcohol-free station, beyond the mocktail options already in every package.",
+      "includes": [
+        "A separate alcohol-free station",
+        "Beyond the mocktail options already in every package"
+      ],
       "icon": "leaf",
       "unit": "guest",
       "price": 12,
@@ -1067,6 +1098,13 @@ window.BARSYS = {
       "id": "collins",
       "name": "Collins interactive bartender",
       "description": "A bartender your guests can talk to, held to the menu you are actually pouring. Three iPads and stands, one to two of our team on site, an interface themed to your brand, setup and breakdown. Flat fee per event rather than per guest. Included with Reserve.",
+      "includes": [
+        "Three iPads and stands",
+        "One to two of our team on site",
+        "Your menu, locked — nothing outside it is recommended",
+        "Interface themed to your brand",
+        "Setup and breakdown"
+      ],
       "icon": "spark",
       "unit": "event",
       "price": null,
@@ -1104,6 +1142,10 @@ window.BARSYS = {
       "id": "photographer",
       "name": "Event photographer",
       "description": "Dedicated coverage beyond any station or drink photos agreed for the event. Coverage, deliverables, permissions and availability are confirmed separately.",
+      "includes": [
+        "Dedicated coverage beyond station or drink photos",
+        "Coverage, deliverables and permissions confirmed separately"
+      ],
       "icon": "camera",
       "unit": "event",
       "price": null,
