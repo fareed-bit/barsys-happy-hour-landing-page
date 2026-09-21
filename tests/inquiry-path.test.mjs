@@ -18,7 +18,7 @@ test('the deck runs guests, package, add-ons, location and details',()=>{
   assert.match(app,/const ESSENTIAL_ADDONS=\['beer-wine','extra-hours'\];/);
   assert.match(card,/const offered=Q\.packageAddons\(state\.tier,C\);/);
   assert.match(card,/RECOMMENDED ADD-ONS/);
-  assert.match(card,/const scope=Q\.flatPackage\(C\.packages\[state\.tier\]\)\?'':window\.BarsysReadiness\.glasswareMarkup\(state,'detail'\)/);
+  assert.match(card,/const scope=Q\.bringsOwnBar\(C\.packages\[state\.tier\]\)\?'':window\.BarsysReadiness\.glasswareMarkup\(state,'detail'\)/);
   assert.match(card,/\$\{scope\}\$\{addonGrid\(essentials\)/);
   assert.match(card,/if\(!essentials\.length\)return/);
   assert.match(card,/<details class="addon-more"[^]*?Other add-ons/);

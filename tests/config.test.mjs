@@ -22,20 +22,13 @@ test('27 distinct collections and eight featured collections',()=>{
 test('Guest limits and menu limits are internally consistent',()=>{
   assert.ok(c.defaultGuests>=c.minGuests && c.defaultGuests<=c.maxGuests);
   for(const [id,p] of Object.entries(c.packages)){
-    const flat=Array.isArray(p.bands);
-    assert.notEqual(flat,Number.isFinite(p.rate),`${id} must be per-guest or banded, not both or neither`);
-    if(flat){
-      assert.equal(p.menuLimit,0,`${id} is flat-fee and brings its own drinks list, so it carries no Barsys menus`);
-      let previous=0;
-      for(const [max,price] of p.bands){
-        assert.ok(Number.isInteger(max)&&max>previous,`${id} bands must ascend by guest ceiling`);
-        assert.ok(price>0&&Number.isInteger(price),`${id} band prices must be whole dollars`);
-        previous=max;
-      }
-      assert.equal(previous,c.maxGuests,`${id}'s top band must end where instant quotes end (${c.maxGuests})`);
+    assert.ok(p.rate>0 && Number.isInteger(p.rate),`${id} needs a whole-dollar per-guest rate`);
+    if(p.bringsOwnBar){
+      assert.equal(p.menuLimit,0,`${id} brings its own bar, so it carries no Barsys menus`);
       assert.ok(Array.isArray(p.addonIds)&&p.addonIds.every(x=>c.addons.some(a=>a.id===x)),`${id} offers an unknown add-on`);
+      assert.ok(Number.isInteger(p.guestsPerStation)&&p.guestsPerStation>0,`${id} needs a guests-per-station ratio`);
+      assert.ok(typeof p.howItWorks==='string'&&p.howItWorks.length>0,`${id} needs a howItWorks line`);
     } else {
-      assert.ok(p.rate>0 && Number.isInteger(p.rate));
       assert.ok(p.menuLimit>0 && p.menuLimit<=c.menus.length);
     }
   }

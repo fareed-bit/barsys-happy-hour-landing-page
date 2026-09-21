@@ -53,13 +53,10 @@ window.BARSYS = {
     },
     "collins": {
       "name": "Collins",
-      "rate": null,
-      "bands": [
-        [75, 2250],
-        [150, 3250],
-        [250, 4500]
-      ],
+      "rate": 45,
       "menuLimit": 0,
+      "bringsOwnBar": true,
+      "guestsPerStation": 25,
       "addonIds": [
         "collins-hours",
         "branding",
@@ -67,18 +64,20 @@ window.BARSYS = {
       ],
       "description": "For rooms that already have a bar.",
       "positioning": "Your bar, our AI bartender",
+      "howItWorks": "Upload a photo of your bar. Collins reads the ingredients you actually have and builds a menu around them and your preferences \u2014 with a stocked bar the combinations run deep. It gives the recipes with precise measurements, and walks you or your bartender through executing each one.",
       "features": [
+        "Photograph your bar; Collins builds the menu from what is there",
+        "Recipes with precise measurements, not suggestions",
+        "Guides you or your bartender through the execution",
         "An AI bartender your guests can talk to",
-        "Held to the drinks list you are already pouring",
-        "iPads and stands, scaled to the room",
-        "Our team on site to run the stations",
         "Interface themed to your brand"
       ],
       "serviceFeatures": [
+        "One iPad and stand per 25 guests, with our team to run them",
         "2 hours on site, setup and breakdown included",
         "No Barsys bar, machines or menus \u2014 your bar stays yours"
       ],
-      "detail": "Collins on your own bar: iPads and stands scaled to the room, our team on site to run them, an interface themed to your brand, setup and breakdown. We do not pour \u2014 your bar, your bartenders and your spirits stay yours. A flat fee per event rather than a rate per guest."
+      "detail": "Collins on your own bar. Photograph what you are pouring and Collins builds a custom menu from the ingredients you actually have, with precise measurements and step-by-step guidance for whoever is making the drinks. One iPad and stand per 25 guests, our team on site to run them, an interface themed to your brand, setup and breakdown. We do not pour \u2014 your bar, your bartenders and your spirits stay yours."
     }
   },
   "assets": {

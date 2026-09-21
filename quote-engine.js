@@ -4,14 +4,10 @@
 (() => {
   'use strict';
   const units = {event:()=>1,guest:s=>s.guests,hour:(s,q)=>q,quantity:(s,q)=>q,guest_quantity:(s,q)=>s.guests*q};
-  const packageBand = (p,guests) => (p.bands||[]).find(([max])=>guests<=max)||null;
-  const flatPackage = p => Array.isArray(p.bands);
-  function packagePrice(p,guests){
-    if(!flatPackage(p))return Number.isFinite(p.rate)?Math.round(p.rate*100)*guests/100:null;
-    const band=packageBand(p,guests);
-    return band?Math.round(band[1]*100)/100:null;
-  }
-  const packageUnitLabel = p => flatPackage(p)?'flat, per event':'/ guest';
+  const packagePrice = (p,guests) => Number.isFinite(p.rate)?Math.round(p.rate*100)*guests/100:null;
+  // A package that brings its own bar supplies no Barsys glassware, menus or machines.
+  const bringsOwnBar = p => p.bringsOwnBar===true;
+  const stations = (p,guests) => p.guestsPerStation?Math.ceil(guests/p.guestsPerStation):null;
   // Both directions: a package may list the add-ons it takes, and an add-on may name the
   // packages it belongs to. Either side left unset means "no restriction from here".
   const packageAddons = (tier,C=window.BARSYS) => {
@@ -57,10 +53,10 @@
     const glassIncluded=(C.quoteRules.glassware?.includedIn||[]).includes(state.tier);
     const mode=state.details.glassware||'discuss';
     const scopeCosts=[{id:'delivery',name:'Delivery & venue access',optional:false,status:deliveryApproved?'priced':'quote',label:deliveryApproved?'Approved event cost':'To be confirmed',total:deliveryApproved?Math.round(delivery.price*100)/100:null}];
-    if(!flatPackage(p))scopeCosts.push({id:'glassware',name:'Glassware',optional:false,status:glassIncluded?'included':mode==='venue'?'venue-supplied':'quote',label:glassIncluded?'Included in package':mode==='venue'?'Venue supplies / review':mode==='barsys'?'Barsys supply / quote':'Scope undecided',total:glassIncluded?0:null});
+    if(!bringsOwnBar(p))scopeCosts.push({id:'glassware',name:'Glassware',optional:false,status:glassIncluded?'included':mode==='venue'?'venue-supplied':'quote',label:glassIncluded?'Included in package':mode==='venue'?'Venue supplies / review':mode==='barsys'?'Barsys supply / quote':'Scope undecided',total:glassIncluded?0:null});
     const eventCostTotal=scopeCosts.filter(l=>l.status==='priced').reduce((n,l)=>n+Math.round(l.total*100),0)/100;
     const subtotal=base===null?null:(Math.round(base*100)+Math.round(addOnTotal*100)+Math.round(eventCostTotal*100))/100;
-    return {rate:p.rate,packageUnitLabel:packageUnitLabel(p),flatPackage:flatPackage(p),base,addOnTotal,subtotal,tax:null,total:null,currency:'USD',eligible,scopeCosts,eventCostTotal,lines,pending,priced,reasons,menuLimit:allowed,menuOverflow:overflow,unavailableMenus,includedMenus:p.menuLimit,requiresQuote:!eligible||pending.length>0||reasons.length>0||scopeCosts.some(l=>l.status==='quote'),serviceHours:state.serviceHours,includedServiceHours:rules.includedServiceHours,taxLabel:'Tax to be confirmed',version:rules.version};
+    return {rate:p.rate,bringsOwnBar:bringsOwnBar(p),stations:stations(p,state.guests),base,addOnTotal,subtotal,tax:null,total:null,currency:'USD',eligible,scopeCosts,eventCostTotal,lines,pending,priced,reasons,menuLimit:allowed,menuOverflow:overflow,unavailableMenus,includedMenus:p.menuLimit,requiresQuote:!eligible||pending.length>0||reasons.length>0||scopeCosts.some(l=>l.status==='quote'),serviceHours:state.serviceHours,includedServiceHours:rules.includedServiceHours,taxLabel:'Tax to be confirmed',version:rules.version};
   }
-  window.BarsysQuote=Object.freeze({calculate,line,included,quantity,menuAvailable,packagePrice,packageUnitLabel,packageAddons,flatPackage});
+  window.BarsysQuote=Object.freeze({calculate,line,included,quantity,menuAvailable,packagePrice,packageAddons,bringsOwnBar,stations});
 })();
