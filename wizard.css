@@ -279,3 +279,9 @@ body.planner-focus .route-switch{margin-bottom:16px}
 .addon-includes .icon{width:13px;height:13px;flex-shrink:0;margin-top:3px;color:#222}
 .addon-card .addon-note{font-size:11px;line-height:1.65;color:#727272;margin:0 0 16px}
 @media(max-width:650px){.addon-includes{font-size:12px;gap:8px;margin-bottom:14px}}
+
+/* The unit sat inline against the total, so "$5,500" ran straight into "$55 / guest".
+   Stack it under the number and right-align the pair. */
+.choice-price{display:flex;flex-direction:column;align-items:flex-end;gap:4px;text-align:right}
+.choice-price small{display:block;line-height:1.4}
+@media(max-width:420px){.choice-price small{white-space:normal}}
