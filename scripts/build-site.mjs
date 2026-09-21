@@ -50,6 +50,7 @@ function page(slug,title,description,body,image=null,intro=description){
 <link href="/styles.css" rel="stylesheet"/>
 <link href="/v3.css" rel="stylesheet"/>
 <link href="/site/site.css" rel="stylesheet"/>
+<script defer src="/site/site-nav.js"></script>
 </head>
 <body class="sub-page">
 ${sprite}
@@ -257,6 +258,7 @@ function blogPost(slug,title,description,body,image,publishedDate){
 <link href="/styles.css" rel="stylesheet"/>
 <link href="/v3.css" rel="stylesheet"/>
 <link href="/site/site.css" rel="stylesheet"/>
+<script defer src="/site/site-nav.js"></script>
 </head>
 <body class="sub-page blog-post">
 ${sprite}
@@ -664,6 +666,7 @@ blogPost('zero-proof-mocktail-bar-office-event',
 .blog-body ul{line-height:1.7}
 .blog-back{padding:2rem 0;opacity:.7}
 </style>
+<script defer src="/site/site-nav.js"></script>
 </head>
 <body class="sub-page blog-index">
 ${sprite}
