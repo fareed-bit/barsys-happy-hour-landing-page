@@ -1,54 +1,94 @@
 /* Ask Collins — sits inside the drinks section, in the site's own voice and palette.
    Nothing here borrows the ai.barsys.com theatre treatment: this is one quiet panel
    on a marketing page, not a takeover. */
-.collins-ask{border:1px solid #d8d8d8;border-radius:10px;background:#fff;padding:26px 24px;margin-top:38px;max-width:820px}
-.collins-ask .ca-head{margin-bottom:18px}
-.collins-ask .eyebrow{font-size:9px;letter-spacing:1.3px;color:#666;margin:0 0 10px}
-.collins-ask h3{font-size:clamp(21px,2.4vw,27px);line-height:1.15;letter-spacing:-.5px;margin:0 0 10px;font-weight:700}
-.collins-ask .ca-lede{font-size:13px;line-height:1.7;color:#5f5f5f;margin:0;max-width:64ch}
-.collins-ask .ca-log{display:grid;gap:10px;margin:0 0 14px}
-.collins-ask .ca-log:empty{margin:0}
-.collins-ask .ca-msg{font-size:14px;line-height:1.65;padding:11px 14px;border-radius:9px;max-width:88%}
-.collins-ask .ca-you{justify-self:end;background:#151515;color:#f6f6f4}
-.collins-ask .ca-collins{justify-self:start;background:#f2f2f0;color:#1b1b1b}
-.collins-ask .ca-collins b{font-weight:700}
-.collins-ask .ca-pending{color:#7a7a7a;font-style:italic}
-.collins-ask .ca-error{background:#fff;border:1px solid #d8d8d8;color:#5f5f5f}
-.collins-ask .ca-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
-.collins-ask .ca-chip{border:1px solid #ddd;border-radius:20px;background:none;font-family:inherit;font-size:12px;color:#333;padding:9px 14px;min-height:44px;cursor:pointer}
-.collins-ask .ca-chip:hover{background:#f4f4f2;border-color:#bbb}
-.collins-ask .ca-form{display:flex;gap:10px;align-items:stretch}
-.collins-ask .ca-form input{flex:1;min-width:0;font-family:inherit;font-size:14px;padding:12px 14px;min-height:46px;border:1px solid #ccc;border-radius:7px;background:#fff;color:#151515}
-.collins-ask .ca-form input:focus-visible{outline:2px solid #151515;outline-offset:1px}
-.collins-ask .ca-form .button{min-height:46px;flex-shrink:0;display:inline-flex;align-items:center;gap:8px;padding:12px 20px}
-.collins-ask .ca-form .button[disabled]{opacity:.55;cursor:progress}
-.collins-ask .ca-foot{font-size:11px;line-height:1.6;color:#8a8a8a;margin:14px 0 0}
+.collins-drawer-legacy{border:1px solid #d8d8d8;border-radius:10px;background:#fff;padding:26px 24px;margin-top:38px;max-width:820px}
+.collins-drawer .ca-head{margin-bottom:18px}
+.collins-drawer .eyebrow{font-size:9px;letter-spacing:1.3px;color:#666;margin:0 0 10px}
+.collins-drawer h3{font-size:clamp(21px,2.4vw,27px);line-height:1.15;letter-spacing:-.5px;margin:0 0 10px;font-weight:700}
+.collins-drawer .ca-lede{font-size:13px;line-height:1.7;color:#5f5f5f;margin:0;max-width:64ch}
+.collins-drawer .ca-log{display:grid;gap:10px;margin:0 0 14px}
+.collins-drawer .ca-log:empty{margin:0}
+.collins-drawer .ca-msg{font-size:14px;line-height:1.65;padding:11px 14px;border-radius:9px;max-width:88%}
+.collins-drawer .ca-you{justify-self:end;background:#151515;color:#f6f6f4}
+.collins-drawer .ca-collins{justify-self:start;background:#f2f2f0;color:#1b1b1b}
+.collins-drawer .ca-collins b{font-weight:700}
+.collins-drawer .ca-pending{color:#7a7a7a;font-style:italic}
+.collins-drawer .ca-error{background:#fff;border:1px solid #d8d8d8;color:#5f5f5f}
+.collins-drawer .ca-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.collins-drawer .ca-chip{border:1px solid #ddd;border-radius:20px;background:none;font-family:inherit;font-size:12px;color:#333;padding:9px 14px;min-height:44px;cursor:pointer}
+.collins-drawer .ca-chip:hover{background:#f4f4f2;border-color:#bbb}
+.collins-drawer .ca-form{display:flex;gap:10px;align-items:stretch}
+.collins-drawer .ca-form input{flex:1;min-width:0;font-family:inherit;font-size:14px;padding:12px 14px;min-height:46px;border:1px solid #ccc;border-radius:7px;background:#fff;color:#151515}
+.collins-drawer .ca-form input:focus-visible{outline:2px solid #151515;outline-offset:1px}
+.collins-drawer .ca-form .button{min-height:46px;flex-shrink:0;display:inline-flex;align-items:center;gap:8px;padding:12px 20px}
+.collins-drawer .ca-form .button[disabled]{opacity:.55;cursor:progress}
+.collins-drawer .ca-foot{font-size:11px;line-height:1.6;color:#8a8a8a;margin:14px 0 0}
 @media(max-width:650px){
- .collins-ask{padding:20px 17px;margin-top:28px}
- .collins-ask .ca-msg{max-width:94%;font-size:13px}
- .collins-ask .ca-form{flex-wrap:wrap}
- .collins-ask .ca-form .button{width:100%;justify-content:center}
+ .collins-drawer-legacy{padding:20px 17px;margin-top:28px}
+ .collins-drawer .ca-msg{max-width:94%;font-size:13px}
+ .collins-drawer .ca-form{flex-wrap:wrap}
+ .collins-drawer .ca-form .button{width:100%;justify-content:center}
 }
 
 /* Mood row, taken from ai.barsys.com: it opens on intent rather than a blank text box,
    and `mood` is a context field the engine actually uses. Kept as quiet outline chips
    rather than the Collins theatre treatment - this is the HappyHour page. */
-.collins-ask .ca-moods{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
-.collins-ask .ca-mood{border:1px solid #ddd;border-radius:20px;background:none;font-family:inherit;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#555;padding:9px 15px;min-height:44px;cursor:pointer}
-.collins-ask .ca-mood:hover{border-color:#999;color:#222}
-.collins-ask .ca-mood[aria-pressed="true"]{background:#151515;border-color:#151515;color:#f6f6f4}
+.collins-drawer .ca-moods{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
+.collins-drawer .ca-mood{border:1px solid #ddd;border-radius:20px;background:none;font-family:inherit;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#555;padding:9px 15px;min-height:44px;cursor:pointer}
+.collins-drawer .ca-mood:hover{border-color:#999;color:#222}
+.collins-drawer .ca-mood[aria-pressed="true"]{background:#151515;border-color:#151515;color:#f6f6f4}
 /* The reply is the page's voice, not a chat transcript — closer to how Collins sets its
    own answers as display type than to a messaging bubble. */
-.collins-ask .ca-collins{background:none;padding:4px 0 8px;font-size:clamp(17px,1.9vw,21px);line-height:1.5;letter-spacing:-.2px;color:#141414;max-width:62ch}
-.collins-ask .ca-collins b{font-weight:650}
-.collins-ask .ca-you{font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:8px 13px}
-.collins-ask .ca-error{font-size:14px;line-height:1.6;color:#5f5f5f}
+.collins-drawer .ca-collins{background:none;padding:4px 0 8px;font-size:clamp(17px,1.9vw,21px);line-height:1.5;letter-spacing:-.2px;color:#141414;max-width:62ch}
+.collins-drawer .ca-collins b{font-weight:650}
+.collins-drawer .ca-you{font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:8px 13px}
+.collins-drawer .ca-error{font-size:14px;line-height:1.6;color:#5f5f5f}
 
 /* Photograph the bar — the mechanic the Collins package actually sells. */
-.collins-ask .ca-photo{display:inline-flex;align-items:center;gap:8px;flex-shrink:0;min-height:46px;padding:12px 16px;border:1px solid #ccc;border-radius:7px;background:none;font-family:inherit;font-size:13px;font-weight:600;color:#333;cursor:pointer}
-.collins-ask .ca-photo:hover{background:#f4f4f2;border-color:#999}
-.collins-ask .ca-photo[disabled]{opacity:.55;cursor:progress}
-.collins-ask .ca-photo .icon{width:15px;height:15px;fill:currentColor}
-.collins-ask .ca-line{display:block}
-.collins-ask .ca-line+.ca-line{margin-top:10px}
-@media(max-width:650px){.collins-ask .ca-photo{width:100%;justify-content:center;order:2}}
+.collins-drawer .ca-photo{display:inline-flex;align-items:center;gap:8px;flex-shrink:0;min-height:46px;padding:12px 16px;border:1px solid #ccc;border-radius:7px;background:none;font-family:inherit;font-size:13px;font-weight:600;color:#333;cursor:pointer}
+.collins-drawer .ca-photo:hover{background:#f4f4f2;border-color:#999}
+.collins-drawer .ca-photo[disabled]{opacity:.55;cursor:progress}
+.collins-drawer .ca-photo .icon{width:15px;height:15px;fill:currentColor}
+.collins-drawer .ca-line{display:block}
+.collins-drawer .ca-line+.ca-line{margin-top:10px}
+@media(max-width:650px){.collins-drawer .ca-photo{width:100%;justify-content:center;order:2}}
+
+/* ---- Collins drawer -------------------------------------------------------
+   Same access pattern as ai.barsys.com: a jigger mark opens a panel from the
+   right rather than a section buried in the page. Triggers stay hidden until
+   the server says the bridge is reachable. */
+.collins-trigger,.collins-fab{display:none}
+.collins-trigger:not([hidden]){display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;flex-shrink:0;border:1px solid rgba(255,255,255,.35);border-radius:50%;background:none;color:inherit;cursor:pointer;margin-right:10px}
+.collins-trigger:hover{border-color:currentColor}
+.collins-trigger .icon{width:17px;height:17px;fill:currentColor}
+.collins-fab:not([hidden]){display:inline-flex;align-items:center;gap:11px;position:fixed;right:22px;bottom:22px;z-index:60;padding:13px 19px 13px 15px;border:1px solid #2a2a2a;border-radius:40px;background:#151515;color:#f6f6f4;font-family:inherit;cursor:pointer;box-shadow:0 8px 28px rgba(0,0,0,.22);text-align:left}
+.collins-fab:hover{background:#000}
+.collins-fab .icon{width:19px;height:19px;fill:currentColor;flex-shrink:0}
+.collins-fab span{display:grid;font-size:13px;font-weight:650;line-height:1.25}
+.collins-fab small{font-weight:400;font-size:11px;opacity:.72}
+body.collins-open{overflow:hidden}
+.collins-scrim:not([hidden]){position:fixed;inset:0;z-index:70;background:rgba(10,10,10,.45)}
+.collins-drawer:not([hidden]){position:fixed;top:0;right:0;z-index:80;width:min(520px,100%);height:100dvh;display:flex;flex-direction:column;background:#faf9f6;color:#151515;border-left:1px solid #ddd;box-shadow:-18px 0 44px rgba(0,0,0,.16)}
+.cd-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 20px;border-bottom:1px solid #e2e2df;flex-shrink:0}
+.cd-mark{display:flex;align-items:center;gap:9px;margin:0;font-size:11px;letter-spacing:.22em;font-weight:600}
+.cd-mark .icon{width:17px;height:17px;fill:currentColor}
+.cd-close{width:44px;height:44px;display:grid;place-items:center;border:1px solid #ddd;border-radius:50%;background:none;cursor:pointer;color:inherit}
+.cd-close:hover{background:#f0f0ed}
+.cd-close .icon{width:14px;height:14px;fill:currentColor}
+.cd-body{flex:1;overflow-y:auto;padding:22px 20px 8px}
+.collins-drawer h2{font-size:clamp(28px,4.4vw,38px);line-height:1.08;letter-spacing:-1px;font-weight:700;margin:6px 0 12px}
+.collins-drawer h2 em{font-style:italic;font-weight:600}
+.cd-sub{font-size:14px;line-height:1.6;color:#5f5f5f;margin:0 0 20px}
+.cd-actions{display:grid;gap:10px;margin-bottom:26px}
+.cd-action{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:56px;padding:14px 18px;border:1px solid #ccc;border-radius:30px;background:none;font-family:inherit;font-size:15px;font-weight:600;color:#151515;cursor:pointer;text-align:left}
+.cd-action:hover{border-color:#151515;background:#f2f2f0}
+.cd-action .icon{width:16px;height:16px;fill:currentColor;flex-shrink:0}
+.cd-direction{margin:0 0 10px}
+.collins-drawer .ca-form{padding:14px 20px;border-top:1px solid #e2e2df;background:#faf9f6;flex-shrink:0}
+.collins-drawer .ca-foot{padding:0 20px 16px;margin:0;flex-shrink:0}
+.collins-drawer .ca-photo{padding:0;width:46px;justify-content:center}
+@media(max-width:560px){
+ .collins-drawer:not([hidden]){width:100%;border-left:0}
+ .collins-fab:not([hidden]){right:14px;bottom:14px;padding:11px 16px 11px 13px}
+ .collins-fab small{display:none}
+}

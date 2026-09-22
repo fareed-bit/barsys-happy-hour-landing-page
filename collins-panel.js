@@ -11,16 +11,14 @@
 (() => {
   'use strict';
   const $ = (s, r = document) => r.querySelector(s);
-  const panel = $('#collins-ask');
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const panel = $('#collins-drawer'), scrim = $('.collins-scrim');
   if (!panel) return;
+  const triggers = $$('[data-collins-open]');
   const log = $('#collins-log'), form = $('#collins-form'), input = $('#collins-input'),
         send = $('#collins-send'), chips = $('#collins-chips'), moods = $('#collins-moods'),
         photo = $('#collins-photo'), photoBtn = $('#collins-photo-btn');
-  const STARTERS = [
-    'What batches well for 80 people?',
-    'Something for a crowd that says they hate gin',
-    'A zero-proof drink that still feels like a cocktail',
-  ];
+  const STARTERS = ['What can I make?', 'Build me a menu', 'Help me choose'];
   const MOODS = [['zero-proof','Zero proof'],['unwind','Unwind'],['celebrate','Celebrate'],['impress','Impress'],['explore','Explore']];
   let sessionId, busy = false, mood = null;
 
@@ -143,6 +141,28 @@
     }
   }
 
+  let opener = null;
+  function openDrawer() {
+    opener = document.activeElement;
+    panel.hidden = false; scrim.hidden = false;
+    document.body.classList.add('collins-open');
+    triggers.forEach(t => t.setAttribute('aria-expanded', 'true'));
+    requestAnimationFrame(() => input.focus({ preventScroll: true }));
+  }
+  function closeDrawer() {
+    panel.hidden = true; scrim.hidden = true;
+    document.body.classList.remove('collins-open');
+    triggers.forEach(t => t.setAttribute('aria-expanded', 'false'));
+    if (opener?.isConnected) opener.focus({ preventScroll: true });
+  }
+  triggers.forEach(t => t.addEventListener('click', openDrawer));
+  $$('[data-collins-close]').forEach(t => t.addEventListener('click', closeDrawer));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !panel.hidden) closeDrawer(); });
+  panel.addEventListener('click', e => {
+    const a = e.target.closest('[data-ask]'); if (a) { ask(a.dataset.ask); return; }
+    if (e.target.closest('[data-collins-photo]')) photo.click();
+  });
+
   photoBtn.addEventListener('click', () => photo.click());
   photo.addEventListener('change', () => readShelf(photo.files?.[0]));
   form.addEventListener('submit', e => { e.preventDefault(); ask(input.value); });
@@ -157,5 +177,5 @@
      so a build without Collins configured shows no control at all. Asked instead of
      told, this would be a blocked fetch and a CSP violation in the console on the
      static preview server, which serves the page with connect-src 'none'. */
-  if (window.BARSYS_RUNTIME?.collins) { renderMoods(); renderChips(); panel.hidden = false; }
+  if (window.BARSYS_RUNTIME?.collins) { renderMoods(); renderChips(); triggers.forEach(t => { t.hidden = false; }); }
 })();
