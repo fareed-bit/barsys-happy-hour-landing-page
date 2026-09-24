@@ -21,6 +21,21 @@
   const STARTERS = ['What can I make?', 'Build me a menu', 'Help me choose'];
   const MOODS = [['zero-proof','Zero proof'],['unwind','Unwind'],['celebrate','Celebrate'],['impress','Impress'],['explore','Explore']];
   let sessionId, busy = false, mood = null;
+  /* In-tab-only conversation memory: the server threads no history of its
+     own (each call is otherwise stateless — sessionId only drives
+     fallback-line rotation and rate limiting, never recall), so this tab
+     resends its own recent turns each call. Capped to match the server's
+     own MAX_HISTORY_TURNS (app/lib/collins-history.ts, collins-events repo)
+     so nothing sent here is trimmed unexpectedly server-side. Lost on
+     reload/close by design — this is "remember what you told me this
+     sitting," not durable cross-visit memory. */
+  const MAX_HISTORY = 8;
+  const history = [];
+  function pushHistory(role, text) {
+    if (!text) return;
+    history.push({ role, text: String(text) });
+    if (history.length > MAX_HISTORY) history.splice(0, history.length - MAX_HISTORY);
+  }
 
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   /* The engine marks emphasis with * or ** and expects the client to render it. */
@@ -72,13 +87,15 @@
       const res = await fetch('/api/collins/ask', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ message: question, context: context(), ...(sessionId ? { sessionId } : {}) }),
+        body: JSON.stringify({ message: question, context: context(), history, ...(sessionId ? { sessionId } : {}) }),
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(data.error || 'Collins could not answer that right now.');
       sessionId = data.sessionId || sessionId;
       pending.classList.remove('ca-pending');
       pending.innerHTML = rich(data.reply);
+      pushHistory('guest', question);
+      pushHistory('collins', data.reply);
       if (data.followups?.length) {
         chips.innerHTML = data.followups.map(q => `<button type="button" class="ca-chip">${esc(q)}</button>`).join('');
         chips.hidden = false;
@@ -122,7 +139,7 @@
       const image = await downscale(file);
       const res = await fetch('/api/collins/vision', {
         method: 'POST', headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ image, context: context(), ...(sessionId ? { sessionId } : {}) }),
+        body: JSON.stringify({ image, context: context(), history, ...(sessionId ? { sessionId } : {}) }),
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(data.error || 'Collins could not read that photo.');
@@ -130,6 +147,8 @@
       const lines = [data.title, data.vibe, data.say, data.text].filter(Boolean);
       pending.classList.remove('ca-pending');
       pending.innerHTML = lines.map(l => `<span class="ca-line">${rich(l)}</span>`).join('');
+      pushHistory('guest', 'Sent a photo of the bar');
+      pushHistory('collins', lines.join(' '));
       chips.innerHTML = ['What can I make from this?', 'What am I missing for a crowd?']
         .map(q => `<button type="button" class="ca-chip">${esc(q)}</button>`).join('');
       chips.hidden = false;

@@ -78,6 +78,32 @@ function cleanContext(input) {
   };
 }
 
+/* In-tab conversation history, so Collins can answer things like "what did
+ * I just tell you" within one sitting. Same class of data as `message`
+ * itself (the guest's own words on this open page, this sitting) — not a
+ * fact being injected on this bridge's behalf, so it is not the thing the
+ * SCOPE, MEASURED note above is warning against. Bounded and re-narrowed
+ * here the same defensive way cleanContext() bounds its own inputs: a
+ * client cannot widen what gets forwarded beyond role/text pairs, cannot
+ * send more than MAX_HISTORY_TURNS of them, and cannot send an
+ * individually oversized turn. The collins-events engine (app/lib/
+ * collins-history.ts) re-narrows again on arrival — this is defense in
+ * depth, not the only gate. */
+const MAX_HISTORY_TURNS = 8;
+const MAX_HISTORY_TEXT = 500;
+function cleanHistory(input) {
+  if (!Array.isArray(input)) return [];
+  const out = [];
+  for (const v of input) {
+    if (!v || typeof v !== 'object') continue;
+    const role = v.role === 'guest' || v.role === 'collins' ? v.role : null;
+    const text = typeof v.text === 'string' ? v.text.trim().slice(0, MAX_HISTORY_TEXT) : '';
+    if (!role || !text) continue;
+    out.push({ role, text });
+  }
+  return out.slice(-MAX_HISTORY_TURNS);
+}
+
 /* Photo read. The image arrives as a data: URL already downscaled by the client -
  * this only bounds it and forwards. The engine returns a card whose shape varies by
  * mode; we pass through the text fields it is documented to carry and drop the rest
@@ -127,7 +153,13 @@ export async function ask(payload) {
   if (!message) { const e = new Error('Ask Collins a question first.'); e.status = 400; throw e; }
   if (message.length > MAX_MESSAGE) { const e = new Error(`Keep it under ${MAX_MESSAGE} characters.`); e.status = 400; throw e; }
   const sessionId = typeof payload?.sessionId === 'string' && /^[\w-]{1,100}$/.test(payload.sessionId) ? payload.sessionId : undefined;
-  const body = JSON.stringify({ message, context: cleanContext(payload?.context), ...(sessionId ? { sessionId } : {}) });
+  const history = cleanHistory(payload?.history);
+  const body = JSON.stringify({
+    message,
+    context: cleanContext(payload?.context),
+    ...(history.length ? { history } : {}),
+    ...(sessionId ? { sessionId } : {}),
+  });
 
   const call = async cookie => fetchWithTimeout(`${BASE}/api/collins/ask`, {
     method: 'POST',

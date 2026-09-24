@@ -61,6 +61,44 @@ test('only the fields the engine accepts are forwarded', async () => {
   assert.equal(sent.message, 'something smoky', 'the question is forwarded as asked');
 });
 
+test('conversation history is forwarded, bounded and narrowed — not injected, just relayed', async () => {
+  // Session finding 2026-09-24: the client (collins-panel.js) started resending
+  // its own recent turns so Collins can answer "what did I just tell you";
+  // this bridge used to reconstruct its outbound body from a fixed field list
+  // and would have silently dropped `history` the same way it already drops
+  // anything not in cleanContext's allow-list, breaking the fix end-to-end
+  // without any error anywhere in the chain.
+  const m = await load({COLLINS_API_URL: 'https://collins.example', PUBLIC_ORIGIN: 'https://events.example'});
+  const calls = stubFetch(url => url.endsWith('/api/age') ? ageOk() : askOk());
+  const longText = 'x'.repeat(700);
+  const tooMany = Array.from({length: 12}, (_, i) => ({role: 'guest', text: `turn-${i}`}));
+  await m.ask({
+    message: 'what should I pour',
+    history: [
+      ...tooMany,
+      {role: 'guest', text: longText},
+      {role: 'bartender', text: 'not a real role, dropped'},
+      {role: 'collins', text: 42},
+      null,
+      {role: 'collins', text: 'Try a batched negroni.'},
+    ],
+  });
+  const sent = JSON.parse(calls.at(-1).init.body);
+  assert.ok(Array.isArray(sent.history), 'history must reach the outbound call');
+  assert.ok(sent.history.length <= 8, 'history is capped, not resent in full');
+  assert.ok(sent.history.every(h => h.text.length <= 500), 'an oversized turn is truncated, not forwarded whole');
+  assert.ok(sent.history.every(h => h.role === 'guest' || h.role === 'collins'), 'a bad role is dropped, not passed through');
+  assert.equal(sent.history.at(-1).text, 'Try a batched negroni.', 'the most recent real turns survive the cap, not the oldest');
+});
+
+test('no history sent means no history field on the wire (byte-identical to before this feature)', async () => {
+  const m = await load({COLLINS_API_URL: 'https://collins.example', PUBLIC_ORIGIN: 'https://events.example'});
+  const calls = stubFetch(url => url.endsWith('/api/age') ? ageOk() : askOk());
+  await m.ask({message: 'hi'});
+  const sent = JSON.parse(calls.at(-1).init.body);
+  assert.equal('history' in sent, false, 'a caller sending no history must not grow the outbound payload');
+});
+
 test('the age affirmation is minted once and reused, and re-minted once on refusal', async () => {
   const m = await load({COLLINS_API_URL: 'https://collins.example', PUBLIC_ORIGIN: 'https://events.example'});
   let asks = 0;
