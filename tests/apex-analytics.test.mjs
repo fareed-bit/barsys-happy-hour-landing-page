@@ -9,6 +9,12 @@ test('all public pages install the opt-in controller exactly once without a refe
   const html=readFileSync(new URL('../'+file,import.meta.url),'utf8');
   assert.equal(html.split(controller).length-1,1,file);
   assert.ok(html.includes(`src="${controller}" referrerpolicy="no-referrer"`),file);
+  const policy=html.match(/<meta[^>]*content="([^"]+)"[^>]*http-equiv="Content-Security-Policy"/i)?.[1];
+  assert.ok(policy,file+' must define its security policy');
+  const directives=Object.fromEntries(policy.split(';').map(p=>p.trim().split(/\s+/)).filter(p=>p[0]).map(([name,...values])=>[name,values]));
+  assert.ok(directives['script-src'].includes('https://apex.barsys.com'),file+' controller and SDK allowed');
+  assert.deepEqual(directives['connect-src'],path==='/'?["'self'",'https://apex.barsys.com']:['https://apex.barsys.com'],file+' exact ingest origin');
+  assert.ok(!directives['script-src'].some(v=>v==='*'||v==='https:'),file+' no broad script permission');
   assert.ok(!html.includes('apexEnableAnalytics('),'Only the consent controller may enable tracking');
  }
 });

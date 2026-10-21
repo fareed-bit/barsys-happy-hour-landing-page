@@ -43,7 +43,7 @@ function page(slug,title,description,body,image=null,intro=description){
 <meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="noindex,nofollow" name="robots"/><meta content="#080808" name="theme-color"/>
 <meta content="${esc(description)}" name="description"/>
-<meta content="default-src 'self' data: blob:; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' data: blob:; frame-src 'none'; connect-src 'none'; form-action 'none'; object-src 'none'; base-uri 'none'" http-equiv="Content-Security-Policy"/>
+<meta content="default-src 'self' data: blob:; script-src 'self' https://apex.barsys.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' data: blob:; frame-src 'none'; connect-src https://apex.barsys.com; form-action 'none'; object-src 'none'; base-uri 'none'" http-equiv="Content-Security-Policy"/>
 <title>${esc(title)} | Barsys</title>
 <meta property="og:title" content="${esc(title)} | Barsys"><meta property="og:description" content="${esc(description)}"><meta property="og:type" content="website"><meta property="og:image" content="${esc(heroImg)}">
 <link href="/assets/brand-mark.png" rel="icon"/>
@@ -103,7 +103,7 @@ writeFileSync(`site/${slug}.html`,`<!DOCTYPE html>
 <meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="noindex,nofollow" name="robots"/><meta content="#080808" name="theme-color"/>
 <meta content="${esc(description)}" name="description"/>
-<meta content="default-src 'self' data: blob:; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' data: blob:; frame-src 'none'; connect-src 'none'; form-action 'none'; object-src 'none'; base-uri 'none'" http-equiv="Content-Security-Policy"/>
+<meta content="default-src 'self' data: blob:; script-src 'self' https://apex.barsys.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' data: blob:; frame-src 'none'; connect-src https://apex.barsys.com; form-action 'none'; object-src 'none'; base-uri 'none'" http-equiv="Content-Security-Policy"/>
 <title>${esc(title)} | Barsys</title>
 <meta property="og:title" content="${esc(title)} | Barsys"><meta property="og:description" content="${esc(description)}"><meta property="og:type" content="website"><meta property="og:image" content="/assets/tech/360-hero-hd.jpg">
 <link href="/assets/brand-mark.png" rel="icon"/><link href="/styles.css" rel="stylesheet"/><link href="/v3.css" rel="stylesheet"/><link href="/technology.css" rel="stylesheet"/>
@@ -252,7 +252,7 @@ function blogPost(slug,title,description,body,image,publishedDate){
 <meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="index,follow" name="robots"/><meta content="#080808" name="theme-color"/>
 <meta content="${esc(description)}" name="description"/>
-<meta content="default-src 'self' data: blob:; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' data: blob:; frame-src 'none'; connect-src 'none'; form-action 'none'; object-src 'none'; base-uri 'none'" http-equiv="Content-Security-Policy"/>
+<meta content="default-src 'self' data: blob:; script-src 'self' https://apex.barsys.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' data: blob:; frame-src 'none'; connect-src https://apex.barsys.com; form-action 'none'; object-src 'none'; base-uri 'none'" http-equiv="Content-Security-Policy"/>
 <title>${esc(title)} | Barsys</title>
 <meta property="og:title" content="${esc(title)} | Barsys"><meta property="og:description" content="${esc(description)}"><meta property="og:type" content="article"><meta property="og:image" content="${esc(image)}"><meta property="article:published_time" content="${esc(publishedDate)}">
 <link href="/assets/brand-mark.png" rel="icon"/>
@@ -646,7 +646,7 @@ blogPost('zero-proof-mocktail-bar-office-event',
 <meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="index,follow" name="robots"/><meta content="#080808" name="theme-color"/>
 <meta content="${esc(indexDesc)}" name="description"/>
-<meta content="default-src 'self' data: blob:; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' data: blob:; frame-src 'none'; connect-src 'none'; form-action 'none'; object-src 'none'; base-uri 'none'" http-equiv="Content-Security-Policy"/>
+<meta content="default-src 'self' data: blob:; script-src 'self' https://apex.barsys.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' data: blob:; frame-src 'none'; connect-src https://apex.barsys.com; form-action 'none'; object-src 'none'; base-uri 'none'" http-equiv="Content-Security-Policy"/>
 <title>${esc(indexTitle)} | Barsys</title>
 <meta property="og:title" content="${esc(indexTitle)} | Barsys"><meta property="og:description" content="${esc(indexDesc)}"><meta property="og:type" content="website"><meta property="og:image" content="${esc(heroImg)}">
 <link href="/assets/brand-mark.png" rel="icon"/>

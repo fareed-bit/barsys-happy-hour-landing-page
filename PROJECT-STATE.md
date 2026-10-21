@@ -1,6 +1,10 @@
 ## Apex analytics integration prepared locally — October 21, 2026
 
-Isolated branch `codex/apex-analytics-20261021`; not published. Root and generated
+Isolated branch `codex/apex-analytics-20261021`; not published.
+A follow-up policy check found the original CSP would block the external
+controller and ingest. Source templates now allow only the exact Apex origin
+for those operations; no wildcard or general HTTPS permission was added.
+Installation tests verify script and connection policy on all 48 paths. Root and generated
 public pages load the Apex usage-analytics choice controller. It defaults off,
 loads the tracker only after opt-in, stores the choice and identifier in this
 site/tab only, supports revocation during SDK loading, and respects Global
@@ -9,8 +13,7 @@ copy describes the actual keys and Barsys-owned destination. No draft-storage,
 planner, inquiry, email, payment, pricing, media or access changes.
 
 Installation checks also exposed the existing /site/blog/.html sitemap URL; directory pages now retain /site/blog/ in the sitemap, canonical lookup and llms.txt. The stale public-page count assertion now matches the current 48 paths (27 mixlist pages). Original checkout's in-progress Collins work is untouched. Publish only after
-review of the analytics behavior and notice; Google Cloud reauthentication is
-also required for deployment. Browser events remain observations, not confirmed
+review of the analytics behavior, exact-origin policy and notice. Browser events remain observations, not confirmed
 inquiries or booked revenue. Server-side inquiry attribution is separate work.
 
 ---

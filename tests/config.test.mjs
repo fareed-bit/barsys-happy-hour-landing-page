@@ -34,10 +34,10 @@ test('Artwork is either bundled or uses an official Barsys CDN URL',()=>{
     assert.ok(asset.alt.length>15);
   }
 });
-test('Local-only security and no analytics or request code',()=>{
+test('Exact Apex consent destination and no request code in the quote engine',()=>{
   const html=readFileSync(resolve(root,'index.html'),'utf8');
   const js=readFileSync(resolve(root,'app.js'),'utf8');
-  assert.ok(html.includes("connect-src 'none'"));
+  assert.ok(html.includes("connect-src 'self' https://apex.barsys.com;"));
   assert.ok(html.includes("form-action 'none'"));
   assert.ok(html.includes('noindex,nofollow'));
   assert.ok(!/googletagmanager|google-analytics|stripe\.com|zapier\.com/i.test(html));
