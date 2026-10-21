@@ -1,4 +1,4 @@
-/* V3.9 storage preferences. Ordinary artwork is not consent-gated. No analytics, ad tags or consent platform installed.
+/* V3.9 storage preferences. Ordinary artwork is not consent-gated. Optional analytics have a separate Analytics choices control; draft preferences do not enable analytics.
    Only named first-party keys are touched. A denial never clears unrelated storage. */
 (() => {
   'use strict';

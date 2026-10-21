@@ -1,3 +1,20 @@
+## Apex analytics integration prepared locally — October 21, 2026
+
+Isolated branch `codex/apex-analytics-20261021`; not published. Root and generated
+public pages load the Apex usage-analytics choice controller. It defaults off,
+loads the tracker only after opt-in, stores the choice and identifier in this
+site/tab only, supports revocation during SDK loading, and respects Global
+Privacy Control. No form field values are collected. Runtime privacy/storage
+copy describes the actual keys and Barsys-owned destination. No draft-storage,
+planner, inquiry, email, payment, pricing, media or access changes.
+
+Installation checks also exposed the existing /site/blog/.html sitemap URL; directory pages now retain /site/blog/ in the sitemap, canonical lookup and llms.txt. The stale public-page count assertion now matches the current 48 paths (27 mixlist pages). Original checkout's in-progress Collins work is untouched. Publish only after
+review of the analytics behavior and notice; Google Cloud reauthentication is
+also required for deployment. Browser events remain observations, not confirmed
+inquiries or booked revenue. Server-side inquiry attribution is separate work.
+
+---
+
 ## events.barsys.com is live — September 15, 2026 (~09:32–09:41 UTC / 05:32–05:41 ET)
 
 Owner flipped `barsys-happyhours-production` to `launch-0915` at 100% at 09:32 UTC. Certificate was issued by Google Trust Services (WR3, CN events.barsys.com, valid Sep 15 → Dec 14 2026) roughly one to two minutes before the flip; the `CertificateProvisioned` condition had cleared after Google's HTTP-01 challenge retries following DNS live at ~09:15 UTC. Domain mapping stayed `mappedRouteName: barsys-happyhours-production`; no DNS or mapping change was needed.

@@ -12,7 +12,7 @@ test('backend serves required scripts, allows its API and protects private files
  await Promise.race([once(child.stdout,'data'),new Promise((_,reject)=>{const timeout=setTimeout(()=>reject(new Error('Server startup timed out')),5000);timeout.unref();})]);
  const base=`http://localhost:${port}`;
  const html=await (await fetch(base)).text();assert.ok(html.includes("connect-src 'self'"));
- const scripts=[...html.matchAll(/<script[^>]*src="([^"]+)"/g)].map(m=>m[1]);for(const file of scripts)assert.equal((await fetch(base+'/'+file)).status,200,file);
+ const scripts=[...html.matchAll(/<script[^>]*src="([^"]+)"/g)].map(m=>m[1]);for(const file of scripts){const url=new URL(file,base+'/');if(url.origin!==base){assert.equal(url.href,'https://apex.barsys.com/hud-assets/js/apex_analytics_consent.js');continue;}assert.equal((await fetch(url)).status,200,file);}
  for(const file of ['backend/server.mjs','package.json','.env','../barsys-data/inquiries.sqlite','tests/backend.test.mjs'])assert.equal((await fetch(base+'/'+file)).status,404,file);
  const status=await (await fetch(base+'/api/status')).json();assert.equal(status.mode,'LOCAL_TEST');
  assert.equal((await fetch(base+'/api/admin/inquiries',{headers:{Origin:'https://example.com'}})).status,403);
