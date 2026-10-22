@@ -40,8 +40,8 @@ export function patchAPI(text){
  return "import {apexAuthorised,buildApexReport} from './apex-reporting.mjs';\n"+text.replace(marker,route+marker);
 }
 export function patchSEO(text){
- const old='`/site/${p.slug}.html`';
- const corrected="`/site/${p.slug}${p.slug.endsWith('/')?'':'.html'}`";
+ const old='${p.slug}.html';
+ const corrected="${p.slug}${p.slug.endsWith('/')?'':'.html'}";
  if(!text.includes(old)&&!text.includes(corrected))throw Error('Production SEO path builder differs from reviewed source');
  return text.replaceAll(old,corrected);
 }

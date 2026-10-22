@@ -19,6 +19,8 @@ test('production SEO overlay retains directory paths and remains idempotent',()=
  const path=Function(patched+'return path;')();
  assert.equal(path({slug:'blog/'}),'/site/blog/');
  assert.equal(path({slug:'events'}),'/site/events.html');
+ const llms=patchSEO('const link=(p,o)=>`${o}/site/${p.slug}.html`;');
+ assert.equal(Function(llms+'return link;')()({slug:'blog/'},'https://events.barsys.com'),'https://events.barsys.com/site/blog/');
  assert.equal(patchSEO(patched),patched);
  assert.throws(()=>patchSEO('unreviewed source'));
 });
