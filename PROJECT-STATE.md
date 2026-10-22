@@ -1,3 +1,16 @@
+## Apex analytics publication authorized — October 22, 2026
+
+Fareed approved publishing the prepared integrations ("lets get it done").
+Merged current main including Collins; original working checkout is untouched.
+Consent remains off by default, scoped to this tab/site and revocable. The exact
+Apex script/ingest origin is allowed by CSP. No form field values are collected.
+Server-side inquiry and booked-revenue attribution remain separate work.
+Candidate rollout uses deploy/apex-analytics-20261022/Dockerfile over the exact
+guided-1021-v2 production image, preserving its newer HTML, backend, environment
+and database. Do not deploy this whole checkout: Git main is behind published
+UI changes. The overlay is the production source of truth for this analytics
+release; the ordinary source changes keep the integration in future builds.
+
 ## Apex analytics integration prepared locally — October 21, 2026
 
 Isolated branch `codex/apex-analytics-20261021`; not published.

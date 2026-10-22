@@ -2,7 +2,7 @@
   {
     "slug": "packages",
     "title": "A package for your kind of gathering.",
-    "description": "Compare the Classic, Signature and Reserve office happy-hour packages from Barsys: per-guest rates, a two-hour service baseline and what each package includes.",
+    "description": "Compare the Classic, Signature, Reserve and Collins happy-hour packages from Barsys: per-guest rates, a two-hour service baseline and what each package includes.",
     "image": "/assets/tech/360-hero-hd.jpg"
   },
   {
@@ -21,6 +21,12 @@
     "slug": "reserve",
     "title": "Reserve happy hours",
     "description": "Reserve happy hours: five curated cocktail menus, a dedicated event lead and Barsys 360 machines for clients, milestones and executive occasions.",
+    "image": "/assets/tech/360-hero-hd.jpg"
+  },
+  {
+    "slug": "collins",
+    "title": "Collins",
+    "description": "Collins is the Barsys AI bartender for New York City rooms that already have a bar: photograph your ingredients and it builds a custom menu with precise measurements, one iPad per 25 guests, our team on site and your branding included.",
     "image": "/assets/tech/360-hero-hd.jpg"
   },
   {

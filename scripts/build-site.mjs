@@ -6,6 +6,7 @@ const nav=[['events','Events'],['packages','Packages'],['mixlists','Mixlists'],[
 const extras={};
 const faqHtml=items=>`<section class="faq" aria-label="Questions">${items.map(([q,a])=>`<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}</section>`;
 const cards=items=>`<div class="cards">${items.join('')}</div>`;
+const money=n=>'$'+n.toLocaleString('en-US');
 const card=(title,body,url)=>`<article><h2>${esc(title)}</h2>${body}<a href="${url}">Explore <span aria-hidden="true">↗</span></a></article>`;
 const pages=[];
 const clip=(text,max=160)=>{text=String(text).replace(/\s+/g,' ').trim();if(text.length<=max)return text;const cut=text.slice(0,max);const stop=Math.max(cut.lastIndexOf('. '),cut.lastIndexOf('; '));return (stop>0?cut.slice(0,stop+1):cut.replace(/\s+\S*$/,'')).trim();};
@@ -50,6 +51,7 @@ function page(slug,title,description,body,image=null,intro=description){
 <link href="/styles.css" rel="stylesheet"/>
 <link href="/v3.css" rel="stylesheet"/>
 <link href="/site/site.css" rel="stylesheet"/>
+<script defer src="/site/site-nav.js"></script>
 </head>
 <body class="sub-page">
 ${sprite}
@@ -83,8 +85,24 @@ ${sprite}
   writeFileSync(`site/${slug}.html`,html);
 }
 mkdirSync('site',{recursive:true});
-page('packages','A package for your kind of gathering.','Compare the Classic, Signature and Reserve office happy-hour packages from Barsys: per-guest rates, a two-hour service baseline and what each package includes.',cards(Object.entries(c.packages).map(([id,p])=>card(p.name,`<p class="price">$${p.rate}<small> / guest</small></p><p>${esc(p.description)}</p>`,`/site/${id}.html`)))+'<p>Two-hour baseline. Tax and extras are confirmed in your proposal.</p>','/assets/tech/360-hero-hd.jpg');
-for(const [id,p] of Object.entries(c.packages))page(id,`${p.name} happy hours`,describe(p.description,p.detail,`From $${p.rate} per guest for New York City office events.`),`<section class="split"><div><p class="price">$${p.rate}<small> / guest</small></p><p>Two-hour baseline · ${c.minGuests}-guest minimum for standard planning</p><p>${esc(p.detail)}</p></div><div><h2>The details</h2><ul>${p.features.map(f=>`<li>${esc(f)}</li>`).join('')}</ul><p>Up to ${p.menuLimit} menus. Tax, extra hours and unpriced requests are confirmed in your proposal.</p><a href="/#packages">Choose ${esc(p.name)} in the planner ↗</a></div></section>`,'/assets/tech/360-hero-hd.jpg',p.description);
+// Collins is a package, not an add-on: it is for rooms that already have a bar, where the
+// Barsys machine tablet and its AI are not in the room to begin with. It prices as a flat fee
+// banded by headcount rather than a rate per guest, so every price on this page is read from
+// config.js through the same helpers the planner uses.
+const ownBar=p=>p.bringsOwnBar===true;
+const packageBanner=(id,p)=>`<section class="package-banner"><div class="pb-row">`
+ +`<span class="pb-badge">${esc(p.badge)}</span><h3>${esc(p.name)}</h3>`
+ +`<p class="pb-price">$${p.rate}<span> / guest</span></p>`
+ +`<p class="pb-meta">${money(p.minimumFee)} minimum &middot; one iPad per ${p.guestsPerStation} guests</p>`
+ +`</div><p class="pb-tagline">${esc(p.tagline)}</p>`
+ +`<ul class="pb-features">${p.features.map(f=>`<li>${esc(f)}</li>`).join('')}</ul>`
+ +`<a class="pb-cta" href="/site/${id}.html">Explore ${p.name} <span aria-hidden="true">&#8599;</span></a></section>`;
+const CO=c.packages.collins;
+const CH=c.addons.find(a=>a.id==='collins-hours');
+const COLLINS_BODY=`<section class="split"><div><p class="price">$${CO.rate}<small> / guest</small></p><p>Two-hour baseline &middot; ${money(CO.minimumFee)} minimum per event &middot; for rooms that already have a bar</p><h2>How it works</h2><p>${esc(CO.howItWorks)}</p><p>Your team sets the bar on the night. Photograph the bottles, Collins reads the shelf, you confirm what is there, and the menu it builds is locked to what that bar can genuinely make &mdash; no off-menu suggestions, no drink you did not agree to.</p></div><div><h2>Included, not extra</h2><ul>${CO.features.map(f=>`<li>${esc(f)}</li>`).join('')}${CO.serviceFeatures.map(f=>`<li>${esc(f)}</li>`).join('')}</ul><p>Extra hours, menu changes after lock, events outside Manhattan and additional iPads are confirmed in your proposal.</p><a href="/#packages">Choose Collins in the planner &#8599;</a></div></section><section class="split"><div><h2>Bigger rooms, more stations</h2><p>One iPad and stand serves roughly ${CO.guestsPerStation} guests comfortably. Past that the room queues at exactly the moment it is busiest, so the deployment grows with the headcount &mdash; which is why Collins is priced per guest rather than as one flat fee.</p><ul>${[25,50,100,150,250].map(n=>`<li>${n} guests &mdash; ${Math.ceil(n/CO.guestsPerStation)} station${Math.ceil(n/CO.guestsPerStation)===1?'':'s'}, ${money(Math.max(CO.rate*n,CO.minimumFee))}${CO.rate*n<CO.minimumFee?' (event minimum)':''}</li>`).join('')}<li>Above ${c.maxGuests} &mdash; quoted with your proposal.</li></ul><p>Additional service time is ${money(CH.price)} an hour &mdash; an extra Collins hour is our team running the stations, not a full bar.</p></div><div><h2>What it is not</h2><p>Collins does not pour. It designs the menu, gives the measurements and guides whoever is making the drinks &mdash; your bar, your bartenders and your spirits stay yours. There is no Barsys bar, no machines and no Barsys menus in this package; if you want those, that is Classic, Signature or Reserve.</p><p>Which is the point. Collins is for the office or venue that already has a bar it likes and wants the interactive layer on top of it.</p><a href="/#proposal">Talk it through &#8599;</a></div></section>`;
+page('packages','A package for your kind of gathering.','Compare the Classic, Signature, Reserve and Collins happy-hour packages from Barsys: per-guest rates, a two-hour service baseline and what each package includes.',cards(Object.entries(c.packages).filter(([,p])=>!ownBar(p)).map(([id,p])=>card(p.name,`<p class="price">$${p.rate}<small> / guest</small></p><p>${esc(p.description)}</p>`,`/site/${id}.html`)))+'<p>Two-hour baseline. Tax and extras are confirmed in your proposal.</p>'+Object.entries(c.packages).filter(([,p])=>ownBar(p)).map(([id,p])=>packageBanner(id,p)).join(''),'/assets/tech/360-hero-hd.jpg');
+for(const [id,p] of Object.entries(c.packages).filter(([id])=>id!=='collins'))page(id,`${p.name} happy hours`,describe(p.description,p.detail,`From $${p.rate} per guest for New York City office events.`),`<section class="split"><div><p class="price">$${p.rate}<small> / guest</small></p><p>Two-hour baseline · ${c.minGuests}-guest minimum for standard planning</p><p>${esc(p.detail)}</p></div><div><h2>The details</h2><ul>${p.features.map(f=>`<li>${esc(f)}</li>`).join('')}</ul><p>Up to ${p.menuLimit} menus. Tax, extra hours and unpriced requests are confirmed in your proposal.</p><a href="/#packages">Choose ${esc(p.name)} in the planner ↗</a></div></section>`,'/assets/tech/360-hero-hd.jpg',p.description);
+page('collins','Collins','Collins is the Barsys AI bartender for New York City rooms that already have a bar: photograph your ingredients and it builds a custom menu with precise measurements, one iPad per 25 guests, our team on site and your branding included.',COLLINS_BODY,'/assets/tech/360-hero-hd.jpg','A bartender your guests can talk to.');
 page('mixlists','Find your first pour.','Explore the Barsys mixlist library for office happy hours in New York City. Package eligibility and final event menus are confirmed in the planner.',cards(c.menus.map(m=>card(m.name,`<p>${esc(m.description)}</p>`,`/site/mixlist-${m.id}.html`))),'/assets/lineup.jpg');
 for(const m of c.menus){const a=c.assets[m.image];page(`mixlist-${m.id}`,m.name,describe(m.description,m.detail||m.flavor,`A Barsys mixlist for office happy hours and events in New York City.`),`<section class="split">${a?.local?`<img class="cover" src="/${esc(a.local)}" alt="${esc(m.name)} collection cover" width="720" height="900">`:''}<div><h2>${esc(m.tag||'The collection')}</h2><p>${esc(((x)=>x&&x.startsWith(m.description)?x.slice(m.description.length).trim():x)([m.detail,m.flavor].find(x=>x&&x!==m.description))||'Final recipes and spirit brands are confirmed with your event team.')}</p>${m.examples?.length?`<h3>Featured drinks</h3><ul>${m.examples.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:''}<p>Package eligibility is shown in the planner.</p><a href="/#menus">See package-eligible menus ↗</a></div></section>`,a?.local?`/${a.local}`:'/assets/lineup.jpg',m.description);}
 page('about','Good drinks. Better connections.','Barsys brings an interactive cocktail bar to office gatherings in New York City.',`<section class="split"><div><h2>The office, after hours.</h2><p>Barsys cocktail machines, bartenders, setup and cleanup, brought to your office.</p><p>From a team happy hour to a client gathering, start with the occasion, guest count and venue. We work out the menu and details with you.</p></div><div><h2>Plan with people.</h2><p>Contact Fareed at <a href="mailto:${c.email}">${c.email}</a>.</p><p>Barsys Inc.<br>44 W 37th St<br>New York, NY 10018</p></div></section>`,'/assets/lineup.jpg');
@@ -259,6 +277,7 @@ function blogPost(slug,title,description,body,image,publishedDate){
 <link href="/styles.css" rel="stylesheet"/>
 <link href="/v3.css" rel="stylesheet"/>
 <link href="/site/site.css" rel="stylesheet"/>
+<script defer src="/site/site-nav.js"></script>
 </head>
 <body class="sub-page blog-post">
 ${sprite}
@@ -667,6 +686,7 @@ blogPost('zero-proof-mocktail-bar-office-event',
 .blog-body ul{line-height:1.7}
 .blog-back{padding:2rem 0;opacity:.7}
 </style>
+<script defer src="/site/site-nav.js"></script>
 </head>
 <body class="sub-page blog-index">
 ${sprite}
