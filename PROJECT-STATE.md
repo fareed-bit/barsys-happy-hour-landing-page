@@ -1,3 +1,16 @@
+## Apex integration live — October 22, 2026
+
+Production now runs `barsys-happyhours-production-apex-analytics-1022` at 100%.
+Consent installation and the Google-identity aggregate report are verified live.
+Apex successfully reads saved inquiry and confirmed booking counts; anonymous
+report access is denied. The overlay preserves the existing guided UI and Collins
+behavior. Source and overlay tests pass (241 tests after the SEO path regression).
+
+The public sweep found the older production SEO builder emitted
+`/site/blog/.html` (404). The overlay now preserves directory slugs consistently
+in sitemap, canonical lookup and llms.txt, matching the already corrected source.
+A follow-up candidate will be verified before traffic is shifted.
+
 ## Event receipt feed for Apex — October 22, 2026
 
 Added a Google-identity-authenticated, read-only aggregate feed for saved public LIVE website

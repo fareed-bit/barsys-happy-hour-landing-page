@@ -39,6 +39,12 @@ export function patchAPI(text){
  const route="   if(req.method==='GET'&&path==='/api/integrations/apex/analytics'){\n    if(!await apexAuthorised(req.headers.authorization))throw new HttpError(401,'Reporting access denied.');\n    const days=Number(new URL(req.url,'http://localhost').searchParams.get('days')||30);\n    if(!Number.isInteger(days)||days<1||days>90)throw new HttpError(400,'Choose 1\u201390 days.');\n    send(200,await buildApexReport(store,days));return true;}\n";
  return "import {apexAuthorised,buildApexReport} from './apex-reporting.mjs';\n"+text.replace(marker,route+marker);
 }
+export function patchSEO(text){
+ const old='`/site/${p.slug}.html`';
+ const corrected="`/site/${p.slug}${p.slug.endsWith('/')?'':'.html'}`";
+ if(!text.includes(old)&&!text.includes(corrected))throw Error('Production SEO path builder differs from reviewed source');
+ return text.replaceAll(old,corrected);
+}
 export function patchTree(root){
  const pages=[join(root,'index.html')];
  function walk(dir){for(const entry of readdirSync(dir,{withFileTypes:true})){const path=join(dir,entry.name);if(entry.isDirectory())walk(path);else if(entry.isFile()&&entry.name.endsWith('.html'))pages.push(path);}}
@@ -46,6 +52,7 @@ export function patchTree(root){
  for(const path of pages)writeFileSync(path,patchHTML(readFileSync(path,'utf8')));
  const api=join(root,'backend/api.mjs');writeFileSync(api,patchAPI(readFileSync(api,'utf8')));
  const privacy=join(root,'runtime-content.js');writeFileSync(privacy,patchPrivacy(readFileSync(privacy,'utf8')));
+ const seo=join(root,'backend/site-seo.mjs');writeFileSync(seo,patchSEO(readFileSync(seo,'utf8')));
  console.log('Apex consent installed on '+pages.length+' public pages; production files otherwise preserved.');
  return pages.length;
 }

@@ -17,4 +17,4 @@ traffic. Preserve existing service environment and secret bindings. Immediate
 rollback: barsys-happyhours-production-guided-1021-v2 at 100% traffic.
 
 The owner approved publishing these integrations on October 22, 2026.
-Server-side confirmed-inquiry/revenue attribution is not part of this overlay.
+The read-only Events aggregate feed supplies saved inquiry and explicitly confirmed booking counts. Revenue attribution remains unavailable. The SEO overlay also corrects directory slugs so the blog sitemap entry resolves.
