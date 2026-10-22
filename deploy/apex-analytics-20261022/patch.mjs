@@ -45,6 +45,13 @@ export function patchSEO(text){
  if(!text.includes(old)&&!text.includes(corrected))throw Error('Production SEO path builder differs from reviewed source');
  return text.replaceAll(old,corrected);
 }
+export function patchServer(text){
+ const old="path==='/admin'||path==='/admin/'?'admin/index.html':path.slice(1)";
+ const updated="path==='/admin'||path==='/admin/'?'admin/index.html':path==='/site/blog/'?'site/blog/index.html':path.slice(1)";
+ if(text.includes(updated))return text;
+ if(!text.includes(old))throw Error('Production static path mapping differs from reviewed source');
+ return text.replace(old,updated);
+}
 export function patchTree(root){
  const pages=[join(root,'index.html')];
  function walk(dir){for(const entry of readdirSync(dir,{withFileTypes:true})){const path=join(dir,entry.name);if(entry.isDirectory())walk(path);else if(entry.isFile()&&entry.name.endsWith('.html'))pages.push(path);}}
@@ -53,6 +60,7 @@ export function patchTree(root){
  const api=join(root,'backend/api.mjs');writeFileSync(api,patchAPI(readFileSync(api,'utf8')));
  const privacy=join(root,'runtime-content.js');writeFileSync(privacy,patchPrivacy(readFileSync(privacy,'utf8')));
  const seo=join(root,'backend/site-seo.mjs');writeFileSync(seo,patchSEO(readFileSync(seo,'utf8')));
+ const server=join(root,'backend/server.mjs');writeFileSync(server,patchServer(readFileSync(server,'utf8')));
  console.log('Apex consent installed on '+pages.length+' public pages; production files otherwise preserved.');
  return pages.length;
 }

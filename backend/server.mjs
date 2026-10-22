@@ -32,7 +32,7 @@ const server=http.createServer(async(req,res)=>{
  try{
   if(!['GET','HEAD'].includes(req.method)){res.writeHead(405);return res.end();}
   if((req.url==='/admin'||req.url?.startsWith('/admin/'))&&(await auth.user(req))?.role==='crew'&&!req.url.startsWith('/admin/crew.')&&!req.url.startsWith('/admin/style.css')&&!req.url.startsWith('/admin/operations.css')&&!req.url.startsWith('/admin/login.')){res.writeHead(303,{Location:'/admin/crew.html'});return res.end();}
-  const path=decodeURIComponent(new URL(req.url,origin).pathname);const relative=path==='/'?'index.html':path==='/admin'||path==='/admin/'?'admin/index.html':path.slice(1);
+  const path=decodeURIComponent(new URL(req.url,origin).pathname);const relative=path==='/'?'index.html':path==='/admin'||path==='/admin/'?'admin/index.html':path==='/site/blog/'?'site/blog/index.html':path.slice(1);
   if(path==='/robots.txt'){res.writeHead(200,{'Content-Type':'text/plain; charset=utf-8'});return res.end(robotsText(seo));}
   if(path==='/llms.txt'){res.writeHead(seo.enabled?200:404,{'Content-Type':'text/plain; charset=utf-8'});return res.end(seo.enabled?llmsText(seo):'');}
   if(path==='/'+INDEXNOW_KEY+'.txt'){res.writeHead(200,{'Content-Type':'text/plain'});return res.end(INDEXNOW_KEY);}

@@ -1,5 +1,5 @@
-# Preserve the exact guided Collins production release, including unmerged UI.
-FROM us-east4-docker.pkg.dev/happy-hour-landing-version-2/barsys-staging/app@sha256:967e8b7425ef5ece900903f4fae63814f1b9c6cc174bb29d2dfeb7817e7dad7e
+# Preserve the latest live Collins repair, including its unmerged changes.
+FROM us-east4-docker.pkg.dev/happy-hour-landing-version-2/barsys-staging/app@sha256:13290bf85aec281c4334b066b9e0de59778dc5a84764867cce7a2e48b3c9a178
 USER root
 COPY apex-reporting.mjs /app/backend/apex-reporting.mjs
 COPY patch.mjs /tmp/apex-consent-patch.mjs
