@@ -1,3 +1,4 @@
+import {apexAuthorised,buildApexReport} from './apex-reporting.mjs';
 import {clientAddress} from './request-identity.mjs';
 import * as collins from './collins.mjs';
 import {retentionView,retentionChange} from './retention.mjs';
@@ -39,6 +40,11 @@ export function createAPI({store,local=true,staging=false,origin,auth,gmailFetch
    if(req.headers.origin&&req.headers.origin!==origin)throw new HttpError(403,'Request origin is not allowed.');
    if(req.headers['sec-fetch-site']==='cross-site')throw new HttpError(403,'Cross-site requests are not allowed.');
    if(!['GET','HEAD'].includes(req.method)&&req.headers.origin!==origin)throw new HttpError(403,'A same-origin request is required.');
+   if(req.method==='GET'&&path==='/api/integrations/apex/analytics'){
+    if(!await apexAuthorised(req.headers.authorization))throw new HttpError(401,'Reporting access denied.');
+    const days=Number(new URL(req.url,'http://localhost').searchParams.get('days')||30);
+    if(!Number.isInteger(days)||days<1||days>90)throw new HttpError(400,'Choose 1–90 days.');
+    send(200,await buildApexReport(store,days));return true;}
    if(req.method==='GET'&&path==='/api/auth/me'){send(200,{user:await auth.user(req),configured:!!auth.clientId});return true;}
    if(req.method==='GET'&&path==='/api/auth/challenge'){await throttle(req);send(200,await auth.challenge(res));return true;}
    if(req.method==='POST'&&path==='/api/auth/google'){await throttle(req);send(200,await auth.signIn(req,res,await body(req)));return true;}

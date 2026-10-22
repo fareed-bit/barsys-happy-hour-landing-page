@@ -7,8 +7,10 @@ HTML change. Do not deploy the whole checkout to update analytics.
 
 Build only this directory. The Dockerfile retains that exact production image
 and patches public HTML under /app/index.html and /app/site plus the reviewed
-runtime notice. It leaves the backend, Collins, assets, pricing, environment,
-database and hidden-wizard behavior intact. Unknown notice text fails the build.
+runtime notice. It adds one authenticated aggregate-reporting route to the existing API and
+a small reporting module. Collins, assets, pricing, database contents and
+hidden-wizard behavior are preserved. Google verifies the existing Apex service identity for the aggregate feed;
+no customer fields, new stored credentials or IAM grants are involved. Unknown notice text fails the build.
 
 Deploy the resulting digest at zero traffic, inspect the candidate, then shift
 traffic. Preserve existing service environment and secret bindings. Immediate

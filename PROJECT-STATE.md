@@ -1,3 +1,12 @@
+## Event receipt feed for Apex — October 22, 2026
+
+Added a Google-identity-authenticated, read-only aggregate feed for saved public LIVE website
+inquiries and explicitly confirmed bookings. Imported email, deleted records,
+synthetic tests and other runtime modes are excluded. No contact fields are
+returned. Revenue remains unavailable: a planning estimate is not revenue.
+The production overlay preserves guided-1021-v2 and adds only this route/module,
+the consent installation and its notice. The existing Apex runtime identity is the sole authorized reporting caller; no new stored credential or IAM grant is needed.
+
 ## Apex analytics publication authorized — October 22, 2026
 
 Fareed approved publishing the prepared integrations ("lets get it done").
