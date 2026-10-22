@@ -1,3 +1,34 @@
+## Final live verification — October 22, 2026
+
+Production is at 100% on `barsys-happyhours-production-apex-final1022`, image
+`sha256:14613633a3a8e9fec102f8325a86babcd160dda58abbb6f70b0e4c60f0b963ca`.
+Cloud Build: `135e16fa-fbe9-4b6c-a010-8a85bcdbdb38`.
+The final overlay uses the newer Collins repair image as its base, preserving
+that concurrent deployment. The candidate root HTML matched the then-live root
+byte for byte before promotion. Immediate rollback is
+`barsys-happyhours-production-collins-repair-1022` at 100%.
+
+Verified after promotion: all 49 sitemap URLs return 200 with the opt-in
+controller and exact-origin CSP; the blog directory, canonical URL and llms
+index resolve correctly. Anonymous report/admin export requests return 401;
+backend source and .env remain 404. Collins remains enabled in LIVE mode.
+
+Apex release `cee6cca` (`barsys-apex-crm-00670-fq9`) reads the Google-identity
+aggregate feed successfully. Labeled browser tests on both websites each saved
+one site-scoped visit only after consent; after revocation and reload, each
+count remained one. Both test tabs were left off. These synthetic browser
+visits are separate from the saved-inquiry/bookings report. That feed currently
+shows two LIVE public inquiries and zero explicitly confirmed bookings over
+30 days; booked revenue remains unavailable.
+
+Apex develop/main match; deployment and both branch check runs passed. Its full
+storage regression checks passed on SQLite and PostgreSQL (2,884 PostgreSQL
+tests; 2,846 SQLite tests run, 67 skipped). The Events full suite passed 242
+tests, and the final overlay path correction passed its five focused tests.
+Global Apex outbound remains paused. Full unattended automation is still not
+cleared: the backup provider secret is empty, production Temporal orchestration
+is disabled/unregistered, and secondary-mailbox sync needs verification.
+
 ## Apex integration live — October 22, 2026
 
 Production now runs `barsys-happyhours-production-apex-analytics-1022` at 100%.
